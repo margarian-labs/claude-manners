@@ -1,0 +1,3563 @@
+[
+  {
+    "pack": "01-rules/core.md",
+    "repo": null,
+    "installed_at": "rules/setup-pack/core.md",
+    "sha256": "0da8bf68c04ffbf70d9c85fc1e0f93c0fa076b4844c4af732571221ba7ee95f2"
+  },
+  {
+    "pack": "01-rules/csharp-dotnet.md",
+    "repo": null,
+    "installed_at": "rules/setup-pack/csharp-dotnet.md",
+    "sha256": "61b9c25c257e370f41b8fb6b49138264f40d4987d3fa40e535f1bfcbc2b75cf1"
+  },
+  {
+    "pack": "02-settings/STATUSLINE.html",
+    "repo": "payload/settings/STATUSLINE.html",
+    "installed_at": null,
+    "sha256": "979135cf27810b15d0686a3d2d3d46d38b3a223da17642605428e17c3415a9ca",
+    "sha256_lf": "979135cf27810b15d0686a3d2d3d46d38b3a223da17642605428e17c3415a9ca"
+  },
+  {
+    "pack": "02-settings/fragments/bypass.json",
+    "repo": "payload/settings/fragments/bypass.json",
+    "installed_at": null,
+    "sha256": "6d083d404f610b5023d801d4453152ae22988dac32453dedf0a6a5a54556c052",
+    "sha256_lf": "6d083d404f610b5023d801d4453152ae22988dac32453dedf0a6a5a54556c052"
+  },
+  {
+    "pack": "02-settings/fragments/compaction.json",
+    "repo": "payload/settings/fragments/compaction.json",
+    "installed_at": null,
+    "sha256": "3aaed3d6648e2695ac94a688f39fb9290c8c2372c89d6edf89d8194251b270c3",
+    "sha256_lf": "3aaed3d6648e2695ac94a688f39fb9290c8c2372c89d6edf89d8194251b270c3"
+  },
+  {
+    "pack": "02-settings/fragments/env-basics.json",
+    "repo": "payload/settings/fragments/env-basics.json",
+    "installed_at": null,
+    "sha256": "8eeedf41cbf9515d051d65920f3b33d1c0917893f9fb06bb529bb3d950c32d31",
+    "sha256_lf": "8eeedf41cbf9515d051d65920f3b33d1c0917893f9fb06bb529bb3d950c32d31"
+  },
+  {
+    "pack": "02-settings/fragments/fullscreen.json",
+    "repo": "payload/settings/fragments/fullscreen.json",
+    "installed_at": null,
+    "sha256": "8e0edaf577530678bc980278d9b96d3313e61d91c5f4514144f3f7a48e0819c7",
+    "sha256_lf": "8e0edaf577530678bc980278d9b96d3313e61d91c5f4514144f3f7a48e0819c7"
+  },
+  {
+    "pack": "02-settings/fragments/hooks-auto-approve-shell.json",
+    "repo": "payload/settings/fragments/hooks-auto-approve-shell.json",
+    "installed_at": null,
+    "sha256": "688d9de20fa65712e3c02b2306070a3f498533ac2f0ae7540683a05a7afb703b",
+    "sha256_lf": "688d9de20fa65712e3c02b2306070a3f498533ac2f0ae7540683a05a7afb703b"
+  },
+  {
+    "pack": "02-settings/fragments/hooks-away.json",
+    "repo": "payload/settings/fragments/hooks-away.json",
+    "installed_at": null,
+    "sha256": "ba70ec10b5ec3e3c4514209bcfff73ba2a351cf7ff02030a6249648dbc6ccdfe",
+    "sha256_lf": "ba70ec10b5ec3e3c4514209bcfff73ba2a351cf7ff02030a6249648dbc6ccdfe"
+  },
+  {
+    "pack": "02-settings/fragments/hooks-compact.json",
+    "repo": "payload/settings/fragments/hooks-compact.json",
+    "installed_at": null,
+    "sha256": "348008130360dac7925bb4b6dac33cd9cd0dc0e56e9f2fcb61ad41ee6a2051d1",
+    "sha256_lf": "348008130360dac7925bb4b6dac33cd9cd0dc0e56e9f2fcb61ad41ee6a2051d1"
+  },
+  {
+    "pack": "02-settings/fragments/hooks-handoff-prompt.json",
+    "repo": "payload/settings/fragments/hooks-handoff-prompt.json",
+    "installed_at": null,
+    "sha256": "32e8943ee619c7bab578eb60a15f2effbdea29abb6ea6829b05cb378fe41bf41",
+    "sha256_lf": "32e8943ee619c7bab578eb60a15f2effbdea29abb6ea6829b05cb378fe41bf41"
+  },
+  {
+    "pack": "02-settings/fragments/hooks-session-id.json",
+    "repo": "payload/settings/fragments/hooks-session-id.json",
+    "installed_at": null,
+    "sha256": "46e387fc3b62d154e1af827f33730c44f3a9759e73000b8e80a0225315f421d9",
+    "sha256_lf": "46e387fc3b62d154e1af827f33730c44f3a9759e73000b8e80a0225315f421d9"
+  },
+  {
+    "pack": "02-settings/fragments/hooks-session-namer.json",
+    "repo": "payload/settings/fragments/hooks-session-namer.json",
+    "installed_at": null,
+    "sha256": "55608e03244862f6284b3977bb07a607391eef8b035f9e684210f52f847629ad",
+    "sha256_lf": "55608e03244862f6284b3977bb07a607391eef8b035f9e684210f52f847629ad"
+  },
+  {
+    "pack": "02-settings/fragments/hooks-telegram.json",
+    "repo": "payload/settings/fragments/hooks-telegram.json",
+    "installed_at": null,
+    "sha256": "31c0ee538667ee03ef6525e3179fd68905484d6aa0c1b7eb3290750b9c79f210",
+    "sha256_lf": "31c0ee538667ee03ef6525e3179fd68905484d6aa0c1b7eb3290750b9c79f210"
+  },
+  {
+    "pack": "02-settings/fragments/housekeeping.json",
+    "repo": "payload/settings/fragments/housekeeping.json",
+    "installed_at": null,
+    "sha256": "154ff08506e9ee75949032b8b106e5c3f224bff5de930c7c2fc1c07a4fef0b32",
+    "sha256_lf": "154ff08506e9ee75949032b8b106e5c3f224bff5de930c7c2fc1c07a4fef0b32"
+  },
+  {
+    "pack": "02-settings/fragments/inbound.json",
+    "repo": "payload/settings/fragments/inbound.json",
+    "installed_at": null,
+    "sha256": "ce76ecf9a77d9dd71b79c820c4828d238f64388c27a42cf24340a64bbac51be0",
+    "sha256_lf": "ce76ecf9a77d9dd71b79c820c4828d238f64388c27a42cf24340a64bbac51be0"
+  },
+  {
+    "pack": "02-settings/fragments/models.json",
+    "repo": "payload/settings/fragments/models.json",
+    "installed_at": null,
+    "sha256": "174aa03d8afaf444a1d1ddea673b35eaad906700e52cdb3deac50a147541959e",
+    "sha256_lf": "174aa03d8afaf444a1d1ddea673b35eaad906700e52cdb3deac50a147541959e"
+  },
+  {
+    "pack": "02-settings/fragments/notifications-off.json",
+    "repo": "payload/settings/fragments/notifications-off.json",
+    "installed_at": null,
+    "sha256": "57603dca24f1413b98212ad6711306971d2cce8b901e64ad213fd9b4d38aa8b0",
+    "sha256_lf": "57603dca24f1413b98212ad6711306971d2cce8b901e64ad213fd9b4d38aa8b0"
+  },
+  {
+    "pack": "02-settings/fragments/remote-control.json",
+    "repo": "payload/settings/fragments/remote-control.json",
+    "installed_at": null,
+    "sha256": "e2037d8bab0cb92f2f8a42b742cf0c080d95a84cb39a114e8c20f0f38e71ea5a",
+    "sha256_lf": "e2037d8bab0cb92f2f8a42b742cf0c080d95a84cb39a114e8c20f0f38e71ea5a"
+  },
+  {
+    "pack": "02-settings/fragments/skill-overrides.json",
+    "repo": "payload/settings/fragments/skill-overrides.json",
+    "installed_at": null,
+    "sha256": "4f20d64d03cbc4b28d71b6c45471ba3a7a870add94fb32fc126288fb0357bdc0",
+    "sha256_lf": "4f20d64d03cbc4b28d71b6c45471ba3a7a870add94fb32fc126288fb0357bdc0"
+  },
+  {
+    "pack": "02-settings/fragments/skip-bypass-warning.json",
+    "repo": "payload/settings/fragments/skip-bypass-warning.json",
+    "installed_at": null,
+    "sha256": "a66af15335996ca49d6ee2a2f2242a71dbca7ed5ef7967516696776d9627c305",
+    "sha256_lf": "a66af15335996ca49d6ee2a2f2242a71dbca7ed5ef7967516696776d9627c305"
+  },
+  {
+    "pack": "02-settings/fragments/statusline.json",
+    "repo": "payload/settings/fragments/statusline.json",
+    "installed_at": null,
+    "sha256": "132a82c76b2a0a3faf79af80b52898978096482b98aca169c068909cbec49fbc",
+    "sha256_lf": "132a82c76b2a0a3faf79af80b52898978096482b98aca169c068909cbec49fbc"
+  },
+  {
+    "pack": "02-settings/keybindings.json",
+    "repo": "payload/settings/keybindings.json",
+    "installed_at": "keybindings.json",
+    "sha256": "419f8063b709f6bfe887f7492dbc6c8fdfddc3b171b17ae6ac04fa7887458664",
+    "sha256_lf": "419f8063b709f6bfe887f7492dbc6c8fdfddc3b171b17ae6ac04fa7887458664"
+  },
+  {
+    "pack": "02-settings/merge-fragment.mjs",
+    "repo": "payload/settings/merge-fragment.mjs",
+    "installed_at": null,
+    "sha256": "b5d371fb3d67e8d34e74768444e5703dfc57bc497b493e1459feec81ed356ceb",
+    "sha256_lf": "b5d371fb3d67e8d34e74768444e5703dfc57bc497b493e1459feec81ed356ceb"
+  },
+  {
+    "pack": "02-settings/sample-statusline-input.json",
+    "repo": "payload/settings/sample-statusline-input.json",
+    "installed_at": null,
+    "sha256": "93915927eeeb19f74537df0e61e5bc176f875bee22c2b194a774df9d53c14ff0",
+    "sha256_lf": "93915927eeeb19f74537df0e61e5bc176f875bee22c2b194a774df9d53c14ff0"
+  },
+  {
+    "pack": "02-settings/statusline.sh",
+    "repo": "payload/settings/statusline.sh",
+    "installed_at": "statusline.sh",
+    "sha256": "bbf1c8563babdf1d03b7bb68044e3a28a2ffe2ad3a5333326fd44d8b1f7d79fa",
+    "sha256_lf": "bbf1c8563babdf1d03b7bb68044e3a28a2ffe2ad3a5333326fd44d8b1f7d79fa"
+  },
+  {
+    "pack": "03-hooks/auto-approve-shell.js",
+    "repo": "payload/hooks/auto-approve-shell.js",
+    "installed_at": "hooks/auto-approve-shell.js",
+    "sha256": "0b4f7ddb4dc5384b1ca12c079510f5227b9848946950ff81cfaa3c6bd1b73854",
+    "sha256_lf": "0b4f7ddb4dc5384b1ca12c079510f5227b9848946950ff81cfaa3c6bd1b73854"
+  },
+  {
+    "pack": "03-hooks/auto-approve-shell.sh",
+    "repo": "payload/hooks/auto-approve-shell.sh",
+    "installed_at": "hooks/auto-approve-shell.sh",
+    "sha256": "ae0333014e7b479ffe76919608f4a875fb0af6ab023054fe0aad07583781c066",
+    "sha256_lf": "ae0333014e7b479ffe76919608f4a875fb0af6ab023054fe0aad07583781c066"
+  },
+  {
+    "pack": "03-hooks/away-guard.js",
+    "repo": "payload/hooks/away-guard.js",
+    "installed_at": "hooks/away-guard.js",
+    "sha256": "729b4656e6ff23128c41e6b0076d6f8c85df6b3cb836c74fc29ee1c93a0711e4",
+    "sha256_lf": "729b4656e6ff23128c41e6b0076d6f8c85df6b3cb836c74fc29ee1c93a0711e4"
+  },
+  {
+    "pack": "03-hooks/away-guard.sh",
+    "repo": "payload/hooks/away-guard.sh",
+    "installed_at": "hooks/away-guard.sh",
+    "sha256": "3c3e3cc8f6454cbf33c7288bc44ce6fa5039bd8516856e151b612b5d7a2ccdad",
+    "sha256_lf": "3c3e3cc8f6454cbf33c7288bc44ce6fa5039bd8516856e151b612b5d7a2ccdad"
+  },
+  {
+    "pack": "03-hooks/away-mode.js",
+    "repo": "payload/hooks/away-mode.js",
+    "installed_at": "hooks/away-mode.js",
+    "sha256": "b1f2b71c1cf23c21b8a000eb630a6859f0371f2d38fd4a8ff01058886d6be8e6",
+    "sha256_lf": "b1f2b71c1cf23c21b8a000eb630a6859f0371f2d38fd4a8ff01058886d6be8e6"
+  },
+  {
+    "pack": "03-hooks/away-mode.sh",
+    "repo": "payload/hooks/away-mode.sh",
+    "installed_at": "hooks/away-mode.sh",
+    "sha256": "eeb5cad44d2b7fb585ef4510434b8d54ee91a9e30048a2e3a8e2d93416382363",
+    "sha256_lf": "eeb5cad44d2b7fb585ef4510434b8d54ee91a9e30048a2e3a8e2d93416382363"
+  },
+  {
+    "pack": "03-hooks/away-stop.js",
+    "repo": "payload/hooks/away-stop.js",
+    "installed_at": "hooks/away-stop.js",
+    "sha256": "a2ce880c8a93e0d487d7a94062470c9e77ceed78318f17b6d167405fc1f11750",
+    "sha256_lf": "a2ce880c8a93e0d487d7a94062470c9e77ceed78318f17b6d167405fc1f11750"
+  },
+  {
+    "pack": "03-hooks/away-stop.sh",
+    "repo": "payload/hooks/away-stop.sh",
+    "installed_at": "hooks/away-stop.sh",
+    "sha256": "a0e2eb941168c9227541c5b07dd947c9715efe78de30cb39a308049dc638d042",
+    "sha256_lf": "a0e2eb941168c9227541c5b07dd947c9715efe78de30cb39a308049dc638d042"
+  },
+  {
+    "pack": "03-hooks/compact-instructions.md",
+    "repo": "payload/hooks/compact-instructions.md",
+    "installed_at": "compact-instructions.md",
+    "sha256": "59b6fd72e1294dce3eb5588a09c41b7fa677a6b8fa35f8827559962e1f8c66e7",
+    "sha256_lf": "59b6fd72e1294dce3eb5588a09c41b7fa677a6b8fa35f8827559962e1f8c66e7"
+  },
+  {
+    "pack": "03-hooks/compact-recovery.js",
+    "repo": "payload/hooks/compact-recovery.js",
+    "installed_at": "hooks/compact-recovery.js",
+    "sha256": "7f6f5fe5c12b99343278adda186f0300d2cdf1c6b82f6c3fa3d556bafe57616a",
+    "sha256_lf": "7f6f5fe5c12b99343278adda186f0300d2cdf1c6b82f6c3fa3d556bafe57616a"
+  },
+  {
+    "pack": "03-hooks/compact-recovery.sh",
+    "repo": "payload/hooks/compact-recovery.sh",
+    "installed_at": "hooks/compact-recovery.sh",
+    "sha256": "bde9623971e82ad8c6f923259ccc365ba29990db46e50bb183bf577e937f2419",
+    "sha256_lf": "bde9623971e82ad8c6f923259ccc365ba29990db46e50bb183bf577e937f2419"
+  },
+  {
+    "pack": "03-hooks/handoff-prompt.js",
+    "repo": "payload/hooks/handoff-prompt.js",
+    "installed_at": "hooks/handoff-prompt.js",
+    "sha256": "d4967ea29e6cd97b521496ffa27f72ef3c6df77127c3081a29b26416bdaafb5d",
+    "sha256_lf": "d4967ea29e6cd97b521496ffa27f72ef3c6df77127c3081a29b26416bdaafb5d"
+  },
+  {
+    "pack": "03-hooks/handoff-prompt.sh",
+    "repo": "payload/hooks/handoff-prompt.sh",
+    "installed_at": "hooks/handoff-prompt.sh",
+    "sha256": "dbfcbc95c99db16ac677c6c21cc3438775aaaa362e32f1d354878224b0b0f5c6",
+    "sha256_lf": "dbfcbc95c99db16ac677c6c21cc3438775aaaa362e32f1d354878224b0b0f5c6"
+  },
+  {
+    "pack": "03-hooks/session-id.js",
+    "repo": "payload/hooks/session-id.js",
+    "installed_at": "hooks/session-id.js",
+    "sha256": "50e9af7e6be6f8de592e7bad769f9a1bc2a68ef73aad99f9af2ea214462ec7a8",
+    "sha256_lf": "50e9af7e6be6f8de592e7bad769f9a1bc2a68ef73aad99f9af2ea214462ec7a8"
+  },
+  {
+    "pack": "03-hooks/session-id.sh",
+    "repo": "payload/hooks/session-id.sh",
+    "installed_at": "hooks/session-id.sh",
+    "sha256": "de56862eef95ab5661742a46ab9047a8ed550732c619d1a3ac81526d86175bac",
+    "sha256_lf": "de56862eef95ab5661742a46ab9047a8ed550732c619d1a3ac81526d86175bac"
+  },
+  {
+    "pack": "03-hooks/session-namer.js",
+    "repo": "payload/hooks/session-namer.js",
+    "installed_at": "hooks/session-namer.js",
+    "sha256": "73db4918329cb0c1a5931808302b8cf403fa26e2d07dabb9478b8923a563ba70",
+    "sha256_lf": "73db4918329cb0c1a5931808302b8cf403fa26e2d07dabb9478b8923a563ba70"
+  },
+  {
+    "pack": "03-hooks/session-namer.sh",
+    "repo": "payload/hooks/session-namer.sh",
+    "installed_at": "hooks/session-namer.sh",
+    "sha256": "0a7938cdf5201ed41f3295212155dbbf826a05f2b471b9a6c58dd654a98f4f55",
+    "sha256_lf": "0a7938cdf5201ed41f3295212155dbbf826a05f2b471b9a6c58dd654a98f4f55"
+  },
+  {
+    "pack": "03-hooks/telegram-helpers.sh",
+    "repo": "payload/hooks/telegram-helpers.sh",
+    "installed_at": "hooks/telegram-helpers.sh",
+    "sha256": "20e6020af5ccb4986270b5cb433d2a82e585931e883d906bd013203b4097f686",
+    "sha256_lf": "20e6020af5ccb4986270b5cb433d2a82e585931e883d906bd013203b4097f686"
+  },
+  {
+    "pack": "03-hooks/telegram-notify.sh",
+    "repo": "payload/hooks/telegram-notify.sh",
+    "installed_at": "hooks/telegram-notify.sh",
+    "sha256": "d5e5b4fe9db49c4064b724b6fc87a69816075c18f95c65c3713bcfa735e5906d",
+    "sha256_lf": "d5e5b4fe9db49c4064b724b6fc87a69816075c18f95c65c3713bcfa735e5906d"
+  },
+  {
+    "pack": "03-hooks/telegram-process.js",
+    "repo": "payload/hooks/telegram-process.js",
+    "installed_at": "hooks/telegram-process.js",
+    "sha256": "526b9ba7db4ec8add996fd2fba766f8539419e74ad2626e12088d73e8d165093",
+    "sha256_lf": "526b9ba7db4ec8add996fd2fba766f8539419e74ad2626e12088d73e8d165093"
+  },
+  {
+    "pack": "03-hooks/telegram-question.sh",
+    "repo": "payload/hooks/telegram-question.sh",
+    "installed_at": "hooks/telegram-question.sh",
+    "sha256": "460956de5be63066038e36d6dfafe366428d3780ea89c400804d5d5927a4375d",
+    "sha256_lf": "460956de5be63066038e36d6dfafe366428d3780ea89c400804d5d5927a4375d"
+  },
+  {
+    "pack": "03-hooks/telegram-stop.sh",
+    "repo": "payload/hooks/telegram-stop.sh",
+    "installed_at": "hooks/telegram-stop.sh",
+    "sha256": "28b31a8d7ec9d5c1d37a28551feffe7710b032ed39176941cacc735a2ca1c659",
+    "sha256_lf": "28b31a8d7ec9d5c1d37a28551feffe7710b032ed39176941cacc735a2ca1c659"
+  },
+  {
+    "pack": "03-hooks/telegram.conf.example",
+    "repo": "payload/hooks/telegram.conf.example",
+    "installed_at": null,
+    "sha256": "0042a8e13291e76b35ffdcf1019d241dbb6b018f6c901378b9d9fe85f073be5f",
+    "sha256_lf": "0042a8e13291e76b35ffdcf1019d241dbb6b018f6c901378b9d9fe85f073be5f"
+  },
+  {
+    "pack": "03-hooks/tests/away-hook-test.js",
+    "repo": "payload/hooks/tests/away-hook-test.js",
+    "installed_at": "hooks/tests/away-hook-test.js",
+    "sha256": "0d070c6dafd6b8ad00fe27677e96492b32d20bb367a8b1901c5fd66a188fbd0d",
+    "sha256_lf": "0d070c6dafd6b8ad00fe27677e96492b32d20bb367a8b1901c5fd66a188fbd0d"
+  },
+  {
+    "pack": "04-agents/haiku-worker.md",
+    "repo": "payload/agents/haiku-worker.md",
+    "installed_at": "agents/haiku-worker.md",
+    "sha256": "9ec4d575c58d44301442429ce47636a48d0d97c91b17187451242956c1c07d09",
+    "sha256_lf": "9ec4d575c58d44301442429ce47636a48d0d97c91b17187451242956c1c07d09"
+  },
+  {
+    "pack": "04-agents/planner.md",
+    "repo": "payload/agents/planner.md",
+    "installed_at": "agents/planner.md",
+    "sha256": "135c42dc811ae098e9692623b1ce7dc3f186e30230ed11ee37fa252e0952d5bd",
+    "sha256_lf": "135c42dc811ae098e9692623b1ce7dc3f186e30230ed11ee37fa252e0952d5bd"
+  },
+  {
+    "pack": "04-agents/second-opinion.md",
+    "repo": "payload/agents/second-opinion.md",
+    "installed_at": "agents/second-opinion.md",
+    "sha256": "36a90f7f3d937e844b18f628f26a4faf15b80ff44c9ba7e1853379c991286331",
+    "sha256_lf": "36a90f7f3d937e844b18f628f26a4faf15b80ff44c9ba7e1853379c991286331"
+  },
+  {
+    "pack": "05-skills/THIRD-PARTY-NOTICES.md",
+    "repo": "payload/skills/THIRD-PARTY-NOTICES.md",
+    "installed_at": "skills/THIRD-PARTY-NOTICES.md",
+    "sha256": "426352cbdfd75851e43a5b2d8bcfc5941ad135350accd0065d3fcd94bd7e70ae",
+    "sha256_lf": "426352cbdfd75851e43a5b2d8bcfc5941ad135350accd0065d3fcd94bd7e70ae"
+  },
+  {
+    "pack": "05-skills/angular-developer/SKILL.md",
+    "repo": "payload/skills/angular-developer/SKILL.md",
+    "installed_at": "skills/angular-developer/SKILL.md",
+    "sha256": "7cb3f4ea091d61863824f82023b180c3b4f15fc9b1be9efab2dc90473b2de7c3",
+    "sha256_lf": "2554cb7d0ce31d6ce4c0cc7357ae22dc17f61798093862a3a6bd83d2c55cd701"
+  },
+  {
+    "pack": "05-skills/angular-developer/references/angular-animations.md",
+    "repo": "payload/skills/angular-developer/references/angular-animations.md",
+    "installed_at": "skills/angular-developer/references/angular-animations.md",
+    "sha256": "f395f5a962dd65c8f2e7344648ac51acb217b2bf5d1a895f8da71656a081229b",
+    "sha256_lf": "f21b798ed93e27318527ef7e74e63ef8c71cb74ff2b010d70dbb429883f0dbd0"
+  },
+  {
+    "pack": "05-skills/angular-developer/references/angular-aria.md",
+    "repo": "payload/skills/angular-developer/references/angular-aria.md",
+    "installed_at": "skills/angular-developer/references/angular-aria.md",
+    "sha256": "2d9502e340842c973bb1ccd63e076ed8ffe4059c1652614fe51c8b6b7f77ab46",
+    "sha256_lf": "23683c596717a7c72a71db9c7f9c3b4698262ba77490f5f089458aea2c4cb098"
+  },
+  {
+    "pack": "05-skills/angular-developer/references/cli.md",
+    "repo": "payload/skills/angular-developer/references/cli.md",
+    "installed_at": "skills/angular-developer/references/cli.md",
+    "sha256": "772fb3507b28ad6fda3f6fa3c4a6093a5595f4b0d31ec6d0e41d5680cbcb109f",
+    "sha256_lf": "f4369df38e131b5f75feb81beafcdfefdcf09d72ebf5fde5d9fb8d6477e8edc1"
+  },
+  {
+    "pack": "05-skills/angular-developer/references/component-harnesses.md",
+    "repo": "payload/skills/angular-developer/references/component-harnesses.md",
+    "installed_at": "skills/angular-developer/references/component-harnesses.md",
+    "sha256": "e6b42b678e59a06f6978786d414581ca8c9054c2195f5ad866611f49cca19576",
+    "sha256_lf": "1761d33a65ecde690ca0c57081ff9d5871cafb8ff724738ccd711b5018e2d894"
+  },
+  {
+    "pack": "05-skills/angular-developer/references/component-styling.md",
+    "repo": "payload/skills/angular-developer/references/component-styling.md",
+    "installed_at": "skills/angular-developer/references/component-styling.md",
+    "sha256": "c778d35b5c6b53227dc61ef41eece5771d6e19fc720ca70f6d9c9841f54300aa",
+    "sha256_lf": "de3351fdb72174361c6eee150940193f20d148afaceab0f22107758a3cb2d787"
+  },
+  {
+    "pack": "05-skills/angular-developer/references/components.md",
+    "repo": "payload/skills/angular-developer/references/components.md",
+    "installed_at": "skills/angular-developer/references/components.md",
+    "sha256": "99d2591fbd8edfe372710d62427b85e04637b252b1687223368da30756a7bf9f",
+    "sha256_lf": "37c05479e7cc1882e766870f359b532d650fa4501d549faf5275e80edcde1d69"
+  },
+  {
+    "pack": "05-skills/angular-developer/references/creating-services.md",
+    "repo": "payload/skills/angular-developer/references/creating-services.md",
+    "installed_at": "skills/angular-developer/references/creating-services.md",
+    "sha256": "2705b6ebcdb5c9822e25b41309748c83de43595fddbf2f367e7272d03520b51b",
+    "sha256_lf": "1fc1d46bd26568d07d1500d0b9ba1a2556ca4a11f4a3dc11036ae5b16dea80cc"
+  },
+  {
+    "pack": "05-skills/angular-developer/references/data-resolvers.md",
+    "repo": "payload/skills/angular-developer/references/data-resolvers.md",
+    "installed_at": "skills/angular-developer/references/data-resolvers.md",
+    "sha256": "b665070eb8e2c60ffb85461260d5c6ac507d0e607083cfa470cedeb6025571cd",
+    "sha256_lf": "bd5d7b7c3f6f7d85c45442efa79896e61b399a01a733450fc33395cf3761e2d7"
+  },
+  {
+    "pack": "05-skills/angular-developer/references/deferrable-views.md",
+    "repo": "payload/skills/angular-developer/references/deferrable-views.md",
+    "installed_at": "skills/angular-developer/references/deferrable-views.md",
+    "sha256": "c0de01fad1e018d4a0f347a509b226730a3d76764e162b814867244089d53594",
+    "sha256_lf": "7893b4f99569827a6be90588c99a80a8324530a60607f0e6627004467aa484c2"
+  },
+  {
+    "pack": "05-skills/angular-developer/references/define-routes.md",
+    "repo": "payload/skills/angular-developer/references/define-routes.md",
+    "installed_at": "skills/angular-developer/references/define-routes.md",
+    "sha256": "6cd9fc5b9b54d14366d5f848965c4e5e18f9f4dd0284302bb8c59d23bae92e31",
+    "sha256_lf": "4e80613931ecf4da957f9ff45343869b1651331ff4c8b955f2698b9ac0afc921"
+  },
+  {
+    "pack": "05-skills/angular-developer/references/defining-providers.md",
+    "repo": "payload/skills/angular-developer/references/defining-providers.md",
+    "installed_at": "skills/angular-developer/references/defining-providers.md",
+    "sha256": "4be57d967b3a9212af30ef1af374e5f3e1b72d756cb9b2b6e44d5b299372d8e3",
+    "sha256_lf": "e654c23a080c642cf7031b5cc5de1101b8c75030c15256f7e3b81b0336953c6d"
+  },
+  {
+    "pack": "05-skills/angular-developer/references/di-fundamentals.md",
+    "repo": "payload/skills/angular-developer/references/di-fundamentals.md",
+    "installed_at": "skills/angular-developer/references/di-fundamentals.md",
+    "sha256": "b6581c2f34fb2a80c8520b47333f11237442e841c9c76a13ddd1fa87bcf98026",
+    "sha256_lf": "ed5e4004aed214429de091d2b041cfd818c77a0ebfa24c23f01ec9bac7118a78"
+  },
+  {
+    "pack": "05-skills/angular-developer/references/e2e-testing.md",
+    "repo": "payload/skills/angular-developer/references/e2e-testing.md",
+    "installed_at": "skills/angular-developer/references/e2e-testing.md",
+    "sha256": "520f089b2e3be5d219a6900efac749e469b0e6840399bcb3710a8f90d709edc2",
+    "sha256_lf": "fd11d930ed081ca934fe83df06c9d965257ec817ebef59b918d4d814a65feca6"
+  },
+  {
+    "pack": "05-skills/angular-developer/references/effects.md",
+    "repo": "payload/skills/angular-developer/references/effects.md",
+    "installed_at": "skills/angular-developer/references/effects.md",
+    "sha256": "ec12590fd82fba9587ad1ddffdbc89176f39ba93783df46685a460f92669477b",
+    "sha256_lf": "5df4759be70248a1f282aff3060b04b694f05ae78093a5caa4eaff455e35a6a3"
+  },
+  {
+    "pack": "05-skills/angular-developer/references/environment-configuration.md",
+    "repo": "payload/skills/angular-developer/references/environment-configuration.md",
+    "installed_at": "skills/angular-developer/references/environment-configuration.md",
+    "sha256": "58939eea3d629cfe4515710303269f3f86800e174d850bf4a58a78889692dbee",
+    "sha256_lf": "788b62bf5e04d56343f598437f7e3fd7fdfc6efa8ec6727288dc73514b1b5a76"
+  },
+  {
+    "pack": "05-skills/angular-developer/references/error-boundary.md",
+    "repo": "payload/skills/angular-developer/references/error-boundary.md",
+    "installed_at": "skills/angular-developer/references/error-boundary.md",
+    "sha256": "ee7ddcf686827fe2819f2aaaf0c1c2f197d39fa7151da8661a69c9b8b07c33f9",
+    "sha256_lf": "d5f4790c5c33bf127538f7ec996e21fc418017c05ff2a97cac2a983f923b3a46"
+  },
+  {
+    "pack": "05-skills/angular-developer/references/hierarchical-injectors.md",
+    "repo": "payload/skills/angular-developer/references/hierarchical-injectors.md",
+    "installed_at": "skills/angular-developer/references/hierarchical-injectors.md",
+    "sha256": "f2e81a49d146589e46ef52b00557b8d70e0abfe5dbd37a7c5b548ceb39df6006",
+    "sha256_lf": "967e472a1208c6e1f4b95bf7ee9162165904eb78ac6dab64643c67a9d1dac264"
+  },
+  {
+    "pack": "05-skills/angular-developer/references/host-elements.md",
+    "repo": "payload/skills/angular-developer/references/host-elements.md",
+    "installed_at": "skills/angular-developer/references/host-elements.md",
+    "sha256": "995680768e2ee669fa6370e80aa981177039bae1eeba952447315b5e94828b43",
+    "sha256_lf": "5c2eb324e7b84bd81334b6d262a61b873de208640aabe4be48b73600438bdaed"
+  },
+  {
+    "pack": "05-skills/angular-developer/references/http-client.md",
+    "repo": "payload/skills/angular-developer/references/http-client.md",
+    "installed_at": "skills/angular-developer/references/http-client.md",
+    "sha256": "216cf84e0b48147c475399a14093d024d73ef173e97083cbfb88c65b392e0f70",
+    "sha256_lf": "b6a6c92ae71dc98b6cd0e2b840227c7743b3edf288769da3db070fa1815c1adc"
+  },
+  {
+    "pack": "05-skills/angular-developer/references/injection-context.md",
+    "repo": "payload/skills/angular-developer/references/injection-context.md",
+    "installed_at": "skills/angular-developer/references/injection-context.md",
+    "sha256": "cbe46d527502685b87c2b27968f2869b9b83dda881fcf9ef90ade0893116f838",
+    "sha256_lf": "4435dfcec91bd9fb68d6c318802cac1b37424d4e76452e6f0f52ed0d2b6536fb"
+  },
+  {
+    "pack": "05-skills/angular-developer/references/inputs.md",
+    "repo": "payload/skills/angular-developer/references/inputs.md",
+    "installed_at": "skills/angular-developer/references/inputs.md",
+    "sha256": "58a110c4aa2463d657644b780f5063b99a0632280bc9af3afc33edac67c0aa82",
+    "sha256_lf": "f5dcdd2a69e7e5c0aad503b4deaea5cedb682130cc699c669128b8fadcc65ba8"
+  },
+  {
+    "pack": "05-skills/angular-developer/references/linked-signal.md",
+    "repo": "payload/skills/angular-developer/references/linked-signal.md",
+    "installed_at": "skills/angular-developer/references/linked-signal.md",
+    "sha256": "4a67090e5be42e1b68edd0e9ac9e2e90c1f11c7ba96d85a3f23883d0362622a7",
+    "sha256_lf": "e14567f5ebc1c39416e5abb25bc27290b67a0bece4c13af966e8df4c723a39b4"
+  },
+  {
+    "pack": "05-skills/angular-developer/references/loading-strategies.md",
+    "repo": "payload/skills/angular-developer/references/loading-strategies.md",
+    "installed_at": "skills/angular-developer/references/loading-strategies.md",
+    "sha256": "083320ec8f36303da3e6f4dcce75d457cbb003c6adce1a2b673e8e2cc90c0e96",
+    "sha256_lf": "4eb2e243425443426d28c6f68c823d501c7b2bf64e4587c96c4c6013d57e7c93"
+  },
+  {
+    "pack": "05-skills/angular-developer/references/mcp.md",
+    "repo": "payload/skills/angular-developer/references/mcp.md",
+    "installed_at": "skills/angular-developer/references/mcp.md",
+    "sha256": "d8361b4d94d13fd23597e601e1d5275448bf30fb4b17627a0db7e8b03969b02c",
+    "sha256_lf": "2fbb9a897fb0b7f9214486f475a89bc32a2e889e7770a233ba55a7d36ddd1ca5"
+  },
+  {
+    "pack": "05-skills/angular-developer/references/migrations.md",
+    "repo": "payload/skills/angular-developer/references/migrations.md",
+    "installed_at": "skills/angular-developer/references/migrations.md",
+    "sha256": "b2cb8ff433ff7f68e4dff865d0e0104f991c1abac23506234a0a311991e1b4ec",
+    "sha256_lf": "9e6906ae22b59871e4c2381d1a7175214bbe7117c042731a5db46ea214b1b6d0"
+  },
+  {
+    "pack": "05-skills/angular-developer/references/naming-conventions.md",
+    "repo": "payload/skills/angular-developer/references/naming-conventions.md",
+    "installed_at": "skills/angular-developer/references/naming-conventions.md",
+    "sha256": "d5091fa46ac1710e1aafbcdc18b347d648863e37afee706d18db468ee83bcf9e",
+    "sha256_lf": "f0751d75d12a76ff0415124948ead5ae1a67d14a84360e64526aa8bac7d6c5d3"
+  },
+  {
+    "pack": "05-skills/angular-developer/references/navigate-to-routes.md",
+    "repo": "payload/skills/angular-developer/references/navigate-to-routes.md",
+    "installed_at": "skills/angular-developer/references/navigate-to-routes.md",
+    "sha256": "d3c0b38645c37dcccc5ed63fdba8ed00a63710f4c7573d114bf3d48611c2a90c",
+    "sha256_lf": "ea3c3d53b5db47b4f8d8b05124330e72bea92fc908d42c06aa7edb9e652b425e"
+  },
+  {
+    "pack": "05-skills/angular-developer/references/outputs.md",
+    "repo": "payload/skills/angular-developer/references/outputs.md",
+    "installed_at": "skills/angular-developer/references/outputs.md",
+    "sha256": "bb361a750a4b3460245347f7b01c44b4922a789268766f96c6952071c7161721",
+    "sha256_lf": "4d6900ff9ab90168969c3d05b67d88f69bb6a46aa4b74a8a8290ba0643c6d8dd"
+  },
+  {
+    "pack": "05-skills/angular-developer/references/pipes.md",
+    "repo": "payload/skills/angular-developer/references/pipes.md",
+    "installed_at": "skills/angular-developer/references/pipes.md",
+    "sha256": "909130d072255bb561e062d1ece1f6691bb240934a62828b8b75b5420ffc3121",
+    "sha256_lf": "aca6237e55817cc3f0a5dabdab60fe0da3411a5a144e726c3fd42ce5d98e08a1"
+  },
+  {
+    "pack": "05-skills/angular-developer/references/queries-and-projection.md",
+    "repo": "payload/skills/angular-developer/references/queries-and-projection.md",
+    "installed_at": "skills/angular-developer/references/queries-and-projection.md",
+    "sha256": "ac3431e7199005c7eb60284532c31ad776df79090f8085557fd2809c2b70ae01",
+    "sha256_lf": "3b3de1c3f45be52def1064ba7e06ac23710660440559713678ec3441c0ff6358"
+  },
+  {
+    "pack": "05-skills/angular-developer/references/reactive-forms.md",
+    "repo": "payload/skills/angular-developer/references/reactive-forms.md",
+    "installed_at": "skills/angular-developer/references/reactive-forms.md",
+    "sha256": "fe85892e1364aad48ec06fda02427759501fdc45705376d9345d7a6097896ac2",
+    "sha256_lf": "edfc57c191d29a1549e9aa9b4ba0d1111a9792caa65918d62967920647717121"
+  },
+  {
+    "pack": "05-skills/angular-developer/references/rendering-strategies.md",
+    "repo": "payload/skills/angular-developer/references/rendering-strategies.md",
+    "installed_at": "skills/angular-developer/references/rendering-strategies.md",
+    "sha256": "4b2fa175686837d4c0bf8dce1068050e917cc883e890c05ff4a536adbbb01ff4",
+    "sha256_lf": "943b809eb8036192b045a1398ac0c9065bca5800e138b3691f74168ac2e2e28c"
+  },
+  {
+    "pack": "05-skills/angular-developer/references/resource.md",
+    "repo": "payload/skills/angular-developer/references/resource.md",
+    "installed_at": "skills/angular-developer/references/resource.md",
+    "sha256": "ecba6ab70f97fc1777ffbe70c997d76e9765b76107953b0803996ff7581768f6",
+    "sha256_lf": "c3cfec3c5da209c4d42206697eb959f23211d84fc631060020e6a7b36f0c7712"
+  },
+  {
+    "pack": "05-skills/angular-developer/references/route-animations.md",
+    "repo": "payload/skills/angular-developer/references/route-animations.md",
+    "installed_at": "skills/angular-developer/references/route-animations.md",
+    "sha256": "0a247d0c3c743653611e4696dea672ff62a7a5d3be6ece16e62703e4c11aeaa1",
+    "sha256_lf": "eda1452f85ce05f3f28753cc77cd8c31c7a52515d7ccebbb35de0ec1e3beb374"
+  },
+  {
+    "pack": "05-skills/angular-developer/references/route-guards.md",
+    "repo": "payload/skills/angular-developer/references/route-guards.md",
+    "installed_at": "skills/angular-developer/references/route-guards.md",
+    "sha256": "ff6f2f927ec5acaa95f2a49d3cc897c2214d38d519debc9e5c3c14e3ca7c0264",
+    "sha256_lf": "c33e62647ffbf1790ea2b5a9fd624e50b3745c66aa050f037a8440f835f613c7"
+  },
+  {
+    "pack": "05-skills/angular-developer/references/router-lifecycle.md",
+    "repo": "payload/skills/angular-developer/references/router-lifecycle.md",
+    "installed_at": "skills/angular-developer/references/router-lifecycle.md",
+    "sha256": "49e93eb00253050b76b7905482358ea75cfcada35af5ffb1782eb3666bbfa614",
+    "sha256_lf": "4abc8cb8dfeb2e9f57dc11c117d5f4a5b756b39dc076910d9ced9da640effc2d"
+  },
+  {
+    "pack": "05-skills/angular-developer/references/router-testing.md",
+    "repo": "payload/skills/angular-developer/references/router-testing.md",
+    "installed_at": "skills/angular-developer/references/router-testing.md",
+    "sha256": "682a83b4c14f9955a6fc5f73361918a18de311001916aef684487473a0b338f9",
+    "sha256_lf": "9b0691a3ddd33dc3da1c4b2e6764fefdd6620bd99ce36950eb2bfa1059fe6250"
+  },
+  {
+    "pack": "05-skills/angular-developer/references/server-side-rendering.md",
+    "repo": "payload/skills/angular-developer/references/server-side-rendering.md",
+    "installed_at": "skills/angular-developer/references/server-side-rendering.md",
+    "sha256": "4780feec35ea2fb2356f8f5c98ab611a9242c29cd1bb2ab2c72ddad4c96e42f3",
+    "sha256_lf": "5ebae753b3a8625b194bcc94102b12ccd4ec3d517b047b3ee20018dac60a9928"
+  },
+  {
+    "pack": "05-skills/angular-developer/references/show-routes-with-outlets.md",
+    "repo": "payload/skills/angular-developer/references/show-routes-with-outlets.md",
+    "installed_at": "skills/angular-developer/references/show-routes-with-outlets.md",
+    "sha256": "e6f814b56e7921c5f69ca29b2aa43dd93cadcf864d51ee02c3e2845d90524a64",
+    "sha256_lf": "43a2ed62ea2edafa8569bf7045f20928110f8f844d5890bfb6a2f2dde45e754b"
+  },
+  {
+    "pack": "05-skills/angular-developer/references/signal-forms.md",
+    "repo": "payload/skills/angular-developer/references/signal-forms.md",
+    "installed_at": "skills/angular-developer/references/signal-forms.md",
+    "sha256": "4ca0f48abc268c8c5500d9340eff602a0163a13e19ac470b8af1f03959c639a1",
+    "sha256_lf": "81ef966ad5bd5463ec82023aa140999272b171e669bab6fa8892ee79a2e174d0"
+  },
+  {
+    "pack": "05-skills/angular-developer/references/signals-overview.md",
+    "repo": "payload/skills/angular-developer/references/signals-overview.md",
+    "installed_at": "skills/angular-developer/references/signals-overview.md",
+    "sha256": "1449350452c75ef429e4e379cec476eee072261522c0d2da61164f6fc10c095e",
+    "sha256_lf": "da07c58fdea2ab7d82a28faf9f3d117ccb98ccaf3eec06f103b898f557791146"
+  },
+  {
+    "pack": "05-skills/angular-developer/references/tailwind-css.md",
+    "repo": "payload/skills/angular-developer/references/tailwind-css.md",
+    "installed_at": "skills/angular-developer/references/tailwind-css.md",
+    "sha256": "dd773d9cca5d7e5c17e82341eebc0ff896ccd26aefb95e5008584ab57bdea413",
+    "sha256_lf": "bdb952d0dd2d415560a796ecaf843cacff5ac20d8ef961eaaf75656fef9b9263"
+  },
+  {
+    "pack": "05-skills/angular-developer/references/template-driven-forms.md",
+    "repo": "payload/skills/angular-developer/references/template-driven-forms.md",
+    "installed_at": "skills/angular-developer/references/template-driven-forms.md",
+    "sha256": "56d12cc3a0a32b74f3118d4d218f8c9748181a14b497ba181249576856ddaf91",
+    "sha256_lf": "52e83e576b0c6dc05f854e903c4cfda1222bcd55c50ddee07344d1e53d02c1df"
+  },
+  {
+    "pack": "05-skills/angular-developer/references/testing-fundamentals.md",
+    "repo": "payload/skills/angular-developer/references/testing-fundamentals.md",
+    "installed_at": "skills/angular-developer/references/testing-fundamentals.md",
+    "sha256": "e855ebc68f7571fee3d27767a31a6b2fb61f3e7ce7a6cf4f141de4672ab57a31",
+    "sha256_lf": "ac7964d31d41627ca1ba900433c6e43090d10236b2176bbea7a9311577f7404e"
+  },
+  {
+    "pack": "05-skills/api-and-interface-design/SKILL.md",
+    "repo": "payload/skills/api-and-interface-design/SKILL.md",
+    "installed_at": "skills/api-and-interface-design/SKILL.md",
+    "sha256": "c583321f4c820307d1f1cafb5415e4e3bf19fb56cd5b9efaf60ea147d1ae3424",
+    "sha256_lf": "c583321f4c820307d1f1cafb5415e4e3bf19fb56cd5b9efaf60ea147d1ae3424"
+  },
+  {
+    "pack": "05-skills/architecture/SKILL.md",
+    "repo": "payload/skills/architecture/SKILL.md",
+    "installed_at": "skills/architecture/SKILL.md",
+    "sha256": "a0863e8c87036dfd02072a2d4526288e189c1662b571d9e0a0f1c2fff42ccedc",
+    "sha256_lf": "854fe0a4626816e81f5b895b2dff0dfde574a71f09ffc3e058495856eff07720"
+  },
+  {
+    "pack": "05-skills/away-mode/SKILL.md",
+    "repo": "payload/skills/away-mode/SKILL.md",
+    "installed_at": "skills/away-mode/SKILL.md",
+    "sha256": "76cfe36fb69e7fb0d1905039141590fc74eb259f2d2c6ca0d1b15796be03497f",
+    "sha256_lf": "76cfe36fb69e7fb0d1905039141590fc74eb259f2d2c6ca0d1b15796be03497f"
+  },
+  {
+    "pack": "05-skills/copywriting/SKILL.md",
+    "repo": "payload/skills/copywriting/SKILL.md",
+    "installed_at": "skills/copywriting/SKILL.md",
+    "sha256": "2420a0e46ad604c3b1ad305dd36704eb200eec8475b6206afc22cf58355d2b43",
+    "sha256_lf": "2420a0e46ad604c3b1ad305dd36704eb200eec8475b6206afc22cf58355d2b43"
+  },
+  {
+    "pack": "05-skills/copywriting/VENDOR.md",
+    "repo": "payload/skills/copywriting/VENDOR.md",
+    "installed_at": "skills/copywriting/VENDOR.md",
+    "sha256": "682b4a3ae218229798296e834c03ef9431a23deb941defbd289ba09808fed5f2",
+    "sha256_lf": "682b4a3ae218229798296e834c03ef9431a23deb941defbd289ba09808fed5f2"
+  },
+  {
+    "pack": "05-skills/copywriting/references/ai-tells.md",
+    "repo": "payload/skills/copywriting/references/ai-tells.md",
+    "installed_at": "skills/copywriting/references/ai-tells.md",
+    "sha256": "a02f552b9e4e5eeff96a4124808ccbe47b90f85158e9305e03c99d79812a6e65",
+    "sha256_lf": "a02f552b9e4e5eeff96a4124808ccbe47b90f85158e9305e03c99d79812a6e65"
+  },
+  {
+    "pack": "05-skills/copywriting/references/copy-frameworks.md",
+    "repo": "payload/skills/copywriting/references/copy-frameworks.md",
+    "installed_at": "skills/copywriting/references/copy-frameworks.md",
+    "sha256": "cf188fb8cbf44a474b05325679eb722b8213b76d21e7d7372852951feeb7e2f6",
+    "sha256_lf": "cf188fb8cbf44a474b05325679eb722b8213b76d21e7d7372852951feeb7e2f6"
+  },
+  {
+    "pack": "05-skills/copywriting/references/natural-transitions.md",
+    "repo": "payload/skills/copywriting/references/natural-transitions.md",
+    "installed_at": "skills/copywriting/references/natural-transitions.md",
+    "sha256": "9bd61b0de5be2c4de4ce130c68236b4f290b12737823827a458bb2b4c8584683",
+    "sha256_lf": "9bd61b0de5be2c4de4ce130c68236b4f290b12737823827a458bb2b4c8584683"
+  },
+  {
+    "pack": "05-skills/cro/SKILL.md",
+    "repo": "payload/skills/cro/SKILL.md",
+    "installed_at": "skills/cro/SKILL.md",
+    "sha256": "7beb11ce9f27a6895987fd8eca4e3b2682e01b210c42832a571ff31b5f547f42",
+    "sha256_lf": "7beb11ce9f27a6895987fd8eca4e3b2682e01b210c42832a571ff31b5f547f42"
+  },
+  {
+    "pack": "05-skills/cro/VENDOR.md",
+    "repo": "payload/skills/cro/VENDOR.md",
+    "installed_at": "skills/cro/VENDOR.md",
+    "sha256": "9b40a7014a5b8b403c567dae6d672889e040cac33cf11ba31382752129973711",
+    "sha256_lf": "9b40a7014a5b8b403c567dae6d672889e040cac33cf11ba31382752129973711"
+  },
+  {
+    "pack": "05-skills/cro/references/experiments.md",
+    "repo": "payload/skills/cro/references/experiments.md",
+    "installed_at": "skills/cro/references/experiments.md",
+    "sha256": "bbcc356c0af36cfaa4556bf9e929deac30c65cafb37f909d7c51d4777fe254ca",
+    "sha256_lf": "bbcc356c0af36cfaa4556bf9e929deac30c65cafb37f909d7c51d4777fe254ca"
+  },
+  {
+    "pack": "05-skills/cro/references/form.md",
+    "repo": "payload/skills/cro/references/form.md",
+    "installed_at": "skills/cro/references/form.md",
+    "sha256": "a832d1ca5154a694f9d174712a76192fa04f2df9da0ddb14f92203ec8fea017e",
+    "sha256_lf": "a832d1ca5154a694f9d174712a76192fa04f2df9da0ddb14f92203ec8fea017e"
+  },
+  {
+    "pack": "05-skills/deprecation-and-migration/SKILL.md",
+    "repo": "payload/skills/deprecation-and-migration/SKILL.md",
+    "installed_at": "skills/deprecation-and-migration/SKILL.md",
+    "sha256": "eea31c38e28ffaeba9413c897dee6f3d186f3d027367384fe1892961e5a0e3a7",
+    "sha256_lf": "eea31c38e28ffaeba9413c897dee6f3d186f3d027367384fe1892961e5a0e3a7"
+  },
+  {
+    "pack": "05-skills/deprecation-and-migration/VENDOR.md",
+    "repo": "payload/skills/deprecation-and-migration/VENDOR.md",
+    "installed_at": "skills/deprecation-and-migration/VENDOR.md",
+    "sha256": "3700ab109246a6fde592af5a3e673258ca647f79e294625dace9662a3b86e24f",
+    "sha256_lf": "3700ab109246a6fde592af5a3e673258ca647f79e294625dace9662a3b86e24f"
+  },
+  {
+    "pack": "05-skills/design-md/INDEX.md",
+    "repo": "payload/skills/design-md/INDEX.md",
+    "installed_at": "skills/design-md/INDEX.md",
+    "sha256": "e3c60e54a5124f5550be2dcb79c7ec0f48bf77db7b5bef3340d958202535ed7d",
+    "sha256_lf": "e3c60e54a5124f5550be2dcb79c7ec0f48bf77db7b5bef3340d958202535ed7d"
+  },
+  {
+    "pack": "05-skills/design-md/LICENSE",
+    "repo": "payload/skills/design-md/LICENSE",
+    "installed_at": "skills/design-md/LICENSE",
+    "sha256": "0862a727415509d17206d78bfbfe2f6b142f2c2833283b457a6f0db972ee6ed3",
+    "sha256_lf": "6d4bdc9a9cf30e7beb593475fdcdbf29f981ea6bd7923f202866145409f87b44"
+  },
+  {
+    "pack": "05-skills/design-md/SKILL.md",
+    "repo": "payload/skills/design-md/SKILL.md",
+    "installed_at": "skills/design-md/SKILL.md",
+    "sha256": "0ee8a2a2e48c46d07b2c57b7e6542b2eca442a41dd7f94e0b392a07d59befa78",
+    "sha256_lf": "0ee8a2a2e48c46d07b2c57b7e6542b2eca442a41dd7f94e0b392a07d59befa78"
+  },
+  {
+    "pack": "05-skills/design-md/VENDOR.md",
+    "repo": "payload/skills/design-md/VENDOR.md",
+    "installed_at": "skills/design-md/VENDOR.md",
+    "sha256": "3f5ff28267e9f3815d7f6c516a2ce824b79d6b34c2e022b2f049615d4d7ffdd4",
+    "sha256_lf": "3f5ff28267e9f3815d7f6c516a2ce824b79d6b34c2e022b2f049615d4d7ffdd4"
+  },
+  {
+    "pack": "05-skills/design-md/brands/1win.md",
+    "repo": "payload/skills/design-md/brands/1win.md",
+    "installed_at": "skills/design-md/brands/1win.md",
+    "sha256": "8551d28c73882405035ad7bcfaeea279b60e1cc8a959803176a218c72dbf1c7e",
+    "sha256_lf": "d619aed958ff7323b37a6f6ec22f71741c04936c55a05611de8b2c182f39e69a"
+  },
+  {
+    "pack": "05-skills/design-md/brands/airbnb.md",
+    "repo": "payload/skills/design-md/brands/airbnb.md",
+    "installed_at": "skills/design-md/brands/airbnb.md",
+    "sha256": "64729061d3e31f61d8fc476f8d9b0f454f1ce8d81a9c5a7ec6d757e089b7e3cb",
+    "sha256_lf": "3419a6b2f1504f329a9d17fdaee19ac40f6af22faa8134e42c14e53e7413bd18"
+  },
+  {
+    "pack": "05-skills/design-md/brands/airtable.md",
+    "repo": "payload/skills/design-md/brands/airtable.md",
+    "installed_at": "skills/design-md/brands/airtable.md",
+    "sha256": "c4175f043cf99e9b883a56b526e36e0f13543f50d88373706e41abd3d1f93c7e",
+    "sha256_lf": "ef197cb4ef36a640a308fb5c3aa915ae1da5a24e1430911f833e844fd1afa6f7"
+  },
+  {
+    "pack": "05-skills/design-md/brands/aljazeera.md",
+    "repo": "payload/skills/design-md/brands/aljazeera.md",
+    "installed_at": "skills/design-md/brands/aljazeera.md",
+    "sha256": "e7d7a97195a2d22212b3e7bfe855979455eda8626c9d3405451945b2824af30c",
+    "sha256_lf": "06356147830326339440b5e44dbff54052f16b87c7dfd276000ed73f9f99febb"
+  },
+  {
+    "pack": "05-skills/design-md/brands/apple.md",
+    "repo": "payload/skills/design-md/brands/apple.md",
+    "installed_at": "skills/design-md/brands/apple.md",
+    "sha256": "770734c761245fe868f00fefc5efa158a06feb7405ea4124738a3cc2647d0422",
+    "sha256_lf": "b0f440cd45f1ac0a0c49b14b6fdafc9ad8431426d0ded02658cee414eb778ca0"
+  },
+  {
+    "pack": "05-skills/design-md/brands/binance.md",
+    "repo": "payload/skills/design-md/brands/binance.md",
+    "installed_at": "skills/design-md/brands/binance.md",
+    "sha256": "7a33feb063db96537149349a2cbf10341cdd013110772bd250fb834d3b4d2415",
+    "sha256_lf": "c79fe0c60b8a442cfb03e42c6ad671ffe566bdbb67cf4059e67a859032f4f868"
+  },
+  {
+    "pack": "05-skills/design-md/brands/bmw-m.md",
+    "repo": "payload/skills/design-md/brands/bmw-m.md",
+    "installed_at": "skills/design-md/brands/bmw-m.md",
+    "sha256": "4a6f60ce27222f3db5213e7c48be70daffa1de349fa5e2bb8a2c16dc10524f7b",
+    "sha256_lf": "4761f2cf614b85654730407ccb4a5ac40afd6f8ac55c02e35837ad09a1574d53"
+  },
+  {
+    "pack": "05-skills/design-md/brands/bmw.md",
+    "repo": "payload/skills/design-md/brands/bmw.md",
+    "installed_at": "skills/design-md/brands/bmw.md",
+    "sha256": "36d1354f79156aad8d44ef1673b8f45c97b7b99ff2d93147c4b1bda470059894",
+    "sha256_lf": "dcd1305e05a03f9ca3cfb50157ee2126a9edc623c9e742ea85279c959eaeaa8d"
+  },
+  {
+    "pack": "05-skills/design-md/brands/bugatti.md",
+    "repo": "payload/skills/design-md/brands/bugatti.md",
+    "installed_at": "skills/design-md/brands/bugatti.md",
+    "sha256": "e11162daabe48584088a2a9129dfbe17a84a8e72e72a9f65ad79c9d794543c66",
+    "sha256_lf": "d760cd79a33ba6644c57fb3383312328ed70839f20d208f1e1c8bdcb7f4abcdd"
+  },
+  {
+    "pack": "05-skills/design-md/brands/cal.md",
+    "repo": "payload/skills/design-md/brands/cal.md",
+    "installed_at": "skills/design-md/brands/cal.md",
+    "sha256": "28a7ab3af0974bd6054ca96e59b8f52e135951b4f0a63e36e2bf8f623d35b91b",
+    "sha256_lf": "76bcccd9ef0d1206c36a953fd62501eb2de5d2cf9343df7e642b88ea5ee3f7da"
+  },
+  {
+    "pack": "05-skills/design-md/brands/claude.md",
+    "repo": "payload/skills/design-md/brands/claude.md",
+    "installed_at": "skills/design-md/brands/claude.md",
+    "sha256": "1aa423a3fd842d062ad100240f54285552decf7f95255b5693cd56bcc10492f2",
+    "sha256_lf": "675a9bc060fb7e996be2cfd53626dd178b47a987063ab8c1e9af1359537132af"
+  },
+  {
+    "pack": "05-skills/design-md/brands/clay.md",
+    "repo": "payload/skills/design-md/brands/clay.md",
+    "installed_at": "skills/design-md/brands/clay.md",
+    "sha256": "9b5453cdfeb4835df52855c237f5cc4d7934f82af4ca85bedb06ca5128f027a0",
+    "sha256_lf": "bb7680b73e2b88b85f1fe1b12a2f459c2179e3b78d61428ffca3c8ada9f345a8"
+  },
+  {
+    "pack": "05-skills/design-md/brands/clickhouse.md",
+    "repo": "payload/skills/design-md/brands/clickhouse.md",
+    "installed_at": "skills/design-md/brands/clickhouse.md",
+    "sha256": "285e00d416321a4f055cf0d4cd20f12eefce1ec7455eff37617ae4e1e1823c05",
+    "sha256_lf": "cc3b9f0a601caea8b18146c5f3ed42754adb4e9e303a856964d1c3bd632d41ab"
+  },
+  {
+    "pack": "05-skills/design-md/brands/cohere.md",
+    "repo": "payload/skills/design-md/brands/cohere.md",
+    "installed_at": "skills/design-md/brands/cohere.md",
+    "sha256": "cca2fc9a59a893424562569dfed4f22ddeac29911314e078379f6631f77da357",
+    "sha256_lf": "1c49a5a5f88d43841d4f4afa33831328d47a5715048700a3b75086a822575883"
+  },
+  {
+    "pack": "05-skills/design-md/brands/coinbase.md",
+    "repo": "payload/skills/design-md/brands/coinbase.md",
+    "installed_at": "skills/design-md/brands/coinbase.md",
+    "sha256": "bce18bfe67f914ec5249a78f388d0498c3c51f23079f32e2891a272e4853fad1",
+    "sha256_lf": "ba7947aafe41ab9d38ac8e87c4e49690f56cd7a744c769a94e3a91193b15b098"
+  },
+  {
+    "pack": "05-skills/design-md/brands/composio.md",
+    "repo": "payload/skills/design-md/brands/composio.md",
+    "installed_at": "skills/design-md/brands/composio.md",
+    "sha256": "25f168966dd84d68adbc5603f557453d011811067926d09c56de82c5dbcbfafa",
+    "sha256_lf": "b1b273741d17e513e4e025bda7e05ce6d4558ee5ccdb86256d86b70299a7550f"
+  },
+  {
+    "pack": "05-skills/design-md/brands/cursor.md",
+    "repo": "payload/skills/design-md/brands/cursor.md",
+    "installed_at": "skills/design-md/brands/cursor.md",
+    "sha256": "4f023ab3a19c8efbee3c6ca248417ef128ed45d87ef554832607daca7b79c1ef",
+    "sha256_lf": "3afe3285ecff8e0417ae22202e4f74515ecc5f3903413e0025e55890c322ffa8"
+  },
+  {
+    "pack": "05-skills/design-md/brands/dell-1996.md",
+    "repo": "payload/skills/design-md/brands/dell-1996.md",
+    "installed_at": "skills/design-md/brands/dell-1996.md",
+    "sha256": "082f2f26403855385a8a4f52321a57af2248259e930dfe0b1b4b11efe1632595",
+    "sha256_lf": "20e6451764b0460a6ad489af184ad99174634c151b5825f0ff415ad59377c945"
+  },
+  {
+    "pack": "05-skills/design-md/brands/dji.md",
+    "repo": "payload/skills/design-md/brands/dji.md",
+    "installed_at": "skills/design-md/brands/dji.md",
+    "sha256": "6b3298d1a12bd257edb0b203d1500b3a090f7bee78ca6282c3e8aa2e709368b9",
+    "sha256_lf": "24d635ba36d353e528f9b40adcae882f09b04a4a65225bd1236c3a1afd5a6b08"
+  },
+  {
+    "pack": "05-skills/design-md/brands/elevenlabs.md",
+    "repo": "payload/skills/design-md/brands/elevenlabs.md",
+    "installed_at": "skills/design-md/brands/elevenlabs.md",
+    "sha256": "d9b7c4cba289f60abcd13b9c81635522736aa4f6c78240c65766555f1b5a5615",
+    "sha256_lf": "f49673adb059bc0d537daffce352e8582e19ea7033b6c1ea133e29242aa17a11"
+  },
+  {
+    "pack": "05-skills/design-md/brands/expo.md",
+    "repo": "payload/skills/design-md/brands/expo.md",
+    "installed_at": "skills/design-md/brands/expo.md",
+    "sha256": "042b1236a3a96687337dfc5e9fb5e5e5dd4f580a9c4c43a030b90ad642454da6",
+    "sha256_lf": "8b9294cc0c2700360e3510d91fe6a66b8d584343c8b4fb6c415d546cca135cc6"
+  },
+  {
+    "pack": "05-skills/design-md/brands/ferrari.md",
+    "repo": "payload/skills/design-md/brands/ferrari.md",
+    "installed_at": "skills/design-md/brands/ferrari.md",
+    "sha256": "72fa987520b38e5e68700bcd77792d1772d5a30b3a826ecf0c24f04daf252e10",
+    "sha256_lf": "10fd03d28cfd9a8ad64168d3d60d61a9c904f548294b74e4851d4f2346db3570"
+  },
+  {
+    "pack": "05-skills/design-md/brands/figma.md",
+    "repo": "payload/skills/design-md/brands/figma.md",
+    "installed_at": "skills/design-md/brands/figma.md",
+    "sha256": "8bee1558a969095c9423002d9e04bef074f1cf0862821b493b2f101fba61531e",
+    "sha256_lf": "e02b2fa047d40e2ea184ab751fd027c322271c5052ea13d3ea8c19f1aebf5410"
+  },
+  {
+    "pack": "05-skills/design-md/brands/framer.md",
+    "repo": "payload/skills/design-md/brands/framer.md",
+    "installed_at": "skills/design-md/brands/framer.md",
+    "sha256": "be769c6c2b2e4f5fcc08c7ee694e6ab18c4c34c650b1f1042cda0935a174dfc9",
+    "sha256_lf": "06ad6caade0230dddf3eb9f52a8785f886320528c07e31c0d0c30a89b9b6458a"
+  },
+  {
+    "pack": "05-skills/design-md/brands/hashicorp.md",
+    "repo": "payload/skills/design-md/brands/hashicorp.md",
+    "installed_at": "skills/design-md/brands/hashicorp.md",
+    "sha256": "3b5df55fe1e556ecfd659d8432cb1e4fe85ac324bb932b8e7e20ed8e559eea58",
+    "sha256_lf": "edd1680adad64c8438720e743d4ace1c665140e61cabbae164dae4655005822d"
+  },
+  {
+    "pack": "05-skills/design-md/brands/hp.md",
+    "repo": "payload/skills/design-md/brands/hp.md",
+    "installed_at": "skills/design-md/brands/hp.md",
+    "sha256": "834fd49b4e7e89a81339292abfff2ce4c07a1af9dbfe87efdfd274aee5f57d55",
+    "sha256_lf": "9f734bf8303e9a857e575f1e09a6059fd1fdbc867f7ab693b1106873f84f6928"
+  },
+  {
+    "pack": "05-skills/design-md/brands/ibm.md",
+    "repo": "payload/skills/design-md/brands/ibm.md",
+    "installed_at": "skills/design-md/brands/ibm.md",
+    "sha256": "591b7cbda43e7fe612520a243b9a235e5c185233472385b3b59d8e3b58ef8e98",
+    "sha256_lf": "8f3b6b388535b79cc3fd0ab3cdb7a186443e23b9cd90258e9f8ffb44e923f678"
+  },
+  {
+    "pack": "05-skills/design-md/brands/intercom.md",
+    "repo": "payload/skills/design-md/brands/intercom.md",
+    "installed_at": "skills/design-md/brands/intercom.md",
+    "sha256": "d97fa8e385776c00398a5d118e485804dfb428b55332e33d14451202483e69a4",
+    "sha256_lf": "b759857d2080719ef9531d1905a9237887633f185f958deab159438b76b98888"
+  },
+  {
+    "pack": "05-skills/design-md/brands/jobright.md",
+    "repo": "payload/skills/design-md/brands/jobright.md",
+    "installed_at": "skills/design-md/brands/jobright.md",
+    "sha256": "fdd7ee2313ae718aba600865e201dd67308fa74dac6a45ac1a53f983ba208f65",
+    "sha256_lf": "6038e841608b01d4a00aabeb19fe475c4a6337529cbe883dfc671420c7c89ec4"
+  },
+  {
+    "pack": "05-skills/design-md/brands/kraken.md",
+    "repo": "payload/skills/design-md/brands/kraken.md",
+    "installed_at": "skills/design-md/brands/kraken.md",
+    "sha256": "8043c9168bac9ba1f93c8498d44a0f6fd20c06757db6c1b3572f569fb0e742b0",
+    "sha256_lf": "4a8155ba97680e8303f1a7d8119b323c9c08b1f00cf4520779d6a2cfac3d7ddd"
+  },
+  {
+    "pack": "05-skills/design-md/brands/lamborghini.md",
+    "repo": "payload/skills/design-md/brands/lamborghini.md",
+    "installed_at": "skills/design-md/brands/lamborghini.md",
+    "sha256": "7b3c757125f62b0bde82fd9c3d14ef8c4ca93376cd930ecd234b3d191c64e9c4",
+    "sha256_lf": "7b8e049830c919b6388b709254265ac2781a55f235f772572e6a013accbde5cb"
+  },
+  {
+    "pack": "05-skills/design-md/brands/linear.app.md",
+    "repo": "payload/skills/design-md/brands/linear.app.md",
+    "installed_at": "skills/design-md/brands/linear.app.md",
+    "sha256": "200b9b9f3d48047a11428b08ea0936c314124e735abb89d0aec8b4a7182674a7",
+    "sha256_lf": "e74eceed64144168369b461a18ab3c8b096e4bd6f376e0a14c256130e94b0965"
+  },
+  {
+    "pack": "05-skills/design-md/brands/lovable.md",
+    "repo": "payload/skills/design-md/brands/lovable.md",
+    "installed_at": "skills/design-md/brands/lovable.md",
+    "sha256": "f5a732734b2aa18f0b9cd232bdd9411dac0c6617d35b5bccae59740be315d9e6",
+    "sha256_lf": "0434ecc40e272f957d4e29f8b43f0491e429c67a290553c58869feb733b50fbe"
+  },
+  {
+    "pack": "05-skills/design-md/brands/mastercard.md",
+    "repo": "payload/skills/design-md/brands/mastercard.md",
+    "installed_at": "skills/design-md/brands/mastercard.md",
+    "sha256": "e8b1a622d756b19f5027aaddda0eaca9d7d85bff2f0d10e8f713e17ab51f5ba8",
+    "sha256_lf": "df37b32878c6e5e090b2042ee294fe3863af6fa8ec69d271e8c79d336d335b62"
+  },
+  {
+    "pack": "05-skills/design-md/brands/mercury.md",
+    "repo": "payload/skills/design-md/brands/mercury.md",
+    "installed_at": "skills/design-md/brands/mercury.md",
+    "sha256": "6e017a816769e97bbe36adaddffc9957a6909f488775d6afb814995bc1a23f0c",
+    "sha256_lf": "de926705fadead11c03ef856d145499253d22ba7c7fb93f7a12ca7a47ae70ba0"
+  },
+  {
+    "pack": "05-skills/design-md/brands/meta.md",
+    "repo": "payload/skills/design-md/brands/meta.md",
+    "installed_at": "skills/design-md/brands/meta.md",
+    "sha256": "0776c474233e9f147cb33d25d073573e06841ae0a8644d9e25b31fb89ff851c7",
+    "sha256_lf": "3e97e95a079a213b2dbfb7c33f5562d982a7032e6208dee0875a4ed4a45ea25b"
+  },
+  {
+    "pack": "05-skills/design-md/brands/minimax.md",
+    "repo": "payload/skills/design-md/brands/minimax.md",
+    "installed_at": "skills/design-md/brands/minimax.md",
+    "sha256": "42a1eb862c18d273685663264c717f912a60d2e62fd1b0b8b82b24f8200d7c50",
+    "sha256_lf": "05ae73309fabc25e25551219517fed938820c7311586ce0d14b38046f8917646"
+  },
+  {
+    "pack": "05-skills/design-md/brands/mintlify.md",
+    "repo": "payload/skills/design-md/brands/mintlify.md",
+    "installed_at": "skills/design-md/brands/mintlify.md",
+    "sha256": "01f916e0b492ed346ea6a9227e604dbb83964a2559dd3ea0470c25a8988c8201",
+    "sha256_lf": "de2410c814a0e81f7eca917c088b8e690572b3a5e80c4c079a8440cb2d38118d"
+  },
+  {
+    "pack": "05-skills/design-md/brands/miro.md",
+    "repo": "payload/skills/design-md/brands/miro.md",
+    "installed_at": "skills/design-md/brands/miro.md",
+    "sha256": "c3cc644a6f23c2f016f58db4658dd632a5a8b25d1f89695f102dd44e99eb5605",
+    "sha256_lf": "a91ecdc52f47e3b11e805e440b1f85e8b2f497a3a08ac52f88398f87a702c927"
+  },
+  {
+    "pack": "05-skills/design-md/brands/mistral.ai.md",
+    "repo": "payload/skills/design-md/brands/mistral.ai.md",
+    "installed_at": "skills/design-md/brands/mistral.ai.md",
+    "sha256": "20ea3841d45b9b95f2c6716744e473264f7d43c66a06051c4020c4ed60614886",
+    "sha256_lf": "e3b2c88fe130966cbce7c67c2b5fe3a1e8498d8ca99fa1b4fc59737aed6c5f02"
+  },
+  {
+    "pack": "05-skills/design-md/brands/mongodb.md",
+    "repo": "payload/skills/design-md/brands/mongodb.md",
+    "installed_at": "skills/design-md/brands/mongodb.md",
+    "sha256": "ec4b07d5c632290f70a60def59ccbc8617493fda3d096e20e2b5bdd43d0a01d2",
+    "sha256_lf": "2bc5a8f21d1f0794619962f48f1b335ba0b285419485dcf48f86ff19e1ba1c04"
+  },
+  {
+    "pack": "05-skills/design-md/brands/mydealz.md",
+    "repo": "payload/skills/design-md/brands/mydealz.md",
+    "installed_at": "skills/design-md/brands/mydealz.md",
+    "sha256": "3b284c7e20f75a1fa851a574fae10382ad67999b713aacc3f21de3814c6608dc",
+    "sha256_lf": "f10ca8911e28a3d5a1a43574f12f46bf48dbac0d3c49247ff86c12dc166ae1f3"
+  },
+  {
+    "pack": "05-skills/design-md/brands/nerdwallet.md",
+    "repo": "payload/skills/design-md/brands/nerdwallet.md",
+    "installed_at": "skills/design-md/brands/nerdwallet.md",
+    "sha256": "f62fda070052a33befc439739844137c6c761afa1f664ea0466c2bd0e21bc531",
+    "sha256_lf": "6933686acdc78de6f443e10c20177c42d85fb86c5d8b528d99122acf1e28db26"
+  },
+  {
+    "pack": "05-skills/design-md/brands/nike.md",
+    "repo": "payload/skills/design-md/brands/nike.md",
+    "installed_at": "skills/design-md/brands/nike.md",
+    "sha256": "99741fff8b3d7aab3392256ae2240deb4f9df935f203d4ff3ae7fbd5176cd5b9",
+    "sha256_lf": "9fe7c66d2af7cd1daebf036f405dec68ed5ae43832d28a1dfcec9da8d2acfdd2"
+  },
+  {
+    "pack": "05-skills/design-md/brands/nintendo-2001.md",
+    "repo": "payload/skills/design-md/brands/nintendo-2001.md",
+    "installed_at": "skills/design-md/brands/nintendo-2001.md",
+    "sha256": "eb25de06535dd01553c477c28a30d782187868ed98ee4663be522f602928e3dc",
+    "sha256_lf": "3436e4fbd1ac5a697b500c6d054beca39fa28494128cebacc608031df65bd377"
+  },
+  {
+    "pack": "05-skills/design-md/brands/notion.md",
+    "repo": "payload/skills/design-md/brands/notion.md",
+    "installed_at": "skills/design-md/brands/notion.md",
+    "sha256": "5876c0e843ced47aa18b9fc72a99e63036dd8c45f0fdb7959de47104eae7b3d7",
+    "sha256_lf": "cb699ab64c08ab91bddfe8a2ec11ea7cebd09d36ad15d003d08597affb5f578b"
+  },
+  {
+    "pack": "05-skills/design-md/brands/nvidia.md",
+    "repo": "payload/skills/design-md/brands/nvidia.md",
+    "installed_at": "skills/design-md/brands/nvidia.md",
+    "sha256": "49cec7676f09e2fbe52438b3ac8626a1a84bff5b7d926e8e6abde17e88d2431c",
+    "sha256_lf": "40359c2d9cfca1fbe0aa0ccf1b70865acb392c8fb74662d821baa43259dcb116"
+  },
+  {
+    "pack": "05-skills/design-md/brands/ollama.md",
+    "repo": "payload/skills/design-md/brands/ollama.md",
+    "installed_at": "skills/design-md/brands/ollama.md",
+    "sha256": "467e7fe30cee3008fe89777d16514f148f66630a184fece3d4461a4944f6d9f4",
+    "sha256_lf": "5f6f1545ffe8dde762b5af9dcbb3f6f260b5d0784a9346c65baf1f4d1f8025f3"
+  },
+  {
+    "pack": "05-skills/design-md/brands/opencode.ai.md",
+    "repo": "payload/skills/design-md/brands/opencode.ai.md",
+    "installed_at": "skills/design-md/brands/opencode.ai.md",
+    "sha256": "a6e3e59acc57fefdde47f74ba36e4b1b6ef9194bef7407d4283d475f78243262",
+    "sha256_lf": "252644915f0d7cd33751f7dd55da1e0d7a1b7545ad59d82af14ce544132ac46c"
+  },
+  {
+    "pack": "05-skills/design-md/brands/oracle.md",
+    "repo": "payload/skills/design-md/brands/oracle.md",
+    "installed_at": "skills/design-md/brands/oracle.md",
+    "sha256": "f735130209c2a5386c8c663b523597de7883723119288a1e7ff02b7139515444",
+    "sha256_lf": "311b1763afe4e2c83ce815ec09eaca5327e70368ec9447c1f8e2ce95e78cc5ac"
+  },
+  {
+    "pack": "05-skills/design-md/brands/oura.md",
+    "repo": "payload/skills/design-md/brands/oura.md",
+    "installed_at": "skills/design-md/brands/oura.md",
+    "sha256": "47ea6c1979786aa2dad6136f3c70e6897cb05e627ca389fa4027726731a9fc33",
+    "sha256_lf": "4650b68e6cc99d0f735b34ffa3b33b789e264c913b688c2bdbb90a7c65fc61b0"
+  },
+  {
+    "pack": "05-skills/design-md/brands/pinterest.md",
+    "repo": "payload/skills/design-md/brands/pinterest.md",
+    "installed_at": "skills/design-md/brands/pinterest.md",
+    "sha256": "76fe7651ee732a5db12b3c6c88ba90bc8e41069cdacc21e4523e82809f91a245",
+    "sha256_lf": "245397455fc4defec18e92a1a78cad210fab3e34e7d5b80d56997ad9c14615cd"
+  },
+  {
+    "pack": "05-skills/design-md/brands/playstation.md",
+    "repo": "payload/skills/design-md/brands/playstation.md",
+    "installed_at": "skills/design-md/brands/playstation.md",
+    "sha256": "103ca5fa99df883a1b8cb956b86324d282de8058bf998324f0b659174de00962",
+    "sha256_lf": "240f1a1b17361a51d93fef1cd7515a89ce508c87d6cad14f83b62c8549a46eb0"
+  },
+  {
+    "pack": "05-skills/design-md/brands/posthog.md",
+    "repo": "payload/skills/design-md/brands/posthog.md",
+    "installed_at": "skills/design-md/brands/posthog.md",
+    "sha256": "1fcb09009eac39da9e347232d08b19e9329a768bcd3cd62f2f93b65bc0eed602",
+    "sha256_lf": "03e08627007925506687bfe6daafdaced4d44805e02807751028b8ac20b057eb"
+  },
+  {
+    "pack": "05-skills/design-md/brands/raycast.md",
+    "repo": "payload/skills/design-md/brands/raycast.md",
+    "installed_at": "skills/design-md/brands/raycast.md",
+    "sha256": "5a6fcdc5872040970d25141826878f17796b4aa178d1a6fc218d34b5bb2cc106",
+    "sha256_lf": "8ecc00a42e9c807e2c3c1aad427d438c013ea815f123d22ea6773f4d2ed8617e"
+  },
+  {
+    "pack": "05-skills/design-md/brands/renault.md",
+    "repo": "payload/skills/design-md/brands/renault.md",
+    "installed_at": "skills/design-md/brands/renault.md",
+    "sha256": "a0c6c57f9f2a46e8f33c75867aca1d54ff6562c3c4b695c6af5395ff3cafa22e",
+    "sha256_lf": "33a4103f528409515765bcd98618c32678a767ec3fdc9ce5d274c978716bb545"
+  },
+  {
+    "pack": "05-skills/design-md/brands/replicate.md",
+    "repo": "payload/skills/design-md/brands/replicate.md",
+    "installed_at": "skills/design-md/brands/replicate.md",
+    "sha256": "2d23c22fe3a6300811b4b597329081a06fc735857762d5de489a00f2d6f4d775",
+    "sha256_lf": "db075e0639f57f5fc097e02b22817e335d7c225a55bf7874a91a67f479f6b541"
+  },
+  {
+    "pack": "05-skills/design-md/brands/resend.md",
+    "repo": "payload/skills/design-md/brands/resend.md",
+    "installed_at": "skills/design-md/brands/resend.md",
+    "sha256": "de6f34ba1f24a8421b36be7a7baaffd02b7448b06f9fc441095931069a8bdf8f",
+    "sha256_lf": "7fa69baf04eb38ce1663d9ffc518a412da84e76931c2c0c4e35434ae89755d79"
+  },
+  {
+    "pack": "05-skills/design-md/brands/revolut.md",
+    "repo": "payload/skills/design-md/brands/revolut.md",
+    "installed_at": "skills/design-md/brands/revolut.md",
+    "sha256": "370affaa0f9eba54964b35fc6db15b0d22c0e47e66c8c4846b0df51e3bf9b8f0",
+    "sha256_lf": "cf9f8c2b5115e7f91ef5443c1423b4e77f886017b05178296c1c7b06a027ebaa"
+  },
+  {
+    "pack": "05-skills/design-md/brands/runwayml.md",
+    "repo": "payload/skills/design-md/brands/runwayml.md",
+    "installed_at": "skills/design-md/brands/runwayml.md",
+    "sha256": "54b9d16c320a95f8bb40047cb7d2a5c2603f212caf063f38803b5a5cf45ca8c9",
+    "sha256_lf": "844e604e62f455625a836e6b3eb4b5510144307d064f69c92529956d07ed88e9"
+  },
+  {
+    "pack": "05-skills/design-md/brands/sanity.md",
+    "repo": "payload/skills/design-md/brands/sanity.md",
+    "installed_at": "skills/design-md/brands/sanity.md",
+    "sha256": "56d6de7be296286a8d3ff4e2325e713fcba4439fd60f432a689c6d7387744040",
+    "sha256_lf": "ea1c442de2b23443f79af46524a81f33951606c8ff043ea9c25ba886264fbdd8"
+  },
+  {
+    "pack": "05-skills/design-md/brands/sap.md",
+    "repo": "payload/skills/design-md/brands/sap.md",
+    "installed_at": "skills/design-md/brands/sap.md",
+    "sha256": "2f29ab5dbb315d9d569442537e4b485bb4aebec9da463e87a8db6f307ea17601",
+    "sha256_lf": "02508672dd15fa20ecaf4c55bc02141653d0915483655c2c7b653d57ae9f75e5"
+  },
+  {
+    "pack": "05-skills/design-md/brands/sentry.md",
+    "repo": "payload/skills/design-md/brands/sentry.md",
+    "installed_at": "skills/design-md/brands/sentry.md",
+    "sha256": "1e8df499711a05a5f0ff11770661515b9df03c48b73f61338d27255553d44088",
+    "sha256_lf": "4f397c8fa06af287f448f165f3bea77309b3de5db689f67aaeb926b25077a21f"
+  },
+  {
+    "pack": "05-skills/design-md/brands/shopify.md",
+    "repo": "payload/skills/design-md/brands/shopify.md",
+    "installed_at": "skills/design-md/brands/shopify.md",
+    "sha256": "d42fb2efe283e9cd4c7224549a57f12e14868a0177882612a11153847ceca078",
+    "sha256_lf": "a79790a6b186b648860301cd0a6d8fafb76e09606c8ed75e274a3aea064e3ab3"
+  },
+  {
+    "pack": "05-skills/design-md/brands/slack.md",
+    "repo": "payload/skills/design-md/brands/slack.md",
+    "installed_at": "skills/design-md/brands/slack.md",
+    "sha256": "96c7362a9eea6bf9c770ce49c354641ddf199687a36777a5bc5169fe16101e40",
+    "sha256_lf": "0388300275d4e8f6ad4805e5a37ec082f47652d4c63ef27d08083c359d199356"
+  },
+  {
+    "pack": "05-skills/design-md/brands/spacex.md",
+    "repo": "payload/skills/design-md/brands/spacex.md",
+    "installed_at": "skills/design-md/brands/spacex.md",
+    "sha256": "a490fbc865aa5f6d2e0731e760ab31c26289d81cd15b86e3dcb19f486b0a4f23",
+    "sha256_lf": "a4693d58f6a3aef8f0ef3d71ee23d4b00d49399a8121b307183a5d132d949099"
+  },
+  {
+    "pack": "05-skills/design-md/brands/spotify.md",
+    "repo": "payload/skills/design-md/brands/spotify.md",
+    "installed_at": "skills/design-md/brands/spotify.md",
+    "sha256": "e2c6ef2f496ee86bf15cce12bc53879a4557a49d57b05909c443db9855a8f1f2",
+    "sha256_lf": "a09fe8d73c7f294e354f5dacdfac8a3f434144a9f00ecd6b2367b6fbf9078f28"
+  },
+  {
+    "pack": "05-skills/design-md/brands/starbucks.md",
+    "repo": "payload/skills/design-md/brands/starbucks.md",
+    "installed_at": "skills/design-md/brands/starbucks.md",
+    "sha256": "5df7f54226c49b75f22a22761b45cbbefa8fd78fb7f0355a31b7b4ebab31c3ce",
+    "sha256_lf": "8b9c01617a556a13d509136975b75e2a95913901e3accd565af96f8798194993"
+  },
+  {
+    "pack": "05-skills/design-md/brands/stripe.md",
+    "repo": "payload/skills/design-md/brands/stripe.md",
+    "installed_at": "skills/design-md/brands/stripe.md",
+    "sha256": "99d866e85e5fa28318b82a7be965e5728ebcdc4d7792c7118458360e0873a5ab",
+    "sha256_lf": "a300e90d75cee9b5009f41701d7ec1005720e16428169f0593754a2297a7d55a"
+  },
+  {
+    "pack": "05-skills/design-md/brands/supabase.md",
+    "repo": "payload/skills/design-md/brands/supabase.md",
+    "installed_at": "skills/design-md/brands/supabase.md",
+    "sha256": "a655535691ba801b88ab281f7463cb894ac49fd6022ccffdcfe7f73ffa3d96de",
+    "sha256_lf": "f0fa6574334cefeed1a6676ba7289cdf85cba320c1868295ea4f5c64a64a4877"
+  },
+  {
+    "pack": "05-skills/design-md/brands/superhuman.md",
+    "repo": "payload/skills/design-md/brands/superhuman.md",
+    "installed_at": "skills/design-md/brands/superhuman.md",
+    "sha256": "0c10cc28b98dd3ecd257148b7b91a0280e4624bbae94c5a994520587bea0d134",
+    "sha256_lf": "19752f60195659405db38e544f6f642c34d6305ef89c4b6f9f15642904f210bf"
+  },
+  {
+    "pack": "05-skills/design-md/brands/tesla.md",
+    "repo": "payload/skills/design-md/brands/tesla.md",
+    "installed_at": "skills/design-md/brands/tesla.md",
+    "sha256": "f6333cc6071eff449069d19fea39dae2d1e23aa48e9516c919a9f6e94df97f4a",
+    "sha256_lf": "bfb1fb9f4dae6b58977c8e33be84d6f54f377c2692755edfe646d52716004b0e"
+  },
+  {
+    "pack": "05-skills/design-md/brands/theverge.md",
+    "repo": "payload/skills/design-md/brands/theverge.md",
+    "installed_at": "skills/design-md/brands/theverge.md",
+    "sha256": "1de0991a4f07ccd67e3bf1a678cb13fc6fdfb5d9376688c416335d9d7a49ddf9",
+    "sha256_lf": "680a980f9f0ae71d270c799388383bfbdf67f5c8414776cea4fb56897a066f2e"
+  },
+  {
+    "pack": "05-skills/design-md/brands/together.ai.md",
+    "repo": "payload/skills/design-md/brands/together.ai.md",
+    "installed_at": "skills/design-md/brands/together.ai.md",
+    "sha256": "026207c5b86bafbebdbc130f3792455df94e199a8b8824f9c3f61465334f123b",
+    "sha256_lf": "88cfcd3508bdcc2610e91028570c2b6c55ebd3442511d490ffdabf6881cb70f9"
+  },
+  {
+    "pack": "05-skills/design-md/brands/uber.md",
+    "repo": "payload/skills/design-md/brands/uber.md",
+    "installed_at": "skills/design-md/brands/uber.md",
+    "sha256": "66c97270a7376e2b105679ee1600240e3e15df445609968a331a1b73d7fd923a",
+    "sha256_lf": "7e4160a651859e49d533fceebb32dba079050653e1018084f3ea504877b4b766"
+  },
+  {
+    "pack": "05-skills/design-md/brands/vercel.md",
+    "repo": "payload/skills/design-md/brands/vercel.md",
+    "installed_at": "skills/design-md/brands/vercel.md",
+    "sha256": "03796ad1d0f66c2a1d39fc5953ff9244665ffb09589a4b8b187f3034393c48d6",
+    "sha256_lf": "174ad08f4e5d828df24b2d27e1c3567349ff96ce740b244a29390c41fdac97f0"
+  },
+  {
+    "pack": "05-skills/design-md/brands/vodafone.md",
+    "repo": "payload/skills/design-md/brands/vodafone.md",
+    "installed_at": "skills/design-md/brands/vodafone.md",
+    "sha256": "eb814dd51d5f5c56cc20fe32a9ced0cf3ee10a766f2592a89285e969556b5c1f",
+    "sha256_lf": "c6bb890b8c1d537af18ac3bbb512ba12d9931b07fe3a4c84db004a9ba0c13e62"
+  },
+  {
+    "pack": "05-skills/design-md/brands/voltagent.md",
+    "repo": "payload/skills/design-md/brands/voltagent.md",
+    "installed_at": "skills/design-md/brands/voltagent.md",
+    "sha256": "6380d1dc3e1784e7511a2c4324032ec026a5fd21d42260a25e1555895fc0daf6",
+    "sha256_lf": "3b7a2f9ec103383036836393c84ed905e195543fc798b2bef2eaf8e805be4ae5"
+  },
+  {
+    "pack": "05-skills/design-md/brands/warp.md",
+    "repo": "payload/skills/design-md/brands/warp.md",
+    "installed_at": "skills/design-md/brands/warp.md",
+    "sha256": "463d604b921c45f1b4ac963c618f29e6c8b8158356ce00eefb49ae714a7d59fc",
+    "sha256_lf": "1d8fa95a12eaf924639d9741e659391713a0ba80b567fd9f4049659501a9e760"
+  },
+  {
+    "pack": "05-skills/design-md/brands/webflow.md",
+    "repo": "payload/skills/design-md/brands/webflow.md",
+    "installed_at": "skills/design-md/brands/webflow.md",
+    "sha256": "454d1f17f666aeb835a3471c116d14aaeb92cc908c9b5f7932fc1293d816d3a3",
+    "sha256_lf": "63e724c244514860d0d7e7db3d8a122a5e85e41b15e67751a15cfcb3be2af414"
+  },
+  {
+    "pack": "05-skills/design-md/brands/wired.md",
+    "repo": "payload/skills/design-md/brands/wired.md",
+    "installed_at": "skills/design-md/brands/wired.md",
+    "sha256": "b3b78ca99862bc9615de1b73a4852a5e4ff8bd1c373f0567bdfcfef20a57c01e",
+    "sha256_lf": "e5f38d7c739c789e3e935c8ada3be7ec93e318173ce3c64a4a1af3b0debe4b56"
+  },
+  {
+    "pack": "05-skills/design-md/brands/wise.md",
+    "repo": "payload/skills/design-md/brands/wise.md",
+    "installed_at": "skills/design-md/brands/wise.md",
+    "sha256": "44707b1812c8fe982267d6e696af433dd5b6d435b1cf898965fc8cc9d677ed90",
+    "sha256_lf": "59127e42e095dec7dde016d74d8f5c61ead3d447d015c402b594115ee71efb5a"
+  },
+  {
+    "pack": "05-skills/design-md/brands/x.ai.md",
+    "repo": "payload/skills/design-md/brands/x.ai.md",
+    "installed_at": "skills/design-md/brands/x.ai.md",
+    "sha256": "1f51818c54eb562f4f6fde59deddc5a727d27b8bd5f26775cefe4ce0cc147d89",
+    "sha256_lf": "7911170931810452f1616a793b4b04451e229174863c8947c71e4d7a7c607e3a"
+  },
+  {
+    "pack": "05-skills/design-md/brands/zapier.md",
+    "repo": "payload/skills/design-md/brands/zapier.md",
+    "installed_at": "skills/design-md/brands/zapier.md",
+    "sha256": "8ba82ac28b1816fcf1d78f3eedaf63a4716167bb06bcf3fbeb482f17a56eacbe",
+    "sha256_lf": "5b5b334c8868c65d3ef96ee403294da54e8434d0d25dc6a2577924439ed60e0d"
+  },
+  {
+    "pack": "05-skills/diagram-craft/SKILL.md",
+    "repo": "payload/skills/diagram-craft/SKILL.md",
+    "installed_at": "skills/diagram-craft/SKILL.md",
+    "sha256": "6163c9ea8a8c3de57dd19d3f2e08beb8e32df459a1ddea169aa662b5d422b416",
+    "sha256_lf": "6163c9ea8a8c3de57dd19d3f2e08beb8e32df459a1ddea169aa662b5d422b416"
+  },
+  {
+    "pack": "05-skills/diagram-craft/SOURCES.md",
+    "repo": "payload/skills/diagram-craft/SOURCES.md",
+    "installed_at": "skills/diagram-craft/SOURCES.md",
+    "sha256": "e85751efcd68639d0769225f1226321d3a759f2237189a84082befa9ccee0637",
+    "sha256_lf": "e85751efcd68639d0769225f1226321d3a759f2237189a84082befa9ccee0637"
+  },
+  {
+    "pack": "05-skills/domain-modeling/ADR-FORMAT.md",
+    "repo": "payload/skills/domain-modeling/ADR-FORMAT.md",
+    "installed_at": "skills/domain-modeling/ADR-FORMAT.md",
+    "sha256": "b7021c31a1c2485b07356a8110fd1fd1ae4facbab3e210983789f425f867d95b",
+    "sha256_lf": "944c92aa790e8fbdc9199640b170979abb8a34ba8d0fe18c2a01a63bce140ca0"
+  },
+  {
+    "pack": "05-skills/domain-modeling/GLOSSARY-FORMAT.md",
+    "repo": "payload/skills/domain-modeling/GLOSSARY-FORMAT.md",
+    "installed_at": "skills/domain-modeling/GLOSSARY-FORMAT.md",
+    "sha256": "61fa9f6f9231070461dd4f7d4cfad377c33013c1e5668e1e6c0a8e4500944b3b",
+    "sha256_lf": "21dcc40cdec8e151a829b98ab1517c1867bc444e3665134a98c6983411996801"
+  },
+  {
+    "pack": "05-skills/domain-modeling/SKILL.md",
+    "repo": "payload/skills/domain-modeling/SKILL.md",
+    "installed_at": "skills/domain-modeling/SKILL.md",
+    "sha256": "b62d997256cc073e123d4303da8e9db00db0e28de9739660ca3e55ab76e09cdb",
+    "sha256_lf": "7b925d7b1e341a2eeae33ad68a8a8c0ab889a38ddd22a7598e4c240e5a7556a3"
+  },
+  {
+    "pack": "05-skills/grill-me/SKILL.md",
+    "repo": "payload/skills/grill-me/SKILL.md",
+    "installed_at": "skills/grill-me/SKILL.md",
+    "sha256": "caaf8b8de1684f96e26b28f3c29189db5c89cce4b73e1c93d86164f66ef88637",
+    "sha256_lf": "caaf8b8de1684f96e26b28f3c29189db5c89cce4b73e1c93d86164f66ef88637"
+  },
+  {
+    "pack": "05-skills/grill-with-docs/SKILL.md",
+    "repo": "payload/skills/grill-with-docs/SKILL.md",
+    "installed_at": "skills/grill-with-docs/SKILL.md",
+    "sha256": "abc0fa7948db18b5fb0e1cc1c522ac5ff47d874e2da1e5df60619d79be11f38b",
+    "sha256_lf": "7de372c13488f1ee96cc11cd8907b56b6809cc93eef776eeddd37de6b6cbe3fe"
+  },
+  {
+    "pack": "05-skills/grilling/SKILL.md",
+    "repo": "payload/skills/grilling/SKILL.md",
+    "installed_at": "skills/grilling/SKILL.md",
+    "sha256": "1ab526bf1df6f5eee7aef6323abe23f5d0379cd548bfd4d441a2cd9f3e8e2d9e",
+    "sha256_lf": "1ab526bf1df6f5eee7aef6323abe23f5d0379cd548bfd4d441a2cd9f3e8e2d9e"
+  },
+  {
+    "pack": "05-skills/hallmark/LICENSE",
+    "repo": "payload/skills/hallmark/LICENSE",
+    "installed_at": "skills/hallmark/LICENSE",
+    "sha256": "06088a8b94598626f27612dea42300154bf7be967c85d9d3eee4490cb056af7d",
+    "sha256_lf": "06088a8b94598626f27612dea42300154bf7be967c85d9d3eee4490cb056af7d"
+  },
+  {
+    "pack": "05-skills/hallmark/SKILL.md",
+    "repo": "payload/skills/hallmark/SKILL.md",
+    "installed_at": "skills/hallmark/SKILL.md",
+    "sha256": "d44c216b7fe21780752c6ba160ab51f227702565eb99bf69baec5d2b88596646",
+    "sha256_lf": "d44c216b7fe21780752c6ba160ab51f227702565eb99bf69baec5d2b88596646"
+  },
+  {
+    "pack": "05-skills/hallmark/VENDOR.md",
+    "repo": "payload/skills/hallmark/VENDOR.md",
+    "installed_at": "skills/hallmark/VENDOR.md",
+    "sha256": "0df0ca3332c7ae5fcf0e63a8e21cda059e5ca3bdf58e5897212931949698649f",
+    "sha256_lf": "0df0ca3332c7ae5fcf0e63a8e21cda059e5ca3bdf58e5897212931949698649f"
+  },
+  {
+    "pack": "05-skills/hallmark/agents/openai.yaml",
+    "repo": "payload/skills/hallmark/agents/openai.yaml",
+    "installed_at": "skills/hallmark/agents/openai.yaml",
+    "sha256": "0bc6fa7d573c926e8d3fe04a5afc8191096e5aa7287598a59b6c7e6321b53298",
+    "sha256_lf": "0bc6fa7d573c926e8d3fe04a5afc8191096e5aa7287598a59b6c7e6321b53298"
+  },
+  {
+    "pack": "05-skills/hallmark/references/anatomy.md",
+    "repo": "payload/skills/hallmark/references/anatomy.md",
+    "installed_at": "skills/hallmark/references/anatomy.md",
+    "sha256": "70f570279d42ac0bef4af809c80b522e550c6dacaaa0a93349a0fff0d5b93500",
+    "sha256_lf": "70f570279d42ac0bef4af809c80b522e550c6dacaaa0a93349a0fff0d5b93500"
+  },
+  {
+    "pack": "05-skills/hallmark/references/brand-truth.md",
+    "repo": "payload/skills/hallmark/references/brand-truth.md",
+    "installed_at": "skills/hallmark/references/brand-truth.md",
+    "sha256": "01c17c45d3b213f80ef28c93548d1b99aa2afad75ed8b236811ba56169c3f068",
+    "sha256_lf": "01c17c45d3b213f80ef28c93548d1b99aa2afad75ed8b236811ba56169c3f068"
+  },
+  {
+    "pack": "05-skills/hallmark/references/craft.md",
+    "repo": "payload/skills/hallmark/references/craft.md",
+    "installed_at": "skills/hallmark/references/craft.md",
+    "sha256": "1b7b40f81f0fe1c04dce133696182ca1229d16162f8f3203603f24a0f585c41c",
+    "sha256_lf": "1b7b40f81f0fe1c04dce133696182ca1229d16162f8f3203603f24a0f585c41c"
+  },
+  {
+    "pack": "05-skills/hallmark/references/dark-mode.md",
+    "repo": "payload/skills/hallmark/references/dark-mode.md",
+    "installed_at": "skills/hallmark/references/dark-mode.md",
+    "sha256": "99e86439eed1caa9e898a31baa05e65c856c53918faf6fdcb5d71a8e0f1ef131",
+    "sha256_lf": "99e86439eed1caa9e898a31baa05e65c856c53918faf6fdcb5d71a8e0f1ef131"
+  },
+  {
+    "pack": "05-skills/hallmark/references/data-viz.md",
+    "repo": "payload/skills/hallmark/references/data-viz.md",
+    "installed_at": "skills/hallmark/references/data-viz.md",
+    "sha256": "1a26f9e8e16ca065d7412d2db57200698459cdbda498e08e8eaf0ea7a82097dc",
+    "sha256_lf": "1a26f9e8e16ca065d7412d2db57200698459cdbda498e08e8eaf0ea7a82097dc"
+  },
+  {
+    "pack": "05-skills/hallmark/references/design-md.md",
+    "repo": "payload/skills/hallmark/references/design-md.md",
+    "installed_at": "skills/hallmark/references/design-md.md",
+    "sha256": "839d4cd8d5b07007854e9c6de95491691725f2968a0922f9b8fcfdbe42e2784c",
+    "sha256_lf": "839d4cd8d5b07007854e9c6de95491691725f2968a0922f9b8fcfdbe42e2784c"
+  },
+  {
+    "pack": "05-skills/hallmark/references/direction.md",
+    "repo": "payload/skills/hallmark/references/direction.md",
+    "installed_at": "skills/hallmark/references/direction.md",
+    "sha256": "19e00099e95be52df2ae893881e29a23cd7a5ee5dc8434a87588376818851642",
+    "sha256_lf": "19e00099e95be52df2ae893881e29a23cd7a5ee5dc8434a87588376818851642"
+  },
+  {
+    "pack": "05-skills/hallmark/references/export-formats.md",
+    "repo": "payload/skills/hallmark/references/export-formats.md",
+    "installed_at": "skills/hallmark/references/export-formats.md",
+    "sha256": "3078bcb08e6324904ee156b6871dc0f47aa170e5d4baf09d43a5c48c46ca7c6b",
+    "sha256_lf": "3078bcb08e6324904ee156b6871dc0f47aa170e5d4baf09d43a5c48c46ca7c6b"
+  },
+  {
+    "pack": "05-skills/hallmark/references/flow.md",
+    "repo": "payload/skills/hallmark/references/flow.md",
+    "installed_at": "skills/hallmark/references/flow.md",
+    "sha256": "8a72f500a60b606b98dca17e551445c51ae1c603506138aa31836b181ed9ff6a",
+    "sha256_lf": "8a72f500a60b606b98dca17e551445c51ae1c603506138aa31836b181ed9ff6a"
+  },
+  {
+    "pack": "05-skills/hallmark/references/fonts.md",
+    "repo": "payload/skills/hallmark/references/fonts.md",
+    "installed_at": "skills/hallmark/references/fonts.md",
+    "sha256": "87d50b1b32b9c901d9df5376870cf6d8e39334f468fe9a582a2720d9da5586ec",
+    "sha256_lf": "87d50b1b32b9c901d9df5376870cf6d8e39334f468fe9a582a2720d9da5586ec"
+  },
+  {
+    "pack": "05-skills/hallmark/references/gates.md",
+    "repo": "payload/skills/hallmark/references/gates.md",
+    "installed_at": "skills/hallmark/references/gates.md",
+    "sha256": "63ad234a1acab5e081dfe8ecf2331518a43cbf42760dc5c6ababfb24d7b3e50c",
+    "sha256_lf": "63ad234a1acab5e081dfe8ecf2331518a43cbf42760dc5c6ababfb24d7b3e50c"
+  },
+  {
+    "pack": "05-skills/hallmark/references/genres/atmospheric.md",
+    "repo": "payload/skills/hallmark/references/genres/atmospheric.md",
+    "installed_at": "skills/hallmark/references/genres/atmospheric.md",
+    "sha256": "39c2ba5b282fcc934742aeb410d1bb4d6c65f1da1514b0f18a9600aa8f13f289",
+    "sha256_lf": "39c2ba5b282fcc934742aeb410d1bb4d6c65f1da1514b0f18a9600aa8f13f289"
+  },
+  {
+    "pack": "05-skills/hallmark/references/genres/editorial.md",
+    "repo": "payload/skills/hallmark/references/genres/editorial.md",
+    "installed_at": "skills/hallmark/references/genres/editorial.md",
+    "sha256": "1d47311bfd4d3e4c02f88f25e4852d920d168eb838370fee77b917bcc6e3592c",
+    "sha256_lf": "1d47311bfd4d3e4c02f88f25e4852d920d168eb838370fee77b917bcc6e3592c"
+  },
+  {
+    "pack": "05-skills/hallmark/references/genres/modern-minimal.md",
+    "repo": "payload/skills/hallmark/references/genres/modern-minimal.md",
+    "installed_at": "skills/hallmark/references/genres/modern-minimal.md",
+    "sha256": "5f84b3c056be101707c6f2d7ac929e879f5ab7b009ac8426156c11054193cd9b",
+    "sha256_lf": "5f84b3c056be101707c6f2d7ac929e879f5ab7b009ac8426156c11054193cd9b"
+  },
+  {
+    "pack": "05-skills/hallmark/references/genres/playful.md",
+    "repo": "payload/skills/hallmark/references/genres/playful.md",
+    "installed_at": "skills/hallmark/references/genres/playful.md",
+    "sha256": "974e13a9ada8b49e2cfcc05efb8235be60103acef02e390d8f819cd8e2abd3a9",
+    "sha256_lf": "974e13a9ada8b49e2cfcc05efb8235be60103acef02e390d8f819cd8e2abd3a9"
+  },
+  {
+    "pack": "05-skills/hallmark/references/imagery.md",
+    "repo": "payload/skills/hallmark/references/imagery.md",
+    "installed_at": "skills/hallmark/references/imagery.md",
+    "sha256": "53f5de6843a92cce1e6fff146bfe9dddda140c44de223da250f713077e530c4b",
+    "sha256_lf": "53f5de6843a92cce1e6fff146bfe9dddda140c44de223da250f713077e530c4b"
+  },
+  {
+    "pack": "05-skills/hallmark/references/interaction-and-states.md",
+    "repo": "payload/skills/hallmark/references/interaction-and-states.md",
+    "installed_at": "skills/hallmark/references/interaction-and-states.md",
+    "sha256": "08e232008734fce86b1ec6085db72342e90d2f855351eb84f20ea3799fe0808a",
+    "sha256_lf": "08e232008734fce86b1ec6085db72342e90d2f855351eb84f20ea3799fe0808a"
+  },
+  {
+    "pack": "05-skills/hallmark/references/layout.md",
+    "repo": "payload/skills/hallmark/references/layout.md",
+    "installed_at": "skills/hallmark/references/layout.md",
+    "sha256": "fa904b5b46f19ca08ee325c99deb1cf30c67acb00106e7b74945c30e428c7eab",
+    "sha256_lf": "fa904b5b46f19ca08ee325c99deb1cf30c67acb00106e7b74945c30e428c7eab"
+  },
+  {
+    "pack": "05-skills/hallmark/references/macrostructures.md",
+    "repo": "payload/skills/hallmark/references/macrostructures.md",
+    "installed_at": "skills/hallmark/references/macrostructures.md",
+    "sha256": "3389dbc0434bd9a6161896a19b4ec6664859d49f1b0329cd0e8fae6f045e1c43",
+    "sha256_lf": "3389dbc0434bd9a6161896a19b4ec6664859d49f1b0329cd0e8fae6f045e1c43"
+  },
+  {
+    "pack": "05-skills/hallmark/references/macrostructures/01-bento-grid.md",
+    "repo": "payload/skills/hallmark/references/macrostructures/01-bento-grid.md",
+    "installed_at": "skills/hallmark/references/macrostructures/01-bento-grid.md",
+    "sha256": "1efd7da3e1857d22da50307af0effa92200198b59c26f0e429b8ffcaa9cd96ae",
+    "sha256_lf": "1efd7da3e1857d22da50307af0effa92200198b59c26f0e429b8ffcaa9cd96ae"
+  },
+  {
+    "pack": "05-skills/hallmark/references/macrostructures/02-long-document.md",
+    "repo": "payload/skills/hallmark/references/macrostructures/02-long-document.md",
+    "installed_at": "skills/hallmark/references/macrostructures/02-long-document.md",
+    "sha256": "4d7524c16b764daef6fd8bc5e6757dcc4d886addf33f324b32f024c64bcbc573",
+    "sha256_lf": "4d7524c16b764daef6fd8bc5e6757dcc4d886addf33f324b32f024c64bcbc573"
+  },
+  {
+    "pack": "05-skills/hallmark/references/macrostructures/03-marquee-hero.md",
+    "repo": "payload/skills/hallmark/references/macrostructures/03-marquee-hero.md",
+    "installed_at": "skills/hallmark/references/macrostructures/03-marquee-hero.md",
+    "sha256": "cb379a2eb56d8503265ab541ef9711e59bb2d51dadedfe3e47ccb697b3948e79",
+    "sha256_lf": "cb379a2eb56d8503265ab541ef9711e59bb2d51dadedfe3e47ccb697b3948e79"
+  },
+  {
+    "pack": "05-skills/hallmark/references/macrostructures/04-stat-led.md",
+    "repo": "payload/skills/hallmark/references/macrostructures/04-stat-led.md",
+    "installed_at": "skills/hallmark/references/macrostructures/04-stat-led.md",
+    "sha256": "2a065807340244d188de455fdb21c7ff8906bb95240873d0993f734c85c8f4a1",
+    "sha256_lf": "2a065807340244d188de455fdb21c7ff8906bb95240873d0993f734c85c8f4a1"
+  },
+  {
+    "pack": "05-skills/hallmark/references/macrostructures/05-workbench.md",
+    "repo": "payload/skills/hallmark/references/macrostructures/05-workbench.md",
+    "installed_at": "skills/hallmark/references/macrostructures/05-workbench.md",
+    "sha256": "6bc0ccd0604afef8c749706189cf91b35078bcc52738eb29603840db0db151c6",
+    "sha256_lf": "6bc0ccd0604afef8c749706189cf91b35078bcc52738eb29603840db0db151c6"
+  },
+  {
+    "pack": "05-skills/hallmark/references/macrostructures/06-conversational-faq.md",
+    "repo": "payload/skills/hallmark/references/macrostructures/06-conversational-faq.md",
+    "installed_at": "skills/hallmark/references/macrostructures/06-conversational-faq.md",
+    "sha256": "000a182731d543eaa9e2fda2be50fd4032ff25ed83a6befbbb0cd03567dbe15b",
+    "sha256_lf": "000a182731d543eaa9e2fda2be50fd4032ff25ed83a6befbbb0cd03567dbe15b"
+  },
+  {
+    "pack": "05-skills/hallmark/references/macrostructures/07-manifesto.md",
+    "repo": "payload/skills/hallmark/references/macrostructures/07-manifesto.md",
+    "installed_at": "skills/hallmark/references/macrostructures/07-manifesto.md",
+    "sha256": "3ac47d67fa8e0ee8db2fba2fd329c5ffcbf981a0b760e482748935f6e3411c46",
+    "sha256_lf": "3ac47d67fa8e0ee8db2fba2fd329c5ffcbf981a0b760e482748935f6e3411c46"
+  },
+  {
+    "pack": "05-skills/hallmark/references/macrostructures/08-photographic.md",
+    "repo": "payload/skills/hallmark/references/macrostructures/08-photographic.md",
+    "installed_at": "skills/hallmark/references/macrostructures/08-photographic.md",
+    "sha256": "d07d2508845277b68cb8cacc8f82d8fac84b69063277ec277d19a7f59fe43992",
+    "sha256_lf": "d07d2508845277b68cb8cacc8f82d8fac84b69063277ec277d19a7f59fe43992"
+  },
+  {
+    "pack": "05-skills/hallmark/references/macrostructures/09-quote-led.md",
+    "repo": "payload/skills/hallmark/references/macrostructures/09-quote-led.md",
+    "installed_at": "skills/hallmark/references/macrostructures/09-quote-led.md",
+    "sha256": "1609ddc34d842c730e4d18bacc010b1b43cfa59892043c523b51bdffead0fb56",
+    "sha256_lf": "1609ddc34d842c730e4d18bacc010b1b43cfa59892043c523b51bdffead0fb56"
+  },
+  {
+    "pack": "05-skills/hallmark/references/macrostructures/10-specimen.md",
+    "repo": "payload/skills/hallmark/references/macrostructures/10-specimen.md",
+    "installed_at": "skills/hallmark/references/macrostructures/10-specimen.md",
+    "sha256": "18313a17c6512afda417c8c19f4e0bea1549ecd5fc43e87ba89fb4e526b56eea",
+    "sha256_lf": "18313a17c6512afda417c8c19f4e0bea1549ecd5fc43e87ba89fb4e526b56eea"
+  },
+  {
+    "pack": "05-skills/hallmark/references/macrostructures/11-catalogue.md",
+    "repo": "payload/skills/hallmark/references/macrostructures/11-catalogue.md",
+    "installed_at": "skills/hallmark/references/macrostructures/11-catalogue.md",
+    "sha256": "20708e7e61ed610506971f48d36eec88512423b77855f78cc8c65b75ba90e0ae",
+    "sha256_lf": "20708e7e61ed610506971f48d36eec88512423b77855f78cc8c65b75ba90e0ae"
+  },
+  {
+    "pack": "05-skills/hallmark/references/macrostructures/12-letter.md",
+    "repo": "payload/skills/hallmark/references/macrostructures/12-letter.md",
+    "installed_at": "skills/hallmark/references/macrostructures/12-letter.md",
+    "sha256": "0d6779b5da3e3a44b573b3665daefe489fbd4857c1124ca4b8ff0fe6fc17a34f",
+    "sha256_lf": "0d6779b5da3e3a44b573b3665daefe489fbd4857c1124ca4b8ff0fe6fc17a34f"
+  },
+  {
+    "pack": "05-skills/hallmark/references/macrostructures/13-index-first.md",
+    "repo": "payload/skills/hallmark/references/macrostructures/13-index-first.md",
+    "installed_at": "skills/hallmark/references/macrostructures/13-index-first.md",
+    "sha256": "ba7b085f91a8c2eb0baf376b88e4307b38250a2d4dd707fb22f2e5faeb32a7e2",
+    "sha256_lf": "ba7b085f91a8c2eb0baf376b88e4307b38250a2d4dd707fb22f2e5faeb32a7e2"
+  },
+  {
+    "pack": "05-skills/hallmark/references/macrostructures/14-narrative-workflow.md",
+    "repo": "payload/skills/hallmark/references/macrostructures/14-narrative-workflow.md",
+    "installed_at": "skills/hallmark/references/macrostructures/14-narrative-workflow.md",
+    "sha256": "4e120a5cb04a54aa172a5d2b5e727c27603ccddf37a2f8c9a15756993a9337fc",
+    "sha256_lf": "4e120a5cb04a54aa172a5d2b5e727c27603ccddf37a2f8c9a15756993a9337fc"
+  },
+  {
+    "pack": "05-skills/hallmark/references/macrostructures/15-split-studio.md",
+    "repo": "payload/skills/hallmark/references/macrostructures/15-split-studio.md",
+    "installed_at": "skills/hallmark/references/macrostructures/15-split-studio.md",
+    "sha256": "49c758082ce6d4a6e541bb8706412fe4eb92ffd9dd772208b6a21142aa4bf3c6",
+    "sha256_lf": "49c758082ce6d4a6e541bb8706412fe4eb92ffd9dd772208b6a21142aa4bf3c6"
+  },
+  {
+    "pack": "05-skills/hallmark/references/macrostructures/16-feature-stack.md",
+    "repo": "payload/skills/hallmark/references/macrostructures/16-feature-stack.md",
+    "installed_at": "skills/hallmark/references/macrostructures/16-feature-stack.md",
+    "sha256": "df26d2d4094b3059c0a35db94389524b0ba76f8fe64e89d4e6ba3def7eed1ece",
+    "sha256_lf": "df26d2d4094b3059c0a35db94389524b0ba76f8fe64e89d4e6ba3def7eed1ece"
+  },
+  {
+    "pack": "05-skills/hallmark/references/macrostructures/17-type-specimen.md",
+    "repo": "payload/skills/hallmark/references/macrostructures/17-type-specimen.md",
+    "installed_at": "skills/hallmark/references/macrostructures/17-type-specimen.md",
+    "sha256": "4ff06c001a10f973b9c70b1a0fa21ea1ce54ac0e3727cf8b5ec2e0a1b6bf568d",
+    "sha256_lf": "4ff06c001a10f973b9c70b1a0fa21ea1ce54ac0e3727cf8b5ec2e0a1b6bf568d"
+  },
+  {
+    "pack": "05-skills/hallmark/references/macrostructures/18-portfolio-grid.md",
+    "repo": "payload/skills/hallmark/references/macrostructures/18-portfolio-grid.md",
+    "installed_at": "skills/hallmark/references/macrostructures/18-portfolio-grid.md",
+    "sha256": "d035dee299e329efeea7dd3b4b897b11f0547f03ac4c2f0c62a3fd422d30f618",
+    "sha256_lf": "d035dee299e329efeea7dd3b4b897b11f0547f03ac4c2f0c62a3fd422d30f618"
+  },
+  {
+    "pack": "05-skills/hallmark/references/macrostructures/19-map-diagram.md",
+    "repo": "payload/skills/hallmark/references/macrostructures/19-map-diagram.md",
+    "installed_at": "skills/hallmark/references/macrostructures/19-map-diagram.md",
+    "sha256": "b8c0021c01fb8a970907caefa74a8c462cb573a2666fc4b223082812f9b19399",
+    "sha256_lf": "b8c0021c01fb8a970907caefa74a8c462cb573a2666fc4b223082812f9b19399"
+  },
+  {
+    "pack": "05-skills/hallmark/references/macrostructures/20-ecosystem-index.md",
+    "repo": "payload/skills/hallmark/references/macrostructures/20-ecosystem-index.md",
+    "installed_at": "skills/hallmark/references/macrostructures/20-ecosystem-index.md",
+    "sha256": "27b1909d028f553efbc112ecd5a8c843e191e97a286bf2bd258daad86bfa64c4",
+    "sha256_lf": "27b1909d028f553efbc112ecd5a8c843e191e97a286bf2bd258daad86bfa64c4"
+  },
+  {
+    "pack": "05-skills/hallmark/references/macrostructures/21-component-playground.md",
+    "repo": "payload/skills/hallmark/references/macrostructures/21-component-playground.md",
+    "installed_at": "skills/hallmark/references/macrostructures/21-component-playground.md",
+    "sha256": "830b52f62bdb722f3bd954f4f9ce60fc8c6e521ba2cc1f173e6c0fc3b5611413",
+    "sha256_lf": "830b52f62bdb722f3bd954f4f9ce60fc8c6e521ba2cc1f173e6c0fc3b5611413"
+  },
+  {
+    "pack": "05-skills/hallmark/references/microinteractions.md",
+    "repo": "payload/skills/hallmark/references/microinteractions.md",
+    "installed_at": "skills/hallmark/references/microinteractions.md",
+    "sha256": "e7ec31f08e58edcdb8986fc57d276466c1f7b08445756f3a7cf6f46e8b5a8c8e",
+    "sha256_lf": "e7ec31f08e58edcdb8986fc57d276466c1f7b08445756f3a7cf6f46e8b5a8c8e"
+  },
+  {
+    "pack": "05-skills/hallmark/references/patterns.md",
+    "repo": "payload/skills/hallmark/references/patterns.md",
+    "installed_at": "skills/hallmark/references/patterns.md",
+    "sha256": "bb15954cb04083c9a3b796dda5df5c33c9c05dddf2341d7befe2571e715f613b",
+    "sha256_lf": "bb15954cb04083c9a3b796dda5df5c33c9c05dddf2341d7befe2571e715f613b"
+  },
+  {
+    "pack": "05-skills/hallmark/references/redesign.md",
+    "repo": "payload/skills/hallmark/references/redesign.md",
+    "installed_at": "skills/hallmark/references/redesign.md",
+    "sha256": "cd3fc1dd10af22bb0374b41340fbab8f2b3be997ea5b63716da3d44ba0bb0552",
+    "sha256_lf": "cd3fc1dd10af22bb0374b41340fbab8f2b3be997ea5b63716da3d44ba0bb0552"
+  },
+  {
+    "pack": "05-skills/hallmark/references/responsive.md",
+    "repo": "payload/skills/hallmark/references/responsive.md",
+    "installed_at": "skills/hallmark/references/responsive.md",
+    "sha256": "7ed0cd54fda3351be9e7b5514ebf4a5306a837cf3d893b31e96c7fd490b348ea",
+    "sha256_lf": "7ed0cd54fda3351be9e7b5514ebf4a5306a837cf3d893b31e96c7fd490b348ea"
+  },
+  {
+    "pack": "05-skills/hallmark/references/review-finish.md",
+    "repo": "payload/skills/hallmark/references/review-finish.md",
+    "installed_at": "skills/hallmark/references/review-finish.md",
+    "sha256": "9d00de59e71ee2516212140b0512d6d2e90a120d4a328eeba9cb12396ff38d64",
+    "sha256_lf": "9d00de59e71ee2516212140b0512d6d2e90a120d4a328eeba9cb12396ff38d64"
+  },
+  {
+    "pack": "05-skills/hallmark/references/review-hero.md",
+    "repo": "payload/skills/hallmark/references/review-hero.md",
+    "installed_at": "skills/hallmark/references/review-hero.md",
+    "sha256": "e84702982bcad34fc8ef4aaf032a5482356912992ce72d84b12e05cd4a519fb2",
+    "sha256_lf": "e84702982bcad34fc8ef4aaf032a5482356912992ce72d84b12e05cd4a519fb2"
+  },
+  {
+    "pack": "05-skills/hallmark/references/scroll-choreography.md",
+    "repo": "payload/skills/hallmark/references/scroll-choreography.md",
+    "installed_at": "skills/hallmark/references/scroll-choreography.md",
+    "sha256": "809c0fc84011412766db10e3e14def2b3ce02f0452d7fb2e60adecfa85991393",
+    "sha256_lf": "809c0fc84011412766db10e3e14def2b3ce02f0452d7fb2e60adecfa85991393"
+  },
+  {
+    "pack": "05-skills/hallmark/references/texture.md",
+    "repo": "payload/skills/hallmark/references/texture.md",
+    "installed_at": "skills/hallmark/references/texture.md",
+    "sha256": "b5749c008fef0511188d491aec0c5556b19f6731b13539934ecc1cb584a2e756",
+    "sha256_lf": "b5749c008fef0511188d491aec0c5556b19f6731b13539934ecc1cb584a2e756"
+  },
+  {
+    "pack": "05-skills/hallmark/references/themes/README.md",
+    "repo": "payload/skills/hallmark/references/themes/README.md",
+    "installed_at": "skills/hallmark/references/themes/README.md",
+    "sha256": "aece9d5f273ef6a4eb3e59833bc428c17232ad4ade1247637355636087d5264d",
+    "sha256_lf": "aece9d5f273ef6a4eb3e59833bc428c17232ad4ade1247637355636087d5264d"
+  },
+  {
+    "pack": "05-skills/hallmark/references/themes/almanac.jpg",
+    "repo": "payload/skills/hallmark/references/themes/almanac.jpg",
+    "installed_at": "skills/hallmark/references/themes/almanac.jpg",
+    "sha256": "a78b5a78a662ebd6a54be31b581bfd7447d391cff549c503025f0f762f4bddb5",
+    "sha256_lf": "a78b5a78a662ebd6a54be31b581bfd7447d391cff549c503025f0f762f4bddb5"
+  },
+  {
+    "pack": "05-skills/hallmark/references/themes/almanac.md",
+    "repo": "payload/skills/hallmark/references/themes/almanac.md",
+    "installed_at": "skills/hallmark/references/themes/almanac.md",
+    "sha256": "b5c85e7c96cda4f13af81dd42c020c7eae7c4f63b4530b7e9fcef09340d96efc",
+    "sha256_lf": "b5c85e7c96cda4f13af81dd42c020c7eae7c4f63b4530b7e9fcef09340d96efc"
+  },
+  {
+    "pack": "05-skills/hallmark/references/themes/arcade.jpg",
+    "repo": "payload/skills/hallmark/references/themes/arcade.jpg",
+    "installed_at": "skills/hallmark/references/themes/arcade.jpg",
+    "sha256": "dad3bbcf4cc25bf8e97e03d034ceed2f2bf0f8a9ea308afe60b559f04bb40f04",
+    "sha256_lf": "dad3bbcf4cc25bf8e97e03d034ceed2f2bf0f8a9ea308afe60b559f04bb40f04"
+  },
+  {
+    "pack": "05-skills/hallmark/references/themes/arcade.md",
+    "repo": "payload/skills/hallmark/references/themes/arcade.md",
+    "installed_at": "skills/hallmark/references/themes/arcade.md",
+    "sha256": "a6e6d644412e9cbe0172fa784bc05a69767c792a642ab860e6da1af33ef861f9",
+    "sha256_lf": "a6e6d644412e9cbe0172fa784bc05a69767c792a642ab860e6da1af33ef861f9"
+  },
+  {
+    "pack": "05-skills/hallmark/references/themes/atelier.jpg",
+    "repo": "payload/skills/hallmark/references/themes/atelier.jpg",
+    "installed_at": "skills/hallmark/references/themes/atelier.jpg",
+    "sha256": "1f7d16373c8ab9d949084599c87777060c24b298fec9fd382fe7cc0066d6ec03",
+    "sha256_lf": "1f7d16373c8ab9d949084599c87777060c24b298fec9fd382fe7cc0066d6ec03"
+  },
+  {
+    "pack": "05-skills/hallmark/references/themes/atelier.md",
+    "repo": "payload/skills/hallmark/references/themes/atelier.md",
+    "installed_at": "skills/hallmark/references/themes/atelier.md",
+    "sha256": "8cffffd26a857adab803fd0e1c5eb49ade86cd486a8dc3c576728032a84a5ccf",
+    "sha256_lf": "8cffffd26a857adab803fd0e1c5eb49ade86cd486a8dc3c576728032a84a5ccf"
+  },
+  {
+    "pack": "05-skills/hallmark/references/themes/bloom.jpg",
+    "repo": "payload/skills/hallmark/references/themes/bloom.jpg",
+    "installed_at": "skills/hallmark/references/themes/bloom.jpg",
+    "sha256": "6dcda211f142627c455ec800442038475341cfcbdae83c529753283427066081",
+    "sha256_lf": "6dcda211f142627c455ec800442038475341cfcbdae83c529753283427066081"
+  },
+  {
+    "pack": "05-skills/hallmark/references/themes/bloom.md",
+    "repo": "payload/skills/hallmark/references/themes/bloom.md",
+    "installed_at": "skills/hallmark/references/themes/bloom.md",
+    "sha256": "2965adfc995a5605078f45b4ca09a549f1587e6b960fa1986890850668543660",
+    "sha256_lf": "2965adfc995a5605078f45b4ca09a549f1587e6b960fa1986890850668543660"
+  },
+  {
+    "pack": "05-skills/hallmark/references/themes/blueprint.jpg",
+    "repo": "payload/skills/hallmark/references/themes/blueprint.jpg",
+    "installed_at": "skills/hallmark/references/themes/blueprint.jpg",
+    "sha256": "dec761657594b854635572f498e6d7428068b132e314df782b07d31e7e06d777",
+    "sha256_lf": "dec761657594b854635572f498e6d7428068b132e314df782b07d31e7e06d777"
+  },
+  {
+    "pack": "05-skills/hallmark/references/themes/blueprint.md",
+    "repo": "payload/skills/hallmark/references/themes/blueprint.md",
+    "installed_at": "skills/hallmark/references/themes/blueprint.md",
+    "sha256": "9de09c493df045f8b3f720638248d21f857b076be264e7ee0262e9877a5040d6",
+    "sha256_lf": "9de09c493df045f8b3f720638248d21f857b076be264e7ee0262e9877a5040d6"
+  },
+  {
+    "pack": "05-skills/hallmark/references/themes/broadside.jpg",
+    "repo": "payload/skills/hallmark/references/themes/broadside.jpg",
+    "installed_at": "skills/hallmark/references/themes/broadside.jpg",
+    "sha256": "86e56076fb37223a448c354ea1148890167e85036b3189c51296a176c97bc978",
+    "sha256_lf": "86e56076fb37223a448c354ea1148890167e85036b3189c51296a176c97bc978"
+  },
+  {
+    "pack": "05-skills/hallmark/references/themes/broadside.md",
+    "repo": "payload/skills/hallmark/references/themes/broadside.md",
+    "installed_at": "skills/hallmark/references/themes/broadside.md",
+    "sha256": "9a4ebceef5ca462a0b7ade98250a07ad33cfa40f97f6e78434e638fa9e626222",
+    "sha256_lf": "9a4ebceef5ca462a0b7ade98250a07ad33cfa40f97f6e78434e638fa9e626222"
+  },
+  {
+    "pack": "05-skills/hallmark/references/themes/brutal.jpg",
+    "repo": "payload/skills/hallmark/references/themes/brutal.jpg",
+    "installed_at": "skills/hallmark/references/themes/brutal.jpg",
+    "sha256": "cafd8a53eb83fe09efb0250f2006fd517c3218959afc337024bfe775e4bc7bbf",
+    "sha256_lf": "cafd8a53eb83fe09efb0250f2006fd517c3218959afc337024bfe775e4bc7bbf"
+  },
+  {
+    "pack": "05-skills/hallmark/references/themes/brutal.md",
+    "repo": "payload/skills/hallmark/references/themes/brutal.md",
+    "installed_at": "skills/hallmark/references/themes/brutal.md",
+    "sha256": "4e087f62f815635cbf9c1a7f2a58db77c610ae97f31bef70acd777871859aa97",
+    "sha256_lf": "4e087f62f815635cbf9c1a7f2a58db77c610ae97f31bef70acd777871859aa97"
+  },
+  {
+    "pack": "05-skills/hallmark/references/themes/carnival.jpg",
+    "repo": "payload/skills/hallmark/references/themes/carnival.jpg",
+    "installed_at": "skills/hallmark/references/themes/carnival.jpg",
+    "sha256": "9a0a139afb7f1ca0ac65d55157432c5ed91e23371b7b6116e3e6937b675712a5",
+    "sha256_lf": "9a0a139afb7f1ca0ac65d55157432c5ed91e23371b7b6116e3e6937b675712a5"
+  },
+  {
+    "pack": "05-skills/hallmark/references/themes/carnival.md",
+    "repo": "payload/skills/hallmark/references/themes/carnival.md",
+    "installed_at": "skills/hallmark/references/themes/carnival.md",
+    "sha256": "fc8e876e5a1c23bda103719b61a7440e203ff91ff050ebded53f732108c43b82",
+    "sha256_lf": "fc8e876e5a1c23bda103719b61a7440e203ff91ff050ebded53f732108c43b82"
+  },
+  {
+    "pack": "05-skills/hallmark/references/themes/cobalt.jpg",
+    "repo": "payload/skills/hallmark/references/themes/cobalt.jpg",
+    "installed_at": "skills/hallmark/references/themes/cobalt.jpg",
+    "sha256": "695cf419c3cc734c8fa9e6d23e0692385990bcd55349bb689300431392d0e3cd",
+    "sha256_lf": "695cf419c3cc734c8fa9e6d23e0692385990bcd55349bb689300431392d0e3cd"
+  },
+  {
+    "pack": "05-skills/hallmark/references/themes/cobalt.md",
+    "repo": "payload/skills/hallmark/references/themes/cobalt.md",
+    "installed_at": "skills/hallmark/references/themes/cobalt.md",
+    "sha256": "d24a5609f0c42e6ff6a1976d5f7f0651ec40eed69db5d6c4680c1385a65f2007",
+    "sha256_lf": "d24a5609f0c42e6ff6a1976d5f7f0651ec40eed69db5d6c4680c1385a65f2007"
+  },
+  {
+    "pack": "05-skills/hallmark/references/themes/console.jpg",
+    "repo": "payload/skills/hallmark/references/themes/console.jpg",
+    "installed_at": "skills/hallmark/references/themes/console.jpg",
+    "sha256": "665f07532303613d55c3832ac7141c2b007cb3a34bb245882bef3ab74e6e1cf1",
+    "sha256_lf": "665f07532303613d55c3832ac7141c2b007cb3a34bb245882bef3ab74e6e1cf1"
+  },
+  {
+    "pack": "05-skills/hallmark/references/themes/console.md",
+    "repo": "payload/skills/hallmark/references/themes/console.md",
+    "installed_at": "skills/hallmark/references/themes/console.md",
+    "sha256": "d52eda46d5480ab0123f78ab83ea1187813f4b26ddb02d0f4e61e2b511ae6309",
+    "sha256_lf": "d52eda46d5480ab0123f78ab83ea1187813f4b26ddb02d0f4e61e2b511ae6309"
+  },
+  {
+    "pack": "05-skills/hallmark/references/themes/coral.jpg",
+    "repo": "payload/skills/hallmark/references/themes/coral.jpg",
+    "installed_at": "skills/hallmark/references/themes/coral.jpg",
+    "sha256": "dbb7596586c0563122935ab602e627cc621fe6939013619b6a1c552d5f25a03e",
+    "sha256_lf": "dbb7596586c0563122935ab602e627cc621fe6939013619b6a1c552d5f25a03e"
+  },
+  {
+    "pack": "05-skills/hallmark/references/themes/coral.md",
+    "repo": "payload/skills/hallmark/references/themes/coral.md",
+    "installed_at": "skills/hallmark/references/themes/coral.md",
+    "sha256": "f8444921b5e751b3b9be94d448aaee502e509729aa89411ff887087777bb1c28",
+    "sha256_lf": "f8444921b5e751b3b9be94d448aaee502e509729aa89411ff887087777bb1c28"
+  },
+  {
+    "pack": "05-skills/hallmark/references/themes/darkroom.jpg",
+    "repo": "payload/skills/hallmark/references/themes/darkroom.jpg",
+    "installed_at": "skills/hallmark/references/themes/darkroom.jpg",
+    "sha256": "d8a7136d01223a7b6d2193d30c0c2e549e2967da65fb69fd33eee55df9f149c1",
+    "sha256_lf": "d8a7136d01223a7b6d2193d30c0c2e549e2967da65fb69fd33eee55df9f149c1"
+  },
+  {
+    "pack": "05-skills/hallmark/references/themes/darkroom.md",
+    "repo": "payload/skills/hallmark/references/themes/darkroom.md",
+    "installed_at": "skills/hallmark/references/themes/darkroom.md",
+    "sha256": "946e2233f310dde0304f970070408a7ff6581e3b442faaa14da80f39e31e9499",
+    "sha256_lf": "946e2233f310dde0304f970070408a7ff6581e3b442faaa14da80f39e31e9499"
+  },
+  {
+    "pack": "05-skills/hallmark/references/themes/dose.jpg",
+    "repo": "payload/skills/hallmark/references/themes/dose.jpg",
+    "installed_at": "skills/hallmark/references/themes/dose.jpg",
+    "sha256": "7bdf523555d21e8c89b04ab77af15a816a3c7bf84055c7c780b77d891cd4c735",
+    "sha256_lf": "7bdf523555d21e8c89b04ab77af15a816a3c7bf84055c7c780b77d891cd4c735"
+  },
+  {
+    "pack": "05-skills/hallmark/references/themes/dose.md",
+    "repo": "payload/skills/hallmark/references/themes/dose.md",
+    "installed_at": "skills/hallmark/references/themes/dose.md",
+    "sha256": "780a5e57a813b3008ac6a8c7287affc5516a68e51310d77df890286f6d6369f5",
+    "sha256_lf": "780a5e57a813b3008ac6a8c7287affc5516a68e51310d77df890286f6d6369f5"
+  },
+  {
+    "pack": "05-skills/hallmark/references/themes/dusk.jpg",
+    "repo": "payload/skills/hallmark/references/themes/dusk.jpg",
+    "installed_at": "skills/hallmark/references/themes/dusk.jpg",
+    "sha256": "f38be2c20d3d2183dfdb127fc2a9df71e3f16e413b8fda56146567a05e5a9514",
+    "sha256_lf": "f38be2c20d3d2183dfdb127fc2a9df71e3f16e413b8fda56146567a05e5a9514"
+  },
+  {
+    "pack": "05-skills/hallmark/references/themes/dusk.md",
+    "repo": "payload/skills/hallmark/references/themes/dusk.md",
+    "installed_at": "skills/hallmark/references/themes/dusk.md",
+    "sha256": "47cf0ede99ba90b88cec14eb2ec80d5fd9e003e9ed3878708275553e2c52d4bf",
+    "sha256_lf": "47cf0ede99ba90b88cec14eb2ec80d5fd9e003e9ed3878708275553e2c52d4bf"
+  },
+  {
+    "pack": "05-skills/hallmark/references/themes/editorial.jpg",
+    "repo": "payload/skills/hallmark/references/themes/editorial.jpg",
+    "installed_at": "skills/hallmark/references/themes/editorial.jpg",
+    "sha256": "a5f3ecdbe561cfbe06374706beac154bc47a77b12ac964c742b412eec6a3e0df",
+    "sha256_lf": "a5f3ecdbe561cfbe06374706beac154bc47a77b12ac964c742b412eec6a3e0df"
+  },
+  {
+    "pack": "05-skills/hallmark/references/themes/editorial.md",
+    "repo": "payload/skills/hallmark/references/themes/editorial.md",
+    "installed_at": "skills/hallmark/references/themes/editorial.md",
+    "sha256": "cafd967f2ac736c9927a749de1b8f4216183e3fa3adce95e638d124b2de5876f",
+    "sha256_lf": "cafd967f2ac736c9927a749de1b8f4216183e3fa3adce95e638d124b2de5876f"
+  },
+  {
+    "pack": "05-skills/hallmark/references/themes/formwork.jpg",
+    "repo": "payload/skills/hallmark/references/themes/formwork.jpg",
+    "installed_at": "skills/hallmark/references/themes/formwork.jpg",
+    "sha256": "dc52b44d0dd300d54d0fad5f18b032e7b29f0288da546fbfa4dd73baa0d4e255",
+    "sha256_lf": "dc52b44d0dd300d54d0fad5f18b032e7b29f0288da546fbfa4dd73baa0d4e255"
+  },
+  {
+    "pack": "05-skills/hallmark/references/themes/formwork.md",
+    "repo": "payload/skills/hallmark/references/themes/formwork.md",
+    "installed_at": "skills/hallmark/references/themes/formwork.md",
+    "sha256": "e2c0f88b2a83eec6ac076be536cd71cfd883bb21a234c268bba0ccd12e773416",
+    "sha256_lf": "e2c0f88b2a83eec6ac076be536cd71cfd883bb21a234c268bba0ccd12e773416"
+  },
+  {
+    "pack": "05-skills/hallmark/references/themes/furrow.jpg",
+    "repo": "payload/skills/hallmark/references/themes/furrow.jpg",
+    "installed_at": "skills/hallmark/references/themes/furrow.jpg",
+    "sha256": "2f6decb95504070eaf484c051da77a4ec0713d2b2cc55eabdc7d99ce740acc99",
+    "sha256_lf": "2f6decb95504070eaf484c051da77a4ec0713d2b2cc55eabdc7d99ce740acc99"
+  },
+  {
+    "pack": "05-skills/hallmark/references/themes/furrow.md",
+    "repo": "payload/skills/hallmark/references/themes/furrow.md",
+    "installed_at": "skills/hallmark/references/themes/furrow.md",
+    "sha256": "16f9ffc0fe9588754d25a96a32d6ca25e4b5a918623e90a1ee0dc5006953fc89",
+    "sha256_lf": "16f9ffc0fe9588754d25a96a32d6ca25e4b5a918623e90a1ee0dc5006953fc89"
+  },
+  {
+    "pack": "05-skills/hallmark/references/themes/garden.jpg",
+    "repo": "payload/skills/hallmark/references/themes/garden.jpg",
+    "installed_at": "skills/hallmark/references/themes/garden.jpg",
+    "sha256": "a0d649ed96f7462dbef00047685151a3ca3e8a72e9672f240b21a82d798a9740",
+    "sha256_lf": "a0d649ed96f7462dbef00047685151a3ca3e8a72e9672f240b21a82d798a9740"
+  },
+  {
+    "pack": "05-skills/hallmark/references/themes/garden.md",
+    "repo": "payload/skills/hallmark/references/themes/garden.md",
+    "installed_at": "skills/hallmark/references/themes/garden.md",
+    "sha256": "2f2197da95ef795a10eeef1c60f9ae98e62ca110c34260035b9789c1f3486185",
+    "sha256_lf": "2f2197da95ef795a10eeef1c60f9ae98e62ca110c34260035b9789c1f3486185"
+  },
+  {
+    "pack": "05-skills/hallmark/references/themes/grid.jpg",
+    "repo": "payload/skills/hallmark/references/themes/grid.jpg",
+    "installed_at": "skills/hallmark/references/themes/grid.jpg",
+    "sha256": "511ed8d58f8abb1fe86d53166c3966c4046c1000ccc7075d6c312ba3efc67f70",
+    "sha256_lf": "511ed8d58f8abb1fe86d53166c3966c4046c1000ccc7075d6c312ba3efc67f70"
+  },
+  {
+    "pack": "05-skills/hallmark/references/themes/grid.md",
+    "repo": "payload/skills/hallmark/references/themes/grid.md",
+    "installed_at": "skills/hallmark/references/themes/grid.md",
+    "sha256": "0f81c1efa45ec32ae3bd24b15eb96144edff8e018eec7a3d6a6a8bb25e42f520",
+    "sha256_lf": "0f81c1efa45ec32ae3bd24b15eb96144edff8e018eec7a3d6a6a8bb25e42f520"
+  },
+  {
+    "pack": "05-skills/hallmark/references/themes/halftone.jpg",
+    "repo": "payload/skills/hallmark/references/themes/halftone.jpg",
+    "installed_at": "skills/hallmark/references/themes/halftone.jpg",
+    "sha256": "a84cb1876366b5e1070ce1a70b22f263a7a963372587ff92076c0492c7f2d9db",
+    "sha256_lf": "a84cb1876366b5e1070ce1a70b22f263a7a963372587ff92076c0492c7f2d9db"
+  },
+  {
+    "pack": "05-skills/hallmark/references/themes/halftone.md",
+    "repo": "payload/skills/hallmark/references/themes/halftone.md",
+    "installed_at": "skills/hallmark/references/themes/halftone.md",
+    "sha256": "a19da44930e5c475cf9c285f939d959ab590da17faea21426387332a5d8ca682",
+    "sha256_lf": "a19da44930e5c475cf9c285f939d959ab590da17faea21426387332a5d8ca682"
+  },
+  {
+    "pack": "05-skills/hallmark/references/themes/hedgerow.jpg",
+    "repo": "payload/skills/hallmark/references/themes/hedgerow.jpg",
+    "installed_at": "skills/hallmark/references/themes/hedgerow.jpg",
+    "sha256": "ac564eb0f3c8553cd5a077b8f5da38a1bb1d2c7a78e4e8ebb8aafe91ee448f95",
+    "sha256_lf": "ac564eb0f3c8553cd5a077b8f5da38a1bb1d2c7a78e4e8ebb8aafe91ee448f95"
+  },
+  {
+    "pack": "05-skills/hallmark/references/themes/hedgerow.md",
+    "repo": "payload/skills/hallmark/references/themes/hedgerow.md",
+    "installed_at": "skills/hallmark/references/themes/hedgerow.md",
+    "sha256": "23371c7894032ccc4f51236539d535d9c47b201b3007a40949db234c19b84ddd",
+    "sha256_lf": "23371c7894032ccc4f51236539d535d9c47b201b3007a40949db234c19b84ddd"
+  },
+  {
+    "pack": "05-skills/hallmark/references/themes/hum.jpg",
+    "repo": "payload/skills/hallmark/references/themes/hum.jpg",
+    "installed_at": "skills/hallmark/references/themes/hum.jpg",
+    "sha256": "22c73e8bdb16fd96165cc4d003a82cf321e1d274f6c3c538015e0d3ae823802e",
+    "sha256_lf": "22c73e8bdb16fd96165cc4d003a82cf321e1d274f6c3c538015e0d3ae823802e"
+  },
+  {
+    "pack": "05-skills/hallmark/references/themes/hum.md",
+    "repo": "payload/skills/hallmark/references/themes/hum.md",
+    "installed_at": "skills/hallmark/references/themes/hum.md",
+    "sha256": "180ef874894a544230f4e3a867a7120da3a79d5994d15737e806e0373e4cc5c7",
+    "sha256_lf": "180ef874894a544230f4e3a867a7120da3a79d5994d15737e806e0373e4cc5c7"
+  },
+  {
+    "pack": "05-skills/hallmark/references/themes/index.json",
+    "repo": "payload/skills/hallmark/references/themes/index.json",
+    "installed_at": "skills/hallmark/references/themes/index.json",
+    "sha256": "df8299332a805b9c8504c10574258a98057fb9e63e87e85a7e8bbb76333fb403",
+    "sha256_lf": "df8299332a805b9c8504c10574258a98057fb9e63e87e85a7e8bbb76333fb403"
+  },
+  {
+    "pack": "05-skills/hallmark/references/themes/ink.jpg",
+    "repo": "payload/skills/hallmark/references/themes/ink.jpg",
+    "installed_at": "skills/hallmark/references/themes/ink.jpg",
+    "sha256": "18802cca6d7428c50a0e9d3051f7aa321f0f4749e14dd941107b30266346c62e",
+    "sha256_lf": "18802cca6d7428c50a0e9d3051f7aa321f0f4749e14dd941107b30266346c62e"
+  },
+  {
+    "pack": "05-skills/hallmark/references/themes/ink.md",
+    "repo": "payload/skills/hallmark/references/themes/ink.md",
+    "installed_at": "skills/hallmark/references/themes/ink.md",
+    "sha256": "7dd419ccec59a33461c86d894856085edaeddd6139f8eb9eff22f22e45fbdf9f",
+    "sha256_lf": "7dd419ccec59a33461c86d894856085edaeddd6139f8eb9eff22f22e45fbdf9f"
+  },
+  {
+    "pack": "05-skills/hallmark/references/themes/kiln.jpg",
+    "repo": "payload/skills/hallmark/references/themes/kiln.jpg",
+    "installed_at": "skills/hallmark/references/themes/kiln.jpg",
+    "sha256": "2ef6da1860464f7d189d6e0e371b97b1e17b4ee107e1e68b7555aafc96685123",
+    "sha256_lf": "2ef6da1860464f7d189d6e0e371b97b1e17b4ee107e1e68b7555aafc96685123"
+  },
+  {
+    "pack": "05-skills/hallmark/references/themes/kiln.md",
+    "repo": "payload/skills/hallmark/references/themes/kiln.md",
+    "installed_at": "skills/hallmark/references/themes/kiln.md",
+    "sha256": "94909cf878a89b88ba96d3a69dfccb64ce32968a3a4544a920a9c927d5a56fd4",
+    "sha256_lf": "94909cf878a89b88ba96d3a69dfccb64ce32968a3a4544a920a9c927d5a56fd4"
+  },
+  {
+    "pack": "05-skills/hallmark/references/themes/loom.jpg",
+    "repo": "payload/skills/hallmark/references/themes/loom.jpg",
+    "installed_at": "skills/hallmark/references/themes/loom.jpg",
+    "sha256": "a71f16f59ec0c9710d5f6cd4f3eec0fbe3536e31b194b1e25dbb924618765f64",
+    "sha256_lf": "a71f16f59ec0c9710d5f6cd4f3eec0fbe3536e31b194b1e25dbb924618765f64"
+  },
+  {
+    "pack": "05-skills/hallmark/references/themes/loom.md",
+    "repo": "payload/skills/hallmark/references/themes/loom.md",
+    "installed_at": "skills/hallmark/references/themes/loom.md",
+    "sha256": "835789caae2ef444b1db967411856f79ddcf844c8a988f75a62f3f5d4b53d819",
+    "sha256_lf": "835789caae2ef444b1db967411856f79ddcf844c8a988f75a62f3f5d4b53d819"
+  },
+  {
+    "pack": "05-skills/hallmark/references/themes/lumen.jpg",
+    "repo": "payload/skills/hallmark/references/themes/lumen.jpg",
+    "installed_at": "skills/hallmark/references/themes/lumen.jpg",
+    "sha256": "d7f66625e11d7d495c89748c6f43db49b5542040d1c091a109802a7098d1cc84",
+    "sha256_lf": "d7f66625e11d7d495c89748c6f43db49b5542040d1c091a109802a7098d1cc84"
+  },
+  {
+    "pack": "05-skills/hallmark/references/themes/lumen.md",
+    "repo": "payload/skills/hallmark/references/themes/lumen.md",
+    "installed_at": "skills/hallmark/references/themes/lumen.md",
+    "sha256": "8a202bde1d9eb9b4615b0f0e2279adeb5c95a82dedd003fdba1613c70b715450",
+    "sha256_lf": "8a202bde1d9eb9b4615b0f0e2279adeb5c95a82dedd003fdba1613c70b715450"
+  },
+  {
+    "pack": "05-skills/hallmark/references/themes/manifesto.jpg",
+    "repo": "payload/skills/hallmark/references/themes/manifesto.jpg",
+    "installed_at": "skills/hallmark/references/themes/manifesto.jpg",
+    "sha256": "c900e70ac48d01d133acdcbda0310d9c0fd53a0474d7a1b1344291a70b3c89bd",
+    "sha256_lf": "c900e70ac48d01d133acdcbda0310d9c0fd53a0474d7a1b1344291a70b3c89bd"
+  },
+  {
+    "pack": "05-skills/hallmark/references/themes/manifesto.md",
+    "repo": "payload/skills/hallmark/references/themes/manifesto.md",
+    "installed_at": "skills/hallmark/references/themes/manifesto.md",
+    "sha256": "326c63f732128ed5cda8ff3187793ffe9bcb56936387367cc932b5a3e216b862",
+    "sha256_lf": "326c63f732128ed5cda8ff3187793ffe9bcb56936387367cc932b5a3e216b862"
+  },
+  {
+    "pack": "05-skills/hallmark/references/themes/midnight.jpg",
+    "repo": "payload/skills/hallmark/references/themes/midnight.jpg",
+    "installed_at": "skills/hallmark/references/themes/midnight.jpg",
+    "sha256": "6f49568b885ba74035faa5a2608c51a079cd7a2eebe7e1967fa0225958b0c82e",
+    "sha256_lf": "6f49568b885ba74035faa5a2608c51a079cd7a2eebe7e1967fa0225958b0c82e"
+  },
+  {
+    "pack": "05-skills/hallmark/references/themes/midnight.md",
+    "repo": "payload/skills/hallmark/references/themes/midnight.md",
+    "installed_at": "skills/hallmark/references/themes/midnight.md",
+    "sha256": "cb29035685b63a56762c291dc4246c6a66c6ec6d8bc4559d6823ee2d2a80e40d",
+    "sha256_lf": "cb29035685b63a56762c291dc4246c6a66c6ec6d8bc4559d6823ee2d2a80e40d"
+  },
+  {
+    "pack": "05-skills/hallmark/references/themes/newsprint.jpg",
+    "repo": "payload/skills/hallmark/references/themes/newsprint.jpg",
+    "installed_at": "skills/hallmark/references/themes/newsprint.jpg",
+    "sha256": "fdac566be09a8ea6891f79ccb70f1f2c47abe12a3fb476c3874031eece6e0fe6",
+    "sha256_lf": "fdac566be09a8ea6891f79ccb70f1f2c47abe12a3fb476c3874031eece6e0fe6"
+  },
+  {
+    "pack": "05-skills/hallmark/references/themes/newsprint.md",
+    "repo": "payload/skills/hallmark/references/themes/newsprint.md",
+    "installed_at": "skills/hallmark/references/themes/newsprint.md",
+    "sha256": "2fd477d10f9dde600993486a7dab5ff5f643c8821833cb3837f176005eafb5e0",
+    "sha256_lf": "2fd477d10f9dde600993486a7dab5ff5f643c8821833cb3837f176005eafb5e0"
+  },
+  {
+    "pack": "05-skills/hallmark/references/themes/overprint.jpg",
+    "repo": "payload/skills/hallmark/references/themes/overprint.jpg",
+    "installed_at": "skills/hallmark/references/themes/overprint.jpg",
+    "sha256": "415342811cfecc22d267d93afb07c12dfa12d8823a2e2c5852c9a587d9f462de",
+    "sha256_lf": "415342811cfecc22d267d93afb07c12dfa12d8823a2e2c5852c9a587d9f462de"
+  },
+  {
+    "pack": "05-skills/hallmark/references/themes/overprint.md",
+    "repo": "payload/skills/hallmark/references/themes/overprint.md",
+    "installed_at": "skills/hallmark/references/themes/overprint.md",
+    "sha256": "79010c27e619fad842da18559658c83cec86172266b00bb5933871b3f7bf852b",
+    "sha256_lf": "79010c27e619fad842da18559658c83cec86172266b00bb5933871b3f7bf852b"
+  },
+  {
+    "pack": "05-skills/hallmark/references/themes/pasteup.jpg",
+    "repo": "payload/skills/hallmark/references/themes/pasteup.jpg",
+    "installed_at": "skills/hallmark/references/themes/pasteup.jpg",
+    "sha256": "664423a43e4906e63ab9610b8c327af1baddb611a14109b453a7ed04505ba0c2",
+    "sha256_lf": "664423a43e4906e63ab9610b8c327af1baddb611a14109b453a7ed04505ba0c2"
+  },
+  {
+    "pack": "05-skills/hallmark/references/themes/pasteup.md",
+    "repo": "payload/skills/hallmark/references/themes/pasteup.md",
+    "installed_at": "skills/hallmark/references/themes/pasteup.md",
+    "sha256": "7e8d5013bda81e945f27b401f967f08e41bbc7d10ddc14d1ef7dd91c25f95c3d",
+    "sha256_lf": "7e8d5013bda81e945f27b401f967f08e41bbc7d10ddc14d1ef7dd91c25f95c3d"
+  },
+  {
+    "pack": "05-skills/hallmark/references/themes/piste.jpg",
+    "repo": "payload/skills/hallmark/references/themes/piste.jpg",
+    "installed_at": "skills/hallmark/references/themes/piste.jpg",
+    "sha256": "39c73cb56040dc5ab13b6bb7927d0dfdacfc7802ef1d22d9c1c13f39faf1500b",
+    "sha256_lf": "39c73cb56040dc5ab13b6bb7927d0dfdacfc7802ef1d22d9c1c13f39faf1500b"
+  },
+  {
+    "pack": "05-skills/hallmark/references/themes/piste.md",
+    "repo": "payload/skills/hallmark/references/themes/piste.md",
+    "installed_at": "skills/hallmark/references/themes/piste.md",
+    "sha256": "79c1b4b7297467d9a0d057ad790d475f4b88a41af1867172dfd77b951cda803a",
+    "sha256_lf": "79c1b4b7297467d9a0d057ad790d475f4b88a41af1867172dfd77b951cda803a"
+  },
+  {
+    "pack": "05-skills/hallmark/references/themes/refract.jpg",
+    "repo": "payload/skills/hallmark/references/themes/refract.jpg",
+    "installed_at": "skills/hallmark/references/themes/refract.jpg",
+    "sha256": "43b0c7245536dc7f83608b3881221a90e68f78a6c7223006b75e47cc86b1a719",
+    "sha256_lf": "43b0c7245536dc7f83608b3881221a90e68f78a6c7223006b75e47cc86b1a719"
+  },
+  {
+    "pack": "05-skills/hallmark/references/themes/refract.md",
+    "repo": "payload/skills/hallmark/references/themes/refract.md",
+    "installed_at": "skills/hallmark/references/themes/refract.md",
+    "sha256": "74970c11c5759685610608fc569e18eb409f12ac479c3409c9156a8a352c5fdc",
+    "sha256_lf": "74970c11c5759685610608fc569e18eb409f12ac479c3409c9156a8a352c5fdc"
+  },
+  {
+    "pack": "05-skills/hallmark/references/themes/ribbon.jpg",
+    "repo": "payload/skills/hallmark/references/themes/ribbon.jpg",
+    "installed_at": "skills/hallmark/references/themes/ribbon.jpg",
+    "sha256": "a5848452f358eb7e8f7fae3b1592fe04b9f1fb09c92551c372def878529512d0",
+    "sha256_lf": "a5848452f358eb7e8f7fae3b1592fe04b9f1fb09c92551c372def878529512d0"
+  },
+  {
+    "pack": "05-skills/hallmark/references/themes/ribbon.md",
+    "repo": "payload/skills/hallmark/references/themes/ribbon.md",
+    "installed_at": "skills/hallmark/references/themes/ribbon.md",
+    "sha256": "0bcc8708d3ceec0cb246fa134a4fcf8e019fa8012af1f87646737cc1c8b324a1",
+    "sha256_lf": "0bcc8708d3ceec0cb246fa134a4fcf8e019fa8012af1f87646737cc1c8b324a1"
+  },
+  {
+    "pack": "05-skills/hallmark/references/themes/rim.jpg",
+    "repo": "payload/skills/hallmark/references/themes/rim.jpg",
+    "installed_at": "skills/hallmark/references/themes/rim.jpg",
+    "sha256": "bbc6f916316da6f6d03b01dfc798efd0c8f8b94d80155049f0a1a497a3560811",
+    "sha256_lf": "bbc6f916316da6f6d03b01dfc798efd0c8f8b94d80155049f0a1a497a3560811"
+  },
+  {
+    "pack": "05-skills/hallmark/references/themes/rim.md",
+    "repo": "payload/skills/hallmark/references/themes/rim.md",
+    "installed_at": "skills/hallmark/references/themes/rim.md",
+    "sha256": "ac134e8ccbda501b660f4cd83ace56059f2b254b187f574a612460c7c796e49f",
+    "sha256_lf": "ac134e8ccbda501b660f4cd83ace56059f2b254b187f574a612460c7c796e49f"
+  },
+  {
+    "pack": "05-skills/hallmark/references/themes/riso.jpg",
+    "repo": "payload/skills/hallmark/references/themes/riso.jpg",
+    "installed_at": "skills/hallmark/references/themes/riso.jpg",
+    "sha256": "b02f0c68760cab70cf971cacc2669fe32472f1f3eb2998f8c7706c4fafb678ca",
+    "sha256_lf": "b02f0c68760cab70cf971cacc2669fe32472f1f3eb2998f8c7706c4fafb678ca"
+  },
+  {
+    "pack": "05-skills/hallmark/references/themes/riso.md",
+    "repo": "payload/skills/hallmark/references/themes/riso.md",
+    "installed_at": "skills/hallmark/references/themes/riso.md",
+    "sha256": "333577e736f793c94161994dd8087c583ab53dd5af50a5dc63c3bfc5f4bf28ad",
+    "sha256_lf": "333577e736f793c94161994dd8087c583ab53dd5af50a5dc63c3bfc5f4bf28ad"
+  },
+  {
+    "pack": "05-skills/hallmark/references/themes/solstice.jpg",
+    "repo": "payload/skills/hallmark/references/themes/solstice.jpg",
+    "installed_at": "skills/hallmark/references/themes/solstice.jpg",
+    "sha256": "5d6bcf025a79c4b117ccc2ede5cc69f5334bfc65ed8107b1068a9689cfff7abf",
+    "sha256_lf": "5d6bcf025a79c4b117ccc2ede5cc69f5334bfc65ed8107b1068a9689cfff7abf"
+  },
+  {
+    "pack": "05-skills/hallmark/references/themes/solstice.md",
+    "repo": "payload/skills/hallmark/references/themes/solstice.md",
+    "installed_at": "skills/hallmark/references/themes/solstice.md",
+    "sha256": "6813e8556faa9e34637ce52a2cefadbf74795e7956503f14cf1c672c3f92c5d1",
+    "sha256_lf": "6813e8556faa9e34637ce52a2cefadbf74795e7956503f14cf1c672c3f92c5d1"
+  },
+  {
+    "pack": "05-skills/hallmark/references/themes/specimen.jpg",
+    "repo": "payload/skills/hallmark/references/themes/specimen.jpg",
+    "installed_at": "skills/hallmark/references/themes/specimen.jpg",
+    "sha256": "9735716ddda7bba0f62d1d35743256ad1b718038fbd6924e341bceb3dfa62150",
+    "sha256_lf": "9735716ddda7bba0f62d1d35743256ad1b718038fbd6924e341bceb3dfa62150"
+  },
+  {
+    "pack": "05-skills/hallmark/references/themes/specimen.md",
+    "repo": "payload/skills/hallmark/references/themes/specimen.md",
+    "installed_at": "skills/hallmark/references/themes/specimen.md",
+    "sha256": "f9ed583e2adfe885eced94374fed3f697ff932705eee029a9c226d4db39667ed",
+    "sha256_lf": "f9ed583e2adfe885eced94374fed3f697ff932705eee029a9c226d4db39667ed"
+  },
+  {
+    "pack": "05-skills/hallmark/references/themes/spore.jpg",
+    "repo": "payload/skills/hallmark/references/themes/spore.jpg",
+    "installed_at": "skills/hallmark/references/themes/spore.jpg",
+    "sha256": "b2493347715fb49d6d30040ae3ea85885571709bd588f2222722a1af317a704a",
+    "sha256_lf": "b2493347715fb49d6d30040ae3ea85885571709bd588f2222722a1af317a704a"
+  },
+  {
+    "pack": "05-skills/hallmark/references/themes/spore.md",
+    "repo": "payload/skills/hallmark/references/themes/spore.md",
+    "installed_at": "skills/hallmark/references/themes/spore.md",
+    "sha256": "2b4f30287f6779404104a98bddd2f2876f000abad2533228c9aa105b3c30ca7d",
+    "sha256_lf": "2b4f30287f6779404104a98bddd2f2876f000abad2533228c9aa105b3c30ca7d"
+  },
+  {
+    "pack": "05-skills/hallmark/references/themes/sport.jpg",
+    "repo": "payload/skills/hallmark/references/themes/sport.jpg",
+    "installed_at": "skills/hallmark/references/themes/sport.jpg",
+    "sha256": "51a51694055ef122de7e6be01f5d881fec696d86df5192557aefd90d12bb1b84",
+    "sha256_lf": "51a51694055ef122de7e6be01f5d881fec696d86df5192557aefd90d12bb1b84"
+  },
+  {
+    "pack": "05-skills/hallmark/references/themes/sport.md",
+    "repo": "payload/skills/hallmark/references/themes/sport.md",
+    "installed_at": "skills/hallmark/references/themes/sport.md",
+    "sha256": "5714651df7c46925357d33876e498ac4ecaa3c8b3d50bee5ead3bf7ce54d863a",
+    "sha256_lf": "5714651df7c46925357d33876e498ac4ecaa3c8b3d50bee5ead3bf7ce54d863a"
+  },
+  {
+    "pack": "05-skills/hallmark/references/themes/squeeze.jpg",
+    "repo": "payload/skills/hallmark/references/themes/squeeze.jpg",
+    "installed_at": "skills/hallmark/references/themes/squeeze.jpg",
+    "sha256": "570529d5d842ca14a60d9689d3c4997eac31e463c5a9df3d386d39f36091224b",
+    "sha256_lf": "570529d5d842ca14a60d9689d3c4997eac31e463c5a9df3d386d39f36091224b"
+  },
+  {
+    "pack": "05-skills/hallmark/references/themes/squeeze.md",
+    "repo": "payload/skills/hallmark/references/themes/squeeze.md",
+    "installed_at": "skills/hallmark/references/themes/squeeze.md",
+    "sha256": "d007f2f09a6d8da5cf53a9fe98bc9cb3ead7f013d71569b605e65e7f295b2cb5",
+    "sha256_lf": "d007f2f09a6d8da5cf53a9fe98bc9cb3ead7f013d71569b605e65e7f295b2cb5"
+  },
+  {
+    "pack": "05-skills/hallmark/references/themes/sticker.jpg",
+    "repo": "payload/skills/hallmark/references/themes/sticker.jpg",
+    "installed_at": "skills/hallmark/references/themes/sticker.jpg",
+    "sha256": "ccbf946b230eae35f8ba35b7ceb362bd082b0c6240e1ff3695a07f9e948d6320",
+    "sha256_lf": "ccbf946b230eae35f8ba35b7ceb362bd082b0c6240e1ff3695a07f9e948d6320"
+  },
+  {
+    "pack": "05-skills/hallmark/references/themes/sticker.md",
+    "repo": "payload/skills/hallmark/references/themes/sticker.md",
+    "installed_at": "skills/hallmark/references/themes/sticker.md",
+    "sha256": "5c266f131f506d7ba2e51e12015141e8d1ac394523ce537504a6b21336f0f953",
+    "sha256_lf": "5c266f131f506d7ba2e51e12015141e8d1ac394523ce537504a6b21336f0f953"
+  },
+  {
+    "pack": "05-skills/hallmark/references/themes/studio.jpg",
+    "repo": "payload/skills/hallmark/references/themes/studio.jpg",
+    "installed_at": "skills/hallmark/references/themes/studio.jpg",
+    "sha256": "d4b8670539d50ebc17c64ad5f13fbd01dbf6bf47cc3421baf688a496112d6daf",
+    "sha256_lf": "d4b8670539d50ebc17c64ad5f13fbd01dbf6bf47cc3421baf688a496112d6daf"
+  },
+  {
+    "pack": "05-skills/hallmark/references/themes/studio.md",
+    "repo": "payload/skills/hallmark/references/themes/studio.md",
+    "installed_at": "skills/hallmark/references/themes/studio.md",
+    "sha256": "7e0352a5de3485bbc61043c412258490aa7750eab03a5534a422a717f44db194",
+    "sha256_lf": "7e0352a5de3485bbc61043c412258490aa7750eab03a5534a422a717f44db194"
+  },
+  {
+    "pack": "05-skills/hallmark/references/themes/terminal.jpg",
+    "repo": "payload/skills/hallmark/references/themes/terminal.jpg",
+    "installed_at": "skills/hallmark/references/themes/terminal.jpg",
+    "sha256": "0843a7120876a7e4f89acbd122fe7f6d4dab72caad99746c5a574eb8f5a8552e",
+    "sha256_lf": "0843a7120876a7e4f89acbd122fe7f6d4dab72caad99746c5a574eb8f5a8552e"
+  },
+  {
+    "pack": "05-skills/hallmark/references/themes/terminal.md",
+    "repo": "payload/skills/hallmark/references/themes/terminal.md",
+    "installed_at": "skills/hallmark/references/themes/terminal.md",
+    "sha256": "cb5104b31d31e2ece13cc736a2ee5819d9b80a3272ff5a905e0f772c2865f19e",
+    "sha256_lf": "cb5104b31d31e2ece13cc736a2ee5819d9b80a3272ff5a905e0f772c2865f19e"
+  },
+  {
+    "pack": "05-skills/hallmark/references/themes/terrazzo.jpg",
+    "repo": "payload/skills/hallmark/references/themes/terrazzo.jpg",
+    "installed_at": "skills/hallmark/references/themes/terrazzo.jpg",
+    "sha256": "8f22ce7fac3fed6479bac56a0061477491c9055398b5bc7d7d856d66188f357d",
+    "sha256_lf": "8f22ce7fac3fed6479bac56a0061477491c9055398b5bc7d7d856d66188f357d"
+  },
+  {
+    "pack": "05-skills/hallmark/references/themes/terrazzo.md",
+    "repo": "payload/skills/hallmark/references/themes/terrazzo.md",
+    "installed_at": "skills/hallmark/references/themes/terrazzo.md",
+    "sha256": "9f2a03aa0670fe7caef3789e077eb917483034a38c756b45977ea9f27ee1dc02",
+    "sha256_lf": "9f2a03aa0670fe7caef3789e077eb917483034a38c756b45977ea9f27ee1dc02"
+  },
+  {
+    "pack": "05-skills/hallmark/references/themes/ultraviolet.jpg",
+    "repo": "payload/skills/hallmark/references/themes/ultraviolet.jpg",
+    "installed_at": "skills/hallmark/references/themes/ultraviolet.jpg",
+    "sha256": "66cb4ad24a61fb16f5cf0e97f4d81be67993e3d237d4af0b67e71e4f0e6961db",
+    "sha256_lf": "66cb4ad24a61fb16f5cf0e97f4d81be67993e3d237d4af0b67e71e4f0e6961db"
+  },
+  {
+    "pack": "05-skills/hallmark/references/themes/ultraviolet.md",
+    "repo": "payload/skills/hallmark/references/themes/ultraviolet.md",
+    "installed_at": "skills/hallmark/references/themes/ultraviolet.md",
+    "sha256": "b706384370d51ad849faaa87f80c2beeff9d14ca2f253385d20e28ac09bc9569",
+    "sha256_lf": "b706384370d51ad849faaa87f80c2beeff9d14ca2f253385d20e28ac09bc9569"
+  },
+  {
+    "pack": "05-skills/hallmark/references/themes/vantage.jpg",
+    "repo": "payload/skills/hallmark/references/themes/vantage.jpg",
+    "installed_at": "skills/hallmark/references/themes/vantage.jpg",
+    "sha256": "d64768e186ad62d32f1546c5c97ce55f4e97d1879686a0bbfdf394de353916a4",
+    "sha256_lf": "d64768e186ad62d32f1546c5c97ce55f4e97d1879686a0bbfdf394de353916a4"
+  },
+  {
+    "pack": "05-skills/hallmark/references/themes/vantage.md",
+    "repo": "payload/skills/hallmark/references/themes/vantage.md",
+    "installed_at": "skills/hallmark/references/themes/vantage.md",
+    "sha256": "08405ead89e69270c2fa5946c6d3f7905168d10eb06a34502c5c129d262f96db",
+    "sha256_lf": "08405ead89e69270c2fa5946c6d3f7905168d10eb06a34502c5c129d262f96db"
+  },
+  {
+    "pack": "05-skills/hallmark/references/themes/vellum.jpg",
+    "repo": "payload/skills/hallmark/references/themes/vellum.jpg",
+    "installed_at": "skills/hallmark/references/themes/vellum.jpg",
+    "sha256": "4b4116033ad5ea3a65e0ec720f43e0e9cd1c7494e4ae95c09610782240b9a48d",
+    "sha256_lf": "4b4116033ad5ea3a65e0ec720f43e0e9cd1c7494e4ae95c09610782240b9a48d"
+  },
+  {
+    "pack": "05-skills/hallmark/references/themes/vellum.md",
+    "repo": "payload/skills/hallmark/references/themes/vellum.md",
+    "installed_at": "skills/hallmark/references/themes/vellum.md",
+    "sha256": "4914d9e6ca704d55b57fe6630ca2edc1ed49dea0fdd0912c97d437939fd3e893",
+    "sha256_lf": "4914d9e6ca704d55b57fe6630ca2edc1ed49dea0fdd0912c97d437939fd3e893"
+  },
+  {
+    "pack": "05-skills/hallmark/references/themes/wayfind.jpg",
+    "repo": "payload/skills/hallmark/references/themes/wayfind.jpg",
+    "installed_at": "skills/hallmark/references/themes/wayfind.jpg",
+    "sha256": "3fc6e32cd77b7455a10237ba7424048bd2fb94bdc955bdd5395da173d9b3b574",
+    "sha256_lf": "3fc6e32cd77b7455a10237ba7424048bd2fb94bdc955bdd5395da173d9b3b574"
+  },
+  {
+    "pack": "05-skills/hallmark/references/themes/wayfind.md",
+    "repo": "payload/skills/hallmark/references/themes/wayfind.md",
+    "installed_at": "skills/hallmark/references/themes/wayfind.md",
+    "sha256": "7849521b843f82a3956727e0d06a595d6ecec5f501f4c31f577bf4bd1bae9e2c",
+    "sha256_lf": "7849521b843f82a3956727e0d06a595d6ecec5f501f4c31f577bf4bd1bae9e2c"
+  },
+  {
+    "pack": "05-skills/hallmark/references/themes/werkstatt.jpg",
+    "repo": "payload/skills/hallmark/references/themes/werkstatt.jpg",
+    "installed_at": "skills/hallmark/references/themes/werkstatt.jpg",
+    "sha256": "5cd183720988973306ff568fa7f21a7c7cb345621dfa1d288a33d22f785aac20",
+    "sha256_lf": "5cd183720988973306ff568fa7f21a7c7cb345621dfa1d288a33d22f785aac20"
+  },
+  {
+    "pack": "05-skills/hallmark/references/themes/werkstatt.md",
+    "repo": "payload/skills/hallmark/references/themes/werkstatt.md",
+    "installed_at": "skills/hallmark/references/themes/werkstatt.md",
+    "sha256": "b3a31e2acb8a15ca46bbb194f23b9555ef19d9c70ceb1cf67d9fde3b55b7e08a",
+    "sha256_lf": "b3a31e2acb8a15ca46bbb194f23b9555ef19d9c70ceb1cf67d9fde3b55b7e08a"
+  },
+  {
+    "pack": "05-skills/hallmark/scripts/capture.mjs",
+    "repo": "payload/skills/hallmark/scripts/capture.mjs",
+    "installed_at": "skills/hallmark/scripts/capture.mjs",
+    "sha256": "0364ca6591a722d14b935f201956c300d688b8f9f73879b00df92242dc26610b",
+    "sha256_lf": "0364ca6591a722d14b935f201956c300d688b8f9f73879b00df92242dc26610b"
+  },
+  {
+    "pack": "05-skills/hallmark/scripts/capture.test.mjs",
+    "repo": "payload/skills/hallmark/scripts/capture.test.mjs",
+    "installed_at": "skills/hallmark/scripts/capture.test.mjs",
+    "sha256": "f2e5e44e78ef3fb71a10c2a54706cbd7adafe904f907f6f7b845254d6a924ca0",
+    "sha256_lf": "f2e5e44e78ef3fb71a10c2a54706cbd7adafe904f907f6f7b845254d6a924ca0"
+  },
+  {
+    "pack": "05-skills/hallmark/scripts/fixtures/exemplars/atmospheric.html",
+    "repo": "payload/skills/hallmark/scripts/fixtures/exemplars/atmospheric.html",
+    "installed_at": "skills/hallmark/scripts/fixtures/exemplars/atmospheric.html",
+    "sha256": "10a6bc8f44a8ad3e3874dddaf2444888d95efb4b3e72c6d403cd258259202f8d",
+    "sha256_lf": "10a6bc8f44a8ad3e3874dddaf2444888d95efb4b3e72c6d403cd258259202f8d"
+  },
+  {
+    "pack": "05-skills/hallmark/scripts/fixtures/exemplars/editorial.html",
+    "repo": "payload/skills/hallmark/scripts/fixtures/exemplars/editorial.html",
+    "installed_at": "skills/hallmark/scripts/fixtures/exemplars/editorial.html",
+    "sha256": "51c9177037da9ec810d81ce809df358c48b33c19c88dbda5192c2d1508ee5c50",
+    "sha256_lf": "51c9177037da9ec810d81ce809df358c48b33c19c88dbda5192c2d1508ee5c50"
+  },
+  {
+    "pack": "05-skills/hallmark/scripts/fixtures/exemplars/modern-minimal.html",
+    "repo": "payload/skills/hallmark/scripts/fixtures/exemplars/modern-minimal.html",
+    "installed_at": "skills/hallmark/scripts/fixtures/exemplars/modern-minimal.html",
+    "sha256": "48ac41ca0235a29b613a736e989864e845497d348fc2183156e0790785adac6a",
+    "sha256_lf": "48ac41ca0235a29b613a736e989864e845497d348fc2183156e0790785adac6a"
+  },
+  {
+    "pack": "05-skills/hallmark/scripts/fixtures/exemplars/playful.html",
+    "repo": "payload/skills/hallmark/scripts/fixtures/exemplars/playful.html",
+    "installed_at": "skills/hallmark/scripts/fixtures/exemplars/playful.html",
+    "sha256": "810cddd441d619cfceb6815177c60412d7f91a1e30971141830f77f29a1c6615",
+    "sha256_lf": "810cddd441d619cfceb6815177c60412d7f91a1e30971141830f77f29a1c6615"
+  },
+  {
+    "pack": "05-skills/hallmark/scripts/fixtures/eyebrow-fail/index.html",
+    "repo": "payload/skills/hallmark/scripts/fixtures/eyebrow-fail/index.html",
+    "installed_at": "skills/hallmark/scripts/fixtures/eyebrow-fail/index.html",
+    "sha256": "777a97f5c636bdd32623ab92f53b003a48e21b0ccda33166a0ddcedad41074b8",
+    "sha256_lf": "777a97f5c636bdd32623ab92f53b003a48e21b0ccda33166a0ddcedad41074b8"
+  },
+  {
+    "pack": "05-skills/hallmark/scripts/fixtures/eyebrow-pass/index.html",
+    "repo": "payload/skills/hallmark/scripts/fixtures/eyebrow-pass/index.html",
+    "installed_at": "skills/hallmark/scripts/fixtures/eyebrow-pass/index.html",
+    "sha256": "e79cc0979f3d47295812d1f373f4ea8e95c94f2a18624ae2c064e3fdbc4476f8",
+    "sha256_lf": "e79cc0979f3d47295812d1f373f4ea8e95c94f2a18624ae2c064e3fdbc4476f8"
+  },
+  {
+    "pack": "05-skills/hallmark/scripts/fixtures/kept/after.html",
+    "repo": "payload/skills/hallmark/scripts/fixtures/kept/after.html",
+    "installed_at": "skills/hallmark/scripts/fixtures/kept/after.html",
+    "sha256": "3943056c96c322c2bd55fbd19170de48f01815981d0430a094538737dae1a204",
+    "sha256_lf": "3943056c96c322c2bd55fbd19170de48f01815981d0430a094538737dae1a204"
+  },
+  {
+    "pack": "05-skills/hallmark/scripts/fixtures/kept/before.html",
+    "repo": "payload/skills/hallmark/scripts/fixtures/kept/before.html",
+    "installed_at": "skills/hallmark/scripts/fixtures/kept/before.html",
+    "sha256": "6e9ad44ebca1d553b0f6a0096f613e3bd9800dbb222b42c4996a247dee08b72f",
+    "sha256_lf": "6e9ad44ebca1d553b0f6a0096f613e3bd9800dbb222b42c4996a247dee08b72f"
+  },
+  {
+    "pack": "05-skills/hallmark/scripts/fixtures/slopped.html",
+    "repo": "payload/skills/hallmark/scripts/fixtures/slopped.html",
+    "installed_at": "skills/hallmark/scripts/fixtures/slopped.html",
+    "sha256": "f324387e624f20e10bea32fd4c29d53865c3b4c261e723dc7965ef48ea39466e",
+    "sha256_lf": "f324387e624f20e10bea32fd4c29d53865c3b4c261e723dc7965ef48ea39466e"
+  },
+  {
+    "pack": "05-skills/hallmark/scripts/fixtures/tailwind-fail/Feature.vue",
+    "repo": "payload/skills/hallmark/scripts/fixtures/tailwind-fail/Feature.vue",
+    "installed_at": "skills/hallmark/scripts/fixtures/tailwind-fail/Feature.vue",
+    "sha256": "a0b1f3810f0b3621459d52921795a6c99f0dba53a9b0445cbf53e8529b801cf2",
+    "sha256_lf": "a0b1f3810f0b3621459d52921795a6c99f0dba53a9b0445cbf53e8529b801cf2"
+  },
+  {
+    "pack": "05-skills/hallmark/scripts/fixtures/tailwind-fail/Hero.tsx",
+    "repo": "payload/skills/hallmark/scripts/fixtures/tailwind-fail/Hero.tsx",
+    "installed_at": "skills/hallmark/scripts/fixtures/tailwind-fail/Hero.tsx",
+    "sha256": "4b0a2d0996d44173178d3f3ad4313836a3464993658798a491e92e4adbe9a576",
+    "sha256_lf": "4b0a2d0996d44173178d3f3ad4313836a3464993658798a491e92e4adbe9a576"
+  },
+  {
+    "pack": "05-skills/hallmark/scripts/fixtures/tailwind-fail/index.html",
+    "repo": "payload/skills/hallmark/scripts/fixtures/tailwind-fail/index.html",
+    "installed_at": "skills/hallmark/scripts/fixtures/tailwind-fail/index.html",
+    "sha256": "668e6026f6517b456d8b10d07f21e33f32476cbedef86e90bdf6bcc3785c120c",
+    "sha256_lf": "668e6026f6517b456d8b10d07f21e33f32476cbedef86e90bdf6bcc3785c120c"
+  },
+  {
+    "pack": "05-skills/hallmark/scripts/fixtures/tailwind-fail/style.css",
+    "repo": "payload/skills/hallmark/scripts/fixtures/tailwind-fail/style.css",
+    "installed_at": "skills/hallmark/scripts/fixtures/tailwind-fail/style.css",
+    "sha256": "520dac1bf1b9ac4c3c4e05506a91a804849413172ec500f9e21a01c94542c5fc",
+    "sha256_lf": "520dac1bf1b9ac4c3c4e05506a91a804849413172ec500f9e21a01c94542c5fc"
+  },
+  {
+    "pack": "05-skills/hallmark/scripts/fixtures/tailwind-pass/Hero.tsx",
+    "repo": "payload/skills/hallmark/scripts/fixtures/tailwind-pass/Hero.tsx",
+    "installed_at": "skills/hallmark/scripts/fixtures/tailwind-pass/Hero.tsx",
+    "sha256": "c81aed17aaba4936fc51fcbc07b642481c7dad6cbbd87ac8dd56384290b6edf3",
+    "sha256_lf": "c81aed17aaba4936fc51fcbc07b642481c7dad6cbbd87ac8dd56384290b6edf3"
+  },
+  {
+    "pack": "05-skills/hallmark/scripts/fixtures/tailwind-pass/index.html",
+    "repo": "payload/skills/hallmark/scripts/fixtures/tailwind-pass/index.html",
+    "installed_at": "skills/hallmark/scripts/fixtures/tailwind-pass/index.html",
+    "sha256": "7d7fb9c531b872458c049fc9bbed93edf8bf506f5f2fbff8d4a66ffc1f7e6cc2",
+    "sha256_lf": "7d7fb9c531b872458c049fc9bbed93edf8bf506f5f2fbff8d4a66ffc1f7e6cc2"
+  },
+  {
+    "pack": "05-skills/hallmark/scripts/fixtures/tailwind-pass/style.css",
+    "repo": "payload/skills/hallmark/scripts/fixtures/tailwind-pass/style.css",
+    "installed_at": "skills/hallmark/scripts/fixtures/tailwind-pass/style.css",
+    "sha256": "b3d42d5cd53476942b34253a2dcad284548302ce551bef56fb1af6f9d4c8ebbb",
+    "sha256_lf": "b3d42d5cd53476942b34253a2dcad284548302ce551bef56fb1af6f9d4c8ebbb"
+  },
+  {
+    "pack": "05-skills/hallmark/scripts/fixtures/waiver/index.html",
+    "repo": "payload/skills/hallmark/scripts/fixtures/waiver/index.html",
+    "installed_at": "skills/hallmark/scripts/fixtures/waiver/index.html",
+    "sha256": "9ac592d4ea4fef4f33551b678ed9ce03570d8c3c8afaa23717446d41dbc106bc",
+    "sha256_lf": "9ac592d4ea4fef4f33551b678ed9ce03570d8c3c8afaa23717446d41dbc106bc"
+  },
+  {
+    "pack": "05-skills/hallmark/scripts/photos.json",
+    "repo": "payload/skills/hallmark/scripts/photos.json",
+    "installed_at": "skills/hallmark/scripts/photos.json",
+    "sha256": "1ee6836583e8048400876351c0605bc3f08515fecfe68aca3712b9e75498bc65",
+    "sha256_lf": "1ee6836583e8048400876351c0605bc3f08515fecfe68aca3712b9e75498bc65"
+  },
+  {
+    "pack": "05-skills/hallmark/scripts/picture.mjs",
+    "repo": "payload/skills/hallmark/scripts/picture.mjs",
+    "installed_at": "skills/hallmark/scripts/picture.mjs",
+    "sha256": "21db01db66d393d58d2dd799e7614a6033d1a56891d9d9d8cae0c42ed42592c1",
+    "sha256_lf": "21db01db66d393d58d2dd799e7614a6033d1a56891d9d9d8cae0c42ed42592c1"
+  },
+  {
+    "pack": "05-skills/hallmark/scripts/refcheck.mjs",
+    "repo": "payload/skills/hallmark/scripts/refcheck.mjs",
+    "installed_at": "skills/hallmark/scripts/refcheck.mjs",
+    "sha256": "1cc43275139c4d2856ed43b04269b3f94252c298b5deb103aa862ed0d98e6017",
+    "sha256_lf": "1cc43275139c4d2856ed43b04269b3f94252c298b5deb103aa862ed0d98e6017"
+  },
+  {
+    "pack": "05-skills/hallmark/scripts/reroll-exhaustion.test.mjs",
+    "repo": "payload/skills/hallmark/scripts/reroll-exhaustion.test.mjs",
+    "installed_at": "skills/hallmark/scripts/reroll-exhaustion.test.mjs",
+    "sha256": "21072d8044e13e6eec47ceb711db05e4df34e847db3aab3e749864cbced48413",
+    "sha256_lf": "21072d8044e13e6eec47ceb711db05e4df34e847db3aab3e749864cbced48413"
+  },
+  {
+    "pack": "05-skills/hallmark/scripts/sloplint-render.mjs",
+    "repo": "payload/skills/hallmark/scripts/sloplint-render.mjs",
+    "installed_at": "skills/hallmark/scripts/sloplint-render.mjs",
+    "sha256": "228f14808cbf872ab6dcc5f4f9e8d58a5a9060028f1530bec80e24dbd12737f3",
+    "sha256_lf": "228f14808cbf872ab6dcc5f4f9e8d58a5a9060028f1530bec80e24dbd12737f3"
+  },
+  {
+    "pack": "05-skills/hallmark/scripts/sloplint-render.test.mjs",
+    "repo": "payload/skills/hallmark/scripts/sloplint-render.test.mjs",
+    "installed_at": "skills/hallmark/scripts/sloplint-render.test.mjs",
+    "sha256": "5acd02402b8ef867fee730191f96fec9018d9baeafa0afc2f54cf7519ea7e843",
+    "sha256_lf": "5acd02402b8ef867fee730191f96fec9018d9baeafa0afc2f54cf7519ea7e843"
+  },
+  {
+    "pack": "05-skills/hallmark/scripts/sloplint.mjs",
+    "repo": "payload/skills/hallmark/scripts/sloplint.mjs",
+    "installed_at": "skills/hallmark/scripts/sloplint.mjs",
+    "sha256": "23fb94903ae0e3b709019380443163bdc50390a246911e3423b83695e4bc8037",
+    "sha256_lf": "23fb94903ae0e3b709019380443163bdc50390a246911e3423b83695e4bc8037"
+  },
+  {
+    "pack": "05-skills/hallmark/scripts/theme.mjs",
+    "repo": "payload/skills/hallmark/scripts/theme.mjs",
+    "installed_at": "skills/hallmark/scripts/theme.mjs",
+    "sha256": "7c5cd6ea080e47b663967f2cce5c806e38acbc33eb77b6dce7585a9f2ea1a1a6",
+    "sha256_lf": "7c5cd6ea080e47b663967f2cce5c806e38acbc33eb77b6dce7585a9f2ea1a1a6"
+  },
+  {
+    "pack": "05-skills/hallmark/scripts/theme.test.mjs",
+    "repo": "payload/skills/hallmark/scripts/theme.test.mjs",
+    "installed_at": "skills/hallmark/scripts/theme.test.mjs",
+    "sha256": "0a164c3f671b2cf2df40184e4b3515d7d7cef45447f71d0c8a5eac762b3ab4ac",
+    "sha256_lf": "0a164c3f671b2cf2df40184e4b3515d7d7cef45447f71d0c8a5eac762b3ab4ac"
+  },
+  {
+    "pack": "05-skills/handoff/SKILL.md",
+    "repo": "payload/skills/handoff/SKILL.md",
+    "installed_at": "skills/handoff/SKILL.md",
+    "sha256": "7b053f36bb7a4212486492250053bf8d8c6308ec24ab7f8de4754e56507cb2e0",
+    "sha256_lf": "7b053f36bb7a4212486492250053bf8d8c6308ec24ab7f8de4754e56507cb2e0"
+  },
+  {
+    "pack": "05-skills/handoff/scripts/extract-user-messages.mjs",
+    "repo": "payload/skills/handoff/scripts/extract-user-messages.mjs",
+    "installed_at": "skills/handoff/scripts/extract-user-messages.mjs",
+    "sha256": "ef4472728dc7255f578b692376b04cffa3361ed91635049c664378120185cc47",
+    "sha256_lf": "ef4472728dc7255f578b692376b04cffa3361ed91635049c664378120185cc47"
+  },
+  {
+    "pack": "05-skills/handoff/scripts/session-info.mjs",
+    "repo": "payload/skills/handoff/scripts/session-info.mjs",
+    "installed_at": "skills/handoff/scripts/session-info.mjs",
+    "sha256": "6162df8dfbbea2021e837cfdbdacab04bf035aa39ab37e1fa6376c279de14268",
+    "sha256_lf": "6162df8dfbbea2021e837cfdbdacab04bf035aa39ab37e1fa6376c279de14268"
+  },
+  {
+    "pack": "05-skills/liteparse/SKILL.md",
+    "repo": "payload/skills/liteparse/SKILL.md",
+    "installed_at": "skills/liteparse/SKILL.md",
+    "sha256": "23f1a6456b0a0e5a0b21fae8e363f23f65b6e605a8fe4684a7bfc1fa5b3bc1b2",
+    "sha256_lf": "23f1a6456b0a0e5a0b21fae8e363f23f65b6e605a8fe4684a7bfc1fa5b3bc1b2"
+  },
+  {
+    "pack": "05-skills/liteparse/scripts/search.py",
+    "repo": "payload/skills/liteparse/scripts/search.py",
+    "installed_at": "skills/liteparse/scripts/search.py",
+    "sha256": "72d960a0600ebcef1252c558159c5fa6b9e7ee23baad36a07ca878dd42cc9bfd",
+    "sha256_lf": "72d960a0600ebcef1252c558159c5fa6b9e7ee23baad36a07ca878dd42cc9bfd"
+  },
+  {
+    "pack": "05-skills/plain-writing/SKILL.md",
+    "repo": "payload/skills/plain-writing/SKILL.md",
+    "installed_at": "skills/plain-writing/SKILL.md",
+    "sha256": "a246d3141c53cc326e8d439ad01980dba0e28ba590dfc2a509da8d18d583c1ee",
+    "sha256_lf": "a246d3141c53cc326e8d439ad01980dba0e28ba590dfc2a509da8d18d583c1ee"
+  },
+  {
+    "pack": "05-skills/plain-writing/SOURCES.md",
+    "repo": "payload/skills/plain-writing/SOURCES.md",
+    "installed_at": "skills/plain-writing/SOURCES.md",
+    "sha256": "5b7ff1fd69324e8deb1f788a3b1aae93c30a4ed966bb61b8dc21e5f81e3e1750",
+    "sha256_lf": "5b7ff1fd69324e8deb1f788a3b1aae93c30a4ed966bb61b8dc21e5f81e3e1750"
+  },
+  {
+    "pack": "05-skills/prototype/LOGIC.md",
+    "repo": "payload/skills/prototype/LOGIC.md",
+    "installed_at": "skills/prototype/LOGIC.md",
+    "sha256": "8d7e31de7ce73b8e62f207e3f3ecbd90a7a54fdc728f8965f5f0739976f9959a",
+    "sha256_lf": "f61c7d249e786a79ef289018901c348271e1798dd0b0bc5607b5c6f4d4a01ab9"
+  },
+  {
+    "pack": "05-skills/prototype/SKILL.md",
+    "repo": "payload/skills/prototype/SKILL.md",
+    "installed_at": "skills/prototype/SKILL.md",
+    "sha256": "f74ae01f4fc454d3a4ef21271920f1706e626271e715dda0559e489f45c792c3",
+    "sha256_lf": "714de632d116bb73f65cdb5a882db15b9369a6713b9a47c0fad827848f0bfbe3"
+  },
+  {
+    "pack": "05-skills/prototype/UI.md",
+    "repo": "payload/skills/prototype/UI.md",
+    "installed_at": "skills/prototype/UI.md",
+    "sha256": "5ea83263ba72174c9055d58045f053d6577c0db6802c1e15bd1468dd16f78a0b",
+    "sha256_lf": "723211e878acbc7b6ff09755263f3295cde724ba902ff0064da41eed51d45ad3"
+  },
+  {
+    "pack": "05-skills/research/SKILL.md",
+    "repo": "payload/skills/research/SKILL.md",
+    "installed_at": "skills/research/SKILL.md",
+    "sha256": "4422d07f1375712f0ecfadc05e6210bad2880f1d36eab32f62760eed344f935a",
+    "sha256_lf": "1f629e18ab899412683bc6a1c4efb4339999e27c2fdac328f26ee10a8c031d33"
+  },
+  {
+    "pack": "05-skills/seo-audit/SKILL.md",
+    "repo": "payload/skills/seo-audit/SKILL.md",
+    "installed_at": "skills/seo-audit/SKILL.md",
+    "sha256": "6063db84d8c362d97f342d76496f124b995d17b849b1ce465bf2b14c78ac3bbc",
+    "sha256_lf": "daa26b6b8edfa4140640bdc41488d6e985dcabf3cf6c1da4bc90d9d142fb8c2d"
+  },
+  {
+    "pack": "05-skills/seo-audit/VENDOR.md",
+    "repo": "payload/skills/seo-audit/VENDOR.md",
+    "installed_at": "skills/seo-audit/VENDOR.md",
+    "sha256": "879fef77d7ac8d6eb2e4fb0fa23bbd2ae787a30f8209e4fc7671aa5db9c24d35",
+    "sha256_lf": "c5b066e851df56ddcc8cbf30a983c49c2477cd6c5abdcca0914be2c90ea777f9"
+  },
+  {
+    "pack": "05-skills/seo-audit/references/international-seo.md",
+    "repo": "payload/skills/seo-audit/references/international-seo.md",
+    "installed_at": "skills/seo-audit/references/international-seo.md",
+    "sha256": "69f6bca80580fe7bcd03a54edd5f99f83317ffc359d5aea50a4a436f1a59a4f7",
+    "sha256_lf": "0603022cca968acf7889fc224221aa0e70955ba64355bc18b06f7e86b32f45e5"
+  },
+  {
+    "pack": "05-skills/seo-audit/references/local-seo-pages-and-measurement.md",
+    "repo": "payload/skills/seo-audit/references/local-seo-pages-and-measurement.md",
+    "installed_at": "skills/seo-audit/references/local-seo-pages-and-measurement.md",
+    "sha256": "06ba62ecc7ca50889cb97cf5dd924637e2760823ab9da16c9daeec2215637e77",
+    "sha256_lf": "78b4bcb65e90efff23c2d75ab76f260045750d945ebf3d108724fc7bbebde0b3"
+  },
+  {
+    "pack": "05-skills/seo-audit/references/local-seo-profile-and-citations.md",
+    "repo": "payload/skills/seo-audit/references/local-seo-profile-and-citations.md",
+    "installed_at": "skills/seo-audit/references/local-seo-profile-and-citations.md",
+    "sha256": "a391b633149be3c0cf3e5fb7cb31746cf8c970581fbdc6feb1fb59423c83ea05",
+    "sha256_lf": "83b1b63eb6083e7aab1f56c4928335ea2a235e837861a9e9e8043b6af162a1f3"
+  },
+  {
+    "pack": "05-skills/seo-audit/references/local-seo.md",
+    "repo": "payload/skills/seo-audit/references/local-seo.md",
+    "installed_at": "skills/seo-audit/references/local-seo.md",
+    "sha256": "6fd40716972e4c8c21ec79116dbd42d5252870a967b708d38eb5905c4766c1cc",
+    "sha256_lf": "9f3cf0d90ff522a692f57e3784d27804b704034c2d4a961068b3553e34995a44"
+  },
+  {
+    "pack": "05-skills/seo-audit/references/rankings-push.md",
+    "repo": "payload/skills/seo-audit/references/rankings-push.md",
+    "installed_at": "skills/seo-audit/references/rankings-push.md",
+    "sha256": "4dfce2f4eb0a4def365b2c1ef74948bcdb91fa58b04bd46e182b86681d9e7dc6",
+    "sha256_lf": "6ee6b2b188b65c0f3fb13ae4dfa1135947fb1d6ac9fcfa9ac575a7509225f433"
+  },
+  {
+    "pack": "05-skills/seo-audit/references/title-tags.md",
+    "repo": "payload/skills/seo-audit/references/title-tags.md",
+    "installed_at": "skills/seo-audit/references/title-tags.md",
+    "sha256": "41a65e9517c7e78b3754b82a3aa682be292a16d2f0bda9341655ef1b910c6c43",
+    "sha256_lf": "d6b723467362246c675605a86cfaa65d8f6c8fc376f861d0923b9b0eb765dd93"
+  },
+  {
+    "pack": "05-skills/setup-matt-pocock-skills/SKILL.md",
+    "repo": "payload/skills/setup-matt-pocock-skills/SKILL.md",
+    "installed_at": "skills/setup-matt-pocock-skills/SKILL.md",
+    "sha256": "a5dd3406178c0e4cde95e3926ae07c6c6abd121587a674a12dc3b06cb5ed49dc",
+    "sha256_lf": "b01e05bfe8c323171275c6ceec78b12f1bd4c62dfd26c2cfe8be806d3883f1ed"
+  },
+  {
+    "pack": "05-skills/setup-matt-pocock-skills/domain.md",
+    "repo": "payload/skills/setup-matt-pocock-skills/domain.md",
+    "installed_at": "skills/setup-matt-pocock-skills/domain.md",
+    "sha256": "20ee347cfcb4bd2266a8b747c11ca6c3dec85ff4cc38319de88cc3cadc12c80b",
+    "sha256_lf": "593a7042218689f1d24df89df14eaf0a20e19e0d0a7d479a01947ac78f0784b9"
+  },
+  {
+    "pack": "05-skills/setup-matt-pocock-skills/issue-tracker-github.md",
+    "repo": "payload/skills/setup-matt-pocock-skills/issue-tracker-github.md",
+    "installed_at": "skills/setup-matt-pocock-skills/issue-tracker-github.md",
+    "sha256": "f5d521ed1b95921613f5d2c10a98e64e91a752060a963964f0d943834e48fbb0",
+    "sha256_lf": "6fdb3e9b00b7b0b115ecac3b1c00e3790f637f190abf598815368722c0a94692"
+  },
+  {
+    "pack": "05-skills/setup-matt-pocock-skills/issue-tracker-gitlab.md",
+    "repo": "payload/skills/setup-matt-pocock-skills/issue-tracker-gitlab.md",
+    "installed_at": "skills/setup-matt-pocock-skills/issue-tracker-gitlab.md",
+    "sha256": "7dbf98d4fa091dd56b00fdb2f453f241f9f077934bf96486a2951b0a2e04c463",
+    "sha256_lf": "947602d33a80f98f939fb990995b8f95a3459b114b919c4221d08bd75d7cffe0"
+  },
+  {
+    "pack": "05-skills/setup-matt-pocock-skills/issue-tracker-local.md",
+    "repo": "payload/skills/setup-matt-pocock-skills/issue-tracker-local.md",
+    "installed_at": "skills/setup-matt-pocock-skills/issue-tracker-local.md",
+    "sha256": "a604b658f0730eae3107671b09323ed8382bd546e82dc3bedc265bccbeb35021",
+    "sha256_lf": "7dcda20a2eb4bdc89b95d1143423c0691309921cadae3132e6424f371030506e"
+  },
+  {
+    "pack": "05-skills/setup-matt-pocock-skills/triage-labels.md",
+    "repo": "payload/skills/setup-matt-pocock-skills/triage-labels.md",
+    "installed_at": "skills/setup-matt-pocock-skills/triage-labels.md",
+    "sha256": "713abcdd778059289bc4ed8278d14787f719707d429da716ae814e69a727843c",
+    "sha256_lf": "ae512af838c78b8750471c42cd2b20fa32319553e61d84c9a23d171b40ce14aa"
+  },
+  {
+    "pack": "05-skills/social/SKILL.md",
+    "repo": "payload/skills/social/SKILL.md",
+    "installed_at": "skills/social/SKILL.md",
+    "sha256": "ad368ecc4087de4545ced4d609485de7d36783f45bc86316465a1d58af3aeaba",
+    "sha256_lf": "19fa01244e52c9bdac6ac1a5e57f257f9defadf2ca22c6a7ad57acbe642ccefa"
+  },
+  {
+    "pack": "05-skills/social/VENDOR.md",
+    "repo": "payload/skills/social/VENDOR.md",
+    "installed_at": "skills/social/VENDOR.md",
+    "sha256": "71ec61fdb2ef89a1281f3c1b93f2b2a5eee43faaf645af3236a2e37cb89efbc8",
+    "sha256_lf": "478fe821a4668f6c5c9462dec42459535769be72871ddb36f1ced902883a6799"
+  },
+  {
+    "pack": "05-skills/social/references/carousel-frameworks.md",
+    "repo": "payload/skills/social/references/carousel-frameworks.md",
+    "installed_at": "skills/social/references/carousel-frameworks.md",
+    "sha256": "35da6cc0c2bec345e66ef68e728ad17c70f9cf5e103fc3cfb4145e5b755a790b",
+    "sha256_lf": "d255e519e666248cc92b6bd20fbb471f3e35c42336eb530bf2ae92a7e0706af6"
+  },
+  {
+    "pack": "05-skills/social/references/platform-limits.md",
+    "repo": "payload/skills/social/references/platform-limits.md",
+    "installed_at": "skills/social/references/platform-limits.md",
+    "sha256": "191d3cc8ef6d622628d4552b185a1318a7085c06ecdea5379a7241177d7fe776",
+    "sha256_lf": "0e2c6cc15645aada46a768e5e43b35816331caed5942ee93cd056b648a596b11"
+  },
+  {
+    "pack": "05-skills/social/references/platforms.md",
+    "repo": "payload/skills/social/references/platforms.md",
+    "installed_at": "skills/social/references/platforms.md",
+    "sha256": "5bae30c82e94b78f12ab9e6b64c2e92ff75cef9d1d2df8304a1063c4dedcab6b",
+    "sha256_lf": "59c330c9c0707f15ff1bd5e7e48922cecf5d26ac37486de32e35e63f631341c7"
+  },
+  {
+    "pack": "05-skills/social/references/post-templates.md",
+    "repo": "payload/skills/social/references/post-templates.md",
+    "installed_at": "skills/social/references/post-templates.md",
+    "sha256": "aed94b32ebcf2bbd6c30c49b811c883a8688f566865d930eef19c03090ff6120",
+    "sha256_lf": "9cca4680c95801daedfd8acadf9089d0083784c2567784888807569896f71d9b"
+  },
+  {
+    "pack": "05-skills/social/references/ship-post.md",
+    "repo": "payload/skills/social/references/ship-post.md",
+    "installed_at": "skills/social/references/ship-post.md",
+    "sha256": "ef485c9251d81b7ffac239151ad40e9bc83d3f5c205ce42a00f52805c3edc8c5",
+    "sha256_lf": "64c60cb39a787b430dbf1e6268975d2e9f376d58978058370e1c622ccd6cdd76"
+  },
+  {
+    "pack": "05-skills/social/references/short-form-video.md",
+    "repo": "payload/skills/social/references/short-form-video.md",
+    "installed_at": "skills/social/references/short-form-video.md",
+    "sha256": "23752f3dd9860a5823a4596f004c44da7c3daeec45716ba869c47060895b4937",
+    "sha256_lf": "482e5baba9843d69e43b9ecd10f5996f6bb0a9d3f69e3f46791b33018f265ad6"
+  },
+  {
+    "pack": "05-skills/social/references/x-algorithm.md",
+    "repo": "payload/skills/social/references/x-algorithm.md",
+    "installed_at": "skills/social/references/x-algorithm.md",
+    "sha256": "206d7019d4e69912d3ef89df80a5ba15574227f42f5af9c67f0d680bbd0c53bb",
+    "sha256_lf": "52d3588c70d272a5d265135520b8433e11aac93d440bc2504241db2b37759d55"
+  },
+  {
+    "pack": "05-skills/sprint-planning/SKILL.md",
+    "repo": "payload/skills/sprint-planning/SKILL.md",
+    "installed_at": "skills/sprint-planning/SKILL.md",
+    "sha256": "a0d6bbb41796852654774821a961a4dbbfa34866d170e2b99818ce162d5a9eec",
+    "sha256_lf": "0ace8999728ff8f400e1c6bf2649d4dcbce0368648279023f522e0b186c96a94"
+  },
+  {
+    "pack": "05-skills/system-design/SKILL.md",
+    "repo": "payload/skills/system-design/SKILL.md",
+    "installed_at": "skills/system-design/SKILL.md",
+    "sha256": "02a240379acf03cba4a6ef7a829f492299c85087741793f1e067db2c37a7ad62",
+    "sha256_lf": "8f28eca99f2208872fc2483fcc93326b628f4f73116e91309a95e05da86a0ab5"
+  },
+  {
+    "pack": "05-skills/tidy/SKILL.md",
+    "repo": "payload/skills/tidy/SKILL.md",
+    "installed_at": "skills/tidy/SKILL.md",
+    "sha256": "28a2c1affd56bce2b8d49baa15cc2e6c4f126e1cb200a9c5cd41a0b6e958a399",
+    "sha256_lf": "28a2c1affd56bce2b8d49baa15cc2e6c4f126e1cb200a9c5cd41a0b6e958a399"
+  },
+  {
+    "pack": "05-skills/to-spec/SKILL.md",
+    "repo": "payload/skills/to-spec/SKILL.md",
+    "installed_at": "skills/to-spec/SKILL.md",
+    "sha256": "66b030fd16c42b393eb1ca435ffc38d8a502e04e51c44f13b0c7b3718809e731",
+    "sha256_lf": "9c6c030f3e2343ac1bb1fc4e934d80e7ba2f92719d33841d1e001abcf78c6f65"
+  },
+  {
+    "pack": "05-skills/to-tickets/SKILL.md",
+    "repo": "payload/skills/to-tickets/SKILL.md",
+    "installed_at": "skills/to-tickets/SKILL.md",
+    "sha256": "cf3e09902d0a82956dfce02f94fd3424c1b625692322af29ec09bb8c4db33060",
+    "sha256_lf": "6a8b9ef8989fedb3ceb137ba22eb3161e206d2e2d2989b9bce8ce090da083280"
+  },
+  {
+    "pack": "05-skills/ui-craft/SKILL.md",
+    "repo": "payload/skills/ui-craft/SKILL.md",
+    "installed_at": "skills/ui-craft/SKILL.md",
+    "sha256": "1fc6bd0305fd62bd8bedc8cd82aa73b2ca537ce7f6bb485979c0c6cf01855c34",
+    "sha256_lf": "1fc6bd0305fd62bd8bedc8cd82aa73b2ca537ce7f6bb485979c0c6cf01855c34"
+  },
+  {
+    "pack": "05-skills/ui-craft/SOURCES.md",
+    "repo": "payload/skills/ui-craft/SOURCES.md",
+    "installed_at": "skills/ui-craft/SOURCES.md",
+    "sha256": "b56f71b8ceae4b4b2cdd695d4f4c5dcb1a20f3fbe95903e489c73d0c15110ff7",
+    "sha256_lf": "b56f71b8ceae4b4b2cdd695d4f4c5dcb1a20f3fbe95903e489c73d0c15110ff7"
+  },
+  {
+    "pack": "05-skills/ui-craft/references/tokens.md",
+    "repo": "payload/skills/ui-craft/references/tokens.md",
+    "installed_at": "skills/ui-craft/references/tokens.md",
+    "sha256": "3448bc51a71ae71d438f17ad6e223244f5a48638e728fe6acaf8cd71c25a77f6",
+    "sha256_lf": "3448bc51a71ae71d438f17ad6e223244f5a48638e728fe6acaf8cd71c25a77f6"
+  },
+  {
+    "pack": "05-skills/ui-ux-pro-max/LICENSE",
+    "repo": "payload/skills/ui-ux-pro-max/LICENSE",
+    "installed_at": "skills/ui-ux-pro-max/LICENSE",
+    "sha256": "1b8bd455510cc1f6f9bd510ffe2ec372d1c51fe0e082ddfee8b41825fb7aa055",
+    "sha256_lf": "738f69dfa83db5c347c678fb9d90e560877059f0de93a327c39001bff92dc014"
+  },
+  {
+    "pack": "05-skills/ui-ux-pro-max/SKILL.md",
+    "repo": "payload/skills/ui-ux-pro-max/SKILL.md",
+    "installed_at": "skills/ui-ux-pro-max/SKILL.md",
+    "sha256": "a8215ba2ca21b65d0d708475f6b318fa71b0a65ec0df889ed6fa458bed322e4f",
+    "sha256_lf": "b4a061ecd61447d3e088dda8a578fbf54be78fb99ebcf058bb9a31a9f88027e8"
+  },
+  {
+    "pack": "05-skills/ui-ux-pro-max/VENDOR.md",
+    "repo": "payload/skills/ui-ux-pro-max/VENDOR.md",
+    "installed_at": "skills/ui-ux-pro-max/VENDOR.md",
+    "sha256": "7f93aba3df776504ea04945c0c703812d550a51f7fd2a8629dc05b4269101645",
+    "sha256_lf": "976f02dfa70b889901bc4ff87adf87fac40e6756332ebb2d48287476fcdcf437"
+  },
+  {
+    "pack": "05-skills/ui-ux-pro-max/data/app-interface.csv",
+    "repo": "payload/skills/ui-ux-pro-max/data/app-interface.csv",
+    "installed_at": "skills/ui-ux-pro-max/data/app-interface.csv",
+    "sha256": "074daf4b30c516778b76134bdf1a6e98d5672c569afc3105d5a600fe6b1215f5",
+    "sha256_lf": "b1545213c92c075c4736eb4f88b754568404106d89b8b1f91a5b7e0bc12963e5"
+  },
+  {
+    "pack": "05-skills/ui-ux-pro-max/data/catalog-summary.json",
+    "repo": "payload/skills/ui-ux-pro-max/data/catalog-summary.json",
+    "installed_at": "skills/ui-ux-pro-max/data/catalog-summary.json",
+    "sha256": "d1f83073a4391fb4fbb2174499bce4e492b19a1833380d144fcfe025de1ae48e",
+    "sha256_lf": "5958a771e0358ec494b2eadceddd7e6d153ebf964f7a87dc80790c58ba50bda0"
+  },
+  {
+    "pack": "05-skills/ui-ux-pro-max/data/charts.csv",
+    "repo": "payload/skills/ui-ux-pro-max/data/charts.csv",
+    "installed_at": "skills/ui-ux-pro-max/data/charts.csv",
+    "sha256": "c1219f4c3847c202d1ded4bc18ee666323aded72e792c7bfcb58da43a63c5dc5",
+    "sha256_lf": "9bf1259faa59361ef6b0e81e712e6e2401307e5bcc71b02656dad570cdef7680"
+  },
+  {
+    "pack": "05-skills/ui-ux-pro-max/data/colors.csv",
+    "repo": "payload/skills/ui-ux-pro-max/data/colors.csv",
+    "installed_at": "skills/ui-ux-pro-max/data/colors.csv",
+    "sha256": "eba57c51c5d45169c47b9703c6943df7a4643210ddaf1c5e669592ecdba661c5",
+    "sha256_lf": "f14cc97bc4c3527e6181b2ec3231704271249ca4ad56dcaa9bf562ab795a3dd7"
+  },
+  {
+    "pack": "05-skills/ui-ux-pro-max/data/data-provenance.json",
+    "repo": "payload/skills/ui-ux-pro-max/data/data-provenance.json",
+    "installed_at": "skills/ui-ux-pro-max/data/data-provenance.json",
+    "sha256": "3880a36d85bc8cbf48184121f477a41fa3c16d9db9f4a986e74b76f1c13c8ca1",
+    "sha256_lf": "d766d1afb9fcdce89dbba580161b3dad260702a18871b12ab7f762eeaf8883e8"
+  },
+  {
+    "pack": "05-skills/ui-ux-pro-max/data/google-font-licenses.json",
+    "repo": "payload/skills/ui-ux-pro-max/data/google-font-licenses.json",
+    "installed_at": "skills/ui-ux-pro-max/data/google-font-licenses.json",
+    "sha256": "7c35e410dd8b5853ca86c3e0e3d3cfb73db1ffa3d9a2fa688c182bc44cd9a8d7",
+    "sha256_lf": "35688523f2955795caa1a47c53b83099e60c1708461476f9cc3a050cf3b0148a"
+  },
+  {
+    "pack": "05-skills/ui-ux-pro-max/data/google-fonts.csv",
+    "repo": "payload/skills/ui-ux-pro-max/data/google-fonts.csv",
+    "installed_at": "skills/ui-ux-pro-max/data/google-fonts.csv",
+    "sha256": "d03194d2c35a2cdc4c6846ddde9beb54fdd1f81a3ddc80fead3c0ba2842b75fb",
+    "sha256_lf": "1c8c3b2ea1faf6a1012da463756def8b3889db33f2226f0343bb4daa80307d03"
+  },
+  {
+    "pack": "05-skills/ui-ux-pro-max/data/icons.csv",
+    "repo": "payload/skills/ui-ux-pro-max/data/icons.csv",
+    "installed_at": "skills/ui-ux-pro-max/data/icons.csv",
+    "sha256": "f1f1c8af2034b0e6732b87c5fbead7d1f29a13c5df24975411a73ae86565212e",
+    "sha256_lf": "b6cd78ea321b2b4a1fbbebcedd87982f3016a2ede5c21dd85cc3964e2890fc87"
+  },
+  {
+    "pack": "05-skills/ui-ux-pro-max/data/landing.csv",
+    "repo": "payload/skills/ui-ux-pro-max/data/landing.csv",
+    "installed_at": "skills/ui-ux-pro-max/data/landing.csv",
+    "sha256": "9efd4568de12dc9e9e4c5b7c1743f3643243232d2dbb9257d30d88613d4bb8fc",
+    "sha256_lf": "9a2edd3bb676c2a58f00ade7a062e285222d4297bfd847c8d5b056f0dbbf52d0"
+  },
+  {
+    "pack": "05-skills/ui-ux-pro-max/data/motion.csv",
+    "repo": "payload/skills/ui-ux-pro-max/data/motion.csv",
+    "installed_at": "skills/ui-ux-pro-max/data/motion.csv",
+    "sha256": "854b30af6fdd40a735eeed077eabec3a6917923627220bc5062ea8a15165ef6b",
+    "sha256_lf": "381affe8df8ea1f66fbbda2598827f9f54299107bbe6a1b4e9b68f6b62091ceb"
+  },
+  {
+    "pack": "05-skills/ui-ux-pro-max/data/phosphor-icons-upstream.json",
+    "repo": "payload/skills/ui-ux-pro-max/data/phosphor-icons-upstream.json",
+    "installed_at": "skills/ui-ux-pro-max/data/phosphor-icons-upstream.json",
+    "sha256": "81c37fb3583eb43a91e93f1a62c4da3b4ff089624c06bfe53950b8205b54974d",
+    "sha256_lf": "2399325233b277b5c97a80e6a5e8941154f5d057beee4e7613db87c87d700236"
+  },
+  {
+    "pack": "05-skills/ui-ux-pro-max/data/products.csv",
+    "repo": "payload/skills/ui-ux-pro-max/data/products.csv",
+    "installed_at": "skills/ui-ux-pro-max/data/products.csv",
+    "sha256": "81768cc90edccbdd8ba023ad72cdc989a55d30ff606c93ded4e3b1cee03209d3",
+    "sha256_lf": "2b78d254f0fe0cc137ee811df280215c257868df24d2041264624d01f747f511"
+  },
+  {
+    "pack": "05-skills/ui-ux-pro-max/data/react-performance.csv",
+    "repo": "payload/skills/ui-ux-pro-max/data/react-performance.csv",
+    "installed_at": "skills/ui-ux-pro-max/data/react-performance.csv",
+    "sha256": "4dc9b897a2150a8f30b4ad18f67ebc62074d1706bde9849c189b7f511fb821d2",
+    "sha256_lf": "3d925802539abac5afeb63ae8aa1960b7229ad271b3a47caed40ab2d97ad0734"
+  },
+  {
+    "pack": "05-skills/ui-ux-pro-max/data/stacks/angular.csv",
+    "repo": "payload/skills/ui-ux-pro-max/data/stacks/angular.csv",
+    "installed_at": "skills/ui-ux-pro-max/data/stacks/angular.csv",
+    "sha256": "9fc11f2b1c9efe6aac4e0416f2a022389c1ee005551523fc6a776cd39494eb2c",
+    "sha256_lf": "704be83f2bad30c7e6de01afb113ffa01e0c458762f48b7102f31ba2367b5553"
+  },
+  {
+    "pack": "05-skills/ui-ux-pro-max/data/stacks/astro.csv",
+    "repo": "payload/skills/ui-ux-pro-max/data/stacks/astro.csv",
+    "installed_at": "skills/ui-ux-pro-max/data/stacks/astro.csv",
+    "sha256": "85ddebda566b2814a6088140d06af2b729d582d5df73ba5f954a9009e17b3a5d",
+    "sha256_lf": "2c2f55fadaafc05e04cc321c8194a1a28b656e6757fe2ba316f41b16428299c6"
+  },
+  {
+    "pack": "05-skills/ui-ux-pro-max/data/stacks/avalonia.csv",
+    "repo": "payload/skills/ui-ux-pro-max/data/stacks/avalonia.csv",
+    "installed_at": "skills/ui-ux-pro-max/data/stacks/avalonia.csv",
+    "sha256": "a7ea4a448bb26e50b8eb69f8c191ecb374aaa4ddea6b39deadf2ad5d482e71d9",
+    "sha256_lf": "442fca14675a020683473e7e49f08abb27b9df0765c80efe54aef61f1a4ac258"
+  },
+  {
+    "pack": "05-skills/ui-ux-pro-max/data/stacks/flutter.csv",
+    "repo": "payload/skills/ui-ux-pro-max/data/stacks/flutter.csv",
+    "installed_at": "skills/ui-ux-pro-max/data/stacks/flutter.csv",
+    "sha256": "be5422f81892515ea4646460a7a77c95a4e22db0d112b05d5885757fd5c16016",
+    "sha256_lf": "64dba0ac17349f28bce517a0f5f48c54d9ed2e487ec0c0258303463b382f41a0"
+  },
+  {
+    "pack": "05-skills/ui-ux-pro-max/data/stacks/html-tailwind.csv",
+    "repo": "payload/skills/ui-ux-pro-max/data/stacks/html-tailwind.csv",
+    "installed_at": "skills/ui-ux-pro-max/data/stacks/html-tailwind.csv",
+    "sha256": "4004df03af7cf4cdd635d7a2127f6da4f94f6718af6556bee6bc2a14e6093cb8",
+    "sha256_lf": "d05a581d20af57b8ca0104a6d31d90a07c437d500662a96c3029fc2f9a4678ee"
+  },
+  {
+    "pack": "05-skills/ui-ux-pro-max/data/stacks/javafx.csv",
+    "repo": "payload/skills/ui-ux-pro-max/data/stacks/javafx.csv",
+    "installed_at": "skills/ui-ux-pro-max/data/stacks/javafx.csv",
+    "sha256": "f1d83197228e5265f80a8cb9598c03c76d4280bfb2804aca6eef841f5972b449",
+    "sha256_lf": "2e819b8d5abdd23ad4dae0991650fdb57af497aabd68b37463aa9c442944c869"
+  },
+  {
+    "pack": "05-skills/ui-ux-pro-max/data/stacks/jetpack-compose.csv",
+    "repo": "payload/skills/ui-ux-pro-max/data/stacks/jetpack-compose.csv",
+    "installed_at": "skills/ui-ux-pro-max/data/stacks/jetpack-compose.csv",
+    "sha256": "3e39065aa4c08e88117905558979a6bad799f691f72dc570b82b6d206b627a1d",
+    "sha256_lf": "699de218b286948eaec7d15767b6e1350ee299167e49bf476d82e3ff58724e0a"
+  },
+  {
+    "pack": "05-skills/ui-ux-pro-max/data/stacks/laravel.csv",
+    "repo": "payload/skills/ui-ux-pro-max/data/stacks/laravel.csv",
+    "installed_at": "skills/ui-ux-pro-max/data/stacks/laravel.csv",
+    "sha256": "1530ff9eaf551c8c29d731c02a3674364a934567a8574e91028421a6f3cfa663",
+    "sha256_lf": "09a9cf08a587c07816aa36eb68d2773c161cb710087a7b34f867c994e9d0fe32"
+  },
+  {
+    "pack": "05-skills/ui-ux-pro-max/data/stacks/nextjs.csv",
+    "repo": "payload/skills/ui-ux-pro-max/data/stacks/nextjs.csv",
+    "installed_at": "skills/ui-ux-pro-max/data/stacks/nextjs.csv",
+    "sha256": "ece292708d2d4d41aaa6f339640f4ffc1adf5d052a7d633cc0201d5a79307c37",
+    "sha256_lf": "ecd2c27b2ea0127d203ae726060efcdd7335b5e83f96b99e4f3befbbfeebd5a4"
+  },
+  {
+    "pack": "05-skills/ui-ux-pro-max/data/stacks/nuxt-ui.csv",
+    "repo": "payload/skills/ui-ux-pro-max/data/stacks/nuxt-ui.csv",
+    "installed_at": "skills/ui-ux-pro-max/data/stacks/nuxt-ui.csv",
+    "sha256": "a4764468c1749d7b8759cc784fc0e7ceb490e2f2fd92ce7d5eed7f8fdecf74b4",
+    "sha256_lf": "7abebf5471492e94036037ac15163c8b81e4d2c6d85c57008ba5b21cb3086419"
+  },
+  {
+    "pack": "05-skills/ui-ux-pro-max/data/stacks/nuxtjs.csv",
+    "repo": "payload/skills/ui-ux-pro-max/data/stacks/nuxtjs.csv",
+    "installed_at": "skills/ui-ux-pro-max/data/stacks/nuxtjs.csv",
+    "sha256": "ebe9bfe54cb1ee6e26c6776d72fa2290e7ba289d116afd6857e4d68a21475bb4",
+    "sha256_lf": "3d9b54ed2d151bd9c86e9e5609b8a6f88a00c4c52fa601a30af96c49b2c4d176"
+  },
+  {
+    "pack": "05-skills/ui-ux-pro-max/data/stacks/react-native.csv",
+    "repo": "payload/skills/ui-ux-pro-max/data/stacks/react-native.csv",
+    "installed_at": "skills/ui-ux-pro-max/data/stacks/react-native.csv",
+    "sha256": "1f7c99ea422ecd84ba3b0df5920c25f315ca9f3a15cf862a9a7183ed50e9a5e9",
+    "sha256_lf": "ba31dd9c0c04da6bc02a74448bf121f9c0728ae5ba3b4d47b487778b0a1135b5"
+  },
+  {
+    "pack": "05-skills/ui-ux-pro-max/data/stacks/react.csv",
+    "repo": "payload/skills/ui-ux-pro-max/data/stacks/react.csv",
+    "installed_at": "skills/ui-ux-pro-max/data/stacks/react.csv",
+    "sha256": "6a4cb8e26393afe21f5a5ec171c6ed1c9438b46a5330923cc3d83bc99406cee6",
+    "sha256_lf": "4dd176a9787e5c6306b5df94158d75955adcdc6edab41ce5286641a5842303c1"
+  },
+  {
+    "pack": "05-skills/ui-ux-pro-max/data/stacks/shadcn.csv",
+    "repo": "payload/skills/ui-ux-pro-max/data/stacks/shadcn.csv",
+    "installed_at": "skills/ui-ux-pro-max/data/stacks/shadcn.csv",
+    "sha256": "14d303b0adef425c388367e6825b92808cacbc0846e554889507c288b9e8e53d",
+    "sha256_lf": "e56cfde5b74907836ac3582a4779d5b7f3d206a702ab81b8669a1b668c3eeb51"
+  },
+  {
+    "pack": "05-skills/ui-ux-pro-max/data/stacks/svelte.csv",
+    "repo": "payload/skills/ui-ux-pro-max/data/stacks/svelte.csv",
+    "installed_at": "skills/ui-ux-pro-max/data/stacks/svelte.csv",
+    "sha256": "59af6ab78a0550313489441fffe17d7317de5a819aa992b1e2dca73ecb0a82d6",
+    "sha256_lf": "f6e379ba802941ba26b01d4ffbe3cd39120f2587659a1d93851c707f66bc13db"
+  },
+  {
+    "pack": "05-skills/ui-ux-pro-max/data/stacks/swiftui.csv",
+    "repo": "payload/skills/ui-ux-pro-max/data/stacks/swiftui.csv",
+    "installed_at": "skills/ui-ux-pro-max/data/stacks/swiftui.csv",
+    "sha256": "29b62817abfc03a0789180247ce98ac6fe00b7e54632c328c71af707e68d6915",
+    "sha256_lf": "bdd9231ff3ad658f4e7c063e1eb49df2fd09ac8d90631a86df899b39833b9623"
+  },
+  {
+    "pack": "05-skills/ui-ux-pro-max/data/stacks/threejs.csv",
+    "repo": "payload/skills/ui-ux-pro-max/data/stacks/threejs.csv",
+    "installed_at": "skills/ui-ux-pro-max/data/stacks/threejs.csv",
+    "sha256": "b7f86193828129ba4a722af7a05cb334da6be39b83b8b3abd4322768fb6c8d99",
+    "sha256_lf": "626336b7989c1382714863b6e62775c2d861bf54984a54c63978a8f26367fd90"
+  },
+  {
+    "pack": "05-skills/ui-ux-pro-max/data/stacks/uno.csv",
+    "repo": "payload/skills/ui-ux-pro-max/data/stacks/uno.csv",
+    "installed_at": "skills/ui-ux-pro-max/data/stacks/uno.csv",
+    "sha256": "11d9c750da94ad260d439ed36f4b46202f44c0d19dace87da0faf0d034dca727",
+    "sha256_lf": "8a288193bdb77f28b76885e3b33c2707b38a395fe64627b34d1ea1e5eab527ea"
+  },
+  {
+    "pack": "05-skills/ui-ux-pro-max/data/stacks/uwp.csv",
+    "repo": "payload/skills/ui-ux-pro-max/data/stacks/uwp.csv",
+    "installed_at": "skills/ui-ux-pro-max/data/stacks/uwp.csv",
+    "sha256": "ba334d0f2f478d73a7d80528b940f9e2f4ec6a8a7acafae92d69f0fb10837170",
+    "sha256_lf": "c409f08c1fbba1f1029f1acaa554e7b4471cc85517a5751c9f2e62465badcd5c"
+  },
+  {
+    "pack": "05-skills/ui-ux-pro-max/data/stacks/vue.csv",
+    "repo": "payload/skills/ui-ux-pro-max/data/stacks/vue.csv",
+    "installed_at": "skills/ui-ux-pro-max/data/stacks/vue.csv",
+    "sha256": "bb492b870b5bc7abff86dfebe73adad36c811a10907709f6a2da19c388f4edbf",
+    "sha256_lf": "b655f1ebb9dff2652d15981f31b1784c8a6d4759efd2815a14f3088257569f95"
+  },
+  {
+    "pack": "05-skills/ui-ux-pro-max/data/stacks/winui.csv",
+    "repo": "payload/skills/ui-ux-pro-max/data/stacks/winui.csv",
+    "installed_at": "skills/ui-ux-pro-max/data/stacks/winui.csv",
+    "sha256": "0a2b7a991adc8f126a31a953b8ad211a8162889fcc4e66c1484328847b206849",
+    "sha256_lf": "e676dc1c13ee6c205c40b0746f1335150a346c7a49a0616d2545bc3d2c930c85"
+  },
+  {
+    "pack": "05-skills/ui-ux-pro-max/data/stacks/wpf.csv",
+    "repo": "payload/skills/ui-ux-pro-max/data/stacks/wpf.csv",
+    "installed_at": "skills/ui-ux-pro-max/data/stacks/wpf.csv",
+    "sha256": "1b98ddc6354f7e3f05071679dae1c1f49dbda7639e48d5ceb2378e82cd3e2594",
+    "sha256_lf": "9781a9950b20333637b30a02e498b7efca21b618a3eeb8665836f3ac6e974da7"
+  },
+  {
+    "pack": "05-skills/ui-ux-pro-max/data/styles.csv",
+    "repo": "payload/skills/ui-ux-pro-max/data/styles.csv",
+    "installed_at": "skills/ui-ux-pro-max/data/styles.csv",
+    "sha256": "99ced953a6a356bfa01fb62aae1f7337c590ce9c021ff5b187fcbea1550c52d7",
+    "sha256_lf": "156d5f99390d00c30de5c0bd3fabe03ab32fe1a8dc10ca4bc394a30018a31a9e"
+  },
+  {
+    "pack": "05-skills/ui-ux-pro-max/data/typography.csv",
+    "repo": "payload/skills/ui-ux-pro-max/data/typography.csv",
+    "installed_at": "skills/ui-ux-pro-max/data/typography.csv",
+    "sha256": "94e10f011186d13baf2f8720c14a7bf0f149370b5a4a5b5943d15b9af476f1d8",
+    "sha256_lf": "dc347a76901dd11c5f0673fd8fb3ed7c10bde193862c5585a48846509dad2c35"
+  },
+  {
+    "pack": "05-skills/ui-ux-pro-max/data/ui-reasoning.csv",
+    "repo": "payload/skills/ui-ux-pro-max/data/ui-reasoning.csv",
+    "installed_at": "skills/ui-ux-pro-max/data/ui-reasoning.csv",
+    "sha256": "68db2d3fd8e127b829b95a24f7551ea42ca6f4a25ddb1db41f77fe66bfdc2fb7",
+    "sha256_lf": "60b8b1a0fc426d65c8d536fbd348e89e6c6484ab9cb54ddbcfe85b4339d960f9"
+  },
+  {
+    "pack": "05-skills/ui-ux-pro-max/data/ux-guidelines.csv",
+    "repo": "payload/skills/ui-ux-pro-max/data/ux-guidelines.csv",
+    "installed_at": "skills/ui-ux-pro-max/data/ux-guidelines.csv",
+    "sha256": "ae78b5bd83bf9492effe3d7a764094fd2e7b2aafef35e7cf40ece2dccff61e4d",
+    "sha256_lf": "9c473c1104e93f3d985f2d46d8854735e1a1deb8e0ac5ecd39c7e3b04e5d7528"
+  },
+  {
+    "pack": "05-skills/ui-ux-pro-max/references/pro-rules.md",
+    "repo": "payload/skills/ui-ux-pro-max/references/pro-rules.md",
+    "installed_at": "skills/ui-ux-pro-max/references/pro-rules.md",
+    "sha256": "a235de67d85156e65a372144632c4e10acceaffdc734bb17346f6be866595010",
+    "sha256_lf": "c96da65009c7de27955b905726ab91ef8bcfd8204f54d2ea33ce356b66289e75"
+  },
+  {
+    "pack": "05-skills/ui-ux-pro-max/references/quick-reference.md",
+    "repo": "payload/skills/ui-ux-pro-max/references/quick-reference.md",
+    "installed_at": "skills/ui-ux-pro-max/references/quick-reference.md",
+    "sha256": "188e068911616d80a4a95864c606da748e355c1772d5f92b28ed4a62cead355c",
+    "sha256_lf": "3bb345d0283b656112007eb5dff8845a7ede6be6c0e3a1ef14d33a777b8145a8"
+  },
+  {
+    "pack": "05-skills/ui-ux-pro-max/scripts/core.py",
+    "repo": "payload/skills/ui-ux-pro-max/scripts/core.py",
+    "installed_at": "skills/ui-ux-pro-max/scripts/core.py",
+    "sha256": "1e31c3b242c56a0de0cc3dff9b694772bc72cea889203ca9c9b0bb776ef79f89",
+    "sha256_lf": "caf92bdcf2579c9a7d6af4f53c54ee9d3c8f05472cfab77aaec38bef120ec63e"
+  },
+  {
+    "pack": "05-skills/ui-ux-pro-max/scripts/design_system.py",
+    "repo": "payload/skills/ui-ux-pro-max/scripts/design_system.py",
+    "installed_at": "skills/ui-ux-pro-max/scripts/design_system.py",
+    "sha256": "ac5804aa59469a8867e073b3d8df62b68fdfbec895fe3f94ba685e58dd51d0d0",
+    "sha256_lf": "f2109c256004232ad23da8912aa8eb092236db1a2bd298e26c89912cbd9bb5cc"
+  },
+  {
+    "pack": "05-skills/ui-ux-pro-max/scripts/preview.py",
+    "repo": "payload/skills/ui-ux-pro-max/scripts/preview.py",
+    "installed_at": "skills/ui-ux-pro-max/scripts/preview.py",
+    "sha256": "0c1d60b71d0baa4d08e2ac6fcb1053dc1c43dd9a82581b016367cb80fd368de8",
+    "sha256_lf": "2900f6b4307439c20083aa6a630332f9e8ac6fd95901bd703f75fa9a75b84fbb"
+  },
+  {
+    "pack": "05-skills/ui-ux-pro-max/scripts/reasoning_contract.py",
+    "repo": "payload/skills/ui-ux-pro-max/scripts/reasoning_contract.py",
+    "installed_at": "skills/ui-ux-pro-max/scripts/reasoning_contract.py",
+    "sha256": "094c8d35e7e69b243f57c4be5d61096634f8e2144fa03afd2b18c5f97de1cffb",
+    "sha256_lf": "b8bac1af82aa280d3e06f00aabaeac4337e632996b07fed874e2b6ee6e9c5913"
+  },
+  {
+    "pack": "05-skills/ui-ux-pro-max/scripts/search.py",
+    "repo": "payload/skills/ui-ux-pro-max/scripts/search.py",
+    "installed_at": "skills/ui-ux-pro-max/scripts/search.py",
+    "sha256": "e1e33b7ddac1f779e0df03fabdf69a55f15541b1ba03c836c4f9ddf5c4001550",
+    "sha256_lf": "6b52ebb01480058cab145d3c2cb57880a529e522c0781cf8cd873fa55c9b9f1d"
+  },
+  {
+    "pack": "05-skills/ui-ux-pro-max/scripts/validate_data.py",
+    "repo": "payload/skills/ui-ux-pro-max/scripts/validate_data.py",
+    "installed_at": "skills/ui-ux-pro-max/scripts/validate_data.py",
+    "sha256": "09994ccef041e07087cb09e32a8f7a8b5ee1697dd3d1b01b5834abf6ce26defb",
+    "sha256_lf": "e31ef4e1db1e6bb7910fb14b2a4dc139c513bca17d1e2827b292bde87d7120ca"
+  },
+  {
+    "pack": "05-skills/video-analysis/SKILL.md",
+    "repo": "payload/skills/video-analysis/SKILL.md",
+    "installed_at": "skills/video-analysis/SKILL.md",
+    "sha256": "9382b41ad3737b07a0741db0d587bdf27077e8e1f69441c078ad6ed8e8672516",
+    "sha256_lf": "9382b41ad3737b07a0741db0d587bdf27077e8e1f69441c078ad6ed8e8672516"
+  },
+  {
+    "pack": "05-skills/video-analysis/scripts/analyze.mjs",
+    "repo": "payload/skills/video-analysis/scripts/analyze.mjs",
+    "installed_at": "skills/video-analysis/scripts/analyze.mjs",
+    "sha256": "3eaefee957b578e9c5b90b658f674e8992cc01adc2a72c7f6829cee2a9b60e81",
+    "sha256_lf": "3eaefee957b578e9c5b90b658f674e8992cc01adc2a72c7f6829cee2a9b60e81"
+  },
+  {
+    "pack": "05-skills/video-analysis/scripts/transcribe.py",
+    "repo": "payload/skills/video-analysis/scripts/transcribe.py",
+    "installed_at": "skills/video-analysis/scripts/transcribe.py",
+    "sha256": "77ac8e7064a3ba1ef87ee637b3e537046d03e257f6fe4c1c12a34a5c79b9c535",
+    "sha256_lf": "77ac8e7064a3ba1ef87ee637b3e537046d03e257f6fe4c1c12a34a5c79b9c535"
+  },
+  {
+    "pack": "05-skills/wayfinder/SKILL.md",
+    "repo": "payload/skills/wayfinder/SKILL.md",
+    "installed_at": "skills/wayfinder/SKILL.md",
+    "sha256": "da3b9ce26c5128c8bd5b0099f262132320e72341544146196d81987edc62b58a",
+    "sha256_lf": "0c9fa96791aebf3b7d654cf35c6aadde97d81f57c17b07d13b27c14d9c46561f"
+  },
+  {
+    "pack": "08-tools/away-wait.mjs",
+    "repo": "payload/tools/away-wait.mjs",
+    "installed_at": "tools/away-wait.mjs",
+    "sha256": "141b46c358ec9639fc93d103669e0f1716dc75fbb061206ce85f9e204c4385b8",
+    "sha256_lf": "141b46c358ec9639fc93d103669e0f1716dc75fbb061206ce85f9e204c4385b8"
+  },
+  {
+    "pack": "08-tools/claude-tidy.mjs",
+    "repo": "payload/tools/claude-tidy.mjs",
+    "installed_at": "tools/claude-tidy.mjs",
+    "sha256": "8ae576a5ec4dccf7476aa9e8b933224af724393d8b5be4ee24befe5158a8dbcb",
+    "sha256_lf": "8ae576a5ec4dccf7476aa9e8b933224af724393d8b5be4ee24befe5158a8dbcb"
+  },
+  {
+    "pack": "08-tools/disk-watchdog-hidden.vbs",
+    "repo": "payload/tools/disk-watchdog-hidden.vbs",
+    "installed_at": "tools/disk-watchdog-hidden.vbs",
+    "sha256": "9692567936792b0cc909b718668833166d7c23a8dc057c0099dcf0e7e1488894",
+    "sha256_lf": "9692567936792b0cc909b718668833166d7c23a8dc057c0099dcf0e7e1488894"
+  },
+  {
+    "pack": "08-tools/disk-watchdog.ps1",
+    "repo": "payload/tools/disk-watchdog.ps1",
+    "installed_at": "tools/disk-watchdog.ps1",
+    "sha256": "c9c9b70e316084b29baabde2a0de32eaca311e441524753d1c46581fc29fdbd4",
+    "sha256_lf": "c9c9b70e316084b29baabde2a0de32eaca311e441524753d1c46581fc29fdbd4"
+  },
+  {
+    "pack": "08-tools/usage/audit-transcripts.mjs",
+    "repo": "payload/tools/usage/audit-transcripts.mjs",
+    "installed_at": "tools/audit-transcripts.mjs",
+    "sha256": "626b8b21fb895087f262fa235db748fb2907827501738dabcb966b73b9dd01a8",
+    "sha256_lf": "626b8b21fb895087f262fa235db748fb2907827501738dabcb966b73b9dd01a8"
+  },
+  {
+    "pack": "08-tools/usage/usage-audit.mjs",
+    "repo": "payload/tools/usage/usage-audit.mjs",
+    "installed_at": "tools/usage-audit.mjs",
+    "sha256": "f1eebe725795beb3f8fae61888b6f4d7b67a8752a2f7f5f5c157acd7f35034c4",
+    "sha256_lf": "f1eebe725795beb3f8fae61888b6f4d7b67a8752a2f7f5f5c157acd7f35034c4"
+  },
+  {
+    "pack": "08-tools/usage/usage-config.example.json",
+    "repo": "payload/tools/usage/usage-config.example.json",
+    "installed_at": null,
+    "sha256": "68fba21f8dd257ee35f76aa2fb9ee40418ec881c681d37a23e0ed7f8ebb37699",
+    "sha256_lf": "68fba21f8dd257ee35f76aa2fb9ee40418ec881c681d37a23e0ed7f8ebb37699"
+  },
+  {
+    "pack": "08-tools/usage/usage-pct-series.mjs",
+    "repo": "payload/tools/usage/usage-pct-series.mjs",
+    "installed_at": "tools/usage-pct-series.mjs",
+    "sha256": "53f293679536f341cdc079f377ed1828a41c349411d0c0951c5c8691f12fbe2d",
+    "sha256_lf": "53f293679536f341cdc079f377ed1828a41c349411d0c0951c5c8691f12fbe2d"
+  },
+  {
+    "pack": "10-two-accounts/STEPS.md",
+    "repo": "payload/two-accounts/STEPS.md",
+    "installed_at": null,
+    "sha256": "efbf575e59a6451491d87c752d9f5edf8550ce8c09e226fb3bbbfe568b0025fd",
+    "sha256_lf": "efbf575e59a6451491d87c752d9f5edf8550ce8c09e226fb3bbbfe568b0025fd"
+  },
+  {
+    "pack": "10-two-accounts/accounts.md",
+    "repo": "payload/two-accounts/accounts.md",
+    "installed_at": "rules/setup-pack/accounts.md",
+    "sha256": "44294e1b1ccdce07d8aba954474d010ab118f97aca272eed1407395f88315d00",
+    "sha256_lf": "44294e1b1ccdce07d8aba954474d010ab118f97aca272eed1407395f88315d00"
+  },
+  {
+    "pack": "10-two-accounts/settings-snippet.json",
+    "repo": "payload/two-accounts/settings-snippet.json",
+    "installed_at": null,
+    "sha256": "4ea49df075d61f71dc7b1d724e005d55feb4e3d446a47a90b66b962857697d95",
+    "sha256_lf": "4ea49df075d61f71dc7b1d724e005d55feb4e3d446a47a90b66b962857697d95"
+  },
+  {
+    "pack": "10-two-accounts/sync-second-profile.mjs",
+    "repo": "payload/two-accounts/sync-second-profile.mjs",
+    "installed_at": "tools/sync-second-profile.mjs",
+    "sha256": "b681cd7700916ad8381d960817a03e097d64d7985d9d31cdbe10f247753aced1",
+    "sha256_lf": "b681cd7700916ad8381d960817a03e097d64d7985d9d31cdbe10f247753aced1"
+  },
+  {
+    "pack": "10-two-accounts/wrapper.bash",
+    "repo": "payload/two-accounts/wrapper.bash",
+    "installed_at": null,
+    "sha256": "cbd20479ee2369872f7ba253560d43b386e12f9de6f59c60414b8385e21d583e",
+    "sha256_lf": "cbd20479ee2369872f7ba253560d43b386e12f9de6f59c60414b8385e21d583e"
+  },
+  {
+    "pack": "10-two-accounts/wrapper.ps1",
+    "repo": "payload/two-accounts/wrapper.ps1",
+    "installed_at": null,
+    "sha256": "e56884598dcfd08d01a0b2569de5222f0314062247909e30135efb3bb115e379",
+    "sha256_lf": "e56884598dcfd08d01a0b2569de5222f0314062247909e30135efb3bb115e379"
+  },
+  {
+    "pack": "11-lessons/MEMORY-lines.md",
+    "repo": "payload/lessons/MEMORY-lines.md",
+    "installed_at": null,
+    "sha256": "5a57fdc92fe3bee2baf5467f1be9cf6b0049258b64305d03c52d51cb69cf7415",
+    "sha256_lf": "5a57fdc92fe3bee2baf5467f1be9cf6b0049258b64305d03c52d51cb69cf7415"
+  },
+  {
+    "pack": "11-lessons/claude_settings_hooks.md",
+    "repo": "payload/lessons/claude_settings_hooks.md",
+    "installed_at": "projects/<encoded-home>/memory/claude_settings_hooks.md",
+    "sha256": "3880d2b975ae07333caa71f4e967c47db485a0cf8e945fdab1d86a9a1d0823fa",
+    "sha256_lf": "3880d2b975ae07333caa71f4e967c47db485a0cf8e945fdab1d86a9a1d0823fa"
+  },
+  {
+    "pack": "11-lessons/feedback_disk_cleanup_depth.md",
+    "repo": "payload/lessons/feedback_disk_cleanup_depth.md",
+    "installed_at": "projects/<encoded-home>/memory/feedback_disk_cleanup_depth.md",
+    "sha256": "41725e0594f6170b79b8ce04319dae25a88a308def7a88aa8273f30c0a32fea7",
+    "sha256_lf": "41725e0594f6170b79b8ce04319dae25a88a308def7a88aa8273f30c0a32fea7"
+  },
+  {
+    "pack": "11-lessons/feedback_flags_only_rejection.md",
+    "repo": "payload/lessons/feedback_flags_only_rejection.md",
+    "installed_at": "projects/<encoded-home>/memory/feedback_flags_only_rejection.md",
+    "sha256": "88e80c9b9aef5d05230fc38ada5f6296b58185b14dec3a7da80e517b8cd92ff8",
+    "sha256_lf": "88e80c9b9aef5d05230fc38ada5f6296b58185b14dec3a7da80e517b8cd92ff8"
+  },
+  {
+    "pack": "11-lessons/feedback_measure_token_savings.md",
+    "repo": "payload/lessons/feedback_measure_token_savings.md",
+    "installed_at": "projects/<encoded-home>/memory/feedback_measure_token_savings.md",
+    "sha256": "b2510d4f3c1943ac22e35de2f32a2bb5474502471d79f350d1caa74960e7531f",
+    "sha256_lf": "b2510d4f3c1943ac22e35de2f32a2bb5474502471d79f350d1caa74960e7531f"
+  },
+  {
+    "pack": "11-lessons/feedback_shareable_prompts.md",
+    "repo": "payload/lessons/feedback_shareable_prompts.md",
+    "installed_at": "projects/<encoded-home>/memory/feedback_shareable_prompts.md",
+    "sha256": "db7f88c999091a2855dab42fbf5ecc75b09998798b348dd9b56d6489a324cf87",
+    "sha256_lf": "db7f88c999091a2855dab42fbf5ecc75b09998798b348dd9b56d6489a324cf87"
+  },
+  {
+    "pack": "11-lessons/feedback_tg_notif.md",
+    "repo": "payload/lessons/feedback_tg_notif.md",
+    "installed_at": "projects/<encoded-home>/memory/feedback_tg_notif.md",
+    "sha256": "d7bd6932dfc9cbaa61734d49ac9f76934d690e9b2659710aee9c8580f6095164",
+    "sha256_lf": "d7bd6932dfc9cbaa61734d49ac9f76934d690e9b2659710aee9c8580f6095164"
+  },
+  {
+    "pack": "11-lessons/feedback_userassist_unreliable.md",
+    "repo": "payload/lessons/feedback_userassist_unreliable.md",
+    "installed_at": "projects/<encoded-home>/memory/feedback_userassist_unreliable.md",
+    "sha256": "e6312c81d371be1a95f48062c5e17a2ffd78310f3c5f5c993699b9edadb64cd6",
+    "sha256_lf": "e6312c81d371be1a95f48062c5e17a2ffd78310f3c5f5c993699b9edadb64cd6"
+  }
+]

@@ -1,0 +1,48 @@
+{
+  "id": "disk-watchdog",
+  "title": "Disk Watchdog",
+  "group": "tools",
+  "level": "optional",
+  "summary": "A background check every 10 minutes that shrinks huge Claude temp logs and cleans old session temp and old backups.",
+  "details": "A scheduled check runs every 10 minutes and at logon: it shrinks Claude temp logs over 1 GB and force-stops the programs holding them (never claude.exe or explorer.exe), deletes session temp older than 3 days and backups older than 90 days, and sends a Telegram alert (only if set up) under 20 GB free disk. It suits PCs where Claude temp and logs grow large. It adds a PowerShell script, a hidden VBS launcher and a small rule file, plus a task you register; no network except the optional alert.",
+  "needs": [
+    "windows",
+    "cmd:pwsh"
+  ],
+  "files": [
+    {
+      "src": "payload/tools/disk-watchdog.ps1",
+      "dest": "tools/disk-watchdog.ps1",
+      "mode": "managed"
+    },
+    {
+      "src": "payload/tools/disk-watchdog-hidden.vbs",
+      "dest": "tools/disk-watchdog-hidden.vbs",
+      "mode": "managed"
+    }
+  ],
+  "settings": [],
+  "rules": [
+    "payload/rules/claude-setup--disk-watchdog.md"
+  ],
+  "mcp": [],
+  "plugins": [],
+  "values": [],
+  "user_steps": [],
+  "machine_steps": [
+    "Dry run first in PowerShell 7: run ~/.claude/tools/disk-watchdog.ps1 with -DryRun -SweepNow; the last line must start with \"run ok\".",
+    "Register a scheduled task named \"Claude Disk Watchdog\" (no admin needed): it runs wscript.exe //B //Nologo on ~/.claude/tools/disk-watchdog-hidden.vbs, every 10 minutes and at logon, for the current user, with a 5-minute time limit, one run at a time, also on battery. If a task with the same action exists, update it instead of adding a second.",
+    "Tell the person what it does: it force-stops programs that hold Claude temp logs over 1 GB (never claude.exe or explorer.exe), deletes session temp older than 3 days and ~/.claude/backups folders older than 90 days (this includes the install backup), and sends a Telegram alert under 20 GB free disk only if Telegram is set up."
+  ],
+  "verify": [
+    "pwsh -NoProfile -ExecutionPolicy Bypass -File ~/.claude/tools/disk-watchdog.ps1 -DryRun -SweepNow"
+  ],
+  "tokens_always_on": {
+    "value": 65,
+    "how": "estimated chars/4"
+  },
+  "quality": "tried",
+  "risk": "A scheduled task runs every 10 minutes and at logon; it can force-stop programs holding big Claude logs and delete old temp and backup folders. No network except the optional Telegram alert.",
+  "ask_alone": false,
+  "license": null
+}

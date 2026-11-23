@@ -1,0 +1,32 @@
+{
+  "id": "skill-design-md",
+  "title": "Design system file",
+  "group": "skills",
+  "level": "recommended",
+  "summary": "Gives a new project a design system by writing a DESIGN.md based on one of 84 well known product brands.",
+  "details": "Type /design-md list to see 84 brand-inspired design systems, then /design-md with a brand name like Linear or Stripe to write a DESIGN.md for your new project. It helps when a new site has no design system yet and needs a look. The skill folder installs as skills/design-md and loads only when you use it; it is instructions only, so no code runs on its own.",
+  "needs": [],
+  "files": [
+    {
+      "src": "payload/skills/design-md",
+      "dest": "skills/design-md",
+      "mode": "managed"
+    }
+  ],
+  "settings": [],
+  "rules": [],
+  "mcp": [],
+  "plugins": [],
+  "values": [],
+  "user_steps": [],
+  "machine_steps": [],
+  "verify": [],
+  "tokens_always_on": {
+    "value": 91,
+    "how": "estimated chars/4"
+  },
+  "quality": "tried",
+  "risk": "Instructions only; loads when used. No code runs on its own.",
+  "ask_alone": false,
+  "license": "MIT"
+}

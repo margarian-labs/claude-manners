@@ -1,0 +1,33 @@
+{
+  "id": "plugin-figma",
+  "title": "Figma plugin",
+  "group": "plugins",
+  "level": "optional",
+  "summary": "Reads Figma designs so Claude can build from them.",
+  "details": "Once it is installed you can point Claude at a Figma design and it reads the file so it can build from it, asking you to sign in to Figma the first time. It is for you when designs and code need to stay in step. It is a plugin from the official marketplace; nothing ships with this pack, and it reaches the network only when you use it with Figma.",
+  "needs": [],
+  "files": [],
+  "settings": [],
+  "rules": [],
+  "mcp": [],
+  "plugins": [
+    {
+      "name": "figma",
+      "marketplace": "anthropics/claude-plugins-official"
+    }
+  ],
+  "values": [],
+  "user_steps": [],
+  "machine_steps": [],
+  "verify": [
+    "bash -c \"claude plugin list | grep -q figma\""
+  ],
+  "tokens_always_on": {
+    "value": 0,
+    "how": "estimated chars/4"
+  },
+  "quality": "tried",
+  "risk": "Installed from the official marketplace; connects to Figma over the network when used and asks you to sign in.",
+  "ask_alone": false,
+  "license": null
+}

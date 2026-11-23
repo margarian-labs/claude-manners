@@ -1,0 +1,14 @@
+{
+  "accounts": [
+    {
+      "label": "work",
+      "orgPrefix": "FIRST_8_CHARS_OF_ORG_UUID",
+      "configDir": ".claude"
+    },
+    {
+      "label": "personal",
+      "orgPrefix": "FIRST_8_CHARS_OF_ORG_UUID",
+      "configDir": ".claude-personal"
+    }
+  ]
+}

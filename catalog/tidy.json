@@ -1,0 +1,43 @@
+{
+  "id": "tidy",
+  "title": "Tidy",
+  "group": "tools",
+  "level": "recommended",
+  "summary": "At the end of a task, finds what the session left behind and removes only its own throwaway files.",
+  "details": "Before finishing a task that created files, worktrees or containers, Claude runs /tidy: a read-only node report lists what the session may have left behind, then Claude deletes only its own throwaways by explicit path, removes clean merged worktrees it made and stops containers it started. Your final reply then says what was removed and what was kept, so your disk and branches stay clean. It installs a skill, a rule loaded every session and a tool script; the report runs only when used.",
+  "needs": [
+    "cmd:node"
+  ],
+  "files": [
+    {
+      "src": "payload/skills/tidy",
+      "dest": "skills/tidy",
+      "mode": "managed"
+    },
+    {
+      "src": "payload/tools/claude-tidy.mjs",
+      "dest": "tools/claude-tidy.mjs",
+      "mode": "managed"
+    }
+  ],
+  "settings": [],
+  "rules": [
+    "payload/rules/claude-setup--tidy.md"
+  ],
+  "mcp": [],
+  "plugins": [],
+  "values": [],
+  "user_steps": [],
+  "machine_steps": [],
+  "verify": [
+    "node --check payload/tools/claude-tidy.mjs"
+  ],
+  "tokens_always_on": {
+    "value": 182,
+    "how": "estimated chars/4"
+  },
+  "quality": "tried",
+  "risk": "Runs only when asked; it lists leftovers and deletes only files this session created.",
+  "ask_alone": false,
+  "license": null
+}

@@ -1,0 +1,54 @@
+{
+  "id": "usage-tools",
+  "title": "Usage tools",
+  "group": "tools",
+  "level": "optional",
+  "summary": "Cost and usage reports built from your local Claude transcripts.",
+  "details": "Three node scripts build cost and usage reports from your local Claude transcripts: per-account API-equivalent cost for a time window (last 7 days by default), a usage percent series, and a transcript audit. You fill tools/usage-config.json with each account's label, the first 8 characters of its organization id and its config folder, then run a script when you want a report. They run only when you start them, read local transcripts and send nothing out; times are shown in UTC+4.",
+  "needs": [
+    "cmd:node"
+  ],
+  "files": [
+    {
+      "src": "payload/tools/usage/usage-audit.mjs",
+      "dest": "tools/usage-audit.mjs",
+      "mode": "managed"
+    },
+    {
+      "src": "payload/tools/usage/usage-pct-series.mjs",
+      "dest": "tools/usage-pct-series.mjs",
+      "mode": "managed"
+    },
+    {
+      "src": "payload/tools/usage/audit-transcripts.mjs",
+      "dest": "tools/audit-transcripts.mjs",
+      "mode": "managed"
+    },
+    {
+      "src": "payload/tools/usage/usage-config.example.json",
+      "dest": "tools/usage-config.json",
+      "mode": "seed"
+    }
+  ],
+  "settings": [],
+  "rules": [],
+  "mcp": [],
+  "plugins": [],
+  "values": [],
+  "user_steps": [
+    "Fill ~/.claude/tools/usage-config.json: for each account a label, the first 8 characters of its organization id (oauthAccount.organizationUuid in ~/.claude.json) and its config folder relative to your home folder.",
+    "With a second Claude profile, add a second entry to ~/.claude/tools/usage-config.json (label, first 8 characters of its organization id, config folder). With one account, delete the second example entry."
+  ],
+  "machine_steps": [],
+  "verify": [
+    "node --check payload/tools/usage/usage-audit.mjs"
+  ],
+  "tokens_always_on": {
+    "value": 0,
+    "how": "estimated chars/4"
+  },
+  "quality": "tried",
+  "risk": "Runs only when you start it; it reads your local transcripts and sends nothing out. The detail sections cover the first account, times are shown in UTC+4.",
+  "ask_alone": false,
+  "license": null
+}

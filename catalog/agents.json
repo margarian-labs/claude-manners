@@ -1,0 +1,57 @@
+{
+  "id": "agents",
+  "title": "Planner, second opinion and Haiku worker",
+  "group": "agents",
+  "level": "recommended",
+  "summary": "Three helper agents: a planner for big tasks, a second opinion for hard calls, and a Haiku worker for simple jobs.",
+  "details": "Adds three helper agents Claude can use: planner writes an implementation plan for big tasks, second-opinion gives a short independent view of a hard call, and haiku-worker runs one simple, fully specified job. They help for tasks that touch many files, hard decisions, or small jobs fit for the cheaper Haiku model. They are agent files under ~/.claude/agents/; planner and second-opinion never edit anything, and all three run only when Claude starts them.",
+  "needs": [],
+  "files": [
+    {
+      "src": "payload/agents/planner.md",
+      "dest": "agents/planner.md",
+      "mode": "rendered"
+    },
+    {
+      "src": "payload/agents/second-opinion.md",
+      "dest": "agents/second-opinion.md",
+      "mode": "rendered"
+    },
+    {
+      "src": "payload/agents/haiku-worker.md",
+      "dest": "agents/haiku-worker.md",
+      "mode": "managed"
+    }
+  ],
+  "settings": [],
+  "rules": [],
+  "mcp": [],
+  "plugins": [],
+  "values": [
+    {
+      "key": "planner_agent_model",
+      "file": "agents/planner.md",
+      "frontmatter": "model",
+      "ask": "Model for planner and second opinion (sync uses opus when the account has no Fable)",
+      "default": "fable"
+    },
+    {
+      "key": "planner_agent_model",
+      "file": "agents/second-opinion.md",
+      "frontmatter": "model",
+      "ask": "Model for planner and second opinion (sync uses opus when the account has no Fable)",
+      "default": "fable"
+    }
+  ],
+  "user_steps": [],
+  "machine_steps": [],
+  "verify": [],
+  "tokens_always_on": {
+    "value": 203,
+    "how": "estimated chars/4"
+  },
+  "quality": "tried",
+  "risk": "Agent definitions only; they run when Claude starts them. planner and second-opinion are read-only.",
+  "ask_alone": false,
+  "license": null
+}

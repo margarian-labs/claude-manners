@@ -1,0 +1,40 @@
+{
+  "emails": [
+    {
+      "value": "@ollama.com",
+      "why": "Public vendor contact address inside the vendored design-md brand notes."
+    }
+  ],
+  "strings": [
+    {
+      "value": "margarian-labs/claude-setup",
+      "why": "The repo's own GitHub address (org/repo), needed in README and START.md."
+    }
+  ],
+  "paths": [
+    {
+      "glob": "payload/skills/hallmark/scripts/photos.json",
+      "rules": [
+        "word",
+        "entropy"
+      ],
+      "why": "Vendored Wikimedia photo list: long image URLs and photographer credits trip the entropy and word-list rules; no personal data."
+    },
+    {
+      "glob": "payload/skills/hallmark/scripts/fixtures/**",
+      "rules": [
+        "word",
+        "entropy"
+      ],
+      "why": "Vendored HTML test fixtures with long asset URLs and sample text; no personal data."
+    },
+    {
+      "glob": "payload/skills/ui-ux-pro-max/data/**",
+      "rules": [
+        "word",
+        "entropy"
+      ],
+      "why": "Vendored design data tables: long font and URL strings and sample names trip the entropy and word-list rules. Email, key and home-path rules stay on."
+    }
+  ]
+}

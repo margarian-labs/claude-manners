@@ -1,0 +1,33 @@
+name: checks
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  checks:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Privacy word list
+        shell: bash
+        env:
+          PRIVACY_WORDS: ${{ secrets.PRIVACY_WORDS }}
+        run: |
+          if [ -n "$PRIVACY_WORDS" ]; then
+            printf '%s\n' "$PRIVACY_WORDS" > "$RUNNER_TEMP/privacy-words.txt"
+            echo "CLAUDE_SETUP_PRIVACY_WORDS=$RUNNER_TEMP/privacy-words.txt" >> "$GITHUB_ENV"
+          fi
+      - name: Repo checks
+        run: node owner/check.mjs
+      - name: Unit tests
+        shell: bash
+        run: node --test tests/unit/*.test.mjs

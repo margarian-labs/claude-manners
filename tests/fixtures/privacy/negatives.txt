@@ -1,0 +1,11 @@
+Contact: jane@example.com, ops@sub.example.org, bob@example.net, hr@company.com, qa@runner.test
+Asset names such as logo@2x.png and package pins such as left-pad@1.3.0 are not email addresses.
+Home paths with placeholders: C:\Users\<name>\.claude, C:/Users/USER/.claude, C:\Users\Public, C:\Users\Default
+More placeholders: C:\Users\%USERNAME%\AppData, /home/$USER/.config, /home/${USER}/.config, /Users/you/work, /home/example/app, /home/me/app
+Relative paths that only look similar: src/home/index.ts and ./Users/list.json
+Secrets that are not secrets: AKIAshort, ghp_tooshort, sk-ant-..., xoxb-x, password: "<your-password-here>", token = "${GITHUB_TOKEN}"
+Config reads: api_key = os.environ["API_KEY"] and secret: process.env.SECRET
+A sha256 digest is hex, not a key: 9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08
+A long slug is a name, not a key: payload/skills/hallmark/references/macrostructures/01-bento-grid-layout
+A long identifier is code, not a key: ExpressionChangedAfterItHasBeenCheckedErrorMessage
+Public key headers are fine: -----BEGIN PUBLIC KEY-----

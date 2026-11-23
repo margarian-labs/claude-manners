@@ -1,0 +1,28 @@
+{
+  "id": "skill-overrides",
+  "title": "Skill overrides",
+  "group": "settings",
+  "level": "recommended",
+  "summary": "Turns off 7 noisy skills and sets 5 built-in ones to run only when you ask for them.",
+  "details": "This setting turns off 7 noisy skills and makes 5 built-in ones, like init, simplify and security-review, run only when you ask for them. It keeps automatic skill suggestions from crowding your sessions while leaving every skill available on request. It writes a skillOverrides block into your settings.json; one setting only, no code runs and no network is used.",
+  "needs": [],
+  "files": [],
+  "settings": [
+    "payload/settings/fragments/skill-overrides.json"
+  ],
+  "rules": [],
+  "mcp": [],
+  "plugins": [],
+  "values": [],
+  "user_steps": [],
+  "machine_steps": [],
+  "verify": [],
+  "tokens_always_on": {
+    "value": 0,
+    "how": "estimated chars/4"
+  },
+  "quality": "tried",
+  "risk": "One setting that switches skills off. No code runs.",
+  "ask_alone": false,
+  "license": null
+}

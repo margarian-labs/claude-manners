@@ -1,0 +1,28 @@
+{
+  "id": "basics",
+  "title": "Basics",
+  "group": "settings",
+  "level": "recommended",
+  "summary": "UTF-8 for Python and no session cron jobs.",
+  "details": "Sets two environment values: Python always uses UTF-8 (PYTHONUTF8=1), and Claude Code session cron jobs are turned off (CLAUDE_CODE_DISABLE_CRON=1). Useful if you run Python through Claude or do not want scheduled jobs inside sessions. It changes two keys in settings.json only; no code runs and no network is used.",
+  "needs": [],
+  "files": [],
+  "settings": [
+    "payload/settings/fragments/env-basics.json"
+  ],
+  "rules": [],
+  "mcp": [],
+  "plugins": [],
+  "values": [],
+  "user_steps": [],
+  "machine_steps": [],
+  "verify": [],
+  "tokens_always_on": {
+    "value": 0,
+    "how": "estimated chars/4"
+  },
+  "quality": "tried",
+  "risk": "Two environment settings only. No code runs.",
+  "ask_alone": false,
+  "license": null
+}

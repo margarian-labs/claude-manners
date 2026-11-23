@@ -1,0 +1,32 @@
+{
+  "id": "skill-grilling",
+  "title": "Grilling",
+  "group": "skills",
+  "level": "recommended",
+  "summary": "Stress-tests your thinking with a relentless interview about a plan, decision or idea.",
+  "details": "Use it when you want to stress-test a plan, decision or idea: Claude interviews you relentlessly, in rounds of up to 4 questions with recommended answers, working through a design tree until nothing is left assumed. Finding facts is Claude's job, not yours, so it looks things up itself instead of asking. It adds a skill folder that loads only when used; instructions only, so no code runs on its own.",
+  "needs": [],
+  "files": [
+    {
+      "src": "payload/skills/grilling",
+      "dest": "skills/grilling",
+      "mode": "managed"
+    }
+  ],
+  "settings": [],
+  "rules": [],
+  "mcp": [],
+  "plugins": [],
+  "values": [],
+  "user_steps": [],
+  "machine_steps": [],
+  "verify": [],
+  "tokens_always_on": {
+    "value": 48,
+    "how": "estimated chars/4"
+  },
+  "quality": "tried",
+  "risk": "Instructions only; loads when used. No code runs on its own.",
+  "ask_alone": false,
+  "license": "MIT"
+}

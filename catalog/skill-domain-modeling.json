@@ -1,0 +1,32 @@
+{
+  "id": "skill-domain-modeling",
+  "title": "Domain modeling",
+  "group": "skills",
+  "level": "recommended",
+  "summary": "Builds and sharpens a project's domain model via glossary terms and architecture decision records.",
+  "details": "This skill makes Claude build and sharpen your project's domain model as you work: it challenges terms that conflict with GLOSSARY.md, proposes precise names, invents edge-case scenarios, checks claims against the code, and writes glossary terms and ADRs as decisions settle. It is for teams discussing codebase terminology or recording decisions. It adds a skill folder that loads only when used; instructions only, so no code runs on its own.",
+  "needs": [],
+  "files": [
+    {
+      "src": "payload/skills/domain-modeling",
+      "dest": "skills/domain-modeling",
+      "mode": "managed"
+    }
+  ],
+  "settings": [],
+  "rules": [],
+  "mcp": [],
+  "plugins": [],
+  "values": [],
+  "user_steps": [],
+  "machine_steps": [],
+  "verify": [],
+  "tokens_always_on": {
+    "value": 48,
+    "how": "estimated chars/4"
+  },
+  "quality": "tried",
+  "risk": "Instructions only; loads when used. No code runs on its own.",
+  "ask_alone": false,
+  "license": "MIT"
+}

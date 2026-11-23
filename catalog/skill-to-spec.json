@@ -1,0 +1,34 @@
+{
+  "id": "skill-to-spec",
+  "title": "To spec",
+  "group": "skills",
+  "level": "recommended",
+  "summary": "Turns the current conversation into a spec and publishes it to the project issue tracker, with no interview.",
+  "details": "After you have discussed a feature, invoke /to-spec and Claude turns the discussion into a spec with a problem statement, user stories, and implementation and testing decisions, then publishes it to your project issue tracker without interviewing you. Use it when the thinking is done and you want it captured as a ticket. It needs the tracker that /setup-matt-pocock-skills configures; it installs as a skill that loads only when used, and publishes through your tracker.",
+  "needs": [
+    "part:skill-setup-matt-pocock-skills"
+  ],
+  "files": [
+    {
+      "src": "payload/skills/to-spec",
+      "dest": "skills/to-spec",
+      "mode": "managed"
+    }
+  ],
+  "settings": [],
+  "rules": [],
+  "mcp": [],
+  "plugins": [],
+  "values": [],
+  "user_steps": [],
+  "machine_steps": [],
+  "verify": [],
+  "tokens_always_on": {
+    "value": 48,
+    "how": "estimated chars/4"
+  },
+  "quality": "tried",
+  "risk": "Instructions only; loads when used. No code runs on its own.",
+  "ask_alone": false,
+  "license": "MIT"
+}

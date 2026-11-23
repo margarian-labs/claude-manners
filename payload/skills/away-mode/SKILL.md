@@ -1,0 +1,18 @@
+---
+name: away-mode
+description: Use when the user's message carries the `-away` flag, when a hook prints "Away mode ON" or "Away mode still ON", or after a compaction while away mode is on.
+---
+
+# Away mode (`-away`)
+
+I'm leaving my desk. Finish the whole task without me.
+- **Ask now, once.** Read just enough to find every open question, then ask them all in one AskUserQuestion round, recommended option first. With `-p`, get the plan approved before I go. Nothing unclear: say so in one line and start.
+- **Then never ask, never wait.** Every later choice takes the recommended option; note it and why. No automatic plan mode for 3+ files.
+- **Finish everything:** the task, acceptance checks, `/tidy`, and every doc the work affects (project docs and KB, README, CLAUDE.md notes, memory files). This counts as my request to update docs.
+- **Don't get stuck on a prompt.** Shell prompts are auto-allowed by a hook, so be careful yourself: literal paths, delete only what you created. Write scripts with the Write tool, not inline heredocs. An edit a project's ownership or area guard would ask about: skip it and list it.
+- **Not without me:** push, merge, deploy, production DB changes, messages to people, unless the task asked for them. Do everything up to that point and list it.
+- **Usage limit:** a `[Usage limit reached ...]` note does not end away mode. Follow "Usage limit: wake-up timer" in Workflow Rules (`~/.claude/rules/setup-pack/core.md`) with two differences: always start the timer, and use the description `Away wake-up timer: the usage limit has reset, continue the away task from progress.md`. Then finish the piece in hand, stop sub-agents (never the timer), list them in `progress.md` for relaunch, and end the turn. When the timer's notification arrives, continue from `progress.md`. A Stop hook (`~/.claude/hooks/away-stop.js`) blocks the stop once if the timer is missing; no timer after the weekly stop point. Failed requests are still retried inside the turn (`CLAUDE_CODE_RETRY_WATCHDOG=1`). Keep `~/.claude/handoffs/<yyyy-mm-dd>-<slug>/progress.md` updated at each milestone (first line `Away mode: on`, then done, next, decisions) so a resumed or new session picks up.
+- **Stop point (optional):** `-away 85` = stop when my weekly usage (the status line's 7d %) reaches 85%. The number belongs to the flag, not the task. It is armed only if the hook's "Away mode ON ... Weekly stop point: N%" line appears; say it back in your first message, or say it is not armed (no line, or "No stop point set"). At the stop point a hook (`~/.claude/hooks/away-guard.js`) blocks new tool calls in the main thread: start nothing new, let running sub-agents and commands finish, update `progress.md` (done, half done, next step), give the final report and stop. A later `continue` or notification does not restart work; only my next message does.
+- **Lasts** until the task is done or I write again without `-away`. A bare `continue`, task notifications and messages from other sessions don't end it. When I'm back, stop any running wake-up timer.
+- **Final report:** done and checked / decided for you / needs you / skipped.
+- `-d` (read-only) and `-nc` (no commits) still apply.

@@ -1,0 +1,28 @@
+{
+  "id": "csharp-dotnet",
+  "title": "C# and .NET conventions",
+  "group": "rules",
+  "level": "optional",
+  "summary": "C# and .NET coding conventions (.NET 8+, file-scoped namespaces, nullable types, naming). Pairs with the dotnet plugins.",
+  "details": "Claude follows C# and .NET conventions in your code: .NET 8 or newer, file-scoped namespaces, nullable reference types, global usings, top-level statements and the field and member naming rules. It is for anyone working on C# or .NET projects, and pairs with the dotnet plugins. It adds one plain-text rule file under ~/.claude/rules/ that loads into every session; no code runs and no network is used.",
+  "needs": [],
+  "files": [],
+  "settings": [],
+  "rules": [
+    "payload/rules/claude-setup--csharp-dotnet.md"
+  ],
+  "mcp": [],
+  "plugins": [],
+  "values": [],
+  "user_steps": [],
+  "machine_steps": [],
+  "verify": [],
+  "tokens_always_on": {
+    "value": 125,
+    "how": "estimated chars/4"
+  },
+  "quality": "tried",
+  "risk": "Text only, loaded into every session. No code runs.",
+  "ask_alone": false,
+  "license": null
+}

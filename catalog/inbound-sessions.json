@@ -1,0 +1,28 @@
+{
+  "id": "inbound-sessions",
+  "title": "Messages between local sessions",
+  "group": "settings",
+  "level": "recommended",
+  "summary": "Other Claude sessions on this PC can message this one, used by handoffs and setup-change notices.",
+  "details": "Other Claude sessions on this PC can send messages into this one, and it is what handoffs and setup-change notices use to hand work over. It is for running more than one session at a time. It changes one settings key (crossSessionInbound set to accept) in settings.json; no code runs and no network is used, and only local sessions on this machine can reach it.",
+  "needs": [],
+  "files": [],
+  "settings": [
+    "payload/settings/fragments/inbound.json"
+  ],
+  "rules": [],
+  "mcp": [],
+  "plugins": [],
+  "values": [],
+  "user_steps": [],
+  "machine_steps": [],
+  "verify": [],
+  "tokens_always_on": {
+    "value": 0,
+    "how": "estimated chars/4"
+  },
+  "quality": "tried",
+  "risk": "Settings only. Local sessions on this PC can send messages into this session.",
+  "ask_alone": false,
+  "license": null
+}

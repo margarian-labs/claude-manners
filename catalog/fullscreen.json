@@ -1,0 +1,28 @@
+{
+  "id": "fullscreen",
+  "title": "Fullscreen display",
+  "group": "settings",
+  "level": "recommended",
+  "summary": "Uses the fullscreen terminal interface.",
+  "details": "Claude Code uses its fullscreen terminal interface instead of inline scrollback, so the session fills the window. It is for anyone who prefers the fullscreen layout. It changes one display key (tui) in settings.json only; no code runs and no network is used.",
+  "needs": [],
+  "files": [],
+  "settings": [
+    "payload/settings/fragments/fullscreen.json"
+  ],
+  "rules": [],
+  "mcp": [],
+  "plugins": [],
+  "values": [],
+  "user_steps": [],
+  "machine_steps": [],
+  "verify": [],
+  "tokens_always_on": {
+    "value": 0,
+    "how": "estimated chars/4"
+  },
+  "quality": "tried",
+  "risk": "One display setting. No code runs.",
+  "ask_alone": false,
+  "license": null
+}

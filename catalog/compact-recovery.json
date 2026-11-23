@@ -1,0 +1,49 @@
+{
+  "id": "compact-recovery",
+  "title": "Compaction recovery",
+  "group": "workflow",
+  "level": "recommended",
+  "summary": "After a compaction, points Claude to the full transcript and to your exact words, so nothing important is lost.",
+  "details": "After any compaction, Claude is pointed to the full transcript and to your own messages and answers word for word, so earlier decisions are not lost. It helps in long sessions where compacting would otherwise drop instructions you gave. It adds hook scripts that run before and after each compaction, a compact-instructions.md copied to ~/.claude and settings entries; the code runs locally and no network is used.",
+  "needs": [
+    "part:handoff",
+    "cmd:node"
+  ],
+  "files": [
+    {
+      "src": "payload/hooks/compact-recovery.sh",
+      "dest": "hooks/compact-recovery.sh",
+      "mode": "managed"
+    },
+    {
+      "src": "payload/hooks/compact-recovery.js",
+      "dest": "hooks/compact-recovery.js",
+      "mode": "managed"
+    },
+    {
+      "src": "payload/hooks/compact-instructions.md",
+      "dest": "compact-instructions.md",
+      "mode": "managed"
+    }
+  ],
+  "settings": [
+    "payload/settings/fragments/hooks-compact.json"
+  ],
+  "rules": [],
+  "mcp": [],
+  "plugins": [],
+  "values": [],
+  "user_steps": [],
+  "machine_steps": [],
+  "verify": [
+    "node --check payload/hooks/compact-recovery.js"
+  ],
+  "tokens_always_on": {
+    "value": 0,
+    "how": "estimated chars/4"
+  },
+  "quality": "tried",
+  "risk": "Runs before and after each compaction and prints reminders into the session. No network.",
+  "ask_alone": false,
+  "license": null
+}

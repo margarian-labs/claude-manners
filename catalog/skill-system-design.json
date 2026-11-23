@@ -1,0 +1,32 @@
+{
+  "id": "skill-system-design",
+  "title": "System design",
+  "group": "skills",
+  "level": "optional",
+  "summary": "Helps you design systems and services: requirements, architecture, API contracts, data models and service boundaries.",
+  "details": "Describe what you want to build and Claude works through requirements, a component design, API contracts, data models, storage, scaling, failover and trade-offs, then writes a structured design document with explicit assumptions and what to revisit as the system grows. Use it when you need API design, data modeling or service boundaries worked out. It installs as a skill that loads only when used; instructions only, no code runs and no network is used.",
+  "needs": [],
+  "files": [
+    {
+      "src": "payload/skills/system-design",
+      "dest": "skills/system-design",
+      "mode": "managed"
+    }
+  ],
+  "settings": [],
+  "rules": [],
+  "mcp": [],
+  "plugins": [],
+  "values": [],
+  "user_steps": [],
+  "machine_steps": [],
+  "verify": [],
+  "tokens_always_on": {
+    "value": 72,
+    "how": "estimated chars/4"
+  },
+  "quality": "tried",
+  "risk": "Instructions only; loads when used. No code runs on its own.",
+  "ask_alone": false,
+  "license": "Apache-2.0"
+}

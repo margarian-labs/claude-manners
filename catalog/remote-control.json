@@ -1,0 +1,28 @@
+{
+  "id": "remote-control",
+  "title": "Remote Control at startup",
+  "group": "settings",
+  "level": "recommended",
+  "summary": "Every session can be reached from the Claude app on your phone or another computer.",
+  "details": "With this setting on, every session you start can be reached from the Claude app on your phone or another computer, so you can look in or continue from elsewhere. It is for you if you move between machines or want to watch a long task from your phone. It adds one settings key, remoteControlAtStartup, with no files or code; your sessions are then reachable through your Claude account, and Claude Code's own usage-limit auto-continue does not start.",
+  "needs": [],
+  "files": [],
+  "settings": [
+    "payload/settings/fragments/remote-control.json"
+  ],
+  "rules": [],
+  "mcp": [],
+  "plugins": [],
+  "values": [],
+  "user_steps": [],
+  "machine_steps": [],
+  "verify": [],
+  "tokens_always_on": {
+    "value": 0,
+    "how": "estimated chars/4"
+  },
+  "quality": "tried",
+  "risk": "Settings only. Each session becomes reachable from your Claude account, and Claude Code's own usage-limit auto-continue then does not start.",
+  "ask_alone": false,
+  "license": null
+}

@@ -1,0 +1,32 @@
+{
+  "id": "skill-cro",
+  "title": "Conversion rate optimization",
+  "group": "skills",
+  "level": "recommended",
+  "summary": "Finds what to change on a landing, pricing or form page to get more conversions, and why it is not converting.",
+  "details": "When you ask why a landing, pricing or form page is not converting, Claude analyzes the page across value proposition, headline, proof and form fields, then says what to change first, loading extra references for forms and experiments as needed. It is for you when you want more conversions or a form fixed. It copies a skill folder that loads only when used; instructions only, no code runs on its own.",
+  "needs": [],
+  "files": [
+    {
+      "src": "payload/skills/cro",
+      "dest": "skills/cro",
+      "mode": "managed"
+    }
+  ],
+  "settings": [],
+  "rules": [],
+  "mcp": [],
+  "plugins": [],
+  "values": [],
+  "user_steps": [],
+  "machine_steps": [],
+  "verify": [],
+  "tokens_always_on": {
+    "value": 55,
+    "how": "estimated chars/4"
+  },
+  "quality": "tried",
+  "risk": "Instructions only; loads when used. No code runs on its own.",
+  "ask_alone": false,
+  "license": "MIT"
+}

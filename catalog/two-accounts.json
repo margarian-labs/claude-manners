@@ -1,0 +1,94 @@
+{
+  "id": "two-accounts",
+  "title": "Two Claude accounts",
+  "group": "integrations",
+  "level": "optional",
+  "summary": "\"claude\" opens one account and \"claude -P\" the other, both signed in at once and sharing settings, skills and sessions.",
+  "details": "claude opens one account and claude -P the other, both signed in at once: a shell function in your shell profiles points the second start at a second config folder you choose, and a sync script refreshes junctions so settings, skills, hooks and sessions are shared while login, plan and usage limits stay separate. Use it when you have two Claude logins. It edits your shell profiles and creates junctions in the config folder; no network.",
+  "needs": [],
+  "files": [
+    {
+      "src": "payload/two-accounts/sync-second-profile.mjs",
+      "dest": "tools/sync-second-profile.mjs",
+      "mode": "managed"
+    },
+    {
+      "src": "payload/two-accounts/wrapper.bash",
+      "dest": "tools/two-accounts/wrapper.bash",
+      "mode": "managed"
+    },
+    {
+      "src": "payload/two-accounts/wrapper.ps1",
+      "dest": "tools/two-accounts/wrapper.ps1",
+      "mode": "managed"
+    }
+  ],
+  "settings": [
+    "payload/two-accounts/settings-snippet.json"
+  ],
+  "rules": [
+    "payload/rules/claude-setup--two-accounts.md"
+  ],
+  "mcp": [],
+  "plugins": [],
+  "values": [
+    {
+      "key": "MAIN_LABEL",
+      "file": "rules/claude-setup--two-accounts.md",
+      "ask": "Label of the account logged in under ~/.claude (for example Work)",
+      "default": "Work"
+    },
+    {
+      "key": "MAIN_EMAIL",
+      "file": "rules/claude-setup--two-accounts.md",
+      "ask": "Login email of that account",
+      "default": ""
+    },
+    {
+      "key": "SECOND_LABEL",
+      "file": "rules/claude-setup--two-accounts.md",
+      "ask": "Label of the second account (for example Personal)",
+      "default": "Personal"
+    },
+    {
+      "key": "SECOND_EMAIL",
+      "file": "rules/claude-setup--two-accounts.md",
+      "ask": "Login email of the second account",
+      "default": ""
+    },
+    {
+      "key": "SECOND_FLAG",
+      "file": "rules/claude-setup--two-accounts.md",
+      "ask": "Shell flag that opens the second account (default -P; must not be a real Claude Code flag)",
+      "default": "-P"
+    },
+    {
+      "key": "SECOND_DIR",
+      "file": "rules/claude-setup--two-accounts.md",
+      "ask": "Config folder name of the second account, with the dot",
+      "default": ".claude-personal"
+    }
+  ],
+  "user_steps": [
+    "In a new terminal run \"claude -P\" (or your flag), run /login and sign in with the other account, then accept the folder trust prompt and check /status shows the other email."
+  ],
+  "machine_steps": [
+    "Replace {{SECOND_DIR}} in the merged session-start hook entry in settings.json with the second folder name chosen above.",
+    "Insert wrapper.bash from ~/.claude/tools/two-accounts/ as a block into ~/.bashrc (replace an old block between \"# >>> claude accounts >>>\" and \"# <<< claude accounts <<<\"). Check that bash -lic \"type -t claude\" prints function; if not, add a line that sources ~/.bashrc to the login profile.",
+    "Insert wrapper.ps1 the same way into the PowerShell profile $PROFILE.CurrentUserAllHosts, once for each PowerShell the person uses. Check that (Get-Command claude).CommandType prints Function.",
+    "Run node ~/.claude/tools/sync-second-profile.mjs --profile-dir <second folder> once. It creates the second folder and links the shared folders into it as junctions.",
+    "If the status line is installed, set ACCT2_MATCH and ACCT2_LABEL in ~/.claude/statusline.sh to the second account email and label.",
+    "If the sync warns that the claude executable is not found, set the user environment variable CLAUDE_ACCOUNTS_CLAUDE_BIN to the full path of claude.exe (never claude.cmd)."
+  ],
+  "verify": [
+    "node --check payload/two-accounts/sync-second-profile.mjs"
+  ],
+  "tokens_always_on": {
+    "value": 870,
+    "how": "estimated chars/4"
+  },
+  "quality": "tried",
+  "risk": "Edits shell profile files, creates junctions into the Claude config folder, and runs a sync before each second-profile start; no network.",
+  "ask_alone": false,
+  "license": null
+}

@@ -1,0 +1,15 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "startup|resume",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"$HOME/.claude/tools/sync-second-profile.mjs\" --profile-dir {{SECOND_DIR}} --quiet >/dev/null 2>&1 &"
+          }
+        ]
+      }
+    ]
+  }
+}

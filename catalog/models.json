@@ -1,0 +1,28 @@
+{
+  "id": "models",
+  "title": "Models and effort",
+  "group": "settings",
+  "level": "recommended",
+  "summary": "Opus as main model, Sonnet for workers, effort set per model. Check first that your plan includes Fable 5.2.",
+  "details": "Claude runs on Opus with effort xhigh, Fable and Sonnet at high, and sends its sub-agents to Sonnet through CLAUDE_CODE_SUBAGENT_MODEL; check first that your plan includes Fable 5.2, which the helper agents name. It is for anyone who wants a fixed model setup instead of switching by hand. It changes only settings.json values (the main model, three effort levels and one env value); no code runs and no network is used.",
+  "needs": [],
+  "files": [],
+  "settings": [
+    "payload/settings/fragments/models.json"
+  ],
+  "rules": [],
+  "mcp": [],
+  "plugins": [],
+  "values": [],
+  "user_steps": [],
+  "machine_steps": [],
+  "verify": [],
+  "tokens_always_on": {
+    "value": 0,
+    "how": "estimated chars/4"
+  },
+  "quality": "tried",
+  "risk": "Settings only; changes which models and effort levels Claude uses. No code runs.",
+  "ask_alone": false,
+  "license": null
+}

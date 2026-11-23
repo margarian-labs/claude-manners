@@ -1,0 +1,45 @@
+{
+  "id": "bypass-mode",
+  "title": "Bypass mode",
+  "group": "settings",
+  "level": "recommended",
+  "summary": "Claude runs every command and edit without asking. Prompt-free agents and away mode depend on it.",
+  "details": "Claude runs every command and edit without asking you; the start-up warning is skipped and a hook approves any shell prompt that still appears. Prompt-free agents and away mode depend on it, but the Claude Code docs warn to use it only in isolated environments such as containers or VMs. It sets the permissions mode in settings.json and adds the hook script; the hook runs locally, no network.",
+  "needs": [
+    "cmd:node"
+  ],
+  "files": [
+    {
+      "src": "payload/hooks/auto-approve-shell.sh",
+      "dest": "hooks/auto-approve-shell.sh",
+      "mode": "managed"
+    },
+    {
+      "src": "payload/hooks/auto-approve-shell.js",
+      "dest": "hooks/auto-approve-shell.js",
+      "mode": "managed"
+    }
+  ],
+  "settings": [
+    "payload/settings/fragments/bypass.json",
+    "payload/settings/fragments/skip-bypass-warning.json",
+    "payload/settings/fragments/hooks-auto-approve-shell.json"
+  ],
+  "rules": [],
+  "mcp": [],
+  "plugins": [],
+  "values": [],
+  "user_steps": [],
+  "machine_steps": [],
+  "verify": [
+    "node --check payload/hooks/auto-approve-shell.js"
+  ],
+  "tokens_always_on": {
+    "value": 0,
+    "how": "estimated chars/4"
+  },
+  "quality": "tried",
+  "risk": "The agent runs every command and edit without asking. The Claude Code docs warn: \"Only use this mode in isolated environments like containers or VMs where Claude Code can't cause damage.\" The start-up warning is skipped and a hook approves any shell prompt that still appears.",
+  "ask_alone": true,
+  "license": null
+}

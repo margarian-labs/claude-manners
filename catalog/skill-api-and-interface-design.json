@@ -1,0 +1,32 @@
+{
+  "id": "skill-api-and-interface-design",
+  "title": "API and interface design",
+  "group": "skills",
+  "level": "optional",
+  "summary": "Helps you design stable, well-documented APIs and interfaces that are hard to misuse.",
+  "details": "When you design APIs or module boundaries, Claude defines the contract before the implementation, keeps the surface hard to misuse and plans deprecation at design time. It is for you when you create REST or GraphQL endpoints or contracts between teams. It copies a skill folder that loads only when used; instructions only, no code runs on its own, and the skill-overrides setting keeps this skill off by default.",
+  "needs": [],
+  "files": [
+    {
+      "src": "payload/skills/api-and-interface-design",
+      "dest": "skills/api-and-interface-design",
+      "mode": "managed"
+    }
+  ],
+  "settings": [],
+  "rules": [],
+  "mcp": [],
+  "plugins": [],
+  "values": [],
+  "user_steps": [],
+  "machine_steps": [],
+  "verify": [],
+  "tokens_always_on": {
+    "value": 73,
+    "how": "estimated chars/4"
+  },
+  "quality": "tried",
+  "risk": "Instructions only; loads when used. No code runs on its own.",
+  "ask_alone": false,
+  "license": "MIT"
+}

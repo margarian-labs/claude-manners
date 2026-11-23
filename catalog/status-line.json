@@ -1,0 +1,51 @@
+{
+  "id": "status-line",
+  "title": "Status line",
+  "group": "settings",
+  "level": "recommended",
+  "summary": "Shows account, model, effort, context, usage limits and folder, and writes the usage files that away mode reads.",
+  "details": "A line under your prompt shows the active account, model and effort, context used, transcript size and compaction count, your 5-hour and weekly usage limits and the current folder. It helps you see which account you are on and how much of a limit you have used. It installs as a settings.json statusLine entry that runs bash ~/.claude/statusline.sh after each answer and writes small usage and cache files, including the usage files away mode reads; without jq a weaker fallback parser is used.",
+  "needs": [],
+  "files": [
+    {
+      "src": "payload/settings/statusline.sh",
+      "dest": "statusline.sh",
+      "mode": "rendered"
+    }
+  ],
+  "settings": [
+    "payload/settings/fragments/statusline.json"
+  ],
+  "rules": [],
+  "mcp": [],
+  "plugins": [],
+  "values": [
+    {
+      "key": "ACCT1_MATCH",
+      "file": "statusline.sh",
+      "ask": "Your Claude login email, or a glob such as *@company.com",
+      "default": ""
+    },
+    {
+      "key": "ACCT1_LABEL",
+      "file": "statusline.sh",
+      "ask": "Short label for that account",
+      "default": "Work"
+    }
+  ],
+  "user_steps": [
+    "Install jq for the best status line (winget install --exact jqlang.jq); without it a weaker fallback parser is used."
+  ],
+  "machine_steps": [],
+  "verify": [
+    "bash -c 'CLAUDE_CONFIG_DIR=$(mktemp -d) bash payload/settings/statusline.sh < payload/settings/sample-statusline-input.json > /dev/null'"
+  ],
+  "tokens_always_on": {
+    "value": 0,
+    "how": "estimated chars/4"
+  },
+  "quality": "tried",
+  "risk": "Runs after each answer and writes small usage and cache files in the Claude config folder. No network.",
+  "ask_alone": false,
+  "license": null
+}

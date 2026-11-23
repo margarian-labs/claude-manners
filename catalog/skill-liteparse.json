@@ -1,0 +1,39 @@
+{
+  "id": "skill-liteparse",
+  "title": "Liteparse",
+  "group": "skills",
+  "level": "recommended",
+  "summary": "Local OCR and text extraction for scanned, image-only or long PDFs, so you need not read pages as images.",
+  "details": "For scanned, image-only or long PDFs, and many document photos, this skill extracts text locally with the lit CLI (installed via npm), so Claude searches a text file instead of reading every page as an image; it covers Armenian, Russian and English OCR. It is for anyone with scans, long PDFs or Armenian documents, and it never sends your files to a cloud OCR service without asking. It adds a skill folder plus a rule file, and it needs the lit and uv commands installed.",
+  "needs": [
+    "cmd:lit",
+    "cmd:uv"
+  ],
+  "files": [
+    {
+      "src": "payload/skills/liteparse",
+      "dest": "skills/liteparse",
+      "mode": "managed"
+    }
+  ],
+  "settings": [],
+  "rules": [
+    "payload/rules/claude-setup--liteparse.md"
+  ],
+  "mcp": [],
+  "plugins": [],
+  "values": [],
+  "user_steps": [],
+  "machine_steps": [
+    "npm i -g @llamaindex/liteparse"
+  ],
+  "verify": [],
+  "tokens_always_on": {
+    "value": 179,
+    "how": "estimated chars/4"
+  },
+  "quality": "tried",
+  "risk": "Runs local scripts when used. No network except downloads it names.",
+  "ask_alone": false,
+  "license": null
+}

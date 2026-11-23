@@ -1,0 +1,604 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Status Line Guide</title>
+<style>
+:root {
+  --bg: #f5f6f8;
+  --surface: #ffffff;
+  --surface-2: #eef0f4;
+  --text: #1b2030;
+  --muted: #566074;
+  --border: #dde1e8;
+  --accent: #4f52d8;
+  --on-accent: #ffffff;
+  --accent-soft: #e7e8fb;
+  --accent-ink: #3a3dbd;
+  --dot-ring: rgba(0, 0, 0, 0.28);
+  --shadow: 0 1px 2px rgba(20, 30, 60, 0.06), 0 6px 20px rgba(20, 30, 60, 0.06);
+
+  /* Terminal palette: fixed in both themes */
+  --t-bg: #1e1e1e;
+  --t-fg: #d4d4d4;
+  --t-red: #f14c4c;
+  --t-green: #23d18b;
+  --t-yellow: #f5f543;
+  --t-gray: #808080;
+  --t-blue: #3b8eea;
+  --t-pink: #d670d6;
+  --t-teal: #29b8db;
+  --t-orange: #d97757;
+  --t-calm: #87afd7;
+  --t-badge-bg: #9a9df7;
+  --t-badge-ink: #12141a;
+
+  --sans: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --mono: ui-monospace, "Cascadia Mono", "Cascadia Code", Consolas, "SF Mono", Menlo, "Liberation Mono", monospace;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #12141a;
+    --surface: #1c1f27;
+    --surface-2: #262a36;
+    --text: #e8eaf0;
+    --muted: #a3abbb;
+    --border: #313646;
+    --accent: #9a9df7;
+    --on-accent: #12141a;
+    --accent-soft: #2b2e4d;
+    --accent-ink: #b6b8fa;
+    --dot-ring: rgba(255, 255, 255, 0.35);
+    --shadow: none;
+  }
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+  font-size: 17px;
+  line-height: 1.55;
+}
+
+.wrap {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 clamp(16px, 4vw, 32px);
+}
+
+/* Hero */
+header.hero { padding: 44px 0 8px; }
+
+h1 {
+  margin: 0 0 14px;
+  font-size: clamp(34px, 7vw, 52px);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.lead {
+  margin: 0;
+  max-width: 34em;
+  font-size: clamp(21px, 3.6vw, 28px);
+  line-height: 1.35;
+  font-weight: 600;
+}
+
+.eyebrow {
+  margin: 0 0 12px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+section { margin-top: 36px; }
+
+/* The sample strip: always dark */
+.term {
+  background: var(--t-bg);
+  color: var(--t-fg);
+  border: 1px solid #3a3a3a;
+  border-radius: 16px;
+  padding: 14px 16px 22px;
+  font-family: var(--mono);
+  box-shadow: var(--shadow);
+}
+
+.term-bar { display: flex; gap: 7px; margin-bottom: 18px; }
+.term-bar i {
+  display: block;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: #4a4a4a;
+}
+
+.line {
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 18px;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.seg { display: flex; align-items: flex-start; }
+
+.stack {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.txt { white-space: pre; }
+.sep { white-space: pre; color: var(--t-gray); }
+
+.badge, .num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-family: var(--sans);
+  font-weight: 700;
+  line-height: 1;
+}
+
+.badge {
+  width: 22px;
+  height: 22px;
+  font-size: 13px;
+  background: var(--t-badge-bg);
+  color: var(--t-badge-ink);
+}
+
+.num {
+  flex: none;
+  width: 34px;
+  height: 34px;
+  font-size: 17px;
+  background: var(--accent);
+  color: var(--on-accent);
+}
+
+.note { margin: 14px 2px 0; font-size: 15px; color: var(--muted); }
+
+.c-red { color: var(--t-red); }
+.c-green { color: var(--t-green); }
+.c-yellow { color: var(--t-yellow); }
+.c-gray { color: var(--t-gray); }
+.c-blue { color: var(--t-blue); }
+.c-pink { color: var(--t-pink); }
+.c-teal { color: var(--t-teal); }
+.c-orange { color: var(--t-orange); }
+.c-calm { color: var(--t-calm); }
+
+@media (min-width: 640px) {
+  .term { padding: 16px 28px 26px; }
+  .line { font-size: 17px; }
+}
+
+@media (min-width: 420px) and (max-width: 639px) {
+  .line { font-size: 15px; }
+}
+
+/* Colors at a glance */
+.glance {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.glance li {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 15px 9px 12px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  font-size: 16px;
+  line-height: 1.3;
+}
+
+.dot {
+  flex: none;
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  box-shadow: inset 0 0 0 1px var(--dot-ring);
+}
+
+.d-red { background: var(--t-red); }
+.d-green { background: var(--t-green); }
+.d-yellow { background: var(--t-yellow); }
+.d-orange { background: var(--t-orange); }
+.d-calm { background: var(--t-calm); }
+.d-blue { background: var(--t-blue); }
+.d-pink { background: var(--t-pink); }
+.d-teal { background: var(--t-teal); }
+.d-gray { background: var(--t-gray); }
+.d-plain { background: var(--t-fg); }
+
+/* Cards */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 18px;
+  align-items: start;
+}
+
+@media (min-width: 900px) {
+  .grid { grid-template-columns: 1fr 1fr; gap: 22px; }
+  .grid .wide { grid-column: 1 / -1; }
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 20px 20px 8px;
+  box-shadow: var(--shadow);
+}
+
+.card-h { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+
+h3 { margin: 0; font-size: 21px; line-height: 1.2; }
+
+.demo { display: flex; flex-wrap: wrap; gap: 10px 12px; margin-bottom: 14px; }
+
+.v { display: flex; flex-direction: column; align-items: flex-start; gap: 5px; max-width: 100%; }
+
+.pill {
+  display: inline-block;
+  max-width: 100%;
+  overflow-x: auto;
+  white-space: pre;
+  background: var(--t-bg);
+  color: var(--t-fg);
+  font-family: var(--mono);
+  font-size: 16px;
+  line-height: 1.4;
+  padding: 8px 14px;
+  border-radius: 10px;
+}
+
+.cap { font-size: 14px; color: var(--muted); }
+
+.so { margin: 0 0 14px; }
+
+.tags { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 16px; padding: 0; list-style: none; }
+
+.tags li {
+  padding: 3px 11px;
+  border-radius: 999px;
+  background: var(--surface-2);
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.tags li.cfg { background: var(--accent-soft); color: var(--accent-ink); font-weight: 600; }
+
+code {
+  font-family: var(--mono);
+  font-size: 0.88em;
+  background: var(--surface-2);
+  padding: 1px 6px;
+  border-radius: 6px;
+  overflow-wrap: anywhere;
+}
+
+details { border-top: 1px solid var(--border); }
+
+summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 13px 2px;
+  cursor: pointer;
+  list-style: none;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--accent-ink);
+}
+
+summary::-webkit-details-marker { display: none; }
+
+summary::after {
+  content: "";
+  flex: none;
+  width: 9px;
+  height: 9px;
+  border-right: 2.5px solid currentColor;
+  border-bottom: 2.5px solid currentColor;
+  transform: rotate(45deg);
+  margin-right: 4px;
+  transition: transform 0.15s ease;
+}
+
+details[open] > summary::after { transform: rotate(-135deg); margin-top: 6px; }
+
+summary:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; border-radius: 6px; }
+
+@media (prefers-reduced-motion: reduce) {
+  summary::after { transition: none; }
+}
+
+.more { padding: 2px 2px 16px; font-size: 16px; }
+.more p { margin: 0 0 12px; }
+
+.mini {
+  margin: 14px 0 6px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.mini:first-child { margin-top: 0; }
+
+.rules { margin: 0 0 6px; padding: 0; list-style: none; }
+
+.rules li {
+  display: grid;
+  grid-template-columns: 14px auto 1fr;
+  align-items: baseline;
+  gap: 4px 10px;
+  padding: 4px 0;
+}
+
+.rules .dot { align-self: center; }
+.rules b { font-weight: 600; }
+.rules span.m { color: var(--muted); }
+
+.kv {
+  display: grid;
+  grid-template-columns: 82px 1fr;
+  gap: 8px 12px;
+  margin: 14px 0 0;
+  padding-top: 12px;
+  border-top: 1px dashed var(--border);
+}
+
+.kv dt { color: var(--muted); font-size: 14px; font-weight: 700; padding-top: 2px; }
+.kv dd { margin: 0; }
+
+footer { margin: 44px 0 56px; padding-top: 22px; border-top: 1px solid var(--border); }
+footer p { margin: 0; color: var(--muted); }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="hero">
+  <h1>Your status line</h1>
+  <p class="lead">One line at the bottom of Claude Code tells you which account you are on, which model is working, how full the conversation is, how much of your limits is used, and where you are.</p>
+</header>
+
+<main>
+
+<section aria-labelledby="h-line">
+  <h2 class="eyebrow" id="h-line">Your line, left to right</h2>
+  <div class="term" role="img" aria-label="Sample status line: Work, rc, Opus 5.5 high, 182.0k of 1.0M tokens, 3.2MB and 0 compacts, 5h 63% resets in 2h14m, 7d 18% resets in 4d6h, demo folder on branch feature/login">
+    <div class="term-bar" aria-hidden="true"><i></i><i></i><i></i></div>
+    <div class="line" aria-hidden="true">
+      <span class="seg"><span class="stack"><span class="txt"><span class="c-blue">Work</span></span><span class="badge">1</span></span><span class="sep">  |  </span></span>
+      <span class="seg"><span class="stack"><span class="txt"><span class="c-green">rc</span></span><span class="badge">2</span></span><span class="sep">  |  </span></span>
+      <span class="seg"><span class="stack"><span class="txt"><span class="c-orange">Opus 5.5</span> <span class="c-gray">·</span> <span class="c-orange">high</span></span><span class="badge">3</span></span><span class="sep">  |  </span></span>
+      <span class="seg"><span class="stack"><span class="txt"><span class="c-green">182.0k</span> / 1.0M <span class="c-gray">·</span> 3.2MB <span class="c-gray">·</span> <span class="c-gray">0 compacts</span></span><span class="badge">4</span></span><span class="sep">  |  </span></span>
+      <span class="seg"><span class="stack"><span class="txt">5h <span class="c-yellow">63%</span> · ↻ 2h14m</span><span class="badge">5</span></span><span class="sep">  |  </span></span>
+      <span class="seg"><span class="stack"><span class="txt">7d <span class="c-green">18%</span> · ↻ 4d6h</span><span class="badge">6</span></span><span class="sep">  |  </span></span>
+      <span class="seg"><span class="stack"><span class="txt"><span class="c-teal">demo</span>  ⎇ feature/login</span><span class="badge">7</span></span></span>
+    </div>
+  </div>
+  <p class="note">The numbers match the cards below. Parts hide themselves when their data is missing, so your line can be shorter than this one.</p>
+</section>
+
+<section aria-labelledby="h-colors">
+  <h2 class="eyebrow" id="h-colors">Colors at a glance</h2>
+  <ul class="glance">
+    <li><span class="dot d-green"></span><span><b>green</b> = fine</span></li>
+    <li><span class="dot d-yellow"></span><span><b>yellow</b> = keep an eye on it</span></li>
+    <li><span class="dot d-orange"></span><span><b>orange</b> = getting full, or strong model/effort</span></li>
+    <li><span class="dot d-red"></span><span><b>red</b> = act now, or strongest</span></li>
+  </ul>
+</section>
+
+<section aria-labelledby="h-cards">
+  <h2 class="eyebrow" id="h-cards">What each part means</h2>
+  <div class="grid">
+
+    <article class="card">
+      <div class="card-h"><span class="num" aria-hidden="true">1</span><h3>Account</h3></div>
+      <div class="demo">
+        <div class="v"><span class="pill"><span class="c-blue">Work</span></span></div>
+        <div class="v"><span class="pill"><span class="c-pink">Personal</span></span></div>
+      </div>
+      <p class="so">Which account this window uses: work or personal.</p>
+      <ul class="tags"><li class="cfg">configurable</li><li>hides when missing</li></ul>
+      <details>
+        <summary>Details</summary>
+        <div class="more">
+          <h4 class="mini">Colors</h4>
+          <ul class="rules">
+            <li><span class="dot d-blue"></span><b>Work</b><span class="m">blue (default)</span></li>
+            <li><span class="dot d-pink"></span><b>Personal</b><span class="m">pink (default)</span></li>
+          </ul>
+          <p>If the login matches neither, the raw email is shown. If you are not logged in, this part is hidden.</p>
+          <dl class="kv">
+            <dt>Source</dt><dd>The login email of the active profile.</dd>
+            <dt>Change</dt><dd>The <code>ACCT1_*</code> and <code>ACCT2_*</code> lines at the top of <code>~/.claude/statusline.sh</code>. Label and color are set at setup from the login email.</dd>
+          </dl>
+        </div>
+      </details>
+    </article>
+
+    <article class="card">
+      <div class="card-h"><span class="num" aria-hidden="true">2</span><h3>rc (Remote Control)</h3></div>
+      <div class="demo">
+        <div class="v"><span class="pill"><span class="c-green">rc</span></span><span class="cap">on</span></div>
+        <div class="v"><span class="pill"><span class="c-red">rc</span></span><span class="cap">off</span></div>
+      </div>
+      <p class="so">Green: you can follow and continue this session from claude.ai or the phone. Red: that is off.</p>
+      <ul class="tags"><li class="cfg">configurable</li><li>can be hidden</li></ul>
+      <details>
+        <summary>Details</summary>
+        <div class="more">
+          <h4 class="mini">Colors</h4>
+          <ul class="rules">
+            <li><span class="dot d-green"></span><b>Green</b><span class="m">session can be followed and continued remotely</span></li>
+            <li><span class="dot d-red"></span><b>Red</b><span class="m">remote control is off</span></li>
+          </ul>
+          <dl class="kv">
+            <dt>Change</dt><dd>Put <code>SHOW_RC=0</code> at the top of <code>~/.claude/statusline.sh</code> to hide it.</dd>
+          </dl>
+        </div>
+      </details>
+    </article>
+
+    <article class="card">
+      <div class="card-h"><span class="num" aria-hidden="true">3</span><h3>Model and effort</h3></div>
+      <div class="demo">
+        <div class="v"><span class="pill"><span class="c-orange">Opus 5.5</span> <span class="c-gray">·</span> <span class="c-orange">high</span></span></div>
+      </div>
+      <p class="so">Which model is working and how much effort it puts in. Calm blue is the lightest, red is the strongest.</p>
+      <ul class="tags"><li>color by strength</li><li>effort hides when missing</li></ul>
+      <details>
+        <summary>Details</summary>
+        <div class="more">
+          <h4 class="mini">Model</h4>
+          <ul class="rules">
+            <li><span class="dot d-calm"></span><b>Haiku</b><span class="m">calm blue</span></li>
+            <li><span class="dot d-green"></span><b>Sonnet</b><span class="m">green</span></li>
+            <li><span class="dot d-orange"></span><b>Opus</b><span class="m">orange</span></li>
+            <li><span class="dot d-red"></span><b>Fable</b><span class="m">red</span></li>
+          </ul>
+          <h4 class="mini">Effort</h4>
+          <ul class="rules">
+            <li><span class="dot d-calm"></span><b>low</b><span class="m">calm blue</span></li>
+            <li><span class="dot d-green"></span><b>medium</b><span class="m">green</span></li>
+            <li><span class="dot d-orange"></span><b>high</b><span class="m">orange</span></li>
+            <li><span class="dot d-red"></span><b>xhigh or max</b><span class="m">red</span></li>
+          </ul>
+          <p>Effort is hidden when the model reports none. A suffix like "(1M context)" is trimmed from the model name.</p>
+        </div>
+      </details>
+    </article>
+
+    <article class="card">
+      <div class="card-h"><span class="num" aria-hidden="true">4</span><h3>Context</h3></div>
+      <div class="demo">
+        <div class="v"><span class="pill"><span class="c-green">182.0k</span> / 1.0M <span class="c-gray">·</span> 3.2MB <span class="c-gray">·</span> <span class="c-gray">0 compacts</span></span></div>
+      </div>
+      <p class="so">How full the conversation is, and how big its transcript file is. Orange or red: run <code>/compact</code> or start a fresh session soon.</p>
+      <ul class="tags"><li>color by fullness</li></ul>
+      <details>
+        <summary>Details</summary>
+        <div class="more">
+          <p>Left: tokens used in this conversation, then the context window size. After the gray dot: the size of this conversation's transcript file on disk. Then how many times this session was compacted: gray at 0, yellow from 1.</p>
+          <h4 class="mini">Color of the used number</h4>
+          <ul class="rules">
+            <li><span class="dot d-green"></span><b>Under 50%</b><span class="m">fine</span></li>
+            <li><span class="dot d-yellow"></span><b>50-69%</b><span class="m">keep an eye on it</span></li>
+            <li><span class="dot d-orange"></span><b>70-84%</b><span class="m">getting full</span></li>
+            <li><span class="dot d-red"></span><b>85% and up</b><span class="m">act now</span></li>
+          </ul>
+        </div>
+      </details>
+    </article>
+
+    <article class="card">
+      <div class="card-h"><span class="num" aria-hidden="true">5</span><h3>5-hour limit</h3></div>
+      <div class="demo">
+        <div class="v"><span class="pill">5h <span class="c-yellow">63%</span> · ↻ 2h14m</span></div>
+      </div>
+      <p class="so">How much of your rolling 5-hour limit is used, and how long until it resets (↻).</p>
+      <ul class="tags"><li>color by usage</li><li>hides when missing</li></ul>
+      <details>
+        <summary>Details</summary>
+        <div class="more">
+          <h4 class="mini">Color of the percent</h4>
+          <ul class="rules">
+            <li><span class="dot d-green"></span><b>Under 50%</b><span class="m">fine</span></li>
+            <li><span class="dot d-yellow"></span><b>50-79%</b><span class="m">keep an eye on it</span></li>
+            <li><span class="dot d-red"></span><b>80% and up</b><span class="m">act now</span></li>
+          </ul>
+          <p><code>↻ 2h14m</code> is the time until the limit resets. It shows <code>↻ resetting</code> when the reset is due.</p>
+          <p>Hidden when your plan does not report limits.</p>
+        </div>
+      </details>
+    </article>
+
+    <article class="card">
+      <div class="card-h"><span class="num" aria-hidden="true">6</span><h3>7-day limit</h3></div>
+      <div class="demo">
+        <div class="v"><span class="pill">7d <span class="c-green">18%</span> · ↻ 4d6h</span></div>
+      </div>
+      <p class="so">The same idea for your weekly limit, with the reset shown in days and hours.</p>
+      <ul class="tags"><li>color by usage</li><li>hides when missing</li></ul>
+      <details>
+        <summary>Details</summary>
+        <div class="more">
+          <h4 class="mini">Color of the percent</h4>
+          <ul class="rules">
+            <li><span class="dot d-green"></span><b>Under 50%</b><span class="m">fine</span></li>
+            <li><span class="dot d-yellow"></span><b>50-79%</b><span class="m">keep an eye on it</span></li>
+            <li><span class="dot d-red"></span><b>80% and up</b><span class="m">act now</span></li>
+          </ul>
+          <p><code>↻ 4d6h</code> means 4 days and 6 hours until the reset. It shows <code>↻ resetting</code> when the reset is due.</p>
+          <p>Hidden when your plan does not report limits.</p>
+        </div>
+      </details>
+    </article>
+
+    <article class="card wide">
+      <div class="card-h"><span class="num" aria-hidden="true">7</span><h3>Folder and branch</h3></div>
+      <div class="demo">
+        <div class="v"><span class="pill"><span class="c-teal">demo</span>  ⎇ feature/login</span></div>
+      </div>
+      <p class="so">Where you are. A red branch is a shared one (main or master): be careful.</p>
+      <ul class="tags"><li>color by branch</li><li>hides outside a git repo</li></ul>
+      <details>
+        <summary>Details</summary>
+        <div class="more">
+          <p>The session's folder name is shown in teal. After <code>⎇</code> comes the git branch.</p>
+          <h4 class="mini">Branch color</h4>
+          <ul class="rules">
+            <li><span class="dot d-red"></span><b>main or master</b><span class="m">careful, shared branch</span></li>
+            <li><span class="dot d-yellow"></span><b>develop or dev</b><span class="m">keep an eye on it</span></li>
+            <li><span class="dot d-plain"></span><b>anything else</b><span class="m">plain, no color</span></li>
+          </ul>
+          <p>Hidden outside a git repository.</p>
+        </div>
+      </details>
+    </article>
+
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <p>Change labels, colors or hide <code>rc</code>: top of <code>~/.claude/statusline.sh</code>.</p>
+</footer>
+
+</div>
+</body>
+</html>

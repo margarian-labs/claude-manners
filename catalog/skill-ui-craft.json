@@ -1,0 +1,32 @@
+{
+  "id": "skill-ui-craft",
+  "title": "UI craft",
+  "group": "skills",
+  "level": "recommended",
+  "summary": "Rules for making app screens, dashboards, forms and sites look designed rather than AI-generated, plus a redesign audit.",
+  "details": "When you design, build, redesign or review a UI in code, Claude applies rules that keep screens, dashboards, forms and sites looking designed rather than generated: quiet chrome, one accent, spacing on a 4px scale, clear hierarchy and states, plus a redesign audit. Use it in any stack, from Angular and React to plain HTML, and the project's own design system wins where one exists. It installs as a skill that loads only when used; instructions only, no code, no packages and no network.",
+  "needs": [],
+  "files": [
+    {
+      "src": "payload/skills/ui-craft",
+      "dest": "skills/ui-craft",
+      "mode": "managed"
+    }
+  ],
+  "settings": [],
+  "rules": [],
+  "mcp": [],
+  "plugins": [],
+  "values": [],
+  "user_steps": [],
+  "machine_steps": [],
+  "verify": [],
+  "tokens_always_on": {
+    "value": 102,
+    "how": "estimated chars/4"
+  },
+  "quality": "tried",
+  "risk": "Instructions only; loads when used. No code runs on its own.",
+  "ask_alone": false,
+  "license": "CC-BY-4.0"
+}

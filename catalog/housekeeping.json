@@ -1,0 +1,28 @@
+{
+  "id": "housekeeping",
+  "title": "Housekeeping",
+  "group": "settings",
+  "level": "recommended",
+  "summary": "Keeps sessions 365 days, starts worktrees from a fresh branch, turns workflows and autoDream off.",
+  "details": "Keeps session history for 365 days, starts git worktrees from a fresh branch, and turns workflows and the autoDream feature off. It is for anyone who wants older sessions kept and predictable worktree branches. It changes four keys in settings.json (cleanupPeriodDays, autoDreamEnabled, worktree baseRef, disableWorkflows); autoDream is an undocumented key Claude Code may ignore, which is harmless, and no code runs.",
+  "needs": [],
+  "files": [],
+  "settings": [
+    "payload/settings/fragments/housekeeping.json"
+  ],
+  "rules": [],
+  "mcp": [],
+  "plugins": [],
+  "values": [],
+  "user_steps": [],
+  "machine_steps": [],
+  "verify": [],
+  "tokens_always_on": {
+    "value": 0,
+    "how": "estimated chars/4"
+  },
+  "quality": "tried",
+  "risk": "Settings only; autoDream is an undocumented key that Claude Code may ignore, which is harmless.",
+  "ask_alone": false,
+  "license": null
+}

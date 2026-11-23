@@ -1,0 +1,49 @@
+{
+  "id": "memohopper",
+  "title": "memohopper memory",
+  "group": "integrations",
+  "level": "optional",
+  "summary": "Connects the memohopper memory service and adds rules to use it as primary memory, with tasks.",
+  "details": "Connects the memohopper memory service so Claude stores and recalls memories, tasks and a workspace-based knowledge graph there, with file memory kept only as an index. It is for people with a memohopper account who want memory that travels between projects. It adds rules loaded every session, a user-scope HTTP MCP server (mcp.memohopper.com) and a workspace table you fill in; stored text and recalls go over the network with your API key.",
+  "needs": [],
+  "files": [],
+  "settings": [],
+  "rules": [
+    "payload/rules/claude-setup--memohopper.md"
+  ],
+  "mcp": [
+    {
+      "name": "memohopper",
+      "config": {
+        "type": "http",
+        "url": "https://mcp.memohopper.com/mcp",
+        "headers": {
+          "Authorization": "Bearer ${MEMOHOPPER_API_KEY}"
+        }
+      }
+    }
+  ],
+  "plugins": [],
+  "values": [
+    {
+      "key": "MEMOHOPPER_WORKSPACES",
+      "file": "rules/claude-setup--memohopper.md",
+      "ask": "Your memohopper workspaces as table rows: | folder | workspace |",
+      "default": "| <folder of a project> | <its workspace> |"
+    }
+  ],
+  "user_steps": [
+    "Create a memohopper account and an API key.",
+    "Set the user environment variable MEMOHOPPER_API_KEY to that key, then restart Claude Code. If the server reports a missing key, put the key in the server's headers yourself; ${VAR} expansion for user-scope MCP entries is not verified in the docs."
+  ],
+  "machine_steps": [],
+  "verify": [],
+  "tokens_always_on": {
+    "value": 566,
+    "how": "estimated chars/4"
+  },
+  "quality": "tried",
+  "risk": "Claude sends what it stores and recalls to the memohopper service over the network (mcp.memohopper.com); the rules are loaded every session.",
+  "ask_alone": false,
+  "license": null
+}

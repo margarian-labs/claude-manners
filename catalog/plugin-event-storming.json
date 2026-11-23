@@ -1,0 +1,35 @@
+{
+  "id": "plugin-event-storming",
+  "title": "Event storming plugin",
+  "group": "plugins",
+  "level": "optional",
+  "summary": "Skills for event storming and domain-driven design workshops.",
+  "details": "Installs the event-storming plugin, which adds skills for event storming and domain-driven design workshops. It is for teams doing domain modeling or workshop-style design sessions. It comes from the third-party melodic-software/claude-code-plugins marketplace as skills that load only when used; if adding that marketplace from GitHub fails with a Windows rename error, use a local clone instead.",
+  "needs": [],
+  "files": [],
+  "settings": [],
+  "rules": [],
+  "mcp": [],
+  "plugins": [
+    {
+      "name": "event-storming",
+      "marketplace": "melodic-software/claude-code-plugins"
+    }
+  ],
+  "values": [],
+  "user_steps": [
+    "If adding the marketplace from GitHub fails with a Windows EPERM rename error, make a local sparse clone of it and add that folder as a directory marketplace instead."
+  ],
+  "machine_steps": [],
+  "verify": [
+    "bash -c \"claude plugin list | grep -q event-storming\""
+  ],
+  "tokens_always_on": {
+    "value": 0,
+    "how": "estimated chars/4"
+  },
+  "quality": "tried",
+  "risk": "Installed from a third-party marketplace; adds skills that load when used. Nothing is shipped here.",
+  "ask_alone": false,
+  "license": null
+}

@@ -1,0 +1,28 @@
+{
+  "id": "compaction",
+  "title": "Auto-compact at 600k",
+  "group": "settings",
+  "level": "recommended",
+  "summary": "Compacts the conversation automatically at 600k tokens. Needs a model with a 1M context window.",
+  "details": "Turns on automatic compaction of the conversation at 600k tokens. It needs a model with a 1M context window; without one, Claude Code caps the value at the model window, so it does nothing useful. It is for long sessions on a 1M model. It changes the autoCompactEnabled and autoCompactWindow keys in settings.json only; no code runs and no network is used.",
+  "needs": [],
+  "files": [],
+  "settings": [
+    "payload/settings/fragments/compaction.json"
+  ],
+  "rules": [],
+  "mcp": [],
+  "plugins": [],
+  "values": [],
+  "user_steps": [],
+  "machine_steps": [],
+  "verify": [],
+  "tokens_always_on": {
+    "value": 0,
+    "how": "estimated chars/4"
+  },
+  "quality": "tried",
+  "risk": "One setting. Claude Code caps it at the model window, so it does nothing useful without a 1M window.",
+  "ask_alone": false,
+  "license": null
+}

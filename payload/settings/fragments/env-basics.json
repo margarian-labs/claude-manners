@@ -1,0 +1,6 @@
+{
+  "env": {
+    "PYTHONUTF8": "1",
+    "CLAUDE_CODE_DISABLE_CRON": "1"
+  }
+}

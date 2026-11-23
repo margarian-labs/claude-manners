@@ -1,0 +1,32 @@
+{
+  "id": "skill-research",
+  "title": "Research",
+  "group": "skills",
+  "level": "recommended",
+  "summary": "Researches a question against primary sources with a background agent and saves the findings as a repo Markdown file.",
+  "details": "When you want a topic researched or docs and API facts gathered, this skill sends a background agent to investigate against primary sources like official docs and source code, so you keep working while it reads. The agent writes its findings, with each claim citing its source, to a single Markdown file saved where the repo already keeps such notes. It adds a skill folder that loads only when used; instructions only, so no code runs on its own.",
+  "needs": [],
+  "files": [
+    {
+      "src": "payload/skills/research",
+      "dest": "skills/research",
+      "mode": "managed"
+    }
+  ],
+  "settings": [],
+  "rules": [],
+  "mcp": [],
+  "plugins": [],
+  "values": [],
+  "user_steps": [],
+  "machine_steps": [],
+  "verify": [],
+  "tokens_always_on": {
+    "value": 70,
+    "how": "estimated chars/4"
+  },
+  "quality": "tried",
+  "risk": "Instructions only; loads when used. No code runs on its own.",
+  "ask_alone": false,
+  "license": "MIT"
+}

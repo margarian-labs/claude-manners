@@ -1,0 +1,35 @@
+{
+  "id": "teammate-messages",
+  "title": "Teammate messages",
+  "group": "rules",
+  "level": "optional",
+  "summary": "Drafts messages to teammates very short and casual, in the language you choose.",
+  "details": "When you ask for a message to send a colleague, Claude drafts it very short and casual in the language you chose at setup: a few lines with what you need, links and why now, keeping technical names, keys and commands as they are, and skipping formal greetings, sign-offs and emojis. Use it for the quick chat, Teams or Telegram notes you send during work. It is one short text rule file loaded in every session; no code runs and no network is used.",
+  "needs": [],
+  "files": [],
+  "settings": [],
+  "rules": [
+    "payload/rules/claude-setup--teammate-messages.md"
+  ],
+  "mcp": [],
+  "plugins": [],
+  "values": [
+    {
+      "key": "TEAMMATE_LANGUAGE",
+      "file": "rules/claude-setup--teammate-messages.md",
+      "ask": "Language and alphabet for messages to teammates",
+      "default": "English"
+    }
+  ],
+  "user_steps": [],
+  "machine_steps": [],
+  "verify": [],
+  "tokens_always_on": {
+    "value": 174,
+    "how": "estimated chars/4"
+  },
+  "quality": "tried",
+  "risk": "A short rule file loaded every session. No hooks, no network.",
+  "ask_alone": false,
+  "license": null
+}

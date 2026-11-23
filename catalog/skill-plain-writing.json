@@ -1,0 +1,32 @@
+{
+  "id": "skill-plain-writing",
+  "title": "Plain writing",
+  "group": "skills",
+  "level": "recommended",
+  "summary": "Cleans prose other people will read: removes AI writing tells and checks that no fact was lost.",
+  "details": "When you are writing or editing prose other people will read, such as docs, reports, PR descriptions or posts, this skill marks AI writing tells and rewrites them, then checks that no fact, name, number or link was lost. It also gives a one-line-per-finding format for code review comments. It suits anyone who wants text that reads like a careful person wrote it. It adds a skill folder that loads only when used; instructions only, so no code runs on its own.",
+  "needs": [],
+  "files": [
+    {
+      "src": "payload/skills/plain-writing",
+      "dest": "skills/plain-writing",
+      "mode": "managed"
+    }
+  ],
+  "settings": [],
+  "rules": [],
+  "mcp": [],
+  "plugins": [],
+  "values": [],
+  "user_steps": [],
+  "machine_steps": [],
+  "verify": [],
+  "tokens_always_on": {
+    "value": 79,
+    "how": "estimated chars/4"
+  },
+  "quality": "tried",
+  "risk": "Instructions only; loads when used. No code runs on its own.",
+  "ask_alone": false,
+  "license": "MIT"
+}

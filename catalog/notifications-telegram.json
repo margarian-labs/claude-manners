@@ -1,0 +1,68 @@
+{
+  "id": "notifications-telegram",
+  "title": "Telegram notifications",
+  "group": "integrations",
+  "level": "optional",
+  "summary": "Phone messages through your own Telegram bot when Claude finishes, needs input or asks a question.",
+  "details": "Your own Telegram bot sends phone messages when Claude finishes answering, when it needs input and when it asks you a question, and the usual OS notifications are turned off. It is for people who leave Claude running and want to know from their phone. It adds hook scripts that run on Notification, Stop and AskUserQuestion events plus settings entries, and sends messages over the network to api.telegram.org with a bot token you put in ~/.claude/telegram.conf.",
+  "needs": [
+    "cmd:curl",
+    "cmd:node"
+  ],
+  "files": [
+    {
+      "src": "payload/hooks/telegram-notify.sh",
+      "dest": "hooks/telegram-notify.sh",
+      "mode": "managed"
+    },
+    {
+      "src": "payload/hooks/telegram-stop.sh",
+      "dest": "hooks/telegram-stop.sh",
+      "mode": "managed"
+    },
+    {
+      "src": "payload/hooks/telegram-question.sh",
+      "dest": "hooks/telegram-question.sh",
+      "mode": "managed"
+    },
+    {
+      "src": "payload/hooks/telegram-helpers.sh",
+      "dest": "hooks/telegram-helpers.sh",
+      "mode": "managed"
+    },
+    {
+      "src": "payload/hooks/telegram-process.js",
+      "dest": "hooks/telegram-process.js",
+      "mode": "managed"
+    },
+    {
+      "src": "payload/hooks/telegram.conf.example",
+      "dest": "hooks/telegram.conf.example",
+      "mode": "managed"
+    }
+  ],
+  "settings": [
+    "payload/settings/fragments/hooks-telegram.json",
+    "payload/settings/fragments/notifications-off.json"
+  ],
+  "rules": [],
+  "mcp": [],
+  "plugins": [],
+  "values": [],
+  "user_steps": [
+    "Make a Telegram bot with BotFather and note its token and your chat id.",
+    "Copy ~/.claude/hooks/telegram.conf.example to ~/.claude/telegram.conf and fill in the token, chat id and a machine name yourself. Never share that file."
+  ],
+  "machine_steps": [],
+  "verify": [
+    "node --check payload/hooks/telegram-process.js"
+  ],
+  "tokens_always_on": {
+    "value": 0,
+    "how": "estimated chars/4"
+  },
+  "quality": "tried",
+  "risk": "Hooks run on notifications, stops and questions and send messages over the network to api.telegram.org; the OS notifications are turned off.",
+  "ask_alone": false,
+  "license": null
+}

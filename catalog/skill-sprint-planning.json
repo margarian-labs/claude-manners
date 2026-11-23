@@ -1,0 +1,32 @@
+{
+  "id": "skill-sprint-planning",
+  "title": "Sprint planning",
+  "group": "skills",
+  "level": "optional",
+  "summary": "Plans a sprint: scopes work, estimates team capacity, sets goals and drafts the plan, including carryover.",
+  "details": "Type /sprint-planning with a sprint name or date range, answer a few questions about your team, sprint length, backlog, carryover and dependencies, and Claude drafts a sprint plan with a capacity table, a P0 to P2 backlog, risks, definition of done and key dates. Use it when you kick off a new sprint, size a backlog against PTO and meetings, or decide what is P0 versus stretch. It installs as a skill that loads only when used; instructions only, no code runs and no network is used.",
+  "needs": [],
+  "files": [
+    {
+      "src": "payload/skills/sprint-planning",
+      "dest": "skills/sprint-planning",
+      "mode": "managed"
+    }
+  ],
+  "settings": [],
+  "rules": [],
+  "mcp": [],
+  "plugins": [],
+  "values": [],
+  "user_steps": [],
+  "machine_steps": [],
+  "verify": [],
+  "tokens_always_on": {
+    "value": 78,
+    "how": "estimated chars/4"
+  },
+  "quality": "tried",
+  "risk": "Instructions only; loads when used. No code runs on its own.",
+  "ask_alone": false,
+  "license": "Apache-2.0"
+}

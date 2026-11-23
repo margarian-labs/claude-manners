@@ -1,0 +1,7 @@
+- [Settings and hooks gotchas](claude_settings_hooks.md) - settings.json is the source of truth; status line token count, hook and telegram.conf locations
+- [Telegram notification hooks](feedback_tg_notif.md) - one Node spawn per hook, background fork, stdin for messages, dedup, JSON blob filter, machine label
+- [Disk cleanup depth](feedback_disk_cleanup_depth.md) - cleanup analysis must be exhaustive on the first pass; checklist inside
+- [UserAssist is unreliable](feedback_userassist_unreliable.md) - tray, autostart and hotkey apps are missing from UserAssist; verify before calling an app unused
+- [Shareable prompts](feedback_shareable_prompts.md) - prompts for other people's agents give directions, not machine-specific recipes
+- [Flags-only rejection](feedback_flags_only_rejection.md) - a plan rejected with only terse flags means recheck harder with an explicit inventory
+- [Measure before claiming token savings](feedback_measure_token_savings.md) - check real usage logs first; cached context is cheap, long contexts cost most; trial, not promise

@@ -1,0 +1,56 @@
+{
+  "id": "session-namer",
+  "title": "Session namer",
+  "group": "hooks",
+  "level": "recommended",
+  "summary": "Names each session with a short project key and title, such as \"WEB fix login\".",
+  "details": "Each session gets a short name such as WEB fix login, built from a project key and what the session is about. It is for you if you keep several sessions open and want to tell them apart at a glance. It copies a hook script and adds a UserPromptSubmit entry to your settings; the script runs on prompts and makes a small background Haiku call, which costs a little usage.",
+  "needs": [
+    "cmd:node"
+  ],
+  "files": [
+    {
+      "src": "payload/hooks/session-namer.sh",
+      "dest": "hooks/session-namer.sh",
+      "mode": "managed"
+    },
+    {
+      "src": "payload/hooks/session-namer.js",
+      "dest": "hooks/session-namer.js",
+      "mode": "rendered"
+    }
+  ],
+  "settings": [
+    "payload/settings/fragments/hooks-session-namer.json"
+  ],
+  "rules": [],
+  "mcp": [],
+  "plugins": [],
+  "values": [
+    {
+      "key": "PROJECTS_ROOT",
+      "file": "hooks/session-namer.js",
+      "ask": "Folder that holds your projects (leave empty for Desktop/Projects in your home folder)",
+      "default": ""
+    },
+    {
+      "key": "LABELS",
+      "file": "hooks/session-namer.js",
+      "ask": "Project folder name (lower case) to a key of at most 4 capital letters, as JSON, for example {\"webshop\":\"SHOP\"} (leave {} to derive keys from folder names)",
+      "default": "{}"
+    }
+  ],
+  "user_steps": [],
+  "machine_steps": [],
+  "verify": [
+    "node --check payload/hooks/session-namer.js"
+  ],
+  "tokens_always_on": {
+    "value": 0,
+    "how": "estimated chars/4"
+  },
+  "quality": "tried",
+  "risk": "Runs on prompts and starts a small background Haiku call to name each session, which costs a little usage.",
+  "ask_alone": false,
+  "license": null
+}

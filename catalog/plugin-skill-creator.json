@@ -1,0 +1,33 @@
+{
+  "id": "plugin-skill-creator",
+  "title": "Skill creator plugin",
+  "group": "plugins",
+  "level": "optional",
+  "summary": "Helps write, test and improve your own skills.",
+  "details": "Once installed, you can ask Claude to help write, test and improve your own skills, and that help loads only when it is used. It is for you if you write or tune skills yourself. It is a plugin from the official marketplace and nothing ships with this pack; it adds a skill, and no code runs until that skill is used.",
+  "needs": [],
+  "files": [],
+  "settings": [],
+  "rules": [],
+  "mcp": [],
+  "plugins": [
+    {
+      "name": "skill-creator",
+      "marketplace": "anthropics/claude-plugins-official"
+    }
+  ],
+  "values": [],
+  "user_steps": [],
+  "machine_steps": [],
+  "verify": [
+    "bash -c \"claude plugin list | grep -q skill-creator\""
+  ],
+  "tokens_always_on": {
+    "value": 0,
+    "how": "estimated chars/4"
+  },
+  "quality": "tried",
+  "risk": "Installed from the official marketplace; adds a skill that loads when used. Nothing is shipped here.",
+  "ask_alone": false,
+  "license": null
+}

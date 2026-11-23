@@ -1,0 +1,47 @@
+{
+  "id": "figma-mcp",
+  "title": "Figma MCP (Framelink)",
+  "group": "integrations",
+  "level": "optional",
+  "summary": "Lets Claude read Figma files and download their images through the Framelink MCP server.",
+  "details": "Lets Claude read your Figma files and download their images through the Framelink MCP server, so you can ask it about a design or hand it to code. It is for designers and developers who keep work in Figma. It adds one user-scope MCP server entry run through npx (the package downloads on first use) and calls the Figma API over the network with a token you set as FIGMA_API_KEY; no files are copied.",
+  "needs": [
+    "cmd:npx"
+  ],
+  "files": [],
+  "settings": [],
+  "rules": [],
+  "mcp": [
+    {
+      "name": "framelink-figma",
+      "config": {
+        "type": "stdio",
+        "command": "npx",
+        "args": [
+          "-y",
+          "figma-developer-mcp",
+          "--stdio"
+        ],
+        "env": {
+          "FIGMA_API_KEY": "${FIGMA_API_KEY}"
+        }
+      }
+    }
+  ],
+  "plugins": [],
+  "values": [],
+  "user_steps": [
+    "Create a Figma personal access token in your Figma account settings.",
+    "Set the user environment variable FIGMA_API_KEY to that token, then restart Claude Code. If the server reports a missing key, put the token in the server's env block yourself; ${VAR} expansion for user-scope MCP entries is not verified in the docs."
+  ],
+  "machine_steps": [],
+  "verify": [],
+  "tokens_always_on": {
+    "value": 0,
+    "how": "estimated chars/4"
+  },
+  "quality": "tried",
+  "risk": "Runs the figma-developer-mcp package through npx (downloaded on first use) and calls the Figma API over the network with your token.",
+  "ask_alone": false,
+  "license": null
+}

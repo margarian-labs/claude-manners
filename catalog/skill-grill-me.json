@@ -1,0 +1,34 @@
+{
+  "id": "skill-grill-me",
+  "title": "Grill me",
+  "group": "skills",
+  "level": "recommended",
+  "summary": "Interviews you relentlessly to sharpen a plan or design.",
+  "details": "Invoking grill-me starts a relentless interview that sharpens a plan or design, by handing the work to the grilling skill. It is for anyone who wants their thinking stress-tested before committing to it. It adds a skill folder that only you can start, since Claude cannot invoke it on its own, and that loads only when used; it is instructions only, so no code runs.",
+  "needs": [
+    "part:skill-grilling"
+  ],
+  "files": [
+    {
+      "src": "payload/skills/grill-me",
+      "dest": "skills/grill-me",
+      "mode": "managed"
+    }
+  ],
+  "settings": [],
+  "rules": [],
+  "mcp": [],
+  "plugins": [],
+  "values": [],
+  "user_steps": [],
+  "machine_steps": [],
+  "verify": [],
+  "tokens_always_on": {
+    "value": 23,
+    "how": "estimated chars/4"
+  },
+  "quality": "tried",
+  "risk": "Instructions only; loads when used. No code runs on its own.",
+  "ask_alone": false,
+  "license": "MIT"
+}

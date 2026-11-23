@@ -1,0 +1,32 @@
+{
+  "id": "skill-seo-audit",
+  "title": "SEO audit",
+  "group": "skills",
+  "level": "recommended",
+  "summary": "Audits a site's SEO when traffic dropped or a page will not rank: indexing, canonicals, redirects, Core Web Vitals and local SEO.",
+  "details": "Ask when you want an SEO audit or need to know why traffic dropped or a page will not rank: Claude works through crawlability and indexation, technical foundations, on-page optimization, content quality, and authority and links, covering topics like canonicals, hreflang, redirects, titles, Core Web Vitals and local SEO. It fits site owners and marketers with organic search problems. It adds a skill folder that loads only when used; instructions only, so no code runs on its own.",
+  "needs": [],
+  "files": [
+    {
+      "src": "payload/skills/seo-audit",
+      "dest": "skills/seo-audit",
+      "mode": "managed"
+    }
+  ],
+  "settings": [],
+  "rules": [],
+  "mcp": [],
+  "plugins": [],
+  "values": [],
+  "user_steps": [],
+  "machine_steps": [],
+  "verify": [],
+  "tokens_always_on": {
+    "value": 55,
+    "how": "estimated chars/4"
+  },
+  "quality": "tried",
+  "risk": "Instructions only; loads when used. No code runs on its own.",
+  "ask_alone": false,
+  "license": "MIT"
+}

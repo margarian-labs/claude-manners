@@ -1,0 +1,33 @@
+{
+  "id": "plugin-playwright",
+  "title": "Playwright plugin",
+  "group": "plugins",
+  "level": "recommended",
+  "summary": "Lets Claude drive a real browser: open pages, click, fill forms and take screenshots.",
+  "details": "Once installed, you can ask Claude to open a web page, click, fill a form and take a screenshot, and it drives a real browser to do it. It helps when you test a site or want to see how a page behaves. It is a plugin from the official marketplace; nothing ships with this pack, and a browser automation server starts only when it is used, which can open web pages.",
+  "needs": [],
+  "files": [],
+  "settings": [],
+  "rules": [],
+  "mcp": [],
+  "plugins": [
+    {
+      "name": "playwright",
+      "marketplace": "anthropics/claude-plugins-official"
+    }
+  ],
+  "values": [],
+  "user_steps": [],
+  "machine_steps": [],
+  "verify": [
+    "bash -c \"claude plugin list | grep -q playwright\""
+  ],
+  "tokens_always_on": {
+    "value": 0,
+    "how": "estimated chars/4"
+  },
+  "quality": "tried",
+  "risk": "Installed from the official marketplace; starts a browser automation server when used, which can open web pages.",
+  "ask_alone": false,
+  "license": null
+}

@@ -1,0 +1,28 @@
+{
+  "id": "flags",
+  "title": "Prompt flags",
+  "group": "rules",
+  "level": "recommended",
+  "summary": "Short flags in a message (-d, -w, -nc, -q, -rc, -a, -p, -m, -nb, -away) change how Claude handles it.",
+  "details": "Short tokens you put at the start or end of a message change how Claude handles it: -d discussion only, -w search the web first, -nc no commits, -q ask when unclear, -rc extra rigor, -a deep analysis, -p plan mode, -m remember it permanently, -nb new branch, plus -away. It is for steering a single message without long instructions. It adds one plain-text rule file under ~/.claude/rules/ that loads into every session; no code runs and no network is used.",
+  "needs": [],
+  "files": [],
+  "settings": [],
+  "rules": [
+    "payload/rules/claude-setup--flags.md"
+  ],
+  "mcp": [],
+  "plugins": [],
+  "values": [],
+  "user_steps": [],
+  "machine_steps": [],
+  "verify": [],
+  "tokens_always_on": {
+    "value": 647,
+    "how": "estimated chars/4"
+  },
+  "quality": "tried",
+  "risk": "Text only, loaded into every session. No code runs.",
+  "ask_alone": false,
+  "license": null
+}

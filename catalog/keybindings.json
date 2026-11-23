@@ -1,0 +1,32 @@
+{
+  "id": "keybindings",
+  "title": "Keybindings",
+  "group": "settings",
+  "level": "optional",
+  "summary": "A custom keybindings file. Written once if you have none; compare with your own first.",
+  "details": "Claude Code gets your custom keybindings, such as ctrl+t for todos, ctrl+o for the transcript and meta+p for the model picker, instead of the defaults. It is for anyone who wants their own shortcuts, so compare the file with yours first. It writes one keybindings.json file only if you have none; the file becomes yours and is never updated again, and no code runs.",
+  "needs": [],
+  "files": [
+    {
+      "src": "payload/settings/keybindings.json",
+      "dest": "keybindings.json",
+      "mode": "seed"
+    }
+  ],
+  "settings": [],
+  "rules": [],
+  "mcp": [],
+  "plugins": [],
+  "values": [],
+  "user_steps": [],
+  "machine_steps": [],
+  "verify": [],
+  "tokens_always_on": {
+    "value": 0,
+    "how": "estimated chars/4"
+  },
+  "quality": "tried",
+  "risk": "A keybindings file only. It is yours after install and is never updated.",
+  "ask_alone": false,
+  "license": null
+}

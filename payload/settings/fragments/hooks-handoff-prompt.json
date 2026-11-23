@@ -1,0 +1,16 @@
+{
+  "hooks": {
+    "Stop": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.claude/hooks/handoff-prompt.sh",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+  }
+}

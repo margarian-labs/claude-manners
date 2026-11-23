@@ -1,0 +1,34 @@
+{
+  "id": "skill-ui-ux-pro-max",
+  "title": "UI/UX Pro Max",
+  "group": "skills",
+  "level": "recommended",
+  "summary": "Searches a local design database when you pick UI styles, colour palettes, font pairings, chart types or UX rules.",
+  "details": "When you ask about a UI style, colour palette, font pairing, chart type or UX rule, Claude searches a local design database of 80 searchable styles (51 active), 194 product palettes, 74 font pairings, 130 UX guidelines, 25 chart types and 22 technology stacks, with stack guides such as Angular and React. It needs Python 3 and runs its local search script when used, with no external Python packages; no network except downloads it names.",
+  "needs": [
+    "cmd:python"
+  ],
+  "files": [
+    {
+      "src": "payload/skills/ui-ux-pro-max",
+      "dest": "skills/ui-ux-pro-max",
+      "mode": "managed"
+    }
+  ],
+  "settings": [],
+  "rules": [],
+  "mcp": [],
+  "plugins": [],
+  "values": [],
+  "user_steps": [],
+  "machine_steps": [],
+  "verify": [],
+  "tokens_always_on": {
+    "value": 82,
+    "how": "estimated chars/4"
+  },
+  "quality": "tried",
+  "risk": "Runs local scripts when used. No network except downloads it names.",
+  "ask_alone": false,
+  "license": "MIT"
+}

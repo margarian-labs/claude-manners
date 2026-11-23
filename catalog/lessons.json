@@ -1,0 +1,30 @@
+{
+  "id": "lessons",
+  "title": "Lessons",
+  "group": "lessons",
+  "level": "optional",
+  "summary": "Seven short notes from real mistakes (settings, hooks, Telegram, disk cleanup, prompts, token savings) kept in file memory.",
+  "details": "Seven short notes from real mistakes are copied into your file memory: settings and hook gotchas, Telegram hook design, disk cleanup depth, why UserAssist is unreliable, prompts for other people's agents, plans rejected with only flags, and measuring token savings before claiming them. It suits anyone who wants Claude to avoid those mistakes. It copies note files plus MEMORY.md lines into ~/.claude/projects memory once, and they load only in sessions started in the home folder; no code runs.",
+  "needs": [],
+  "files": [],
+  "settings": [],
+  "rules": [],
+  "mcp": [],
+  "plugins": [],
+  "values": [],
+  "user_steps": [],
+  "machine_steps": [
+    "Copy the 7 notes from payload/lessons into the file-memory folder of the home folder: ~/.claude/projects/<encoded home>/memory/ (create it if missing). The encoded home is the home path with every character that is not a letter or digit replaced by \"-\", for example C:\\Users\\name becomes C--Users-name. Never overwrite a note that already exists there.",
+    "Add the lines of MEMORY-lines.md to MEMORY.md in that folder (create it if missing; skip lines already present).",
+    "Tell the person this memory loads only in sessions started in the home folder. Alternatives: write the 7 notes (without their frontmatter) into one rules file ~/.claude/rules/lessons.md so they load everywhere, or store them in the memory system the person already uses."
+  ],
+  "verify": [],
+  "tokens_always_on": {
+    "value": 0,
+    "how": "estimated chars/4"
+  },
+  "quality": "tried",
+  "risk": "Copies note files into your file memory once; Claude reads them as memory. No code runs.",
+  "ask_alone": false,
+  "license": null
+}

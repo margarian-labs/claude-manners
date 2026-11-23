@@ -1,0 +1,35 @@
+{
+  "id": "plugin-accesslint",
+  "title": "AccessLint plugin",
+  "group": "plugins",
+  "level": "optional",
+  "summary": "Checks web pages and code for accessibility problems.",
+  "details": "Installs the AccessLint plugin so Claude can check web pages and code for accessibility problems. It is for developers who want those checks inside their normal workflow. It comes from the third-party accesslint/skills marketplace and runs an MCP server through npx, so a package is downloaded when the plugin is used; nothing is shipped with the pack, and you can optionally pin the MCP version by hand.",
+  "needs": [],
+  "files": [],
+  "settings": [],
+  "rules": [],
+  "mcp": [],
+  "plugins": [
+    {
+      "name": "accesslint",
+      "marketplace": "accesslint/skills"
+    }
+  ],
+  "values": [],
+  "user_steps": [
+    "Optional: pin its MCP server by editing the plugin's .mcp.json in the plugin cache to @accesslint/mcp@0.11.1. A fresh install does not have the pin, and plugin updates undo it."
+  ],
+  "machine_steps": [],
+  "verify": [
+    "bash -c \"claude plugin list | grep -q accesslint\""
+  ],
+  "tokens_always_on": {
+    "value": 0,
+    "how": "estimated chars/4"
+  },
+  "quality": "tried",
+  "risk": "Installed from a third-party marketplace; runs an MCP server through npx, so it downloads a package when used.",
+  "ask_alone": false,
+  "license": null
+}

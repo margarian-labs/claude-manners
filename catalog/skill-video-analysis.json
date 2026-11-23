@@ -1,0 +1,37 @@
+{
+  "id": "skill-video-analysis",
+  "title": "Video analysis",
+  "group": "skills",
+  "level": "recommended",
+  "summary": "Looks at frames from a video or screen recording and transcribes speech so you learn what happens and what is said.",
+  "details": "When you point Claude at a video or screen recording, a file or a YouTube or other link, and ask what happens or what is said, it picks the frames where things change, transcribes the speech and reports what it saw, frame by frame. Use it for bug-reproduction clips, phone captures and talk summaries. It installs as a skill that loads only when used and runs local scripts (ffmpeg, with yt-dlp and faster-whisper in the skill's own .venv); a linked video is downloaded at up to 720p.",
+  "needs": [
+    "cmd:ffmpeg",
+    "cmd:uv"
+  ],
+  "files": [
+    {
+      "src": "payload/skills/video-analysis",
+      "dest": "skills/video-analysis",
+      "mode": "managed"
+    }
+  ],
+  "settings": [],
+  "rules": [],
+  "mcp": [],
+  "plugins": [],
+  "values": [],
+  "user_steps": [],
+  "machine_steps": [
+    "Rebuild the skill's .venv with uv (faster-whisper 1.2.1, yt-dlp[default] 2026.10.26)"
+  ],
+  "verify": [],
+  "tokens_always_on": {
+    "value": 131,
+    "how": "estimated chars/4"
+  },
+  "quality": "tried",
+  "risk": "Runs local scripts when used. No network except downloads it names.",
+  "ask_alone": false,
+  "license": null
+}

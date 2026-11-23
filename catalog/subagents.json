@@ -1,0 +1,37 @@
+{
+  "id": "subagents",
+  "title": "Sub-agents and model roles",
+  "group": "rules",
+  "level": "recommended",
+  "summary": "Opus leads, Fable plans, Sonnet and Haiku do the work from detailed briefs, and Opus checks every result.",
+  "details": "This rule sets the model roles in every session: Opus runs the main conversation, writes the briefs and checks every result, Fable plans and gives second opinions, Sonnet does the work, and Haiku takes the easiest fully specified jobs. Big tasks are split into small, exactly briefed pieces, and a worker's done counts only after Opus verifies it. If your account has no Fable, sync names Opus 5.5 as the planner instead. It is a text rule; no code runs.",
+  "needs": [
+    "part:agents"
+  ],
+  "files": [],
+  "settings": [],
+  "rules": [
+    "payload/rules/claude-setup--subagents.md"
+  ],
+  "mcp": [],
+  "plugins": [],
+  "values": [
+    {
+      "key": "planner_model",
+      "file": "rules/claude-setup--subagents.md",
+      "ask": "Model name for planner and second opinion (sync sets Opus 5.5 when the account has no Fable)",
+      "default": "Fable 5.2"
+    }
+  ],
+  "user_steps": [],
+  "machine_steps": [],
+  "verify": [],
+  "tokens_always_on": {
+    "value": 3055,
+    "how": "estimated chars/4"
+  },
+  "quality": "tried",
+  "risk": "Text only, loaded into every session. No code runs.",
+  "ask_alone": false,
+  "license": null
+}
