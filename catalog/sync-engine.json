@@ -5,6 +5,8 @@
   "level": "recommended",
   "summary": "The tool and skill that install this setup, bring in updates one by one and roll back. Say \"sync my setup\" to use it.",
   "details": "Say sync my setup and Claude drives the command line tool that installed this setup: it shows a menu of parts on first run, brings in updates one by one, can roll back to a version, and re-adds parts later. Use it after following START.md to keep the setup current or to undo a change. It installs a node tool at tools/claude-setup/sync plus a skill; it runs git and node when you ask, writes only the files and settings it lists, and keeps backups.",
+  "use": "you",
+  "trigger": "Say \"sync my setup\", \"roll back my setup\" or \"go back to version X\".",
   "needs": [
     "cmd:node",
     "cmd:git"

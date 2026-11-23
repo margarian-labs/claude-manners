@@ -35,7 +35,7 @@ const read = (rel, base = cfg) => fs.readFileSync(path.join(base, rel), 'utf8');
 const exists = (rel, base = cfg) => fs.existsSync(path.join(base, rel));
 const git = (args, cwd) => execFileSync('git', args, { cwd, encoding: 'utf8', stdio: ['ignore', 'pipe', 'pipe'] }).trim();
 const entry = (id, extra) => ({
-  id, title: id, group: 'tools', level: 'optional', summary: `The ${id} part.`, details: `The ${id} part does one small thing for the tests, and changes only the files it lists.`, needs: [], files: [], settings: [], rules: [], mcp: [], plugins: [], values: [],
+  id, title: id, group: 'tools', level: 'optional', summary: `The ${id} part.`, details: `The ${id} part does one small thing for the tests, and changes only the files it lists.`, use: 'auto', trigger: '', needs: [], files: [], settings: [], rules: [], mcp: [], plugins: [], values: [],
   user_steps: [], machine_steps: [], verify: [], tokens_always_on: { value: null, how: 'not measured yet' }, quality: 'tried', risk: 'Test part, no code runs.', ask_alone: false, license: null, ...extra,
 });
 const putEntry = (e) => write(`catalog/${e.id}.json`, JSON.stringify(e, null, 2), owner);
@@ -569,6 +569,8 @@ test('adopt: takes over a pack install (2 equal, 1 edited, rules/setup-pack fold
   assert.deepEqual(j.report.managed.sort(), ['agents/b.md', 'hooks/plain.sh']);
   assert.deepEqual(j.report.held, ['hooks/alpha.js']);
   assert.deepEqual(j.edited_rules, ['rules/setup-pack/other.md']);
+  assert.deepEqual(j.kept_rules, ['rules/other.md']);
+  assert.equal(read('rules/other.md', cfgA), 'my edited other\n');
   const s = stateOf(cfgA);
   assert.equal(s.files['hooks/plain.sh'].held, false);
   assert.equal(s.files['hooks/plain.sh'].existed_before, false);

@@ -5,6 +5,8 @@
   "level": "recommended",
   "summary": "Shows account, model, effort, context, usage limits and folder, and writes the usage files that away mode reads.",
   "details": "A line under your prompt shows the active account, model and effort, context used, transcript size and compaction count, your 5-hour and weekly usage limits and the current folder. It helps you see which account you are on and how much of a limit you have used. It installs as a settings.json statusLine entry that runs bash ~/.claude/statusline.sh after each answer and writes small usage and cache files, including the usage files away mode reads; without jq a weaker fallback parser is used.",
+  "use": "auto",
+  "trigger": "",
   "needs": [],
   "files": [
     {

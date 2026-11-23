@@ -7,8 +7,8 @@ import { fileURLToPath } from 'node:url';
 import { loadCatalog, validateEntry } from '../../sync/lib/catalog.mjs';
 
 const repo = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..', '..');
-const base = () => JSON.parse(fs.readFileSync(path.join(repo, 'catalog', 'plugin-figma.json'), 'utf8'));
-const ids = new Set(['plugin-figma', 'status-line', 'other']);
+const base = () => JSON.parse(fs.readFileSync(path.join(repo, 'catalog', 'plugin-playwright.json'), 'utf8'));
+const ids = new Set(['plugin-playwright', 'status-line', 'other']);
 const has = (errs, text) => errs.some((e) => e.includes(text));
 
 test('all real catalog entries load and validate', () => {
@@ -46,7 +46,7 @@ test('needs forms', () => {
     assert.ok(has(validateEntry({ ...base(), needs: [bad] }, ids), 'not an allowed form'), bad);
   }
   assert.ok(has(validateEntry({ ...base(), needs: ['part:missing'] }, ids), 'does not exist'));
-  assert.ok(has(validateEntry({ ...base(), needs: ['part:plugin-figma'] }, ids), 'itself'));
+  assert.ok(has(validateEntry({ ...base(), needs: ['part:plugin-playwright'] }, ids), 'itself'));
 });
 
 test('files: keys, mode, dest', () => {

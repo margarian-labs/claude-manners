@@ -5,6 +5,8 @@
   "level": "recommended",
   "summary": "Keeps sessions 365 days, starts worktrees from a fresh branch, turns workflows and autoDream off.",
   "details": "Keeps session history for 365 days, starts git worktrees from a fresh branch, and turns workflows and the autoDream feature off. It is for anyone who wants older sessions kept and predictable worktree branches. It changes four keys in settings.json (cleanupPeriodDays, autoDreamEnabled, worktree baseRef, disableWorkflows); autoDream is an undocumented key Claude Code may ignore, which is harmless, and no code runs.",
+  "use": "auto",
+  "trigger": "",
   "needs": [],
   "files": [],
   "settings": [

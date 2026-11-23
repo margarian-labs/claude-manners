@@ -3,7 +3,7 @@ import path from 'node:path';
 
 export const NEEDS_RE = /^(windows|second-profile|memohopper-connected|fable-access|haiku-access|part:[a-z0-9-]+|plugin:[a-z0-9-]+|cmd:[a-z0-9.-]+|claude>=[0-9.]+)$/;
 
-const KEYS = ['id', 'title', 'group', 'level', 'summary', 'details', 'needs', 'files', 'settings', 'rules', 'mcp', 'plugins', 'values', 'user_steps', 'machine_steps', 'verify', 'tokens_always_on', 'quality', 'risk', 'ask_alone', 'license'];
+const KEYS = ['id', 'title', 'group', 'level', 'summary', 'details', 'use', 'trigger', 'needs', 'files', 'settings', 'rules', 'mcp', 'plugins', 'values', 'user_steps', 'machine_steps', 'verify', 'tokens_always_on', 'quality', 'risk', 'ask_alone', 'license'];
 const GROUPS = ['rules', 'settings', 'workflow', 'hooks', 'agents', 'skills', 'plugins', 'tools', 'integrations', 'lessons'];
 const LEVELS = ['recommended', 'optional'];
 const MODES = ['managed', 'rendered', 'seed'];
@@ -50,6 +50,11 @@ export function validateEntry(entry, allIds) {
   else if (entry.summary.length > 140) errs.push(`summary: ${entry.summary.length} characters, max 140`);
   if (typeof entry.details !== 'string' || entry.details.trim().length < 40) errs.push('details: must be a plain paragraph of at least 40 characters');
   else if (entry.details.length > 600) errs.push(`details: ${entry.details.length} characters, max 600`);
+
+  if (!['auto', 'you'].includes(entry.use)) errs.push('use: must be auto or you');
+  if (typeof entry.trigger !== 'string') errs.push('trigger: must be a string');
+  else if (entry.use === 'you' && entry.trigger.trim().length < 10) errs.push('trigger: say what the person types or runs to use it');
+  else if (entry.use === 'auto' && entry.trigger !== '') errs.push('trigger: must be empty when use is auto');
 
   if (strList(entry, 'needs', errs)) {
     for (const n of entry.needs) {

@@ -5,6 +5,8 @@
   "level": "recommended",
   "summary": "Finds what to change on a landing, pricing or form page to get more conversions, and why it is not converting.",
   "details": "When you ask why a landing, pricing or form page is not converting, Claude analyzes the page across value proposition, headline, proof and form fields, then says what to change first, loading extra references for forms and experiments as needed. It is for you when you want more conversions or a form fixed. It copies a skill folder that loads only when used; instructions only, no code runs on its own.",
+  "use": "auto",
+  "trigger": "",
   "needs": [],
   "files": [
     {

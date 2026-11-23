@@ -5,6 +5,8 @@
   "level": "optional",
   "summary": "\"claude\" opens one account and \"claude -P\" the other, both signed in at once and sharing settings, skills and sessions.",
   "details": "claude opens one account and claude -P the other, both signed in at once: a shell function in your shell profiles points the second start at a second config folder you choose, and a sync script refreshes junctions so settings, skills, hooks and sessions are shared while login, plan and usage limits stay separate. Use it when you have two Claude logins. It edits your shell profiles and creates junctions in the config folder; no network.",
+  "use": "you",
+  "trigger": "Type claude -P (or your chosen flag) to start the second account.",
   "needs": [],
   "files": [
     {

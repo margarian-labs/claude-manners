@@ -5,6 +5,8 @@
   "level": "optional",
   "summary": "Phone messages through your own Telegram bot when Claude finishes, needs input or asks a question.",
   "details": "Your own Telegram bot sends phone messages when Claude finishes answering, when it needs input and when it asks you a question, and the usual OS notifications are turned off. It is for people who leave Claude running and want to know from their phone. It adds hook scripts that run on Notification, Stop and AskUserQuestion events plus settings entries, and sends messages over the network to api.telegram.org with a bot token you put in ~/.claude/telegram.conf.",
+  "use": "auto",
+  "trigger": "",
   "needs": [
     "cmd:curl",
     "cmd:node"

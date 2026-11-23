@@ -92,8 +92,8 @@ for (const [l, n] of ec) {
 }
 for (const [l, n] of ac) if (!ec.has(l)) problems.push('EXTRA (not in source): ' + l.slice(0, 100));
 
-// dash check on the other two files too
-for (const f of ['claude-setup--csharp-dotnet.md', 'claude-setup--two-accounts.md']) {
+// dash check on the other rule file too
+for (const f of ['claude-setup--two-accounts.md']) {
   const p = path.join(RULES, f);
   if (!fs.existsSync(p)) { problems.push('missing ' + f); continue; }
   const t = fs.readFileSync(p, 'utf8');

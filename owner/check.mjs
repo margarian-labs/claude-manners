@@ -35,10 +35,17 @@ export function generateTable(entries) {
   const rank = (g) => { const i = GROUPS.indexOf(g); return i < 0 ? GROUPS.length : i; };
   const cell = (s) => String(s ?? '').replace(/\|/g, '\\|');
   const sorted = [...entries].sort((a, b) => rank(a.group) - rank(b.group) || a.title.localeCompare(b.title));
+  const auto = sorted.filter((e) => e.use !== 'you');
+  const you = sorted.filter((e) => e.use === 'you');
   return [
+    '### Works on its own', '', 'Once installed, these work in every session without you doing anything.', '',
     '| Group | Part | Level | Summary |',
     '| --- | --- | --- | --- |',
-    ...sorted.map((e) => `| ${cell(e.group)} | ${cell(e.title)} | ${cell(e.level)} | ${cell(e.summary)} |`),
+    ...auto.map((e) => `| ${cell(e.group)} | ${cell(e.title)} | ${cell(e.level)} | ${cell(e.summary)} |`),
+    '', '### You trigger it', '', 'These do nothing until you use them; the last column says how.', '',
+    '| Group | Part | Level | Summary | How you use it |',
+    '| --- | --- | --- | --- | --- |',
+    ...you.map((e) => `| ${cell(e.group)} | ${cell(e.title)} | ${cell(e.level)} | ${cell(e.summary)} | ${cell(e.trigger)} |`),
   ].join('\n');
 }
 

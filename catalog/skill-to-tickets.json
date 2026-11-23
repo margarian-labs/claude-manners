@@ -5,6 +5,8 @@
   "level": "recommended",
   "summary": "Breaks a plan, spec or conversation into small tickets, each listing what blocks it, and publishes them to your tracker.",
   "details": "Invoke /to-tickets with a plan, a spec or the current conversation and Claude breaks the work into small tracer-bullet tickets, each a vertical slice through every layer, demoable on its own, and lists what blocks each ticket. You approve the breakdown, then the tickets are published to your tracker. Use it when you want pieces small enough for one session. It installs as a skill loaded only when used; the tracker comes from /setup-matt-pocock-skills.",
+  "use": "you",
+  "trigger": "Type /to-tickets with a plan, a spec or the current conversation.",
   "needs": [
     "part:skill-setup-matt-pocock-skills"
   ],

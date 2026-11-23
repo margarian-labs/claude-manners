@@ -5,6 +5,8 @@
   "level": "recommended",
   "summary": "Say -away and the agent asks all its questions first, then finishes the whole task without you, with an optional usage stop point.",
   "details": "When you add -away to a message (or -away 85 for a weekly usage stop point), Claude asks all its questions in one round first, then finishes the whole task without you, stopping at that usage level if set. It is for leaving your desk mid task and still wanting the work done. It adds hooks that run on every prompt, tool call and stop, settings entries, a rule file loaded every session and an away-mode skill loaded only when used; the hooks run locally and use no network.",
+  "use": "you",
+  "trigger": "Add -away (or -away 85 for a weekly usage stop point) to your message.",
   "needs": [
     "windows",
     "cmd:node",

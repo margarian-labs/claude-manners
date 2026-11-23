@@ -5,6 +5,8 @@
   "level": "optional",
   "summary": "Helps write, test and improve your own skills.",
   "details": "Once installed, you can ask Claude to help write, test and improve your own skills, and that help loads only when it is used. It is for you if you write or tune skills yourself. It is a plugin from the official marketplace and nothing ships with this pack; it adds a skill, and no code runs until that skill is used.",
+  "use": "auto",
+  "trigger": "",
   "needs": [],
   "files": [],
   "settings": [],

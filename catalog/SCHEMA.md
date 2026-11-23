@@ -36,6 +36,8 @@ One JSON file per part: `catalog/<id>.json`. The sync engine reads these; the RE
 - `group`: one of `rules`, `settings`, `workflow`, `hooks`, `agents`, `skills`, `plugins`, `tools`, `integrations`, `lessons`.
 - `level`: `recommended` (ticked in the first-run menu) or `optional`.
 - `summary`: one plain sentence, at most 140 characters. No em or en dash.
+- `use`: `auto` (works in every session without the person doing anything) or `you` (does nothing until the person uses it).
+- `trigger`: for `you` parts, one sentence on what the person types or runs to use it; empty for `auto`.
 - `details`: 2 to 4 short plain sentences, 40 to 600 characters: what it does in practice, when it helps, and what it changes on the PC (files, settings, hooks; whether code runs). Shown in the first-run question for that part.
 - `needs`: conditions checked before the part is shown. Allowed forms only: `windows`, `second-profile`, `memohopper-connected`, `fable-access`, `haiku-access`, `part:<id>`, `plugin:<name>`, `cmd:<executable>`, `claude>=<version>`.
 - `files`: `src` is a repo path (file or folder); `dest` is relative to the Claude config dir (`~/.claude`). `mode`:

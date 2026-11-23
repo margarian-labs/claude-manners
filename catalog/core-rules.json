@@ -5,6 +5,8 @@
   "level": "recommended",
   "summary": "Short answers, honest pushback, no long dashes, readable pages and cleanup after work. Loaded every session.",
   "details": "Claude gives short direct answers, honest pushback when your plan looks wrong, no em or en dashes, readable pages and reports, and cleans up after its work. It applies to every project and every session. It adds one plain-text rule file under ~/.claude/rules/ that loads into every session; no code runs and no network is used.",
+  "use": "auto",
+  "trigger": "",
   "needs": [],
   "files": [],
   "settings": [],

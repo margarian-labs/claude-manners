@@ -37,14 +37,15 @@ Ask every question with AskUserQuestion (at most 4 questions per call, at most 4
 
 Ask about every part on its own. Never offer a whole group in one question ("install the recommended ones").
 
-1. `catalog --json` gives the short list (id, title, level, installed, ask_alone, requires_parts) grouped. Skip parts already installed. Parts in `hidden` are not offered; if the person asks why one is missing, give its `unmet` list.
-2. Order: go group by group, and inside a group put a part after the parts it requires (`requires_parts`), so the base parts are asked first.
+1. `catalog --json` gives the short list (id, title, level, use, trigger, installed, ask_alone, requires_parts) grouped. Skip parts already installed. Parts in `hidden` are not offered; if the person asks why one is missing, give its `unmet` list.
+2. Order: first every part with `use: "auto"` (it works in every session without the person doing anything), then every part with `use: "you"` (it does nothing until the person uses it). Say which of the two sets you are starting, in one line, before its first question. Inside each set go group by group, and put a part after the parts it requires (`requires_parts`), so the base parts are asked first.
 3. For the next parts (at most 4 per AskUserQuestion call), get their details with `catalog --parts a,b,c,d --json` and ask ONE question per part. The question text must stand on its own and contain, in plain words:
    - the title and whether it is recommended or optional;
    - `details` (what it does, when it helps, what it changes on the PC);
    - the always-on cost: "adds about N tokens to every session" with how it was measured (`tokens.how`), or "loads only when used" when N is 0 or null;
    - the `risk` text, word for word;
-   - what it needs (programs in `needs`, other parts in `requires_parts`).
+   - what it needs (programs in `needs`, other parts in `requires_parts`);
+   - for a `use: "you"` part, how the person uses it, from `trigger` ("You use it by: ...").
    Options: "Install" and "Skip" (add "(Recommended)" to Install for recommended parts), plus "Show the full card" when the person may want the diff (`plan --parts <id> --cards --json`, then ask again).
 4. Parts that cannot work well without each other are asked together, and only those: when a part's `requires_parts` names a part the person skipped or that is not yet chosen, ask about the pair (or chain) in one question, say plainly why they belong together ("Away mode reads the files the status line writes"), with options "Install both", "Skip both". Never bundle parts that merely fit the same topic.
 5. A part with `ask_alone: true` is installed only when the person types the word confirm under Other in its own question; quote the risk text word for word. Options: "Skip" and "Show the full card". For other parts that set risky settings (`env`, `permissions`, `hooks`, `apiKeyHelper`, MCP servers), name those settings in the part's question; choosing Install there counts as the confirmation. Pass every such id with `--confirm-risky`.

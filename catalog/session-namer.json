@@ -5,6 +5,8 @@
   "level": "recommended",
   "summary": "Names each session with a short project key and title, such as \"WEB fix login\".",
   "details": "Each session gets a short name such as WEB fix login, built from a project key and what the session is about. It is for you if you keep several sessions open and want to tell them apart at a glance. It copies a hook script and adds a UserPromptSubmit entry to your settings; the script runs on prompts and makes a small background Haiku call, which costs a little usage.",
+  "use": "auto",
+  "trigger": "",
   "needs": [
     "cmd:node"
   ],

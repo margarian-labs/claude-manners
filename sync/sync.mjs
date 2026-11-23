@@ -22,7 +22,6 @@ const PACKS = {
   'pack-2026-11-21': {
     rules: {
       'rules/setup-pack/core.md': ['core-rules', 'flags', 'style-and-coding', 'subagents', 'workflow'],
-      'rules/setup-pack/csharp-dotnet.md': ['csharp-dotnet'],
       'rules/setup-pack/accounts.md': ['two-accounts'],
     },
   },
@@ -751,7 +750,7 @@ function cmdCatalog(b) {
       if (!avail(e.id)) { hidden.push({ id: e.id, title: e.title, unmet: needs.filter((n) => n.ok === false).map((n) => n.need) }); continue; }
       const installed = b.state.parts[e.id]?.installed === true;
       const row = {
-        id: e.id, title: e.title, summary: e.summary, level: e.level, ticked: e.level === 'recommended' && !installed, installed, ask_alone: e.ask_alone,
+        id: e.id, title: e.title, summary: e.summary, level: e.level, use: e.use, trigger: e.trigger, ticked: e.level === 'recommended' && !installed, installed, ask_alone: e.ask_alone,
         unknown_needs: needs.filter((n) => n.ok === 'unknown').map((n) => n.need), requires_parts: e.needs.filter((n) => n.startsWith('part:')).map((n) => n.slice(5)),
       };
       if (detail.has(e.id)) {
@@ -955,9 +954,19 @@ function cmdAdopt(b) {
   save(state, cfg);
 
   const packHash = new Map(mig.filter((m) => m.installed_at).map((m) => [m.installed_at, m.sha256]));
+  const covered = new Set(Object.entries(PACKS[from]?.rules ?? {}).filter(([, ids]) => ids.some((id) => cat.has(id))).map(([file]) => file));
   const editedRules = [];
+  const keptRules = [];
   for (const dest of packFiles) {
     const abs = absOf(cfg, dest);
+    const keepDest = `rules/${path.basename(dest)}`;
+    const keepAbs = absOf(cfg, keepDest);
+    if (!covered.has(dest) && dest.endsWith('.md') && !fs.existsSync(keepAbs)) {
+      const bytes = fs.readFileSync(abs);
+      writeFileAtomic(keepAbs, bytes);
+      journal(runDir, { ev: 'file', action: 'put', dest: keepDest, existed: false, backup: null, hashBefore: null, hashAfter: hashFile(keepAbs) });
+      keptRules.push(keepDest);
+    }
     const raw = crypto.createHash('sha256').update(fs.readFileSync(abs)).digest('hex');
     const backupAbs = backupFile(runDir, abs, cfg);
     journal(runDir, { ev: 'file', action: 'delete', dest, existed: true, backup: relInside(cfg, backupAbs), hashBefore: hashFile(abs), hashAfter: null });
@@ -982,10 +991,11 @@ function cmdAdopt(b) {
     `Taken over from ${from}: ${rep.managed.length} files now managed, ${rep.held.length} held (your edits kept), ${rep.seed.length} seed file(s).`,
     ...(rep.unmatched.length ? [`Not matched to any part (left alone): ${rep.unmatched.length}`] : []),
     packFiles.length ? `Old rules folder rules/setup-pack backed up and removed (${packFiles.length} files); flat rules written: ${rules.length}.` : 'No rules/setup-pack folder found.',
+    ...(keptRules.length ? [`Rules no part covers any more were kept as your own files: ${keptRules.join(', ')}.`] : []),
     ...(editedRules.length ? [`You edited ${editedRules.join(', ')}; your version is in the run backup (${relInside(cfg, runDir)}). Copy anything you want to keep into your own CLAUDE.md.`] : []),
     ...(defaults.length ? [`Rendered rules used default fill-in values for: ${defaults.join(', ')}. Set yours with "values set key=value", then install --parts <part>.`] : []),
   ];
-  return ok({ command: 'adopt', from, run: run.id, head, report: rep, rules_removed: packFiles, rules_written: rules, edited_rules: editedRules, parts: [...had], default_values: defaults }, lines);
+  return ok({ command: 'adopt', from, run: run.id, head, report: rep, rules_removed: packFiles, rules_written: rules, kept_rules: keptRules, edited_rules: editedRules, parts: [...had], default_values: defaults }, lines);
 }
 
 const COMMANDS = {

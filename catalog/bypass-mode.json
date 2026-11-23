@@ -5,6 +5,8 @@
   "level": "recommended",
   "summary": "Claude runs every command and edit without asking. Prompt-free agents and away mode depend on it.",
   "details": "Claude runs every command and edit without asking you; the start-up warning is skipped and a hook approves any shell prompt that still appears. Prompt-free agents and away mode depend on it, but the Claude Code docs warn to use it only in isolated environments such as containers or VMs. It sets the permissions mode in settings.json and adds the hook script; the hook runs locally, no network.",
+  "use": "auto",
+  "trigger": "",
   "needs": [
     "cmd:node"
   ],

@@ -2,8 +2,6 @@
   "skillOverrides": {
     "fewer-permission-prompts": "off",
     "plugin-authoring": "off",
-    "angular-developer": "off",
-    "api-and-interface-design": "off",
     "architecture": "off",
     "sprint-planning": "off",
     "system-design": "off",

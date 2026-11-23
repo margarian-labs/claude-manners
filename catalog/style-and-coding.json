@@ -5,6 +5,8 @@
   "level": "recommended",
   "summary": "Reply language and length, coding conventions, and git commit and pull request habits. Loaded every session.",
   "details": "This rule loads in every session and sets how Claude replies and writes code: English, concise by default, the smallest change that solves the request, and the existing style of the project. It also sets git habits: adapting commit messages to each repo, never putting a Claude session link in commits or PRs, and PR descriptions with a plain-words part first and a short part for the reviewer. It is a text file in your rules folder; no code runs and no network is used.",
+  "use": "auto",
+  "trigger": "",
   "needs": [],
   "files": [],
   "settings": [],

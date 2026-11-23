@@ -3,8 +3,10 @@
   "title": "Skill overrides",
   "group": "settings",
   "level": "recommended",
-  "summary": "Turns off 7 noisy skills and sets 5 built-in ones to run only when you ask for them.",
-  "details": "This setting turns off 7 noisy skills and makes 5 built-in ones, like init, simplify and security-review, run only when you ask for them. It keeps automatic skill suggestions from crowding your sessions while leaving every skill available on request. It writes a skillOverrides block into your settings.json; one setting only, no code runs and no network is used.",
+  "summary": "Turns off 5 noisy skills and sets 5 built-in ones to run only when you ask for them.",
+  "details": "This setting turns off 5 noisy skills and makes 5 built-in ones, like init, simplify and security-review, run only when you ask for them. It keeps automatic skill suggestions from crowding your sessions while leaving every skill available on request. It writes a skillOverrides block into your settings.json; one setting only, no code runs and no network is used.",
+  "use": "auto",
+  "trigger": "",
   "needs": [],
   "files": [],
   "settings": [

@@ -5,6 +5,8 @@
   "level": "optional",
   "summary": "Cost and usage reports built from your local Claude transcripts.",
   "details": "Three node scripts build cost and usage reports from your local Claude transcripts: per-account API-equivalent cost for a time window (last 7 days by default), a usage percent series, and a transcript audit. You fill tools/usage-config.json with each account's label, the first 8 characters of its organization id and its config folder, then run a script when you want a report. They run only when you start them, read local transcripts and send nothing out; times are shown in UTC+4.",
+  "use": "you",
+  "trigger": "Run the report scripts in ~/.claude/tools when you want a cost or usage report.",
   "needs": [
     "cmd:node"
   ],

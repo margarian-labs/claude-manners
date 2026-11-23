@@ -5,6 +5,8 @@
   "level": "optional",
   "summary": "Checks web pages and code for accessibility problems.",
   "details": "Installs the AccessLint plugin so Claude can check web pages and code for accessibility problems. It is for developers who want those checks inside their normal workflow. It comes from the third-party accesslint/skills marketplace and runs an MCP server through npx, so a package is downloaded when the plugin is used; nothing is shipped with the pack, and you can optionally pin the MCP version by hand.",
+  "use": "auto",
+  "trigger": "",
   "needs": [],
   "files": [],
   "settings": [],

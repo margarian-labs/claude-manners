@@ -5,6 +5,8 @@
   "level": "optional",
   "summary": "Helps you design systems and services: requirements, architecture, API contracts, data models and service boundaries.",
   "details": "Describe what you want to build and Claude works through requirements, a component design, API contracts, data models, storage, scaling, failover and trade-offs, then writes a structured design document with explicit assumptions and what to revisit as the system grows. Use it when you need API design, data modeling or service boundaries worked out. It installs as a skill that loads only when used; instructions only, no code runs and no network is used.",
+  "use": "you",
+  "trigger": "Type /system-design and describe what you want to build.",
   "needs": [],
   "files": [
     {

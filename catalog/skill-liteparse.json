@@ -5,6 +5,8 @@
   "level": "recommended",
   "summary": "Local OCR and text extraction for scanned, image-only or long PDFs, so you need not read pages as images.",
   "details": "For scanned, image-only or long PDFs, and many document photos, this skill extracts text locally with the lit CLI (installed via npm), so Claude searches a text file instead of reading every page as an image; it covers Armenian, Russian and English OCR. It is for anyone with scans, long PDFs or Armenian documents, and it never sends your files to a cloud OCR service without asking. It adds a skill folder plus a rule file, and it needs the lit and uv commands installed.",
+  "use": "auto",
+  "trigger": "",
   "needs": [
     "cmd:lit",
     "cmd:uv"
