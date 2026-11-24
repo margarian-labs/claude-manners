@@ -43,7 +43,7 @@ Ask about every part on its own. Never offer a whole group in one question ("ins
 3. For the next parts (at most 4 per AskUserQuestion call), get their details with `catalog --parts a,b,c,d --json` and ask ONE question per part. Keep it short: the question text stands on its own in at most 3 short lines:
    - line 1: the title and whether it is recommended or optional;
    - line 2: `benefit`, what the person gains;
-   - line 3: the always-on cost ("adds about N tokens to every session", or "loads only when used" when N is 0 or null) and, only if there are any, what it needs (programs in `needs`, other parts in `requires_parts`).
+   - line 3: the always-on cost ("adds about N tokens to every session", "adds no tokens to sessions" when N is 0, "token cost not measured yet" when N is null) and, only if there are any, what it needs (programs in `needs`, other parts in `requires_parts`).
    Add one more line only when it applies: "Changes: " plus the `changes` text word for word when `changes` is set, and for a `use: "you"` part "You use it by: " plus `trigger`. Do not add `details`; it is in the full card.
    Options: "Install" and "Skip" (add "(Recommended)" to Install for recommended parts), plus "Show the full card" when the person may want the diff (`plan --parts <id> --cards --json`, then ask again).
 4. Parts that cannot work well without each other are asked together, and only those: when a part's `requires_parts` names a part the person skipped or that is not yet chosen, ask about the pair (or chain) in one question, say plainly why they belong together ("Away mode reads the files the status line writes"), with options "Install both", "Skip both". Never bundle parts that merely fit the same topic.
