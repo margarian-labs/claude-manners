@@ -4,6 +4,7 @@
   "group": "skills",
   "level": "recommended",
   "summary": "Writes and rewrites marketing copy for pages such as home, landing and pricing, with supportable claims.",
+  "benefit": "Marketing pages get clear headlines and copy with claims you can back up.",
   "details": "When you ask for marketing copy for a home, landing, pricing or feature page, Claude reads any product marketing notes first and writes or rewrites the copy, keeping every claim supportable; it stays out of docs and app UI labels. It is for you when you write or revise marketing pages or pick a headline. It copies a skill folder that loads only when used, with instructions only and no code running on its own.",
   "use": "auto",
   "trigger": "",

@@ -259,7 +259,7 @@ test('catalog --json: groups, ticked recommended, hidden parts, ask_alone, first
   assert.ok(!('sync-engine' in parts));
   assert.equal(parts.alpha.ticked, true);
   assert.equal(parts.alpha.group, 'hooks');
-  assert.ok(!('values' in parts.alpha) && !('risk' in parts.bypass));
+  assert.ok(!('values' in parts.alpha) && !('changes' in parts.bypass));
   assert.equal(parts.bypass.ask_alone, true);
   assert.equal(parts['skill-architecture'].ticked, false);
   assert.ok(!('delta' in parts));
@@ -271,9 +271,9 @@ test('catalog --json: groups, ticked recommended, hidden parts, ask_alone, first
   const d = ok(cli(['catalog', '--parts', 'alpha,bypass']));
   const dp = Object.fromEntries(d.groups.flatMap((g) => g.parts.map((p) => [p.id, p])));
   assert.deepEqual(dp.alpha.values.map((v) => v.key), ['LABELS', 'who']);
-  assert.equal(dp.bypass.risk, 'Runs every command without asking.');
+  assert.equal(dp.bypass.changes, 'Runs every command without asking.');
   assert.equal(dp.alpha.quality, 'tried');
-  assert.ok(!('risk' in dp.epsilon));
+  assert.ok(!('changes' in dp.epsilon));
 });
 
 test('first run: install of 2 parts needs the risky confirm, then records every proposal as baseline', () => {
@@ -817,4 +817,24 @@ test('repair: finds what the old adopt left out, writes only that, leaves edits,
 
   ok(cli(['rollback', '--last'], opts));
   assert.deepEqual(snap(cfgP), broken);
+});
+
+test('catalog --parts gives the benefit and, for parts with sensitive settings, a changes line; no question says risk', () => {
+  const withBenefit = (e, text) => Object.fromEntries(Object.entries(e).flatMap(([k, v]) => (k === 'summary' ? [[k, v], ['benefit', text]] : [[k, v]])));
+  putEntry(withBenefit(beta, 'Plans come out sharper.'));
+  release('Version five', 'v5');
+  git(['fetch', '-q', '--tags'], user);
+  git(['merge', '-q', '--ff-only'], user);
+  const cfgB = path.join(root, 'config-benefit');
+  write('settings.json', '{}\n', cfgB);
+  const j = ok(cli(['catalog', '--parts', 'alpha,beta,bypass', '--repo', user], { dir: cfgB }));
+  const parts = Object.fromEntries(j.groups.flatMap((g) => g.parts).map((p) => [p.id, p]));
+  assert.equal(parts.beta.benefit, 'Plans come out sharper.');
+  assert.equal(parts.alpha.benefit, null);
+  assert.equal(parts.alpha.changes, 'Runs a hook at session start.');
+  assert.equal(parts.bypass.changes, 'Runs every command without asking.');
+  assert.equal(parts.beta.changes, null);
+  const q = needsAnswer(cli(['install', '--parts', 'bypass', '--repo', user], { dir: cfgB }));
+  assert.equal(q[0].kind, 'risky');
+  assert.doesNotMatch(q[0].text, /risk/i);
 });

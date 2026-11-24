@@ -4,6 +4,7 @@
   "group": "settings",
   "level": "recommended",
   "summary": "Uses the fullscreen terminal interface.",
+  "benefit": "The whole terminal window is used for the conversation.",
   "details": "Claude Code uses its fullscreen terminal interface instead of inline scrollback, so the session fills the window. It is for anyone who prefers the fullscreen layout. It changes one display key (tui) in settings.json only; no code runs and no network is used.",
   "use": "auto",
   "trigger": "",

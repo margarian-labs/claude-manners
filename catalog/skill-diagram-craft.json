@@ -4,6 +4,7 @@
   "group": "skills",
   "level": "recommended",
   "summary": "Helps you draw diagrams by hand: picks the right type and keeps nodes, lines and labels readable and accurate.",
+  "benefit": "Diagrams come out readable and match the real code.",
   "details": "When you ask for a diagram, this skill has Claude pick the right type (architecture, sequence, workflow, ERD, timeline and more), place nodes so lines stay straight, keep labels readable, and check edges and numbers against the code before delivery. It helps anyone drawing diagrams by hand in SVG, HTML/CSS boxes or Mermaid, in docs or artifacts. It adds a skill folder that loads only when used; instructions only, so no code runs on its own.",
   "use": "auto",
   "trigger": "",

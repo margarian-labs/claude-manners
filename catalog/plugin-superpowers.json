@@ -4,6 +4,7 @@
   "group": "plugins",
   "level": "recommended",
   "summary": "Skills for planning, debugging, code review, worktrees and proving work before calling it done.",
+  "benefit": "Claude plans, debugs and reviews in tested steps and proves work before calling it done.",
   "details": "Once installed, Claude gets skills for planning, debugging, code review, worktrees and proving work before calling it done, and a short rule tells it to keep the verification gate and skip the forced brainstorming and TDD loops unless you ask for them. It is for you if you want that discipline without the full loops every time. It is a plugin from the official marketplace plus one rule file that loads every session; the plugin loads skills and may add its own hooks.",
   "use": "auto",
   "trigger": "",

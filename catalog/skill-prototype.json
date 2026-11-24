@@ -4,6 +4,7 @@
   "group": "skills",
   "level": "recommended",
   "summary": "Builds a throwaway prototype to sanity-check a state model or explore what a UI should look like.",
+  "benefit": "You can try an idea quickly before building it properly.",
   "details": "Ask for it when you want to sanity-check whether a state model or logic feels right, or to explore what a UI should look like: Claude builds throwaway code that answers that question, a single shareable HTML file for logic or several switchable UI variations on one route. It is for anyone wanting to learn something fast before committing, and the prototype is captured on a throwaway branch when done. It adds a skill folder that loads only when used; instructions only, so no code runs on its own.",
   "use": "auto",
   "trigger": "",

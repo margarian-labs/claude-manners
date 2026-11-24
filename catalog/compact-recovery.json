@@ -4,6 +4,7 @@
   "group": "workflow",
   "level": "recommended",
   "summary": "After a compaction, points Claude to the full transcript and to your exact words, so nothing important is lost.",
+  "benefit": "Claude keeps your decisions and exact wording after a long conversation is compacted.",
   "details": "After any compaction, Claude is pointed to the full transcript and to your own messages and answers word for word, so earlier decisions are not lost. It helps in long sessions where compacting would otherwise drop instructions you gave. It adds hook scripts that run before and after each compaction, a compact-instructions.md copied to ~/.claude and settings entries; the code runs locally and no network is used.",
   "use": "auto",
   "trigger": "",

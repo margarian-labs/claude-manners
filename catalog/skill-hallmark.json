@@ -4,6 +4,7 @@
   "group": "skills",
   "level": "recommended",
   "summary": "Makes websites and landing pages look made, not generated; can also redesign or audit an existing page.",
+  "benefit": "Websites and landing pages get a distinct, finished look.",
   "details": "When you ask to build or design a new website or landing page, Claude suggests /hallmark first (about $1.80 and 4-6 minutes per page) and only runs it after you say yes; it also supports /hallmark redesign <path> and audit <path>. It makes generated pages look made rather than templated, with a hard floor of rules and a sloplint script run when Node is available. It adds a skill folder plus a rule file, loads only when used, and runs local scripts when used.",
   "use": "auto",
   "trigger": "",

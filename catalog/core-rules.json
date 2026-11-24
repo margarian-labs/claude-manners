@@ -4,6 +4,7 @@
   "group": "rules",
   "level": "recommended",
   "summary": "Short answers, honest pushback, no long dashes and readable pages. Loaded every session.",
+  "benefit": "Answers stay short and honest, and Claude tells you when your plan looks wrong.",
   "details": "Claude gives short direct answers, honest pushback when your plan looks wrong, no em or en dashes, and readable pages and reports (a small readable-pages skill holds the page rules and loads on demand). It applies to every project and every session. It adds one plain-text rule file under ~/.claude/rules/ and one skill folder; no code runs and no network is used.",
   "use": "auto",
   "trigger": "",

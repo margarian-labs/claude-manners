@@ -4,6 +4,7 @@
   "group": "plugins",
   "level": "optional",
   "summary": "Skills for event storming and domain-driven design workshops.",
+  "benefit": "Ready-made steps for running event storming and domain design sessions.",
   "details": "Installs the event-storming plugin, which adds skills for event storming and domain-driven design workshops. It is for teams doing domain modeling or workshop-style design sessions. It comes from the third-party melodic-software/claude-code-plugins marketplace as skills that load only when used; if adding that marketplace from GitHub fails with a Windows rename error, use a local clone instead.",
   "use": "auto",
   "trigger": "",

@@ -4,6 +4,7 @@
   "group": "skills",
   "level": "recommended",
   "summary": "Creates organic social content for LinkedIn, X, Instagram, TikTok or Facebook: posts, threads, carousels and calendars.",
+  "benefit": "Posts, threads and content calendars get drafted for each platform.",
   "details": "Ask for social content and this skill gathers your goals, audience and brand voice, then helps create LinkedIn, X, Instagram, TikTok or Facebook posts, threads, carousels, short video scripts and content calendars, with platform strategies and limits in its reference files. It is for people building an audience or posting build-in-public updates. It adds a skill folder that loads only when used; instructions only, so no code runs on its own.",
   "use": "auto",
   "trigger": "",

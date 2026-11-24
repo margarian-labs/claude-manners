@@ -4,6 +4,7 @@
   "group": "skills",
   "level": "recommended",
   "summary": "Turns the current conversation into a spec and publishes it to the project issue tracker, with no interview.",
+  "benefit": "A discussion becomes a ready spec in your tracker with one command.",
   "details": "After you have discussed a feature, invoke /to-spec and Claude turns the discussion into a spec with a problem statement, user stories, and implementation and testing decisions, then publishes it to your project issue tracker without interviewing you. Use it when the thinking is done and you want it captured as a ticket. It needs the tracker that /setup-matt-pocock-skills configures; it installs as a skill that loads only when used, and publishes through your tracker.",
   "use": "you",
   "trigger": "Type /to-spec after discussing a feature.",

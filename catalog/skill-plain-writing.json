@@ -4,6 +4,7 @@
   "group": "skills",
   "level": "recommended",
   "summary": "Cleans prose other people will read: removes AI writing tells and checks that no fact was lost.",
+  "benefit": "Text you publish reads like a person wrote it, with every fact kept.",
   "details": "When you are writing or editing prose other people will read, such as docs, reports, PR descriptions or posts, this skill marks AI writing tells and rewrites them, then checks that no fact, name, number or link was lost. It also gives a one-line-per-finding format for code review comments. It suits anyone who wants text that reads like a careful person wrote it. It adds a skill folder that loads only when used; instructions only, so no code runs on its own.",
   "use": "auto",
   "trigger": "",

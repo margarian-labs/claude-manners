@@ -4,6 +4,7 @@
   "group": "skills",
   "level": "recommended",
   "summary": "Plans the safe removal or replacement of old systems and APIs, including database changes with no downtime.",
+  "benefit": "Old systems and database columns can be retired without downtime.",
   "details": "When you retire or replace an old system, API or feature, or change a production database schema, Claude plans the stages: what still depends on it, what replaces it, how to move users over, and how to rename or drop a column without downtime. It is for you when you sunset or migrate something live. It copies a skill folder that loads only when used; instructions only, no code runs on its own.",
   "use": "auto",
   "trigger": "",

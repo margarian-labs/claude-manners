@@ -4,6 +4,7 @@
   "group": "tools",
   "level": "optional",
   "summary": "A background check every 10 minutes that shrinks huge Claude temp logs and cleans old session temp and old backups.",
+  "benefit": "Claude's temp files and old backups never fill your disk.",
   "details": "A scheduled check runs every 10 minutes and at logon: it shrinks Claude temp logs over 1 GB and force-stops the programs holding them (never claude.exe or explorer.exe), deletes session temp older than 3 days and backups older than 90 days, and sends a Telegram alert (only if set up) under 20 GB free disk. It suits PCs where Claude temp and logs grow large. It adds a PowerShell script and a hidden VBS launcher, plus a task you register; no network except the optional alert.",
   "use": "auto",
   "trigger": "",

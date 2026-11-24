@@ -127,3 +127,17 @@ test('status-line verify leaves no temp folder behind', { skip: spawnSync('bash'
     fs.rmSync(tmp, { recursive: true, force: true });
   }
 });
+
+test('benefit: optional, right after summary, short; every part but the sync engine has one', () => {
+  const { benefit: _, ...b0 } = base();
+  const withBenefit = (text) => Object.fromEntries(Object.entries(b0).flatMap(([k, v]) => (k === 'summary' ? [[k, v], ['benefit', text]] : [[k, v]])));
+  assert.deepEqual(validateEntry(withBenefit('You can test web pages from Claude.'), ids), []);
+  assert.deepEqual(validateEntry(b0, ids), []);
+  assert.ok(has(validateEntry(withBenefit(''), ids), 'benefit'));
+  assert.ok(has(validateEntry(withBenefit('x'.repeat(101)), ids), 'benefit'));
+  assert.ok(has(validateEntry({ ...b0, benefit: 'At the end.' }, ids), 'out of order'));
+  for (const [id, e] of loadCatalog(repo)) {
+    if (id === 'sync-engine') assert.ok(!('benefit' in e), 'older sync tools reject unknown keys and must still read the sync-engine entry');
+    else assert.ok(typeof e.benefit === 'string' && e.benefit.length > 0, `${id} has no benefit`);
+  }
+});

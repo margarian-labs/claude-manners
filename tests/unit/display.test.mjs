@@ -61,10 +61,12 @@ test('card layout: sections, diff against installed, settings lines', () => {
   }, { 'hooks/a.js': 'one\nOLD\n' });
   for (const part of [
     'Better hook\n', 'Level: optional | Kind: change | Part: away-mode', 'What changes\nThe hook gets smarter.', 'Why\nIt misses cases.',
-    'Tokens always on: +240 (how: estimated chars/2.6)', 'Quality: tried', 'Risk: Runs on every prompt; no network.',
+    'Tokens always on: +240 (how: estimated chars/2.6)', 'Quality: tried', 'Changes: Runs on every prompt; no network.', 'Files and settings\n',
     '* hooks/a.js (changed)', '-OLD', '+two', '  + /env/X = "v"', '  ~ /model: "old" -> "new"', '  ~ conflict /x: 1 -> 2', '  = /y (already set)',
   ]) assert.ok(text.includes(part), part + '\n' + text);
   assert.ok(!text.includes('How it'));
+  assert.ok(text.indexOf('Why\n') < text.indexOf('What changes\n'), 'the advantage comes first');
+  assert.doesNotMatch(text, /risk/i);
   assert.ok(!/\u001b/.test(text));
 });
 
@@ -105,11 +107,11 @@ test('warning c: code patterns not covered by risk text', () => {
   ].join('\n');
   const w = warnings(run(prop({ risk: 'Runs on every prompt.' }), { ops: [file('hooks/a.js', code)] }));
   assert.deepEqual(w, [
-    '! hooks/a.js does network access, which risk does not mention.',
-    '! hooks/a.js does process launching, which risk does not mention.',
-    '! hooks/a.js does downloading, which risk does not mention.',
-    '! hooks/a.js does a scheduled task, which risk does not mention.',
-    '! hooks/a.js uses a path outside the config folder (C:/Other/thing), which risk does not mention.',
+    '! hooks/a.js does network access, which the Changes line does not mention.',
+    '! hooks/a.js does process launching, which the Changes line does not mention.',
+    '! hooks/a.js does downloading, which the Changes line does not mention.',
+    '! hooks/a.js does a scheduled task, which the Changes line does not mention.',
+    '! hooks/a.js uses a path outside the config folder (C:/Other/thing), which the Changes line does not mention.',
   ]);
 });
 

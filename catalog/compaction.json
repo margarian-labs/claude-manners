@@ -4,6 +4,7 @@
   "group": "settings",
   "level": "recommended",
   "summary": "Compacts the conversation automatically at 600k tokens. Needs a model with a 1M context window.",
+  "benefit": "Long sessions keep going without hitting the context limit.",
   "details": "Turns on automatic compaction of the conversation at 600k tokens. It needs a model with a 1M context window; without one, Claude Code caps the value at the model window, so it does nothing useful. It is for long sessions on a 1M model. It changes the autoCompactEnabled and autoCompactWindow keys in settings.json only; no code runs and no network is used.",
   "use": "auto",
   "trigger": "",

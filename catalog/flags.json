@@ -4,6 +4,7 @@
   "group": "rules",
   "level": "recommended",
   "summary": "Short flags in a message (-d, -w, -nc, -q, -rc, -a, -p, -m, -away) change how Claude handles it.",
+  "benefit": "One short flag changes how Claude handles a message, without typing instructions.",
   "details": "Short tokens you put at the start or end of a message change how Claude handles it: -d discussion only, -w search the web first, -nc no commits, -q ask when unclear, -rc extra rigor, -a deep analysis, -p plan mode, -m remember it permanently, plus -away. It is for steering a single message without long instructions. It adds one plain-text rule file under ~/.claude/rules/ that loads into every session; no code runs and no network is used.",
   "use": "you",
   "trigger": "Add a flag such as -d, -w, -q, -rc, -a, -p or -m at the start or end of your message.",

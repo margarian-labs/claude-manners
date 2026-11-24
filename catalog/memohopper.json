@@ -4,6 +4,7 @@
   "group": "integrations",
   "level": "optional",
   "summary": "Connects the memohopper memory service and adds rules to use it as primary memory, with tasks.",
+  "benefit": "Decisions and facts carry over between sessions and projects.",
   "details": "Connects the memohopper memory service so Claude stores and recalls memories, tasks and a workspace-based knowledge graph there, with file memory kept only as an index. It is for people with a memohopper account who want memory that travels between projects. It adds rules loaded every session, a user-scope HTTP MCP server (mcp.memohopper.com) and a workspace table you fill in; stored text and recalls go over the network with your API key.",
   "use": "auto",
   "trigger": "",

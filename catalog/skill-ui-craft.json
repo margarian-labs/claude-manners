@@ -4,6 +4,7 @@
   "group": "skills",
   "level": "recommended",
   "summary": "Rules for making app screens, dashboards, forms and sites look designed rather than AI-generated, plus a redesign audit.",
+  "benefit": "Screens and pages look designed by a person, and redesigns follow a checklist.",
   "details": "When you design, build, redesign or review a UI in code, Claude applies rules that keep screens, dashboards, forms and sites looking designed rather than generated: quiet chrome, one accent, spacing on a 4px scale, clear hierarchy and states, plus a redesign audit. Use it in any stack, from Angular and React to plain HTML, and the project's own design system wins where one exists. It installs as a skill that loads only when used; instructions only, no code, no packages and no network.",
   "use": "auto",
   "trigger": "",

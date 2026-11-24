@@ -4,6 +4,7 @@
   "group": "lessons",
   "level": "optional",
   "summary": "Seven short notes from real mistakes (settings, hooks, Telegram, disk cleanup, prompts, token savings) kept in file memory.",
+  "benefit": "Claude avoids mistakes already made once in settings, hooks and cleanup.",
   "details": "Seven short notes from real mistakes are copied into your file memory: settings and hook gotchas, Telegram hook design, disk cleanup depth, why UserAssist is unreliable, prompts for other people's agents, plans rejected with only flags, and measuring token savings before claiming them. It suits anyone who wants Claude to avoid those mistakes. It copies note files plus MEMORY.md lines into ~/.claude/projects memory once, and they load only in sessions started in the home folder; no code runs.",
   "use": "auto",
   "trigger": "",

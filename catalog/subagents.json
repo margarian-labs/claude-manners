@@ -4,6 +4,7 @@
   "group": "rules",
   "level": "recommended",
   "summary": "Opus leads, Fable plans, Sonnet and Haiku do the work from detailed briefs, and Opus checks every result.",
+  "benefit": "Big jobs run in parallel on cheaper models, and every result is checked before you see it.",
   "details": "This rule sets the model roles in every session: Opus runs the main conversation and checks every result, Fable plans and gives second opinions, Sonnet does the work, and Haiku takes the easiest fully specified jobs. The detailed rules (difficulty table, briefs, acceptance) sit in a delegation skill that Claude loads before it spawns a sub-agent. If your account has no Fable, sync names Opus 5.5 as the planner instead. Text only; no code runs.",
   "use": "auto",
   "trigger": "",

@@ -4,6 +4,7 @@
   "group": "skills",
   "level": "recommended",
   "summary": "Looks at frames from a video or screen recording and transcribes speech so you learn what happens and what is said.",
+  "benefit": "Claude can tell you what happens and what is said in a video or recording.",
   "details": "When you point Claude at a video or screen recording, a file or a YouTube or other link, and ask what happens or what is said, it picks the frames where things change, transcribes the speech and reports what it saw, frame by frame. Use it for bug-reproduction clips, phone captures and talk summaries. It installs as a skill that loads only when used and runs local scripts (ffmpeg, with yt-dlp and faster-whisper in the skill's own .venv); a linked video is downloaded at up to 720p.",
   "use": "auto",
   "trigger": "",

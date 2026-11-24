@@ -141,11 +141,11 @@ export function card(proposal, plan, installed, opts = {}) {
   const out = [];
   out.push(m.title, '='.repeat(m.title.length));
   out.push(`Level: ${m.level} | Kind: ${m.kind} | Part: ${m.part}`, '');
-  out.push('What changes', section(proposal.body, 'What changes') || '(not described)', '');
   out.push('Why', section(proposal.body, 'Why') || '(not described)', '');
+  out.push('What changes', section(proposal.body, 'What changes') || '(not described)', '');
   out.push(`Tokens always on: ${m.tokens_always_on}${m.tokens_how ? ` (how: ${m.tokens_how})` : ''}`);
   out.push(`Quality: ${m.quality}`);
-  out.push(`Risk: ${m.risk}`, '');
+  out.push(`Changes: ${m.risk}`, '');
 
   const warnings = [];
   const touches = m.touches || [];
@@ -153,7 +153,7 @@ export function card(proposal, plan, installed, opts = {}) {
   const files = fileOps(plan);
   const sets = settingsOps(plan);
 
-  if (files.length || sets.length || (plan.ops || []).length) out.push('Changes');
+  if (files.length || sets.length || (plan.ops || []).length) out.push('Files and settings');
   for (const o of files) {
     const remove = o.action === 'remove';
     const before = installedBytes(installed, o.dest);
@@ -189,7 +189,7 @@ export function card(proposal, plan, installed, opts = {}) {
     const risk = m.risk || '';
     for (const pat of PATTERNS) {
       if (added.some((l) => pat.re.test(l)) && !pat.said.test(risk)) {
-        warnings.push(`${dest} does ${pat.what}, which risk does not mention.`);
+        warnings.push(`${dest} does ${pat.what}, which the Changes line does not mention.`);
       }
     }
     if (!PATH_SAID.test(risk)) {
@@ -201,7 +201,7 @@ export function card(proposal, plan, installed, opts = {}) {
           if (!p.toLowerCase().startsWith(configDir)) outside.add(p);
         }
       }
-      if (outside.size) warnings.push(`${dest} uses a path outside the config folder (${[...outside][0]}), which risk does not mention.`);
+      if (outside.size) warnings.push(`${dest} uses a path outside the config folder (${[...outside][0]}), which the Changes line does not mention.`);
     }
   }
   for (const id of plan.carried || []) warnings.push(`This also brings skipped change ${id}.`);

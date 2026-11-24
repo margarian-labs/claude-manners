@@ -16,7 +16,7 @@ import { findCrashedRun, finishRun, load, newRun, runDirOf, save } from './lib/s
 
 const TEST = process.env.CLAUDE_SETUP_TEST === '1';
 const ENGINE = 'sync-engine';
-const ENGINE_VERSION = '1.1.0';
+const ENGINE_VERSION = '1.2.0';
 const GROUPS = ['rules', 'settings', 'workflow', 'hooks', 'agents', 'skills', 'plugins', 'tools', 'integrations', 'lessons'];
 const PACKS = {
   'pack-2026-11-21': {
@@ -315,7 +315,7 @@ function syntheticProposal(entry, item) {
       id: entry.id, title: entry.title, kind: 'add', level: entry.level, part: entry.id, touches: [...item.dplan.ops.filter((o) => o.kind === 'file').map((o) => o.dest), 'settings.json'],
       tokens_always_on: t.value === null ? 'not measured yet' : t.value, tokens_how: t.how, quality: entry.quality, risk: entry.risk,
     },
-    body: `## What changes\n${entry.summary}\n\n## Why\nYou chose this part.\n`,
+    body: `## What changes\n${entry.summary}\n\n## Why\n${entry.benefit ?? 'You chose this part.'}\n`,
   };
 }
 
@@ -323,7 +323,7 @@ function riskQuestion(id, item, askAlone, riskText) {
   if (!item.risky.length && !askAlone) return null;
   return {
     kind: 'risky', id, pointers: item.risky, ask_alone: !!askAlone, risk: riskText, flag: '--confirm-risky <id>',
-    text: `${id} is risky (${item.risky.join(', ') || 'bypass-class'}). ${riskText} The person must type "confirm" before it is applied.`,
+    text: `${id} changes sensitive settings (${item.risky.join(', ') || 'bypass-class'}). ${riskText} The person must type "confirm" before it is applied.`,
   };
 }
 
@@ -741,6 +741,8 @@ function cmdCatalog(b) {
     return r;
   };
   const detail = new Set(list(b.a, 'parts'));
+  const SENSITIVE = /^(env|permissions|hooks|apiKeyHelper|mcpServers)$/;
+  const sensitive = (e) => e.ask_alone || e.mcp.length > 0 || e.settings.some((s) => Object.keys(JSON.parse(showFileAt(b.repo, head, s).toString('utf8'))).some((k) => SENSITIVE.test(k)));
   const groups = [];
   const hidden = [];
   for (const g of GROUPS) {
@@ -750,12 +752,12 @@ function cmdCatalog(b) {
       if (!avail(e.id)) { hidden.push({ id: e.id, title: e.title, unmet: needs.filter((n) => n.ok === false).map((n) => n.need) }); continue; }
       const installed = b.state.parts[e.id]?.installed === true;
       const row = {
-        id: e.id, title: e.title, summary: e.summary, level: e.level, use: e.use, trigger: e.trigger, ticked: e.level === 'recommended' && !installed, installed, ask_alone: e.ask_alone,
+        id: e.id, title: e.title, summary: e.summary, benefit: e.benefit ?? null, level: e.level, use: e.use, trigger: e.trigger, ticked: e.level === 'recommended' && !installed, installed, ask_alone: e.ask_alone,
         unknown_needs: needs.filter((n) => n.ok === 'unknown').map((n) => n.need), requires_parts: e.needs.filter((n) => n.startsWith('part:')).map((n) => n.slice(5)),
       };
       if (detail.has(e.id)) {
         Object.assign(row, {
-          details: e.details, risk: e.risk, quality: e.quality, tokens: e.tokens_always_on, needs, values: e.values.map((v) => ({ key: v.key, ask: v.ask, default: v.default })),
+          details: e.details, changes: sensitive(e) ? e.risk : null, quality: e.quality, tokens: e.tokens_always_on, needs, values: e.values.map((v) => ({ key: v.key, ask: v.ask, default: v.default })),
           user_steps: e.user_steps, machine_steps: e.machine_steps.map((s) => fill(s, mergedValues(e, b.state.values))), plugins: e.plugins, mcp: e.mcp.map((m) => m.name),
         });
       }

@@ -4,6 +4,7 @@
   "group": "rules",
   "level": "recommended",
   "summary": "Coding conventions and git habits, plus a PR description format. Loaded every session.",
+  "benefit": "Code and commits stay small and consistent, and pull requests are easy to review.",
   "details": "This rule loads in every session and sets how Claude writes code: the smallest change that solves the request, in the existing style of the project. It also sets git habits: never putting a Claude session link in commits or PRs, and PR descriptions with a plain-words part first and a short part for the reviewer, held in a small pr-description skill. It is a text file in your rules folder plus one skill folder; no code runs and no network is used.",
   "use": "auto",
   "trigger": "",

@@ -36,11 +36,16 @@ export function validateEntry(entry, allIds) {
   if (!isObj(entry)) return ['entry must be an object'];
   const ids = allIds instanceof Set ? allIds : new Set(allIds instanceof Map ? allIds.keys() : allIds || []);
   const keys = Object.keys(entry);
-  const missing = KEYS.filter((k) => !keys.includes(k));
-  const extra = keys.filter((k) => !KEYS.includes(k));
+  const want = 'benefit' in entry ? [...KEYS.slice(0, 5), 'benefit', ...KEYS.slice(5)] : KEYS;
+  const missing = want.filter((k) => !keys.includes(k));
+  const extra = keys.filter((k) => !want.includes(k));
   if (missing.length) errs.push(`missing keys: ${missing.join(', ')}`);
   if (extra.length) errs.push(`unknown keys: ${extra.join(', ')}`);
-  if (!missing.length && !extra.length && !sameKeys(entry, KEYS)) errs.push(`keys out of order, expected: ${KEYS.join(', ')}`);
+  if (!missing.length && !extra.length && !sameKeys(entry, want)) errs.push(`keys out of order, expected: ${want.join(', ')}`);
+  if ('benefit' in entry) {
+    if (!isStr(entry.benefit)) errs.push('benefit: must be a non-empty string');
+    else if (entry.benefit.length > 100) errs.push(`benefit: ${entry.benefit.length} characters, max 100`);
+  }
 
   if (!isStr(entry.id) || !ID_RE.test(entry.id)) errs.push('id: must be kebab-case');
   if (!isStr(entry.title)) errs.push('title: must be a non-empty string');

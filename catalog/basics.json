@@ -4,6 +4,7 @@
   "group": "settings",
   "level": "recommended",
   "summary": "UTF-8 for Python and no session cron jobs.",
+  "benefit": "Python reads and prints any language without errors, and sessions start no background jobs.",
   "details": "Sets two environment values: Python always uses UTF-8 (PYTHONUTF8=1), and Claude Code session cron jobs are turned off (CLAUDE_CODE_DISABLE_CRON=1). Useful if you run Python through Claude or do not want scheduled jobs inside sessions. It changes two keys in settings.json only; no code runs and no network is used.",
   "use": "auto",
   "trigger": "",

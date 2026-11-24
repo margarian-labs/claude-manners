@@ -4,6 +4,7 @@
   "group": "rules",
   "level": "recommended",
   "summary": "How Claude works day to day: plan mode for bigger tasks, picking skills itself, editing over creating, questions through AskUserQuestion.",
+  "benefit": "Claude plans bigger changes first and asks its questions in one clear place.",
   "details": "This rule shapes how Claude works day to day: it enters plan mode automatically when a task will touch 3 or more files, picks fitting skills without being asked, prefers editing existing files over creating new ones, asks you its questions through the AskUserQuestion tool and never starts a bare interpreter. \"Notify sessions\" means the sessions on this PC only. It loads as a text rule in every session; no code runs.",
   "use": "auto",
   "trigger": "",

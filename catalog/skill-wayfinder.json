@@ -4,6 +4,7 @@
   "group": "skills",
   "level": "recommended",
   "summary": "Plans work too big for one session as a shared map of decision tickets on your tracker, resolved one at a time.",
+  "benefit": "Work too big for one session gets a clear map and moves one decision at a time.",
   "details": "When the work is too big for one session, invoke /wayfinder and Claude charts a shared map on your issue tracker: a map issue plus child decision tickets, each sized to one session, worked one at a time until the route to the destination is clear. Use it at the start of a large effort when the way forward is still foggy. It loads only when used; instructions only, no code runs, and work is recorded through the tracker /setup-matt-pocock-skills configured.",
   "use": "you",
   "trigger": "Type /wayfinder with the big piece of work to map.",
