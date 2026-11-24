@@ -6,7 +6,7 @@ A shared Claude Code setup for Windows. Every part is optional, every change arr
 The catalog below lists every part, grouped. Recommended parts are ticked in the first-run menu; optional ones are offered but not ticked. Each part says what it needs (for example Node, or a second Claude account) and is hidden when your PC doesn't have it.
 
 ## Join
-1. You need: Windows, Git for Windows (Git Bash), Node 18+, Claude Code, a GitHub account invited to this repo (read access).
+1. You need: Windows, Git for Windows (Git Bash), Node 18+, Claude Code.
 2. Clone it anywhere: `git clone https://github.com/margarian-labs/claude-setup.git`
 3. Open Claude Code in the clone and say: **Follow START.md**. Your agent installs the sync skill, checks your PC, backs up your current setup and shows the catalog menu.
 
@@ -17,7 +17,7 @@ Say **sync my setup**. Your agent pulls this repo and shows only the proposals y
 Say **roll back my last sync** or **go back to version v2026.11.23.1**. Only files and settings that sync itself wrote are restored; your own files, settings and edits stay as they are. Changes you rolled back are offered again on the next sync.
 
 ## Safety
-- Only the owner can change this repo; members have read access.
+- Only the owner can change this repo; anyone can read it.
 - Every script, hook and settings change is shown as a real diff before you accept it, and risky settings (environment, permissions, hooks, MCP servers) need a typed confirmation.
 - No secrets live here: keys stay in your own environment variables or local files.
 

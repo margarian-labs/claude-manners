@@ -12,7 +12,7 @@ Run each check with Bash and tell the person what is missing. If anything is mis
 | Git for Windows (Git Bash) | `git --version` | Install Git for Windows from git-scm.com, then reopen Claude Code |
 | Node 18 or newer | `node --version` prints v18 or higher | Install Node LTS from nodejs.org |
 | Claude Code | `claude --version` | Install Claude Code, then reopen it |
-| Access to this repo | `git fetch --tags` inside this clone finishes without an error | Ask the owner to give your GitHub account read access, then sign in to Git |
+| Access to this repo | `git fetch --tags` inside this clone finishes without an error | Check your internet connection and that this clone came from https://github.com/margarian-labs/claude-setup.git |
 
 ## 2. Install the sync tool
 
