@@ -49,7 +49,7 @@ Once installed, these work in every session without you doing anything.
 - **Core rules** `recommended`<br>Short answers, honest pushback, no long dashes and readable pages. Loaded every session.
 - **Style and coding rules** `recommended`<br>Coding conventions and git habits, plus a PR description format. Loaded every session.
 - **Sub-agents and model roles** `recommended`<br>Opus leads, Fable plans, Sonnet and Haiku do the work from detailed briefs, and Opus checks every result.
-- **Workflow rules** `recommended`<br>How Claude works day to day: plan mode, asking questions, picking skills, usage-limit wake-up timer, setup-change notices.
+- **Workflow rules** `recommended`<br>How Claude works day to day: plan mode for bigger tasks, picking skills itself, editing over creating, questions through AskUserQuestion.
 
 </details>
 

@@ -38,7 +38,7 @@
   "user_steps": [],
   "machine_steps": [],
   "verify": [
-    "node --check payload/hooks/compact-recovery.js"
+    "node --check \"$CLAUDE_CONFIG_DIR/hooks/compact-recovery.js\""
   ],
   "tokens_always_on": {
     "value": 0,

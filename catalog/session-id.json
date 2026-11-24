@@ -32,7 +32,7 @@
   "user_steps": [],
   "machine_steps": [],
   "verify": [
-    "node --check payload/hooks/session-id.js"
+    "node --check \"$CLAUDE_CONFIG_DIR/hooks/session-id.js\""
   ],
   "tokens_always_on": {
     "value": 0,

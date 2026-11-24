@@ -16,7 +16,7 @@ import { findCrashedRun, finishRun, load, newRun, runDirOf, save } from './lib/s
 
 const TEST = process.env.CLAUDE_SETUP_TEST === '1';
 const ENGINE = 'sync-engine';
-const ENGINE_VERSION = '1.0.0';
+const ENGINE_VERSION = '1.1.0';
 const GROUPS = ['rules', 'settings', 'workflow', 'hooks', 'agents', 'skills', 'plugins', 'tools', 'integrations', 'lessons'];
 const PACKS = {
   'pack-2026-11-21': {
@@ -42,7 +42,7 @@ const ask = (questions, lines = []) => ({ code: 2, data: { ok: false, status: 'n
 const fail = (message) => ({ code: 1, data: { ok: false, error: message }, lines: [`Error: ${message}`] });
 
 function parseArgs(argv) {
-  const BOOL = new Set(['json', 'plan', 'last', 'crashed', 'no-fetch', 'update-engine', 'cards']);
+  const BOOL = new Set(['json', 'plan', 'last', 'redo', 'crashed', 'no-fetch', 'update-engine', 'cards']);
   const a = { cmd: null, pos: [], flags: new Map() };
   for (let i = 0; i < argv.length; i++) {
     const x = argv[i];
@@ -792,8 +792,13 @@ function cmdRollback(b) {
     const active = b.state.runs.filter((r) => r.status !== 'rolled-back');
     plan = planUndo(b.state, rctx, { runs: active.length - active.indexOf(c) });
   } else if (has(a, 'runs')) plan = planUndo(b.state, rctx, { runs: Number(one(a, 'runs')) });
-  else if (has(a, 'last')) plan = planUndo(b.state, rctx, { runs: 1 });
-  else throw new Error('rollback needs --last, --runs N, --to <tag|sha> or --crashed');
+  else if (has(a, 'last') || has(a, 'redo')) {
+    const active = b.state.runs.filter((r) => r.status !== 'rolled-back');
+    const i = has(a, 'redo') ? active.length - 1 : active.findLastIndex((r) => r.kind !== 'rollback');
+    if (has(a, 'redo') && active[i]?.kind !== 'rollback') throw new Error('nothing to redo: the last run is not a rollback');
+    if (i < 0) throw new Error('no run to roll back');
+    plan = planUndo(b.state, rctx, { runs: active.length - i });
+  } else throw new Error('rollback needs --last, --redo, --runs N, --to <tag|sha> or --crashed');
 
   const sum = summarizePlan(plan, b);
   const lines = [
@@ -837,6 +842,7 @@ function cmdStatus(b) {
   const data = { command: 'status', repo: { path: s.repo.path, commit: s.repo.commit, tag: s.repo.tag }, parts: Object.keys(s.parts).filter((p) => s.parts[p].installed).length, held: Object.entries(s.files).filter(([, f]) => f.held).map(([d]) => d), crashed: null, pending: null, engine_update: null, warnings: [] };
   const c = findCrashedRun(s);
   if (c) data.crashed = { run: c.id, kind: c.kind, at: c.at, options: ['finish (run the command again with --crash finish)', 'undo (rollback --crashed)'] };
+  data.files_check = s.runs.some((r) => r.kind === 'adopt' && r.status === 'done') ? (s.files_checked === ENGINE_VERSION ? 'done' : 'pending') : null;
   const last = s.runs.at(-1);
   if (last) data.last_run = { id: last.id, kind: last.kind, status: last.status, at: last.at };
   if (b.repo) {
@@ -864,6 +870,7 @@ function cmdStatus(b) {
     `Held files (your edits kept): ${data.held.length}${data.held.length ? ` (${data.held.join(', ')})` : ''}`,
   ];
   if (data.engine_update) lines.push('The sync tool has an update (apply --update-engine).');
+  if (data.files_check === 'pending') lines.push('The files of the parts taken over from the old pack are not checked yet (repair --plan).');
   if (data.crashed) lines.push(`A previous run did not finish: ${data.crashed.run}. Finish it (run the command again with --crash finish) or undo it (rollback --crashed).`);
   return ok(data, lines);
 }
@@ -897,7 +904,7 @@ function cmdVerify(b) {
   for (const id of Object.keys(b.state.parts).filter((p) => b.state.parts[p].installed)) {
     for (const cmd of cat.get(id)?.verify ?? []) {
       if (TEST && /\bclaude\b/.test(cmd)) { results.push({ part: id, cmd, pass: true, skipped: true }); continue; }
-      const r = spawnSync('bash', ['-c', cmd], { cwd: b.repo, encoding: 'utf8', timeout: 120000, windowsHide: true, env: { ...process.env, CLAUDE_CONFIG_DIR: b.cfg } });
+      const r = spawnSync('bash', ['-c', cmd], { cwd: b.cfg, encoding: 'utf8', timeout: 120000, windowsHide: true, env: { ...process.env, CLAUDE_CONFIG_DIR: b.cfg, CLAUDE_SETUP_REPO: b.repo } });
       const pass = !r.error && r.status === 0;
       results.push({ part: id, cmd, pass, status: r.status, error: r.error?.message ?? null, output: `${r.stdout || ''}${r.stderr || ''}`.trim().split('\n').slice(-5).join('\n') });
     }
@@ -929,7 +936,7 @@ function cmdAdopt(b) {
     if (!fs.existsSync(abs)) continue;
     const hit = bySrc.get(m.repo);
     if (!hit || hit.item.dest !== dest) rep.unmatched.push(dest);
-    else if (state.files[dest]) rep.already.push(dest);
+    else if (state.files[dest]) { rep.already.push(dest); had.add(hit.entry.id); }
     else { found.push({ dest, hit, m, cur: hashFile(abs) }); had.add(hit.entry.id); }
   }
   const packDir = path.join(cfg, 'rules', 'setup-pack');
@@ -942,15 +949,55 @@ function cmdAdopt(b) {
   const x = withEntries(b, baseX(b), hadEntries);
   if (x.questions.length) return ask(x.questions);
 
+  const record = (st) => {
+    for (const { dest, hit, m, cur } of found) {
+      const same = hit.item.mode === 'seed' || cur === m.sha256_lf;
+      st.files[dest] = { commit: head, part: hit.entry.id, mode: hit.item.mode, existed_before: false, backup: null, hash: same ? cur : m.sha256_lf, held: !same };
+    }
+  };
+  for (const { dest, hit, m, cur } of found) (hit.item.mode === 'seed' ? rep.seed : cur === m.sha256_lf ? rep.managed : rep.held).push(dest);
+
+  const draft = structuredClone(state);
+  record(draft);
+  const entries = order(hadEntries);
+  const own = [];
+  const settingsNot = [];
+  const plans = entries.map((e) => {
+    const part = { ...e, mcp: [], plugins: [] };
+    const ctx = { repo: b.repo, commit: head, state: draft, configDir: cfg, home: b.home, merge, values: x.values, installedSkills: x.skills, keep: [], overwrite: [] };
+    let plan = planPart(part, ctx);
+    if (plan.conflicts.length) plan = planPart(part, { ...ctx, keep: plan.conflicts.map((c) => c.dest) });
+    const mine = plan.ops.filter((o) => o.kind === 'write' && o.why === 'replaces-user-file');
+    own.push(...mine.map((o) => ({ dest: o.dest, part: e.id, mode: o.mode, hash: o.hash })));
+    const pointers = plan.settings.flatMap((f) => f.ops.filter((o) => o.op === 'add' || o.op === 'conflict').map((o) => o.pointer));
+    if (pointers.length) settingsNot.push({ part: e.id, pointers });
+    return { ...plan, ops: plan.ops.filter((o) => !mine.includes(o)), settings: [] };
+  });
+  rep.held.push(...plans.flatMap((p) => p.ops.filter((o) => o.kind === 'hold').map((o) => o.dest)));
+  const writes = (rule) => plans.flatMap((p, i) => p.ops.filter((o) => o.kind === 'write' && entries[i].rules.includes(o.src) === rule).map((o) => o.dest)).sort();
+  const filesWritten = writes(false);
+  const rulesWritten = writes(true);
+  const ownKept = own.map((o) => o.dest).sort();
+  const listed = (label, arr) => (arr.length ? [`${label}: ${arr.length}${arr.length <= 8 ? ` (${arr.join(', ')})` : ''}`] : []);
+  const settingsLine = settingsNot.length ? [`Settings the new version would add or change were left as they are: ${settingsNot.map((s) => `${s.part} (${s.pointers.join(', ')})`).join('; ')}. Add them with: install --parts ${settingsNot.map((s) => s.part).join(',')}`] : [];
+  const out = { from, head, report: rep, files_written: filesWritten, rules_written: rulesWritten, own_files_kept: ownKept, settings_not_applied: settingsNot, rules_removed: packFiles, parts: [...had] };
+  if (has(b.a, 'plan')) {
+    return ok({ command: 'adopt', mode: 'plan', ...out }, [
+      `Adopt would take over from ${from}: ${rep.managed.length} files managed, ${rep.held.length} held (your edits kept), ${rep.seed.length} seed file(s).`,
+      ...listed('Files it would add or bring up to date', filesWritten),
+      ...listed('Rule files it would write', rulesWritten),
+      ...(ownKept.length ? [`Your own files at part paths it would keep: ${ownKept.join(', ')}`] : []),
+      ...settingsLine,
+      packFiles.length ? `It would back up and remove rules/setup-pack (${packFiles.length} files).` : 'No rules/setup-pack folder found.',
+      'Nothing was changed.',
+    ]);
+  }
+
   const run = newRun(state, 'adopt', state.repo.commit, head, cfg);
   save(state, cfg);
   const runDir = runDirOf(run, cfg);
-  for (const { dest, hit, m, cur } of found) {
-    const base = { commit: head, part: hit.entry.id, mode: hit.item.mode, existed_before: false, backup: null };
-    if (hit.item.mode === 'seed') { state.files[dest] = { ...base, hash: cur, held: false }; rep.seed.push(dest); }
-    else if (cur === m.sha256_lf) { state.files[dest] = { ...base, hash: cur, held: false }; rep.managed.push(dest); }
-    else { state.files[dest] = { ...base, hash: m.sha256_lf, held: true }; rep.held.push(dest); }
-  }
+  record(state);
+  for (const o of own) state.files[o.dest] = { hash: o.hash, commit: head, part: o.part, mode: o.mode, existed_before: true, backup: relInside(cfg, backupFile(runDir, absOf(cfg, o.dest), cfg)), held: true };
   save(state, cfg);
 
   const packHash = new Map(mig.filter((m) => m.installed_at).map((m) => [m.installed_at, m.sha256]));
@@ -975,27 +1022,74 @@ function cmdAdopt(b) {
   }
 
   state.values = x.values;
-  const rules = [];
-  for (const e of order(hadEntries)) {
-    const restricted = { ...e, files: [], settings: [], mcp: [], plugins: [] };
-    const ctx = { repo: b.repo, commit: head, state, configDir: cfg, home: b.home, merge, values: x.values, installedSkills: x.skills, keep: [], overwrite: [], runDir };
-    let plan = planPart(restricted, ctx);
-    if (plan.conflicts.length) plan = planPart(restricted, { ...ctx, keep: plan.conflicts.map((c) => c.dest) });
-    rules.push(...applyPlan(plan, ctx).written);
-  }
+  for (const plan of plans) applyPlan(plan, { repo: b.repo, commit: head, state, configDir: cfg, home: b.home, merge, runDir });
   state.repo = { ...state.repo, path: b.repo };
+  state.files_checked = ENGINE_VERSION;
   finishRun(state, run, 'done');
   save(state, cfg);
   const defaults = uniq(hadEntries.flatMap((e) => e.values.filter((v) => state.values[v.key] === undefined).map((v) => v.key)));
   const lines = [
     `Taken over from ${from}: ${rep.managed.length} files now managed, ${rep.held.length} held (your edits kept), ${rep.seed.length} seed file(s).`,
+    ...listed('Files added or brought up to date', filesWritten),
+    ...(ownKept.length ? [`Your own files at part paths were kept, and updates leave them alone: ${ownKept.join(', ')}.`] : []),
+    ...settingsLine,
     ...(rep.unmatched.length ? [`Not matched to any part (left alone): ${rep.unmatched.length}`] : []),
-    packFiles.length ? `Old rules folder rules/setup-pack backed up and removed (${packFiles.length} files); flat rules written: ${rules.length}.` : 'No rules/setup-pack folder found.',
+    packFiles.length ? `Old rules folder rules/setup-pack backed up and removed (${packFiles.length} files); flat rules written: ${rulesWritten.length}.` : 'No rules/setup-pack folder found.',
     ...(keptRules.length ? [`Rules no part covers any more were kept as your own files: ${keptRules.join(', ')}.`] : []),
     ...(editedRules.length ? [`You edited ${editedRules.join(', ')}; your version is in the run backup (${relInside(cfg, runDir)}). Copy anything you want to keep into your own CLAUDE.md.`] : []),
     ...(defaults.length ? [`Rendered rules used default fill-in values for: ${defaults.join(', ')}. Set yours with "values set key=value", then install --parts <part>.`] : []),
   ];
-  return ok({ command: 'adopt', from, run: run.id, head, report: rep, rules_removed: packFiles, rules_written: rules, kept_rules: keptRules, edited_rules: editedRules, parts: [...had], default_values: defaults }, lines);
+  return ok({ command: 'adopt', mode: 'applied', ...out, run: run.id, kept_rules: keptRules, edited_rules: editedRules, default_values: defaults }, lines);
+}
+
+const REPAIR_WHY = new Set(['new', 'restore-missing', 'update', 'seed']);
+
+function cmdRepair(b) {
+  crashGuard(b);
+  const { state, cfg } = b;
+  const adopted = new Set(state.runs.filter((r) => r.kind === 'adopt' && r.status === 'done').map((r) => r.to));
+  const x = baseX(b);
+  const cats = new Map();
+  const items = [];
+  const warnings = [];
+  for (const [id, p] of Object.entries(state.parts)) {
+    if (!p.installed || id === ENGINE || !adopted.has(p.at_commit)) continue;
+    if (!cats.has(p.at_commit)) {
+      try {
+        cats.set(p.at_commit, catalogAt(b.repo, p.at_commit));
+      } catch (e) {
+        cats.set(p.at_commit, new Map());
+        warnings.push(`version ${p.at_commit.slice(0, 8)} is not in the clone, its parts were not checked: ${e.message}`);
+      }
+    }
+    const e = cats.get(p.at_commit).get(id);
+    if (!e) continue;
+    const plan = planPart({ ...e, settings: [], mcp: [], plugins: [] }, { repo: b.repo, commit: p.at_commit, state, configDir: cfg, home: b.home, merge, values: x.values, installedSkills: x.skills, keep: [], overwrite: [] });
+    const ops = plan.ops.filter((o) => o.kind === 'write' && REPAIR_WHY.has(o.why));
+    if (ops.length) items.push({ id, commit: p.at_commit, plan: { ...plan, ops, conflicts: [], held: [] } });
+  }
+  const files = items.flatMap((it) => it.plan.ops.map((o) => ({ part: it.id, dest: o.dest, why: o.why })));
+  const checked = () => {
+    if (warnings.length) return;
+    state.files_checked = ENGINE_VERSION;
+    save(state, cfg);
+  };
+  if (!files.length) {
+    checked();
+    return ok({ command: 'repair', mode: has(b.a, 'plan') ? 'plan' : 'applied', files, warnings }, ['Nothing to repair: the parts taken over from the old pack have all their files.', ...warnings.map((w) => `Warning: ${w}`)]);
+  }
+  if (has(b.a, 'plan')) {
+    return ok({ command: 'repair', mode: 'plan', files, parts: uniq(items.map((it) => it.id)), warnings }, [`Missing or outdated files: ${files.length}`, ...files.map((f) => `- [${f.part}] ${f.dest} (${f.why})`), ...warnings.map((w) => `Warning: ${w}`)]);
+  }
+  const run = newRun(state, 'repair', state.repo.commit, state.repo.commit, cfg);
+  save(state, cfg);
+  const runDir = runDirOf(run, cfg);
+  const res = newRes(run);
+  for (const it of items) res.written.push(...applyPlan(it.plan, { state, commit: it.commit, configDir: cfg, runDir, merge }).written);
+  res.warnings.push(...warnings);
+  finishRun(state, run, 'done');
+  checked();
+  return ok({ command: 'repair', mode: 'applied', run: run.id, files, result: res, warnings }, ['Repaired.', ...resLines(res)]);
 }
 
 const COMMANDS = {
@@ -1007,6 +1101,7 @@ const COMMANDS = {
   rollback: (b) => cmdRollback(b),
   versions: (b) => cmdVersions(b),
   adopt: (b) => cmdAdopt(b),
+  repair: (b) => cmdRepair(b),
   verify: (b) => cmdVerify(b),
   values: (b) => cmdValues(b),
   bootstrap: (b) => cmdBootstrap(b),

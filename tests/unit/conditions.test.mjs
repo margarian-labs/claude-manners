@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
-import { check, makeFableAccess, makeSecondProfile, makeMemohopperConnected, makeWhich, defaultCtx } from '../../sync/lib/conditions.mjs';
+import { check, defaultRun, makeFableAccess, makeSecondProfile, makeMemohopperConnected, makeWhich, defaultCtx } from '../../sync/lib/conditions.mjs';
 
 const ctx = (o = {}) => ({
   platform: 'win32', state: {}, configDir: '/x', which: (c) => c === 'node', installedParts: new Set(['status-line']), plugins: new Set(['figma']),
@@ -113,6 +113,25 @@ test('which and defaultCtx with injected environment', () => {
     assert.equal(check('claude>=2.1', c), true);
     assert.equal(check('cmd:mytool', c), true);
     assert.equal(check('second-profile', c), false);
+  } finally {
+    fs.rmSync(dir, { recursive: true, force: true });
+  }
+});
+
+const gitBashDir = () => (process.env.PATH || '').split(path.delimiter).find((d) => d && !/system32/i.test(d) && fs.existsSync(path.join(d, 'bash.exe')));
+
+test('defaultRun starts an npm-style claude shim (no claude.exe) and passes every argument exactly', { skip: process.platform !== 'win32' || !gitBashDir() }, () => {
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'cs-shim-'));
+  try {
+    fs.writeFileSync(path.join(dir, 'claude'), '#!/bin/sh\nfor a in "$@"; do printf \'%s\n\' "$a"; done\n');
+    fs.writeFileSync(path.join(dir, 'claude.cmd'), '@echo off\r\necho cmd shim\r\n');
+    const env = Object.fromEntries(Object.entries(process.env).filter(([k]) => k.toUpperCase() !== 'PATH'));
+    env.PATH = [dir, gitBashDir()].join(path.delimiter);
+    const args = ['mcp', 'add-json', 'srv', '{"command":"node","args":["C:\\a b\\x.js","*","~/{a,b}"]}', '-s', 'user'];
+    const r = defaultRun('claude', args, { env });
+    assert.equal(r.error, null);
+    assert.equal(r.status, 0, r.stderr);
+    assert.deepEqual(r.stdout.split('\n').slice(0, -1), args);
   } finally {
     fs.rmSync(dir, { recursive: true, force: true });
   }

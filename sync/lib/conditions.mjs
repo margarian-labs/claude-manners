@@ -38,8 +38,15 @@ export function check(need, ctx) {
   throw new Error(`unknown need: ${need}`);
 }
 
+const BASH_RUN = 'set --; i=0; while [ "$i" -lt "$CS_N" ]; do n="CS_A$i"; set -- "$@" "${!n}"; i=$((i+1)); done; exec "$CS_CMD" "$@"';
+
 export function defaultRun(cmd, args, opts = {}) {
-  const r = spawnSync(cmd, args, { encoding: 'utf8', windowsHide: true, ...opts });
+  let r = spawnSync(cmd, args, { encoding: 'utf8', windowsHide: true, ...opts });
+  if (cmd === 'claude' && process.platform === 'win32' && ['ENOENT', 'EINVAL'].includes(r.error?.code)) {
+    const env = { ...(opts.env ?? process.env), MSYS_NO_PATHCONV: '1', CS_CMD: cmd, CS_N: String(args.length) };
+    args.forEach((a, i) => { env[`CS_A${i}`] = a; });
+    r = spawnSync('bash', ['-c', BASH_RUN], { encoding: 'utf8', windowsHide: true, ...opts, env });
+  }
   return { status: r.status, stdout: r.stdout || '', stderr: r.stderr || '', error: r.error || null };
 }
 

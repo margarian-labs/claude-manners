@@ -57,7 +57,7 @@
   ],
   "machine_steps": [],
   "verify": [
-    "node --check payload/hooks/telegram-process.js"
+    "node --check \"$CLAUDE_CONFIG_DIR/hooks/telegram-process.js\""
   ],
   "tokens_always_on": {
     "value": 0,

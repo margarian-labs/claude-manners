@@ -45,7 +45,7 @@
   "user_steps": [],
   "machine_steps": [],
   "verify": [
-    "node --check payload/hooks/session-namer.js"
+    "node --check \"$CLAUDE_CONFIG_DIR/hooks/session-namer.js\""
   ],
   "tokens_always_on": {
     "value": 0,

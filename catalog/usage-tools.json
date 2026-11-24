@@ -43,7 +43,7 @@
   ],
   "machine_steps": [],
   "verify": [
-    "node --check payload/tools/usage/usage-audit.mjs"
+    "node --check \"$CLAUDE_CONFIG_DIR/tools/usage-audit.mjs\""
   ],
   "tokens_always_on": {
     "value": 0,

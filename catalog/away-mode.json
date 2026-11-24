@@ -79,7 +79,7 @@
   "user_steps": [],
   "machine_steps": [],
   "verify": [
-    "node payload/hooks/tests/away-hook-test.js"
+    "node \"$CLAUDE_CONFIG_DIR/hooks/tests/away-hook-test.js\""
   ],
   "tokens_always_on": {
     "value": 188,

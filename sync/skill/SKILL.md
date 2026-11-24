@@ -18,7 +18,7 @@ node "$SYNC" <command> --json
 
 Always add `--json` and read the JSON. Exit codes: 0 done, 2 the tool needs an answer (the `questions` list says what to ask and which flag carries the answer), 1 error (show `error` in plain words, stop).
 
-Commands: `status`, `catalog`, `plan`, `install --parts a,b`, `apply`, `rollback`, `versions`, `adopt`, `verify`, `values`, `bootstrap --repo <clone>`.
+Commands: `status`, `catalog`, `plan`, `install --parts a,b`, `apply`, `rollback`, `versions`, `adopt`, `repair`, `verify`, `values`, `bootstrap --repo <clone>`.
 
 Answer flags (repeat the command with them): `--proposals a,b` (accept), `--answers a=skip,b=later`, `--keep <dest>`, `--overwrite <dest>`, `--accept-settings <pointer>`, `--confirm-risky <id>`, `--values key=value` (repeatable), `--fable yes|no`, `--crash finish`.
 
@@ -32,6 +32,7 @@ Ask every question with AskUserQuestion (at most 4 questions per call, at most 4
 2. If `crashed` is set: say a run did not finish. Ask: finish it (run the next command with `--crash finish`) or undo it (`rollback --crashed --plan`, show the list, apply only after a yes).
 3. If `parts` is 1 or less, only the sync tool is installed: go to First run.
 4. If `engine_update` is true: say the sync tool has an update, ask yes, run `apply --update-engine --json`, then start again.
+5. If `files_check` is `"pending"`: run `repair --plan --json`. If `files` is empty, go on. Otherwise say which parts taken over from the old pack miss files or have outdated ones (count per part), ask yes, run `repair --json`, and say what it wrote.
 
 ## First run (no answers yet, or the person asks to install parts)
 
@@ -69,7 +70,7 @@ Ask about every part on its own. Never offer a whole group in one question ("ins
 
 ## Roll back
 
-1. "Roll back my last sync": `rollback --last --plan --json`. "Go back to version X": `rollback --to X --plan --json`. Use `versions --json` to list versions and runs when the person is not sure.
+1. "Roll back my last sync": `rollback --last --plan --json` (said again, it goes one more run back). "Undo my rollback": `rollback --redo --plan --json`. "Go back to version X": `rollback --to X --plan --json`. Use `versions --json` to list versions and runs when the person is not sure.
 2. Show the plan in plain words: files that change back, settings that revert, MCP servers removed, proposals that will be offered again. Ask yes or no. Apply only after a yes.
 3. For each local edit in `asks` ask: keep my file, or revert it (a backup is kept). Pass `--answers path=keep` or `path=revert`.
 4. Run the same command without `--plan`, with the answers.
@@ -79,7 +80,7 @@ Ask about every part on its own. Never offer a whole group in one question ("ins
 
 - `values --json` lists fill-ins; `values set key=value` stores one. Say it takes effect on the next update of that part, or now with `install --parts <part>`.
 - `verify --json` runs each installed part's checks; report passes and failures.
-- `adopt --json` takes over an older setup-pack install (the person has a rules/setup-pack folder). Tell them it backs up and replaces that folder, then run it.
+- `adopt --plan --json` shows what taking over an older setup-pack install (a rules/setup-pack folder) would do: files it adds or brings up to date, files kept because the person edited them or made them, and settings it leaves alone. Tell them, say it backs up and replaces that folder, ask yes, then run `adopt --json`. If `settings_not_applied` is not empty, offer `install --parts <those parts>` for them.
 - `versions --json` shows tags and the person's runs.
 
 ## One-screen report

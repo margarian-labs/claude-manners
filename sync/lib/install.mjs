@@ -284,7 +284,10 @@ export function applyPlan(plan, ctx) {
     const accept = new Set(ctx.acceptSettings || []);
     for (const f of plan.settings) {
       const ops = merge.planMerge(readJson(sp, {}), f.fragment);
-      if (!ops.some((o) => o.op === 'add' || (o.op === 'conflict' && accept.has(o.pointer)))) continue;
+      if (!ops.some((o) => o.op === 'add' || (o.op === 'conflict' && accept.has(o.pointer)))) {
+        result.settings.skipped.push(...ops.filter((o) => o.op === 'conflict').map((o) => o.pointer));
+        continue;
+      }
       const existed = fs.existsSync(sp);
       const backupAbs = existed ? backupFile(runDir, sp, cfg) : null;
       journal(runDir, { ev: 'settings-begin', part: plan.part, src: f.src, existed, backup: backupAbs ? relInside(cfg, backupAbs) : null, hashBefore: hashFile(sp) });

@@ -49,10 +49,11 @@ Node 18+ ESM, no npm dependencies. Every write goes through `lib/fsx.mjs`. Windo
 | `plan [--parts a,b] [--proposals x,y]` | dry run: ops + cards; writes nothing |
 | `apply --proposals x,y [--answers x=skip,y=later] [--confirm-risky x]` | applies accepted, records all answers |
 | `install --parts a,b` | first run from catalog; records existing proposals as `baseline` |
-| `rollback --last \| --runs N \| --to <tag\|sha> [--plan]` | `--plan` lists ops; without it applies after the skill confirmed |
+| `rollback --last \| --redo \| --runs N \| --to <tag\|sha> [--plan]` | `--last` undoes the latest run that is not a rollback (with the rollbacks after it); `--redo` undoes the latest run only if it is a rollback; `--plan` lists ops; without it applies after the skill confirmed |
 | `versions` | tags with their proposals, plus this person's runs |
-| `adopt [--from pack-2026-11-21]` | takes over a pack install using `migrations/` |
-| `verify` | runs each installed part's `verify` |
+| `adopt [--from pack-2026-11-21] [--plan]` | takes over a pack install using `migrations/`: brings every file of the taken-over parts to the clone version, keeps edits and own files (held); `--plan` writes nothing |
+| `repair [--plan]` | for parts installed by an adopt run, writes their missing or outdated files at that version; `status` shows `files_check: pending` until it ran once for this engine version |
+| `verify` | runs each installed part's `verify` in the config folder (`CLAUDE_CONFIG_DIR`; the clone is in `CLAUDE_SETUP_REPO`) |
 | `values set k=v` | stores a fill-in |
 
 ## Rules from the phase 1 import

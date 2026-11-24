@@ -125,7 +125,12 @@ export function planUndo(state, ctx, { runs = 1 } = {}) {
   let end = null;
   for (const r of suffix) {
     for (const ev of readJournal(runDirOf(r, cfg))) {
-      if (ev.ev === 'file' && ev.hashBefore !== ev.hashAfter) {
+      if (ev.ev === 'file' && ev.dest === 'settings.json') {
+        if (ev.hashBefore !== ev.hashAfter) {
+          begin ??= ev;
+          end = ev;
+        }
+      } else if (ev.ev === 'file' && ev.hashBefore !== ev.hashAfter) {
         if (!first.has(ev.dest)) first.set(ev.dest, ev);
         last.set(ev.dest, ev);
       } else if (ev.ev === 'settings-begin') {

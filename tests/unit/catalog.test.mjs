@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
+import { spawnSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import { loadCatalog, validateEntry } from '../../sync/lib/catalog.mjs';
 
@@ -90,5 +91,39 @@ test('loadCatalog: id must equal file name', () => {
     assert.deepEqual([...loadCatalog(dir).keys()], ['a']);
   } finally {
     fs.rmSync(dir, { recursive: true, force: true });
+  }
+});
+
+test('workflow part text matches its rule: no wake-up timer, no setup-change notices', () => {
+  const e = loadCatalog(repo).get('workflow');
+  const rule = fs.readFileSync(path.join(repo, e.rules[0]), 'utf8');
+  assert.doesNotMatch(rule, /wake-up|timer/i);
+  for (const t of [e.summary, e.details]) assert.doesNotMatch(t, /wake-up|timer|setup-change notice|other active sessions/i);
+});
+
+test('verify commands check the installed copies, not payload files', () => {
+  for (const [id, e] of loadCatalog(repo)) {
+    for (const v of e.verify) {
+      const rest = v.replace(/\$\{?CLAUDE_SETUP_REPO\}?\/payload\/[^\s"']+/g, '');
+      assert.doesNotMatch(rest, /payload\//, `${id}: ${v}`);
+      assert.doesNotMatch(v, /~\/\.claude/, `${id}: ${v}`);
+    }
+  }
+});
+
+test('status-line verify leaves no temp folder behind', { skip: spawnSync('bash', ['-c', 'exit 0']).status !== 0 }, () => {
+  const e = loadCatalog(repo).get('status-line');
+  const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'cs-sl-'));
+  try {
+    const cfgDir = path.join(tmp, 'cfg');
+    const tdir = path.join(tmp, 't');
+    fs.mkdirSync(cfgDir);
+    fs.mkdirSync(tdir);
+    fs.writeFileSync(path.join(cfgDir, 'statusline.sh'), 'cat > /dev/null\nexit 0\n');
+    const r = spawnSync('bash', ['-c', e.verify[0]], { cwd: cfgDir, encoding: 'utf8', env: { ...process.env, CLAUDE_CONFIG_DIR: cfgDir, CLAUDE_SETUP_REPO: repo, TMPDIR: tdir } });
+    assert.equal(r.status, 0, `${r.stdout}${r.stderr}`);
+    assert.deepEqual(fs.readdirSync(tdir), []);
+  } finally {
+    fs.rmSync(tmp, { recursive: true, force: true });
   }
 });

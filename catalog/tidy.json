@@ -32,7 +32,7 @@
   "user_steps": [],
   "machine_steps": [],
   "verify": [
-    "node --check payload/tools/claude-tidy.mjs"
+    "node --check \"$CLAUDE_CONFIG_DIR/tools/claude-tidy.mjs\""
   ],
   "tokens_always_on": {
     "value": 176,

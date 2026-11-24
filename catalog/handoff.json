@@ -37,7 +37,7 @@
   "user_steps": [],
   "machine_steps": [],
   "verify": [
-    "node --check payload/hooks/handoff-prompt.js"
+    "node --check \"$CLAUDE_CONFIG_DIR/hooks/handoff-prompt.js\""
   ],
   "tokens_always_on": {
     "value": 243,

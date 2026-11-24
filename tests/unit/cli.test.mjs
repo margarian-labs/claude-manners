@@ -135,7 +135,7 @@ const gamma = entry('gamma', {
   values: [{ key: 'gname', file: 'tools/gamma.txt', ask: 'Gamma name', default: 'gee' }],
   user_steps: ['Make a gamma account.'],
   machine_steps: ['Set up {{gname}} on this PC.'],
-  verify: ['node -e "process.exit(0)"'],
+  verify: ['test -f tools/gamma.txt'],
 });
 const engine = entry('sync-engine', {
   group: 'tools', level: 'recommended', needs: ['cmd:node', 'cmd:git'],
@@ -456,8 +456,8 @@ test('rollback --to v1: plan, then apply restores the exact v1 tree, removes the
   assert.deepEqual(next.pending.map((p) => p.id), ['p-alpha-hook', 'p-beta-agent', 'p-gamma-add']);
 });
 
-test('undo of the rollback returns to the v2 tree and puts the MCP server back', () => {
-  const r = ok(cli(['rollback', '--last']));
+test('undo of the rollback (--redo) returns to the v2 tree and puts the MCP server back', () => {
+  const r = ok(cli(['rollback', '--redo']));
   assert.deepEqual(r.result.mcp, [{ name: 'gamma-mcp', action: 'added' }]);
   assert.deepEqual(snap(), snapV2);
   assert.deepEqual(fakeGet().mcp['gamma-mcp'], { command: 'node', args: ['g.js'] });
@@ -535,10 +535,25 @@ test('a crashed run is reported by status, blocks apply, can be finished or undo
   assert.equal(ok(cli(['status'], opts)).crashed, null);
 });
 
-test('adopt: takes over a pack install (2 equal, 1 edited, rules/setup-pack folder), keeps the person files', () => {
+const zetaRun = "console.log('zeta');\n";
+const zetaNew = Array.from({ length: 11 }, (_, i) => `skills/zeta/doc${String(i + 2).padStart(2, '0')}.md`);
+function packInstall(dir) {
+  write('hooks/plain.sh', 'echo plain v1\n', dir);
+  write('agents/b.md', '---\nname: b\nmodel: fable\n---\nagent body v1\n', dir);
+  write('hooks/alpha.js', 'const LABELS = {"mine":1};\nmodule.exports = { LABELS };\n', dir);
+  write('skills/zeta/run.js', zetaRun, dir);
+  write('skills/zeta/doc01.md', 'my own doc\n', dir);
+  write('rules/setup-pack/core.md', 'pack core rules\n', dir);
+  write('rules/setup-pack/other.md', 'my edited other\n', dir);
+  write('notes/mine.txt', 'mine\n', dir);
+  write('settings.json', JSON.stringify({ theme: 'dark' }, null, 2) + '\n', dir);
+}
+
+test('adopt: takes over a pack install, brings every file of the taken-over parts to HEAD, keeps edits and own files', () => {
   const plain = 'echo plain v1\n';
   const agent = '---\nname: b\nmodel: fable\n---\nagent body v1\n';
   const mig = [
+    { pack: '05-skills/zeta/run.js', repo: 'payload/zeta/run.js', installed_at: 'skills/zeta/run.js', sha256: sha(zetaRun), sha256_lf: sha(zetaRun) },
     { pack: '01-rules/core.md', repo: null, installed_at: 'rules/setup-pack/core.md', sha256: sha('pack core rules\n') },
     { pack: '01-rules/other.md', repo: null, installed_at: 'rules/setup-pack/other.md', sha256: sha('original other\n') },
     { pack: '03-hooks/plain.sh', repo: 'payload/hooks/plain.sh', installed_at: 'hooks/plain.sh', sha256: sha(plain), sha256_lf: sha(plain) },
@@ -548,13 +563,7 @@ test('adopt: takes over a pack install (2 equal, 1 edited, rules/setup-pack fold
     { pack: '02-settings/frag.json', repo: 'payload/settings/alpha.json', installed_at: null, sha256: 'y', sha256_lf: 'y' },
   ];
   const cfgA = path.join(root, 'config-adopt');
-  write('hooks/plain.sh', plain, cfgA);
-  write('agents/b.md', agent, cfgA);
-  write('hooks/alpha.js', 'const LABELS = {"mine":1};\nmodule.exports = { LABELS };\n', cfgA);
-  write('rules/setup-pack/core.md', 'pack core rules\n', cfgA);
-  write('rules/setup-pack/other.md', 'my edited other\n', cfgA);
-  write('notes/mine.txt', 'mine\n', cfgA);
-  write('settings.json', JSON.stringify({ theme: 'dark' }, null, 2) + '\n', cfgA);
+  packInstall(cfgA);
   const pre = snap(cfgA);
   const opts = { dir: cfgA };
   write('migrations/pack-2026-11-21.json', JSON.stringify(mig, null, 2), owner);
@@ -564,29 +573,47 @@ test('adopt: takes over a pack install (2 equal, 1 edited, rules/setup-pack fold
   git(['fetch', '-q', '--tags'], user);
   git(['merge', '-q', '--ff-only'], user);
 
-  const j = ok(cli(['adopt', '--repo', user], { ...opts, exe: path.join(user, 'sync', 'sync.mjs') }));
+  const exe = path.join(user, 'sync', 'sync.mjs');
+  const written = ['agents/b.md', 'hooks/plain.sh', ...zetaNew].sort();
+  const dry = ok(cli(['adopt', '--plan', '--repo', user], { ...opts, exe }));
+  assert.equal(dry.mode, 'plan');
+  assert.deepEqual(dry.files_written, written);
+  assert.deepEqual(dry.own_files_kept, ['skills/zeta/doc01.md']);
+  assert.deepEqual(snap(cfgA), pre);
+
+  const j = ok(cli(['adopt', '--repo', user], { ...opts, exe }));
   assert.equal(j.from, 'pack-2026-11-21');
-  assert.deepEqual(j.report.managed.sort(), ['agents/b.md', 'hooks/plain.sh']);
+  assert.deepEqual(j.report.managed.sort(), ['agents/b.md', 'hooks/plain.sh', 'skills/zeta/run.js']);
   assert.deepEqual(j.report.held, ['hooks/alpha.js']);
+  assert.deepEqual(j.files_written, written);
+  assert.deepEqual(j.own_files_kept, ['skills/zeta/doc01.md']);
+  assert.deepEqual(j.settings_not_applied, [{ part: 'alpha', pointers: ['/env/ALPHA_KEY', '/env/NEW_KEY'] }]);
   assert.deepEqual(j.edited_rules, ['rules/setup-pack/other.md']);
   assert.deepEqual(j.kept_rules, ['rules/other.md']);
   assert.equal(read('rules/other.md', cfgA), 'my edited other\n');
+  assert.equal(read('hooks/plain.sh', cfgA), 'echo plain v2\n');
+  assert.match(read('agents/b.md', cfgA), /agent body v2/);
+  for (const f of zetaNew) assert.ok(exists(f, cfgA), f);
   const s = stateOf(cfgA);
   assert.equal(s.files['hooks/plain.sh'].held, false);
   assert.equal(s.files['hooks/plain.sh'].existed_before, false);
   assert.equal(s.files['hooks/plain.sh'].part, 'alpha');
-  assert.equal(s.files['hooks/plain.sh'].hash, sha(plain));
+  assert.equal(s.files['hooks/plain.sh'].hash, sha('echo plain v2\n'));
   assert.equal(s.files['agents/b.md'].part, 'beta');
   assert.equal(s.files['hooks/alpha.js'].held, true);
   assert.equal(s.files['hooks/alpha.js'].hash, sha('const LABELS = {};\nmodule.exports = { LABELS };\n'));
+  assert.equal(s.files['skills/zeta/doc01.md'].held, true);
+  assert.equal(s.files['skills/zeta/doc01.md'].existed_before, true);
   assert.equal(s.runs.at(-1).kind, 'adopt');
   assert.equal(s.runs.at(-1).status, 'done');
   assert.equal(exists('rules/setup-pack', cfgA), false);
   assert.equal(read('rules/claude-setup--core.md', cfgA), 'Core rule\n');
-  assert.deepEqual(Object.keys(s.parts).sort(), ['alpha', 'beta', 'core-rules']);
-  const backup = path.join(runDirOf(s.runs.at(-1), cfgA), 'files', 'rules', 'setup-pack', 'other.md');
-  assert.equal(fs.readFileSync(backup, 'utf8'), 'my edited other\n');
-  for (const k of ['hooks/plain.sh', 'agents/b.md', 'hooks/alpha.js', 'notes/mine.txt', 'settings.json']) assert.equal(snap(cfgA)[k], pre[k]);
+  assert.deepEqual(Object.keys(s.parts).sort(), ['alpha', 'beta', 'core-rules', 'zeta']);
+  const runFiles = path.join(runDirOf(s.runs.at(-1), cfgA), 'files');
+  assert.equal(fs.readFileSync(path.join(runFiles, 'rules', 'setup-pack', 'other.md'), 'utf8'), 'my edited other\n');
+  assert.equal(fs.readFileSync(path.join(runFiles, 'hooks', 'plain.sh'), 'utf8'), plain);
+  for (const k of ['hooks/alpha.js', 'notes/mine.txt', 'settings.json', 'skills/zeta/doc01.md', 'skills/zeta/run.js']) assert.equal(snap(cfgA)[k], pre[k]);
+  assert.equal(ok(cli(['status'], opts)).files_check, 'done');
   const undo = ok(cli(['rollback', '--last'], opts));
   assert.equal(undo.mode, 'applied');
   assert.deepEqual(snap(cfgA), pre);
@@ -727,4 +754,67 @@ test('plan --parts is compact unless --cards is given; many new text files are c
   assert.equal((card.match(/\.md \(new file\)/g) || []).length, 8);
   assert.match(card, /4 more new text files are not shown here/);
   assert.equal(fs.existsSync(path.join(cfgZ, 'skills')), false);
+});
+
+test('rollback --last goes one real run back each time, settings included; --redo undoes only a rollback', () => {
+  const cfgR = path.join(root, 'config-redo');
+  write('settings.json', JSON.stringify({ theme: 'dark' }, null, 2) + '\n', cfgR);
+  const opts = { dir: cfgR };
+  ok(cli(['bootstrap', '--repo', user], opts));
+  const start = snap(cfgR);
+  ok(cli(['install', '--parts', 'alpha', '--confirm-risky', 'alpha'], opts));
+  const afterA = snap(cfgR);
+  ok(cli(['install', '--parts', 'skill-overrides'], opts));
+  const noRedo = cli(['rollback', '--redo'], opts);
+  assert.equal(noRedo.code, 1);
+  assert.match(noRedo.json.error, /nothing to redo/);
+  ok(cli(['rollback', '--last'], opts));
+  assert.deepEqual(snap(cfgR), afterA);
+  ok(cli(['rollback', '--last'], opts));
+  assert.deepEqual(snap(cfgR), start);
+  ok(cli(['rollback', '--redo'], opts));
+  assert.deepEqual(snap(cfgR), afterA);
+});
+
+test('repair: finds what the old adopt left out, writes only that, leaves edits, held and own files, can be undone', () => {
+  const cfgP = path.join(root, 'config-repair');
+  packInstall(cfgP);
+  const opts = { dir: cfgP };
+  ok(cli(['adopt', '--repo', user, '--fable', 'no'], { ...opts, exe: path.join(user, 'sync', 'sync.mjs') }));
+  ok(cli(['install', '--parts', 'skill-architecture'], opts));
+  const st = load(cfgP);
+  for (const f of zetaNew) {
+    fs.rmSync(path.join(cfgP, f));
+    delete st.files[f];
+  }
+  write('hooks/plain.sh', 'echo plain v1\n', cfgP);
+  st.files['hooks/plain.sh'].hash = sha('echo plain v1\n');
+  write('agents/b.md', 'my edit\n', cfgP);
+  st.parts['skill-architecture'].at_commit = c1;
+  fs.rmSync(path.join(cfgP, 'skills', 'architecture', 'SKILL.md'));
+  delete st.files['skills/architecture/SKILL.md'];
+  delete st.files_checked;
+  save(st, cfgP);
+  const broken = snap(cfgP);
+  const fixes = ['hooks/plain.sh', ...zetaNew].sort();
+
+  assert.equal(ok(cli(['status'], opts)).files_check, 'pending');
+  const plan = ok(cli(['repair', '--plan'], opts));
+  assert.deepEqual(plan.files.map((f) => f.dest).sort(), fixes);
+  assert.deepEqual(snap(cfgP), broken);
+  assert.equal(ok(cli(['status'], opts)).files_check, 'pending');
+
+  const r = ok(cli(['repair'], opts));
+  assert.deepEqual(r.result.written.sort(), fixes);
+  assert.equal(read('hooks/plain.sh', cfgP), 'echo plain v2\n');
+  for (const f of zetaNew) assert.ok(exists(f, cfgP), f);
+  assert.equal(read('agents/b.md', cfgP), 'my edit\n');
+  assert.equal(read('hooks/alpha.js', cfgP), 'const LABELS = {"mine":1};\nmodule.exports = { LABELS };\n');
+  assert.equal(read('skills/zeta/doc01.md', cfgP), 'my own doc\n');
+  assert.equal(exists('skills/architecture/SKILL.md', cfgP), false);
+  assert.equal(ok(cli(['status'], opts)).files_check, 'done');
+  assert.deepEqual(ok(cli(['repair', '--plan'], opts)).files, []);
+
+  ok(cli(['rollback', '--last'], opts));
+  assert.deepEqual(snap(cfgP), broken);
 });

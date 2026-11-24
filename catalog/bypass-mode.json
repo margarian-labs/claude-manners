@@ -34,7 +34,7 @@
   "user_steps": [],
   "machine_steps": [],
   "verify": [
-    "node --check payload/hooks/auto-approve-shell.js"
+    "node --check \"$CLAUDE_CONFIG_DIR/hooks/auto-approve-shell.js\""
   ],
   "tokens_always_on": {
     "value": 0,

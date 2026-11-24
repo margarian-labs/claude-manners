@@ -301,7 +301,7 @@ test('settings conflicts are reported and left alone unless accepted', () => {
   const plan = planPart(ALPHA, ctx);
   assert.deepEqual(plan.settingsConflicts.map((c) => c.pointer), ['/env/A_KEY']);
   const res = applyPlan(plan, ctx);
-  assert.deepEqual(res.settings.skipped, []);
+  assert.deepEqual(res.settings.skipped, ['/env/A_KEY']);
   assert.equal(JSON.parse(fs.readFileSync(sp, 'utf8')).env.A_KEY, 'mine');
   assert.equal(state.settings['/env/A_KEY'].value, '1');
   finishRun(state, run);

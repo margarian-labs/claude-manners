@@ -88,7 +88,7 @@
     "If the sync warns that the claude executable is not found, set the user environment variable CLAUDE_ACCOUNTS_CLAUDE_BIN to the full path of claude.exe (never claude.cmd)."
   ],
   "verify": [
-    "node --check payload/two-accounts/sync-second-profile.mjs"
+    "node --check \"$CLAUDE_CONFIG_DIR/tools/sync-second-profile.mjs\""
   ],
   "tokens_always_on": {
     "value": 643,

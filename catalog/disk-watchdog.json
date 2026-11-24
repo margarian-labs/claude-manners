@@ -35,7 +35,7 @@
     "Tell the person what it does: it force-stops programs that hold Claude temp logs over 1 GB (never claude.exe or explorer.exe), deletes session temp older than 3 days and ~/.claude/backups folders older than 90 days (this includes the install backup), and sends a Telegram alert under 20 GB free disk only if Telegram is set up."
   ],
   "verify": [
-    "pwsh -NoProfile -ExecutionPolicy Bypass -File ~/.claude/tools/disk-watchdog.ps1 -DryRun -SweepNow"
+    "pwsh -NoProfile -ExecutionPolicy Bypass -File \"$CLAUDE_CONFIG_DIR/tools/disk-watchdog.ps1\" -DryRun -SweepNow"
   ],
   "tokens_always_on": {
     "value": 0,

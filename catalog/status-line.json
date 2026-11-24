@@ -40,7 +40,7 @@
   ],
   "machine_steps": [],
   "verify": [
-    "bash -c 'CLAUDE_CONFIG_DIR=$(mktemp -d) bash payload/settings/statusline.sh < payload/settings/sample-statusline-input.json > /dev/null'"
+    "sl=\"$CLAUDE_CONFIG_DIR/statusline.sh\"; d=$(mktemp -d) || exit 1; CLAUDE_CONFIG_DIR=\"$d\" bash \"$sl\" < \"$CLAUDE_SETUP_REPO/payload/settings/sample-statusline-input.json\" > /dev/null; s=$?; rm -rf \"$d\"; exit $s"
   ],
   "tokens_always_on": {
     "value": 0,
