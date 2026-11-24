@@ -23,7 +23,7 @@
   "verify": [],
   "tokens_always_on": {
     "value": 0,
-    "how": "estimated chars/4"
+    "how": "estimated chars/2.6"
   },
   "quality": "tried",
   "risk": "Copies note files into your file memory once; Claude reads them as memory. No code runs.",

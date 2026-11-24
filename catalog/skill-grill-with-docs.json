@@ -27,8 +27,8 @@
   "machine_steps": [],
   "verify": [],
   "tokens_always_on": {
-    "value": 37,
-    "how": "estimated chars/4"
+    "value": 51,
+    "how": "estimated chars/2.6"
   },
   "quality": "tried",
   "risk": "Instructions only; loads when used. No code runs on its own.",

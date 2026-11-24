@@ -26,7 +26,7 @@
   ],
   "tokens_always_on": {
     "value": 0,
-    "how": "estimated chars/4"
+    "how": "estimated chars/2.6"
   },
   "quality": "tried",
   "risk": "Installed from the official marketplace; adds a skill that loads when used. Nothing is shipped here.",

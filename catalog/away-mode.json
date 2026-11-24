@@ -82,8 +82,8 @@
     "node payload/hooks/tests/away-hook-test.js"
   ],
   "tokens_always_on": {
-    "value": 126,
-    "how": "estimated chars/4"
+    "value": 188,
+    "how": "estimated chars/2.6"
   },
   "quality": "tried",
   "risk": "Hooks run on every prompt, tool call and stop, and a skill holds the full rules; no network.",

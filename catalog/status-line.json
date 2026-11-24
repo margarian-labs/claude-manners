@@ -44,7 +44,7 @@
   ],
   "tokens_always_on": {
     "value": 0,
-    "how": "estimated chars/4"
+    "how": "estimated chars/2.6"
   },
   "quality": "tried",
   "risk": "Runs after each answer and writes small usage and cache files in the Claude config folder. No network.",

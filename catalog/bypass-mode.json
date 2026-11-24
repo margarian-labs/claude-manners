@@ -38,7 +38,7 @@
   ],
   "tokens_always_on": {
     "value": 0,
-    "how": "estimated chars/4"
+    "how": "estimated chars/2.6"
   },
   "quality": "tried",
   "risk": "The agent runs every command and edit without asking. The Claude Code docs warn: \"Only use this mode in isolated environments like containers or VMs where Claude Code can't cause damage.\" The start-up warning is skipped and a hook approves any shell prompt that still appears.",

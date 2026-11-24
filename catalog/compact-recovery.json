@@ -42,7 +42,7 @@
   ],
   "tokens_always_on": {
     "value": 0,
-    "how": "estimated chars/4"
+    "how": "estimated chars/2.6"
   },
   "quality": "tried",
   "risk": "Runs before and after each compaction and prints reminders into the session. No network.",

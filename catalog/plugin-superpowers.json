@@ -27,8 +27,8 @@
     "bash -c \"claude plugin list | grep -q superpowers\""
   ],
   "tokens_always_on": {
-    "value": 44,
-    "how": "estimated chars/4"
+    "value": 67,
+    "how": "estimated chars/2.6"
   },
   "quality": "tried",
   "risk": "Installed from the official marketplace; loads skills and may add hooks. Nothing is shipped here.",

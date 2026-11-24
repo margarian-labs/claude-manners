@@ -21,7 +21,7 @@
   "verify": [],
   "tokens_always_on": {
     "value": 0,
-    "how": "estimated chars/4"
+    "how": "estimated chars/2.6"
   },
   "quality": "tried",
   "risk": "Settings only. Each session becomes reachable from your Claude account, and Claude Code's own usage-limit auto-continue then does not start.",

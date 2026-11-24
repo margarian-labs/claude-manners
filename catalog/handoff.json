@@ -40,8 +40,8 @@
     "node --check payload/hooks/handoff-prompt.js"
   ],
   "tokens_always_on": {
-    "value": 161,
-    "how": "estimated chars/4"
+    "value": 243,
+    "how": "estimated chars/2.6"
   },
   "quality": "tried",
   "risk": "A Stop hook checks context size after each answer; the skill writes files under ~/.claude/handoffs. No network.",

@@ -36,7 +36,7 @@
   ],
   "tokens_always_on": {
     "value": 0,
-    "how": "estimated chars/4"
+    "how": "estimated chars/2.6"
   },
   "quality": "tried",
   "risk": "Runs once at session start and prints the id. No network.",

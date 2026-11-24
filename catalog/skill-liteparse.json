@@ -31,8 +31,8 @@
   ],
   "verify": [],
   "tokens_always_on": {
-    "value": 190,
-    "how": "estimated chars/4"
+    "value": 287,
+    "how": "estimated chars/2.6"
   },
   "quality": "tried",
   "risk": "Runs local scripts when used. No network except downloads it names.",

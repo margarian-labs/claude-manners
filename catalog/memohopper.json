@@ -41,8 +41,8 @@
   "machine_steps": [],
   "verify": [],
   "tokens_always_on": {
-    "value": 368,
-    "how": "estimated chars/4"
+    "value": 566,
+    "how": "estimated chars/2.6"
   },
   "quality": "tried",
   "risk": "Claude sends what it stores and recalls to the memohopper service over the network (mcp.memohopper.com); the rules are loaded every session.",

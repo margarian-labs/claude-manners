@@ -43,7 +43,7 @@ export function fillTemplate(template, { id, date, part, touches, tokens }) {
   setKey(fm, 'touches', touches.length ? ['touches:', ...touches.map((t) => `  - ${t}`)] : ['touches: []']);
   if (tokens !== null) {
     setKey(fm, 'tokens_always_on', [`tokens_always_on: ${tokens}`]);
-    if (fm.some((l) => l.startsWith('tokens_how:'))) setKey(fm, 'tokens_how', ['tokens_how: estimated chars/4']);
+    if (fm.some((l) => l.startsWith('tokens_how:'))) setKey(fm, 'tokens_how', ['tokens_how: estimated chars/2.6']);
   }
   return m[1] + fm.join('\n') + m[3] + template.slice(m[0].length);
 }

@@ -47,7 +47,7 @@
   ],
   "tokens_always_on": {
     "value": 0,
-    "how": "estimated chars/4"
+    "how": "estimated chars/2.6"
   },
   "quality": "tried",
   "risk": "Runs only when you start it; it reads your local transcripts and sends nothing out. The detail sections cover the first account, times are shown in UTC+4.",

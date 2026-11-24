@@ -35,8 +35,8 @@
   "machine_steps": [],
   "verify": [],
   "tokens_always_on": {
-    "value": 444,
-    "how": "estimated chars/4"
+    "value": 678,
+    "how": "estimated chars/2.6"
   },
   "quality": "tried",
   "risk": "Text only, loaded into every session. No code runs.",

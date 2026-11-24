@@ -9,7 +9,7 @@ touches:                            # every file or settings pointer the change 
   - hooks/away-mode.js
   - settings.json
 tokens_always_on: "+240"            # a number, or a signed string like "+240" or "-80"
-tokens_how: estimated chars/4       # optional: how the number was found
+tokens_how: estimated chars/2.6     # optional: how the number was found
 quality: tried                      # measured | tried | untested
 risk: Runs on every prompt; no network.   # what runs, when, network or not
 undo: Roll back to the previous version, or delete hooks/away-mode.js.

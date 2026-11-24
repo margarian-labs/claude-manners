@@ -21,7 +21,7 @@
   "verify": [],
   "tokens_always_on": {
     "value": 0,
-    "how": "estimated chars/4"
+    "how": "estimated chars/2.6"
   },
   "quality": "tried",
   "risk": "Settings only; autoDream is an undocumented key that Claude Code may ignore, which is harmless.",

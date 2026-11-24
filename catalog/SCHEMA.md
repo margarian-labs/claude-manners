@@ -52,7 +52,7 @@ One JSON file per part: `catalog/<id>.json`. The sync engine reads these; the RE
 - `user_steps`: steps the person does alone (making a bot, creating a key). Plain sentences.
 - `machine_steps`: anything outside the Claude config dir (scheduled task, user env var, global install). Never run in test mode.
 - `verify`: commands that must exit 0 after install.
-- `tokens_always_on`: `{ "value": <number or null>, "how": "measured /context" | "estimated chars/4" | "not measured yet" }`.
+- `tokens_always_on`: `{ "value": <number or null>, "how": "measured /context" | "estimated chars/2.6" | "estimated chars/4" | "not measured yet" }`. The estimator writes `"estimated chars/2.6"`; `"estimated chars/4"` stays accepted for older entries. chars/2.6 was measured on 2026-11-24 from real API usage on Claude Opus 5.5 with markdown rule files (range 2.5-2.7).
 - `quality`: `measured`, `tried` or `untested`.
 - `risk`: one plain sentence: what runs, when, network or not.
 - `ask_alone`: `true` for bypass-class parts, which get their own question with a warning.

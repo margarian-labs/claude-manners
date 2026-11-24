@@ -49,8 +49,8 @@
   "machine_steps": [],
   "verify": [],
   "tokens_always_on": {
-    "value": 203,
-    "how": "estimated chars/4"
+    "value": 295,
+    "how": "estimated chars/2.6"
   },
   "quality": "tried",
   "risk": "Agent definitions only; they run when Claude starts them. planner and second-opinion are read-only.",

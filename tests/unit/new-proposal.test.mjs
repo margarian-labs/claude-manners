@@ -62,8 +62,8 @@ test('creates a proposal from the template with id, date, part, touches and toke
   assert.equal(fm.date, undefined);
   assert.equal(fm.part, 'demo');
   assert.deepEqual(fm.touches, ['payload/new.txt', 'rules/r.md']);
-  assert.equal(fm.tokens_always_on, '20');
-  assert.equal(fm.tokens_how, 'estimated chars/4');
+  assert.equal(fm.tokens_always_on, '31');
+  assert.equal(fm.tokens_how, 'estimated chars/2.6');
   assert.equal(fm.kind, 'change');
   assert.equal(fm.title, 'TODO short title');
   assert.match(text, /## What changes\nPlain words\./);

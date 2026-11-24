@@ -8,7 +8,7 @@ const GROUPS = ['rules', 'settings', 'workflow', 'hooks', 'agents', 'skills', 'p
 const LEVELS = ['recommended', 'optional'];
 const MODES = ['managed', 'rendered', 'seed'];
 const QUALITIES = ['measured', 'tried', 'untested'];
-const HOWS = ['measured /context', 'estimated chars/4', 'not measured yet'];
+const HOWS = ['measured /context', 'estimated chars/2.6', 'estimated chars/4', 'not measured yet'];
 const ID_RE = /^[a-z0-9]+(-[a-z0-9]+)*$/;
 const DASH_RE = new RegExp('[' + String.fromCharCode(0x2014) + String.fromCharCode(0x2013) + ']');
 

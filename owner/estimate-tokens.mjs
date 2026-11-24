@@ -2,8 +2,8 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 
-const HOW = 'estimated chars/4';
-const tok = (s) => Math.ceil(s.length / 4);
+const HOW = 'estimated chars/2.6';
+const tok = (s) => Math.ceil(s.length / 2.6);
 
 function unquote(v) {
   v = v.trim();

@@ -61,7 +61,7 @@
   ],
   "tokens_always_on": {
     "value": 0,
-    "how": "estimated chars/4"
+    "how": "estimated chars/2.6"
   },
   "quality": "tried",
   "risk": "Hooks run on notifications, stops and questions and send messages over the network to api.telegram.org; the OS notifications are turned off.",

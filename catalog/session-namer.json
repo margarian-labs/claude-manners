@@ -49,7 +49,7 @@
   ],
   "tokens_always_on": {
     "value": 0,
-    "how": "estimated chars/4"
+    "how": "estimated chars/2.6"
   },
   "quality": "tried",
   "risk": "Runs on prompts and starts a small background Haiku call to name each session, which costs a little usage.",

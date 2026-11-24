@@ -7,7 +7,7 @@ const prop = (over = {}) => ({
   id: 'p1',
   meta: {
     id: 'p1', title: 'Better hook', kind: 'change', level: 'optional', part: 'away-mode', touches: ['hooks/a.js'],
-    tokens_always_on: '+240', tokens_how: 'estimated chars/4', quality: 'tried', risk: 'Runs on every prompt; no network.', undo: 'u', ...over,
+    tokens_always_on: '+240', tokens_how: 'estimated chars/2.6', quality: 'tried', risk: 'Runs on every prompt; no network.', undo: 'u', ...over,
   },
   body: '## What changes\nThe hook gets smarter.\n\n## Why\nIt misses cases.\n\n## Undo\nRoll back.\n',
 });
@@ -61,7 +61,7 @@ test('card layout: sections, diff against installed, settings lines', () => {
   }, { 'hooks/a.js': 'one\nOLD\n' });
   for (const part of [
     'Better hook\n', 'Level: optional | Kind: change | Part: away-mode', 'What changes\nThe hook gets smarter.', 'Why\nIt misses cases.',
-    'Tokens always on: +240 (how: estimated chars/4)', 'Quality: tried', 'Risk: Runs on every prompt; no network.',
+    'Tokens always on: +240 (how: estimated chars/2.6)', 'Quality: tried', 'Risk: Runs on every prompt; no network.',
     '* hooks/a.js (changed)', '-OLD', '+two', '  + /env/X = "v"', '  ~ /model: "old" -> "new"', '  ~ conflict /x: 1 -> 2', '  = /y (already set)',
   ]) assert.ok(text.includes(part), part + '\n' + text);
   assert.ok(!text.includes('How it'));

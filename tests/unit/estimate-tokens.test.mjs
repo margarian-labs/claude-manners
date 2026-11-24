@@ -47,14 +47,14 @@ test('parseFrontmatter handles scalars, quotes, folded text and lists', () => {
 test('estimate sums rules, skill descriptions and agent descriptions', () => {
   const dir = makeRepo();
   const r = estimate(dir, 'demo');
-  assert.equal(r.how, 'estimated chars/4');
+  assert.equal(r.how, 'estimated chars/2.6');
   assert.deepEqual(r.breakdown.map((b) => [b.kind, b.tokens]), [
-    ['rule', 26],
-    ['skill', 10 + 10],
-    ['skill', 2 + 10],
-    ['agent', 10 + 10],
+    ['rule', 39],
+    ['skill', 16 + 10],
+    ['skill', 4 + 10],
+    ['agent', 16 + 10],
   ]);
-  assert.equal(r.tokens, 26 + 20 + 12 + 20);
+  assert.equal(r.tokens, 39 + 26 + 14 + 26);
   fs.rmSync(dir, { recursive: true, force: true });
 });
 
@@ -70,9 +70,9 @@ test('--write changes only tokens_always_on and keeps key order and format', () 
   const before = fs.readFileSync(path.join(dir, 'catalog/demo.json'), 'utf8');
   const r = spawnSync(process.execPath, [SCRIPT, 'demo', '--write', '--repo', dir], { encoding: 'utf8' });
   assert.equal(r.status, 0, r.stderr);
-  assert.equal(JSON.parse(r.stdout).tokens, 78);
+  assert.equal(JSON.parse(r.stdout).tokens, 105);
   const after = fs.readFileSync(path.join(dir, 'catalog/demo.json'), 'utf8');
-  assert.equal(after, before.replace('"value": null,\n    "how": "not measured yet"', '"value": 78,\n    "how": "estimated chars/4"'));
+  assert.equal(after, before.replace('"value": null,\n    "how": "not measured yet"', '"value": 105,\n    "how": "estimated chars/2.6"'));
   assert.deepEqual(Object.keys(JSON.parse(after)), Object.keys(JSON.parse(before)));
   fs.rmSync(dir, { recursive: true, force: true });
 });
@@ -81,8 +81,8 @@ test('--all prints every part and --write updates each file', () => {
   const dir = makeRepo();
   const r = spawnSync(process.execPath, [SCRIPT, '--all', '--write', '--repo', dir], { encoding: 'utf8' });
   assert.equal(r.status, 0, r.stderr);
-  assert.deepEqual(JSON.parse(r.stdout).map((x) => [x.id, x.tokens]), [['demo', 78], ['plain', 0]]);
-  assert.deepEqual(JSON.parse(fs.readFileSync(path.join(dir, 'catalog/plain.json'), 'utf8')).tokens_always_on, { value: 0, how: 'estimated chars/4' });
+  assert.deepEqual(JSON.parse(r.stdout).map((x) => [x.id, x.tokens]), [['demo', 105], ['plain', 0]]);
+  assert.deepEqual(JSON.parse(fs.readFileSync(path.join(dir, 'catalog/plain.json'), 'utf8')).tokens_always_on, { value: 0, how: 'estimated chars/2.6' });
   fs.rmSync(dir, { recursive: true, force: true });
 });
 
