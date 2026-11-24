@@ -33,20 +33,24 @@ export function readCatalog(repoDir) {
 
 export function generateTable(entries) {
   const rank = (g) => { const i = GROUPS.indexOf(g); return i < 0 ? GROUPS.length : i; };
-  const cell = (s) => String(s ?? '').replace(/\|/g, '\\|');
   const sorted = [...entries].sort((a, b) => rank(a.group) - rank(b.group) || a.title.localeCompare(b.title));
-  const auto = sorted.filter((e) => e.use !== 'you');
-  const you = sorted.filter((e) => e.use === 'you');
+  const groups = (list, item) => {
+    const out = [];
+    for (const g of [...new Set(list.map((e) => e.group))]) {
+      const parts = list.filter((e) => e.group === g);
+      const label = String(g).charAt(0).toUpperCase() + String(g).slice(1);
+      out.push('<details>', `<summary><b>${label}</b> · ${parts.length} ${parts.length === 1 ? 'part' : 'parts'}</summary>`, '',
+        ...parts.map(item), '', '</details>', '');
+    }
+    return out;
+  };
+  const line = (e) => `- **${e.title}** \`${e.level}\`<br>${e.summary}`;
   return [
     '### Works on its own', '', 'Once installed, these work in every session without you doing anything.', '',
-    '| Group | Part | Level | Summary |',
-    '| --- | --- | --- | --- |',
-    ...auto.map((e) => `| ${cell(e.group)} | ${cell(e.title)} | ${cell(e.level)} | ${cell(e.summary)} |`),
-    '', '### You trigger it', '', 'These do nothing until you use them; the last column says how.', '',
-    '| Group | Part | Level | Summary | How you use it |',
-    '| --- | --- | --- | --- | --- |',
-    ...you.map((e) => `| ${cell(e.group)} | ${cell(e.title)} | ${cell(e.level)} | ${cell(e.summary)} | ${cell(e.trigger)} |`),
-  ].join('\n');
+    ...groups(sorted.filter((e) => e.use !== 'you'), line),
+    '### You start these', '', 'These do nothing until you use them; the line in italics says how.', '',
+    ...groups(sorted.filter((e) => e.use === 'you'), (e) => `${line(e)}<br>_${e.trigger}_`),
+  ].join('\n').trim();
 }
 
 export function checkReadme(repoDir, entries, fix) {
