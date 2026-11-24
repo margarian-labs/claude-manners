@@ -26,7 +26,7 @@
   "machine_steps": [],
   "verify": [],
   "tokens_always_on": {
-    "value": 160,
+    "value": 145,
     "how": "estimated chars/4"
   },
   "quality": "tried",

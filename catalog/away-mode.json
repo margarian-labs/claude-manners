@@ -82,7 +82,7 @@
     "node payload/hooks/tests/away-hook-test.js"
   ],
   "tokens_always_on": {
-    "value": 500,
+    "value": 126,
     "how": "estimated chars/4"
   },
   "quality": "tried",

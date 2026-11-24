@@ -29,8 +29,8 @@ Once installed, these work in every session without you doing anything.
 
 | Group | Part | Level | Summary |
 | --- | --- | --- | --- |
-| rules | Core rules | recommended | Short answers, honest pushback, no long dashes, readable pages and cleanup after work. Loaded every session. |
-| rules | Style and coding rules | recommended | Reply language and length, coding conventions, and git commit and pull request habits. Loaded every session. |
+| rules | Core rules | recommended | Short answers, honest pushback, no long dashes and readable pages. Loaded every session. |
+| rules | Style and coding rules | recommended | Coding conventions and git habits, plus a PR description format. Loaded every session. |
 | rules | Sub-agents and model roles | recommended | Opus leads, Fable plans, Sonnet and Haiku do the work from detailed briefs, and Opus checks every result. |
 | rules | Workflow rules | recommended | How Claude works day to day: plan mode, asking questions, picking skills, usage-limit wake-up timer, setup-change notices. |
 | settings | Auto-compact at 600k | recommended | Compacts the conversation automatically at 600k tokens. Needs a model with a 1M context window. |
@@ -81,7 +81,7 @@ These do nothing until you use them; the last column says how.
 
 | Group | Part | Level | Summary | How you use it |
 | --- | --- | --- | --- | --- |
-| rules | Prompt flags | recommended | Short flags in a message (-d, -w, -nc, -q, -rc, -a, -p, -m, -nb, -away) change how Claude handles it. | Add a flag such as -d, -w, -q, -rc, -a, -p, -m or -nb at the start or end of your message. |
+| rules | Prompt flags | recommended | Short flags in a message (-d, -w, -nc, -q, -rc, -a, -p, -m, -away) change how Claude handles it. | Add a flag such as -d, -w, -q, -rc, -a, -p, -m or -nb at the start or end of your message. |
 | workflow | Away mode | recommended | Say -away and the agent asks all its questions first, then finishes the whole task without you, with an optional usage stop point. | Add -away (or -away 85 for a weekly usage stop point) to your message. |
 | workflow | Handoff | recommended | Writes a full handoff for a fresh session, and suggests one after 2 compactions or at 80% context. | Say "write a handoff" (add a session id to pass it on). A hook also suggests one when context gets big. |
 | skills | Architecture decisions | optional | Writes architecture decision records and reviews system designs with trade-offs and consequences. | Type /architecture with the decision or system. |

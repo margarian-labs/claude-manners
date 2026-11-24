@@ -1,4 +1,4 @@
 <!-- claude-setup part: skill-liteparse -->
 
-## OCR and document text (LiteParse)
-- For scanned or image-only PDFs, long or many documents, and searching scans, use the `liteparse` skill (`lit` CLI, fully local) instead of reading every page image, and follow it (languages, Armenian accuracy and quoting rules).
+## OCR
+Scanned or image-only PDFs, photos or scans of documents (PNG, JPG, TIFF, WEBP, BMP), long or many documents, searching scans: use the `liteparse` skill (local `lit`). A single screenshot you only need to look at: read it directly. Never send my documents or images to a cloud OCR service without asking.

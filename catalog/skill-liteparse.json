@@ -31,7 +31,7 @@
   ],
   "verify": [],
   "tokens_always_on": {
-    "value": 179,
+    "value": 190,
     "how": "estimated chars/4"
   },
   "quality": "tried",

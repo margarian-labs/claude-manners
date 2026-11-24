@@ -86,7 +86,7 @@
     "node --check payload/two-accounts/sync-second-profile.mjs"
   ],
   "tokens_always_on": {
-    "value": 870,
+    "value": 829,
     "how": "estimated chars/4"
   },
   "quality": "tried",

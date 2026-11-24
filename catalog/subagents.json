@@ -4,13 +4,19 @@
   "group": "rules",
   "level": "recommended",
   "summary": "Opus leads, Fable plans, Sonnet and Haiku do the work from detailed briefs, and Opus checks every result.",
-  "details": "This rule sets the model roles in every session: Opus runs the main conversation, writes the briefs and checks every result, Fable plans and gives second opinions, Sonnet does the work, and Haiku takes the easiest fully specified jobs. Big tasks are split into small, exactly briefed pieces, and a worker's done counts only after Opus verifies it. If your account has no Fable, sync names Opus 5.5 as the planner instead. It is a text rule; no code runs.",
+  "details": "This rule sets the model roles in every session: Opus runs the main conversation and checks every result, Fable plans and gives second opinions, Sonnet does the work, and Haiku takes the easiest fully specified jobs. The detailed rules (difficulty table, briefs, acceptance) sit in a delegation skill that Claude loads before it spawns a sub-agent. If your account has no Fable, sync names Opus 5.5 as the planner instead. Text only; no code runs.",
   "use": "auto",
   "trigger": "",
   "needs": [
     "part:agents"
   ],
-  "files": [],
+  "files": [
+    {
+      "src": "payload/skills/delegation",
+      "dest": "skills/delegation",
+      "mode": "managed"
+    }
+  ],
   "settings": [],
   "rules": [
     "payload/rules/claude-setup--subagents.md"
@@ -29,7 +35,7 @@
   "machine_steps": [],
   "verify": [],
   "tokens_always_on": {
-    "value": 3055,
+    "value": 444,
     "how": "estimated chars/4"
   },
   "quality": "tried",
