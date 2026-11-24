@@ -9,6 +9,10 @@
     {
       "value": "margarian-labs/claude-setup",
       "why": "The repo's own GitHub address (org/repo), needed in README and START.md."
+    },
+    {
+      "value": "Copyright (c) 2026 Margarian Labs",
+      "why": "The copyright line in LICENSE (MIT), chosen by the owner."
     }
   ],
   "paths": [

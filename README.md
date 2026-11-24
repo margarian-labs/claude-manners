@@ -18,6 +18,7 @@ Say **roll back my last sync** or **go back to version v2026.11.23.1**. Only fil
 
 ## Safety
 - Only the owner can change this repo; anyone can read it.
+- License: MIT for this repo's own content (see LICENSE). Bundled third-party skills keep their own licenses, listed in `payload/skills/THIRD-PARTY-NOTICES.md`.
 - Every script, hook and settings change is shown as a real diff before you accept it, and risky settings (environment, permissions, hooks, MCP servers) need a typed confirmation.
 - No secrets live here: keys stay in your own environment variables or local files.
 
