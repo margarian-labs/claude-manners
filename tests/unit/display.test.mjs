@@ -181,8 +181,8 @@ test('partCard: cost wording for rule, settings, hook, plugin and MCP parts', ()
   const mcp = partCard(auto(566, null), { rules: 1, mcp: ['memohopper'], outside: 2 });
   assert.ok(lineOf(mcp, 'Affects').endsWith('Writes 1 rule file. Adds the MCP server memohopper. Has 2 steps outside the Claude folder.'));
   assert.equal(lineOf(mcp, 'Cost'), 'Cost: about 566 tokens in every session. Text added by its MCP server is not counted.');
-  const skill = partCard(auto(218, 6990, { cost_note: 'About $1.80 and 4-6 minutes per page' }), { files: 40, rules: 1, references: true });
-  assert.equal(lineOf(skill, 'Cost'), 'Cost: about 218 tokens in every session, about 6,990 more when it is used, plus any reference files it opens. About $1.80 and 4-6 minutes per page.');
+  const skill = partCard(auto(218, 6990, { cost_note: 'About 4-6 minutes per page' }), { files: 40, rules: 1, references: true });
+  assert.equal(lineOf(skill, 'Cost'), 'Cost: about 218 tokens in every session, about 6,990 more when it is used, plus any reference files it opens. About 4-6 minutes per page.');
 });
 
 test('partCard: an entry without the newer fields still gives a card', () => {

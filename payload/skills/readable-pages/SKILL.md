@@ -18,7 +18,7 @@ This applies to every artifact, local HTML file, Claude Doc and markdown report.
 ## Skills to load with it
 Pick the ones that fit before building ("pick skills yourself" applies). Skills marked "if your session lists it" are not shipped here; use them only when they exist.
 - **Artifact tool (if your session lists it):** for a claude.ai artifact, call its `quickstart` first; it carries the page contract and the design guidance. A data dashboard may start from the Data type unless the user asked for something else.
-- **`hallmark`:** a new website, landing or marketing page: ask the user first (about $1.80 and 4-6 min per page) and build with it only on a yes. Any other page: use it when the user asks for it.
+- **`hallmark`:** a new website, landing or marketing page: ask the user first (about 4-6 min per page) and build with it only on a yes. Any other page: use it when the user asks for it.
 - **`ui-craft`:** the look of any UI or HTML page (rules against the generated look, audit for redesigns).
 - **`ui-ux-pro-max`:** before choosing a style, palette, font pairing or chart type.
 - **`dataviz` (if your session lists it):** before any chart, stat tile or data colour.

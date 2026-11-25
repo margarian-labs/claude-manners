@@ -13,7 +13,7 @@
     "It asks once for your material, audience, goal and tone, and never invents a number, quote or logo.",
     "\"--fast\", or \"quick\" or \"prototype\" in the prompt: a faster, rougher run."
   ],
-  "details": "When you ask to build or design a new website or landing page, Claude suggests /hallmark first (about $1.80 and 4-6 minutes per page) and only runs it after you say yes; it also supports /hallmark redesign <path> and audit <path>. It makes generated pages look made rather than templated, with a hard floor of rules and a sloplint script run when Node is available. It adds a skill folder plus a rule file, loads only when used, and runs local scripts when used.",
+  "details": "When you ask to build or design a new website or landing page, Claude suggests /hallmark first (about 4-6 minutes per page) and only runs it after you say yes; it also supports /hallmark redesign <path> and audit <path>. It makes generated pages look made rather than templated, with a hard floor of rules and a sloplint script run when Node is available. It adds a skill folder plus a rule file, loads only when used, and runs local scripts when used.",
   "use": "auto",
   "trigger": "",
   "needs": [],
@@ -35,14 +35,14 @@
   "machine_steps": [],
   "verify": [],
   "tokens_always_on": {
-    "value": 218,
+    "value": 210,
     "how": "estimated chars/2.6"
   },
   "tokens_on_use": {
-    "value": 6964,
+    "value": 6960,
     "how": "estimated chars/2.6"
   },
-  "cost_note": "About $1.80 and 4-6 minutes per page.",
+  "cost_note": "About 4-6 minutes per page.",
   "quality": "tried",
   "risk": "Instructions only; loads when used. No code runs on its own.",
   "ask_alone": false,

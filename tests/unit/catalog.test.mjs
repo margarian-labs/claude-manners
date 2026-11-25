@@ -167,7 +167,7 @@ test('solves, use_cases, tokens_on_use and cost_note: optional, in order, bounde
   assert.ok(has(used({ value: 1, how: 'guess' }), 'tokens_on_use.how'));
   assert.ok(has(used(5), 'tokens_on_use'));
 
-  assert.deepEqual(validateEntry(put(b0, 'tokens_always_on', 'cost_note', 'About $1.80 per page.'), ids), []);
+  assert.deepEqual(validateEntry(put(b0, 'tokens_always_on', 'cost_note', 'About 4-6 minutes per page.'), ids), []);
   assert.deepEqual(validateEntry(put(put(b0, 'tokens_always_on', 'tokens_on_use', { value: 0, how: 'estimated chars/2.6' }), 'tokens_on_use', 'cost_note', 'A note.'), ids), []);
   assert.ok(has(validateEntry(put(b0, 'tokens_always_on', 'cost_note', 'x'.repeat(121)), ids), 'cost_note'));
 

@@ -1,6 +1,6 @@
 ---
 name: hallmark
-description: "Use whenever the user asks to build or design a new website, landing page or marketing page, but ask first: suggest /hallmark (about $1.80 and 4-6 min per page) and invoke it only after the user says yes. Also /hallmark redesign <path> or audit <path> when the user names Hallmark. Not for app screens or Angular admin UIs."
+description: "Use whenever the user asks to build or design a new website, landing page or marketing page, but ask first: suggest /hallmark (about 4-6 min per page) and invoke it only after the user says yes. Also /hallmark redesign <path> or audit <path> when the user names Hallmark. Not for app screens or Angular admin UIs."
 argument-hint: "<prompt> | redesign <path> | audit <path>"
 version: 2.0.0
 metadata:
