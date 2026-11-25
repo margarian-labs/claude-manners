@@ -69,10 +69,10 @@
 .site-foot { padding-block: var(--space-2xl) var(--space-3xl); }
 .site-foot__brand { grid-column: 1 / span 4; display: grid; align-content: start; justify-items: start; row-gap: var(--space-sm); }
 .site-foot__mark { font-size: var(--text-xl); font-weight: 500; line-height: 1.2; }
-.site-foot__by { display: inline-flex; align-items: center; column-gap: var(--space-xs); color: var(--color-ink); text-decoration: none; }
+.site-foot__by { display: inline-flex; align-items: baseline; column-gap: var(--space-xs); color: var(--color-ink); text-decoration: none; }
 .site-foot__by span { color: var(--color-ink-2); transition: color var(--dur-short) var(--ease-out); }
 .site-foot__by:hover span, .site-foot__by:active span { color: var(--color-ink); }
-.site-foot__logo { flex: none; width: calc(var(--space-lg) * 8 / 7); height: var(--space-lg); fill: currentColor; }
+.site-foot__logo { flex: none; width: calc(1.25rem * 56 / 47); height: 1.25rem; fill: currentColor; }
 .site-foot__logo-key { fill: var(--color-brand); }
 .site-foot__text { grid-column: 5 / span 8; max-width: 60ch; color: var(--color-muted); }
 .site-foot__text a { text-decoration-color: var(--color-rule-2); transition: color var(--dur-short) var(--ease-out), text-decoration-color var(--dur-short) var(--ease-out); }
