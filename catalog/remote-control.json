@@ -5,6 +5,11 @@
   "level": "recommended",
   "summary": "Every session can be reached from the Claude app on your phone or another computer.",
   "benefit": "You can follow and steer any session from your phone or another computer.",
+  "solves": "A long task you cannot watch or steer once you leave the PC.",
+  "use_cases": [
+    "Open the Claude app on your phone or another computer and follow or continue any session.",
+    "Trade-off: Claude Code's own usage-limit auto-continue then does not start."
+  ],
   "details": "With this setting on, every session you start can be reached from the Claude app on your phone or another computer, so you can look in or continue from elsewhere. It is for you if you move between machines or want to watch a long task from your phone. It adds one settings key, remoteControlAtStartup, with no files or code; your sessions are then reachable through your Claude account, and Claude Code's own usage-limit auto-continue does not start.",
   "use": "auto",
   "trigger": "",
@@ -21,6 +26,10 @@
   "machine_steps": [],
   "verify": [],
   "tokens_always_on": {
+    "value": 0,
+    "how": "estimated chars/2.6"
+  },
+  "tokens_on_use": {
     "value": 0,
     "how": "estimated chars/2.6"
   },

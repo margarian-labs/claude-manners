@@ -3,6 +3,7 @@ import path from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 
 const HOW = 'estimated chars/2.6';
+const NOT_MEASURED = 'not measured yet';
 const tok = (s) => Math.ceil(s.length / 2.6);
 
 function unquote(v) {
@@ -61,12 +62,8 @@ export function readEntry(repoDir, id) {
   return JSON.parse(fs.readFileSync(p, 'utf8'));
 }
 
-export function estimate(repoDir, id) {
-  const entry = readEntry(repoDir, id);
-  const breakdown = [];
-  for (const rel of entry.rules ?? []) {
-    breakdown.push({ kind: 'rule', path: rel, tokens: tok(readText(repoDir, rel)) });
-  }
+function loaded(repoDir, entry) {
+  const out = [];
   for (const f of entry.files ?? []) {
     const abs = path.join(repoDir, f.src);
     if (!fs.existsSync(abs)) throw new Error(`missing src: ${f.src}`);
@@ -74,27 +71,43 @@ export function estimate(repoDir, id) {
     const isDir = fs.statSync(abs).isDirectory();
     if (isDir && dest.startsWith('skills/')) {
       const rel = `${f.src}/SKILL.md`;
-      if (fs.existsSync(path.join(repoDir, rel))) {
-        breakdown.push({ kind: 'skill', path: rel, tokens: descTokens(readText(repoDir, rel), rel) });
-      }
+      if (fs.existsSync(path.join(repoDir, rel))) out.push({ kind: 'skill', path: rel });
     } else if (isDir && dest.startsWith('agents/')) {
-      for (const n of fs.readdirSync(abs).filter((n) => n.endsWith('.md')).sort()) {
-        const rel = `${f.src}/${n}`;
-        breakdown.push({ kind: 'agent', path: rel, tokens: descTokens(readText(repoDir, rel), rel) });
-      }
+      for (const n of fs.readdirSync(abs).filter((n) => n.endsWith('.md')).sort()) out.push({ kind: 'agent', path: `${f.src}/${n}` });
     } else if (!isDir && dest.startsWith('agents/') && dest.endsWith('.md')) {
-      breakdown.push({ kind: 'agent', path: f.src, tokens: descTokens(readText(repoDir, f.src), f.src) });
+      out.push({ kind: 'agent', path: f.src });
     }
   }
+  return out;
+}
+
+export function estimateOnUse(repoDir, id) {
+  const entry = readEntry(repoDir, id);
+  const breakdown = loaded(repoDir, entry).map((x) => ({ ...x, tokens: tok(readText(repoDir, x.path)) }));
+  if (breakdown.length) return { tokens: breakdown.reduce((a, b) => a + b.tokens, 0), how: HOW, breakdown };
+  const unseen = (entry.plugins ?? []).length > 0 || (entry.mcp ?? []).length > 0
+    || (entry.settings ?? []).some((rel) => 'hooks' in JSON.parse(readText(repoDir, rel)));
+  return { tokens: unseen ? null : 0, how: unseen ? NOT_MEASURED : HOW, breakdown };
+}
+
+export function estimate(repoDir, id) {
+  const entry = readEntry(repoDir, id);
+  const breakdown = [];
+  for (const rel of entry.rules ?? []) {
+    breakdown.push({ kind: 'rule', path: rel, tokens: tok(readText(repoDir, rel)) });
+  }
+  for (const x of loaded(repoDir, entry)) breakdown.push({ ...x, tokens: descTokens(readText(repoDir, x.path), x.path) });
   const tokens = breakdown.reduce((a, b) => a + b.tokens, 0);
   return { id, tokens, how: HOW, breakdown };
 }
 
-export function writeEstimate(repoDir, id, tokens) {
+export function writeEstimate(repoDir, id, tokens, onUse) {
   const p = path.join(repoDir, 'catalog', `${id}.json`);
   const raw = fs.readFileSync(p, 'utf8');
   const obj = JSON.parse(raw);
   obj.tokens_always_on = { value: tokens, how: HOW };
+  const keepByHand = onUse?.tokens === 0 && obj.tokens_on_use?.value === null;
+  if (onUse && 'tokens_on_use' in obj && !keepByHand) obj.tokens_on_use = { value: onUse.tokens, how: onUse.how };
   const nl = raw.endsWith('\n') ? '\n' : '';
   fs.writeFileSync(p, JSON.stringify(obj, null, 2) + nl);
 }
@@ -133,8 +146,8 @@ function main(argv) {
   }
   if (!all && ids.length !== 1) { console.error('usage: estimate-tokens.mjs <part-id> | --all [--write] [--repo dir]'); return 2; }
   try {
-    const results = (all ? allIds(repoDir) : ids).map((id) => estimate(repoDir, id));
-    if (write) for (const r of results) writeEstimate(repoDir, r.id, r.tokens);
+    const results = (all ? allIds(repoDir) : ids).map((id) => ({ ...estimate(repoDir, id), on_use: estimateOnUse(repoDir, id) }));
+    if (write) for (const r of results) writeEstimate(repoDir, r.id, r.tokens, r.on_use);
     console.log(JSON.stringify(all ? results : results[0], null, 2));
     return 0;
   } catch (e) {

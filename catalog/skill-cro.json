@@ -5,6 +5,13 @@
   "level": "recommended",
   "summary": "Finds what to change on a landing, pricing or form page to get more conversions, and why it is not converting.",
   "benefit": "You learn what stops visitors from signing up or buying, and what to change first.",
+  "solves": "A landing, pricing or signup page that gets visits but few sign-ups, with no idea what to change first.",
+  "use_cases": [
+    "\"Why is this page not converting?\": an analysis in order of impact, starting with the value proposition.",
+    "\"Should I remove this form field?\": field-by-field advice for lead, contact, demo and quote forms.",
+    "\"Give me experiment ideas for the pricing page\": hypotheses per page type, one metric per test.",
+    "It reads your product marketing notes first, if the repo has them, and asks only what is missing."
+  ],
   "details": "When you ask why a landing, pricing or form page is not converting, Claude analyzes the page across value proposition, headline, proof and form fields, then says what to change first, loading extra references for forms and experiments as needed. It is for you when you want more conversions or a form fixed. It copies a skill folder that loads only when used; instructions only, no code runs on its own.",
   "use": "auto",
   "trigger": "",
@@ -26,6 +33,10 @@
   "verify": [],
   "tokens_always_on": {
     "value": 79,
+    "how": "estimated chars/2.6"
+  },
+  "tokens_on_use": {
+    "value": 2657,
     "how": "estimated chars/2.6"
   },
   "quality": "tried",

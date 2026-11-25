@@ -5,6 +5,13 @@
   "level": "recommended",
   "summary": "At the end of a task, finds what the session left behind and removes only its own throwaway files.",
   "benefit": "Tasks leave no stray files, worktrees or containers behind.",
+  "solves": "Helper scripts, logs, worktrees and containers left behind after a task.",
+  "use_cases": [
+    "End of any task that created files, worktrees or containers: Claude cleans up before its final reply.",
+    "\"tidy\", \"clean up\" or \"leftovers\": run it yourself at any time.",
+    "Only its own throwaways from this session are deleted; anything tracked by git or not made by it stays.",
+    "The final reply says what was removed and what was kept, and why."
+  ],
   "details": "Before finishing a task that created files, worktrees or containers, Claude runs /tidy: a read-only node report lists what the session may have left behind, then Claude deletes only its own throwaways by explicit path, removes clean merged worktrees it made and stops containers it started. Your final reply then says what was removed and what was kept, so your disk and branches stay clean. It installs a skill, a rule loaded every session and a tool script; the report runs only when used.",
   "use": "auto",
   "trigger": "",
@@ -37,6 +44,10 @@
   ],
   "tokens_always_on": {
     "value": 176,
+    "how": "estimated chars/2.6"
+  },
+  "tokens_on_use": {
+    "value": 1140,
     "how": "estimated chars/2.6"
   },
   "quality": "tried",

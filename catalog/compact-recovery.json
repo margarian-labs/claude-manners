@@ -5,6 +5,13 @@
   "level": "recommended",
   "summary": "After a compaction, points Claude to the full transcript and to your exact words, so nothing important is lost.",
   "benefit": "Claude keeps your decisions and exact wording after a long conversation is compacted.",
+  "solves": "Instructions and decisions that get lost when a long conversation is compacted.",
+  "use_cases": [
+    "Every compaction keeps your instructions, answers and plan approvals word for word, numbered.",
+    "After a compaction Claude is told where the full transcript is and how to get your exact words back.",
+    "Where the summary and your words differ, your words win.",
+    "Away mode stays on across a compaction: Claude is reminded not to ask or wait."
+  ],
   "details": "After any compaction, Claude is pointed to the full transcript and to your own messages and answers word for word, so earlier decisions are not lost. It helps in long sessions where compacting would otherwise drop instructions you gave. It adds hook scripts that run before and after each compaction, a compact-instructions.md copied to ~/.claude and settings entries; the code runs locally and no network is used.",
   "use": "auto",
   "trigger": "",
@@ -44,6 +51,10 @@
   "tokens_always_on": {
     "value": 0,
     "how": "estimated chars/2.6"
+  },
+  "tokens_on_use": {
+    "value": null,
+    "how": "not measured yet"
   },
   "quality": "tried",
   "risk": "Runs before and after each compaction and prints reminders into the session. No network.",

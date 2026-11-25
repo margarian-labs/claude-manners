@@ -5,6 +5,14 @@
   "level": "recommended",
   "summary": "Audits a site's SEO when traffic dropped or a page will not rank: indexing, canonicals, redirects, Core Web Vitals and local SEO.",
   "benefit": "You find out why a page does not rank and what to fix.",
+  "solves": "Traffic dropped or a page will not rank, and nobody knows which problem to fix first.",
+  "use_cases": [
+    "\"Run an SEO audit of this site\": findings in priority order, from crawling and indexing to content.",
+    "\"Why did our traffic drop?\": each finding comes with its impact, the evidence and the fix.",
+    "Multilingual sites: hreflang, canonicals and sitemaps per locale are checked.",
+    "It ends with an action plan: critical fixes, high-impact changes, quick wins, long-term work.",
+    "Fastest wins: pages that already rank in positions 8-20."
+  ],
   "details": "Ask when you want an SEO audit or need to know why traffic dropped or a page will not rank: Claude works through crawlability and indexation, technical foundations, on-page optimization, content quality, and authority and links, covering topics like canonicals, hreflang, redirects, titles, Core Web Vitals and local SEO. It fits site owners and marketers with organic search problems. It adds a skill folder that loads only when used; instructions only, so no code runs on its own.",
   "use": "auto",
   "trigger": "",
@@ -26,6 +34,10 @@
   "verify": [],
   "tokens_always_on": {
     "value": 80,
+    "how": "estimated chars/2.6"
+  },
+  "tokens_on_use": {
+    "value": 6675,
     "how": "estimated chars/2.6"
   },
   "quality": "tried",

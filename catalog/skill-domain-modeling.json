@@ -5,6 +5,14 @@
   "level": "recommended",
   "summary": "Builds and sharpens a project's domain model via glossary terms and architecture decision records.",
   "benefit": "The team shares one set of terms, recorded in a glossary and decision records.",
+  "solves": "A team that uses one word for different things, and decisions nobody can explain later.",
+  "use_cases": [
+    "You use a term that conflicts with GLOSSARY.md: Claude calls it out and asks which meaning you intend.",
+    "Vague words like \"account\" get a precise name: Customer or User?",
+    "You say how something works: Claude checks the code and shows any contradiction.",
+    "A settled term is written to GLOSSARY.md at once.",
+    "An ADR is offered only for a decision that is hard to reverse, surprising and a real trade-off."
+  ],
   "details": "This skill makes Claude build and sharpen your project's domain model as you work: it challenges terms that conflict with GLOSSARY.md, proposes precise names, invents edge-case scenarios, checks claims against the code, and writes glossary terms and ADRs as decisions settle. It is for teams discussing codebase terminology or recording decisions. It adds a skill folder that loads only when used; instructions only, so no code runs on its own.",
   "use": "auto",
   "trigger": "",
@@ -26,6 +34,10 @@
   "verify": [],
   "tokens_always_on": {
     "value": 69,
+    "how": "estimated chars/2.6"
+  },
+  "tokens_on_use": {
+    "value": 1240,
     "how": "estimated chars/2.6"
   },
   "quality": "tried",

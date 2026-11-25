@@ -5,6 +5,14 @@
   "level": "optional",
   "summary": "Seven short notes from real mistakes (settings, hooks, Telegram, disk cleanup, prompts, token savings) kept in file memory.",
   "benefit": "Claude avoids mistakes already made once in settings, hooks and cleanup.",
+  "solves": "Repeating mistakes already made once with settings, hooks, Telegram notifications and disk cleanup.",
+  "use_cases": [
+    "Editing settings or hooks: Claude knows settings.json is the source of truth and where the hook files are.",
+    "A plan rejected with only short flags: Claude rechecks everything harder instead of resubmitting it.",
+    "Before promising token savings, Claude checks your real usage logs first.",
+    "Cleaning a disk: the analysis is exhaustive on the first pass, from a checklist.",
+    "The notes load only in sessions started in your home folder."
+  ],
   "details": "Seven short notes from real mistakes are copied into your file memory: settings and hook gotchas, Telegram hook design, disk cleanup depth, why UserAssist is unreliable, prompts for other people's agents, plans rejected with only flags, and measuring token savings before claiming them. It suits anyone who wants Claude to avoid those mistakes. It copies note files plus MEMORY.md lines into ~/.claude/projects memory once, and they load only in sessions started in the home folder; no code runs.",
   "use": "auto",
   "trigger": "",
@@ -25,6 +33,10 @@
   "tokens_always_on": {
     "value": 0,
     "how": "estimated chars/2.6"
+  },
+  "tokens_on_use": {
+    "value": null,
+    "how": "not measured yet"
   },
   "quality": "tried",
   "risk": "Copies note files into your file memory once; Claude reads them as memory. No code runs.",

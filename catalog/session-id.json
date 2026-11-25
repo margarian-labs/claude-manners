@@ -5,6 +5,11 @@
   "level": "recommended",
   "summary": "Shows the session id when a session starts, so you can name it in handoffs and messages.",
   "benefit": "You always know a session's id when you need to name it.",
+  "solves": "Not knowing a session's id when a handoff or a message to another session needs it.",
+  "use_cases": [
+    "Each session start, resume or /clear shows a line \"Session ID: ...\".",
+    "Give that id in \"pass this to session <id>\" to hand work to that session."
+  ],
   "details": "At each session start, resume or clear you see a line like Session ID: ... in the session, so you can name that session in handoffs and messages. It is for you when you pass session ids to other sessions or people. It copies a small hook script and adds a SessionStart entry to your settings; that script runs node once at start, prints the id, and uses no network.",
   "use": "auto",
   "trigger": "",
@@ -38,6 +43,10 @@
   "tokens_always_on": {
     "value": 0,
     "how": "estimated chars/2.6"
+  },
+  "tokens_on_use": {
+    "value": null,
+    "how": "not measured yet"
   },
   "quality": "tried",
   "risk": "Runs once at session start and prints the id. No network.",

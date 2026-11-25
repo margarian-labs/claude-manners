@@ -68,7 +68,10 @@ Exit codes: 0 ok, 2 needs an answer (conflict, local edit, risky key), 1 error. 
 - `bootstrap --repo <clone>`: installs only the sync-engine part and records `repo.path`.
 - `apply --no-fetch` skips `git fetch`; `apply --update-engine` installs a changed sync-engine alone (it runs from the next call).
 - `plan --cards` / `plan --proposals <id>` always include cards; otherwise cards are left out when output would pass about 20,000 characters (`cards_omitted: true`).
-- `catalog` returns a compact list; `catalog --parts a,b` returns full details.
+- `catalog` returns a compact list; `catalog --parts a,b` returns full details, including `card`: the ready question text built by `partCard(entry, footprint)` in `lib/display.mjs` (what it is, solves, improves, use cases, affects with real file and settings counts, cost, needs). The skill shows it word for word.
+- `adopt` output has `part_list` (id, title, summary, files_written) so the skill can name every part it takes over.
+- A pending proposal for a part that is not installed carries `part_card`, the same card text.
+- Cards for proposals also print the "How it affects the agent" and "Undo" sections of the proposal file.
 - `--fable yes|no` answers an unknown Fable check; `--crash finish` closes a crashed run, `rollback --crashed` undoes it.
 - `--confirm-risky <id>` takes proposal ids on sync and part ids on first run; `ask_alone` parts always need it.
 - Built-in skill names (`BUILTIN_SKILLS` in `lib/install.mjs`) always count as installed when pruning skill overrides.

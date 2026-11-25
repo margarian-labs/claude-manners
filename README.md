@@ -14,7 +14,7 @@ A shared Claude Code setup for Windows.<br>You approve every change and can undo
 
 | 1. Join | 2. Stay up to date | 3. Go back |
 | --- | --- | --- |
-| Clone this repo and say **Follow START.md**. Your agent checks your PC, backs up your current setup and shows the menu of parts. | Say **sync my setup**. Each new change comes as a proposal: what and why, token cost, how well it was tested, what it runs and the real diff. You answer accept, skip or later. Nothing updates in the background. | Say **roll back my last sync** or **go back to version v2026.11.23.1**. Only what sync wrote is restored; your own files, settings and edits stay. Rolled-back changes are offered again on the next sync. |
+| Clone this repo and say **Follow START.md**. Your agent checks your PC, backs up your current setup and asks about each part on its own: what it is, what it solves, its use cases, what it changes on your PC and what it costs. | Say **sync my setup**. Each new change comes as a proposal: what and why, token cost, how well it was tested, what it runs and the real diff. You answer accept, skip or later. Nothing updates in the background. | Say **roll back my last sync** or **go back to version v2026.11.23.1**. Only what sync wrote is restored; your own files, settings and edits stay. Rolled-back changes are offered again on the next sync. |
 
 ## Quick start
 

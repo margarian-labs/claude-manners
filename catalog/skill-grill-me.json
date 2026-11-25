@@ -5,6 +5,11 @@
   "level": "recommended",
   "summary": "Interviews you relentlessly to sharpen a plan or design.",
   "benefit": "Weak spots in your plan show up before you build it.",
+  "solves": "Plans that look fine until the first hard question nobody asked.",
+  "use_cases": [
+    "\"/grill-me\" with a plan or idea: a relentless interview until nothing is left assumed.",
+    "Only you can start it: Claude never starts this one by itself."
+  ],
   "details": "Invoking grill-me starts a relentless interview that sharpens a plan or design, by handing the work to the grilling skill. It is for anyone who wants their thinking stress-tested before committing to it. It adds a skill folder that only you can start, since Claude cannot invoke it on its own, and that loads only when used; it is instructions only, so no code runs.",
   "use": "you",
   "trigger": "Type /grill-me with the plan or idea to stress-test.",
@@ -28,6 +33,10 @@
   "verify": [],
   "tokens_always_on": {
     "value": 30,
+    "how": "estimated chars/2.6"
+  },
+  "tokens_on_use": {
+    "value": 61,
     "how": "estimated chars/2.6"
   },
   "quality": "tried",

@@ -17,6 +17,8 @@ Run each check with Bash and tell the person what is missing. If anything is mis
 
 ## 2. Install the sync tool
 
+First tell the person what this step does, then run it: it installs the sync tool and the claude-setup-sync skill, nothing else. Read `catalog/sync-engine.json` and say its `summary` and its always-on cost (`tokens_always_on.value` tokens in every session).
+
 From the root of this clone, run:
 
 ```
@@ -31,11 +33,11 @@ If it exits with code 2, read `questions`, ask the person, and run it again with
 
 Tell the person: "The sync tool is installed. I will now show you the menu of parts. Nothing is installed until you say so."
 
-Then invoke the `claude-setup-sync` skill (if it is not listed yet, tell the person to start a new Claude Code session in this clone and say "sync my setup"). Follow it: it shows the first-run menu group by group, asks for your choices, shows what each risky part does before it changes anything, installs, and gives a short report.
+Then invoke the `claude-setup-sync` skill (if it is not listed yet, tell the person to start a new Claude Code session in this clone and say "sync my setup"). Follow it: it first lists the parts you already have, then asks about every other part on its own. Each question says what the part is, what it solves, its use cases, what it changes on the PC and what it costs. Then it installs what you chose and gives a short report.
 
 ## If the person already used the older setup pack
 
-If the folder `rules/setup-pack` exists in their Claude config folder, they installed the older pack. After step 2, run `node "${CLAUDE_CONFIG_DIR:-$HOME/.claude}/tools/claude-setup/sync/sync.mjs" adopt --plan --json`, tell the person what it would add, bring up to date and keep, and ask whether to take it over. If yes, run the same command without `--plan` before the menu. It keeps their files and edits, backs up and removes the old rules folder, installs the new rule files and brings the files of the parts it takes over up to date.
+If the folder `rules/setup-pack` exists in their Claude config folder, they installed the older pack. After step 2, run `node "${CLAUDE_CONFIG_DIR:-$HOME/.claude}/tools/claude-setup/sync/sync.mjs" adopt --plan --json`, name every part it found (the `part_list` in the result: title, what it is, how many files it brings up to date), say what it would keep, and ask whether to take it over. If yes, run the same command without `--plan` before the menu. It keeps their files and edits, backs up and removes the old rules folder, installs the new rule files and brings the files of the parts it takes over up to date.
 
 ## Later
 

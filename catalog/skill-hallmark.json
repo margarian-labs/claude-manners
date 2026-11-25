@@ -5,6 +5,14 @@
   "level": "recommended",
   "summary": "Makes websites and landing pages look made, not generated; can also redesign or audit an existing page.",
   "benefit": "Websites and landing pages get a distinct, finished look.",
+  "solves": "Generated websites that all look the same: purple gradients, cards in cards, invented numbers.",
+  "use_cases": [
+    "\"Build a landing page for X\": Claude suggests /hallmark and runs it only after your yes.",
+    "\"/hallmark redesign <path>\": a full redesign that keeps your content and wiring.",
+    "\"/hallmark audit <path>\": a report on an existing page.",
+    "It asks once for your material, audience, goal and tone, and never invents a number, quote or logo.",
+    "\"--fast\", or \"quick\" or \"prototype\" in the prompt: a faster, rougher run."
+  ],
   "details": "When you ask to build or design a new website or landing page, Claude suggests /hallmark first (about $1.80 and 4-6 minutes per page) and only runs it after you say yes; it also supports /hallmark redesign <path> and audit <path>. It makes generated pages look made rather than templated, with a hard floor of rules and a sloplint script run when Node is available. It adds a skill folder plus a rule file, loads only when used, and runs local scripts when used.",
   "use": "auto",
   "trigger": "",
@@ -30,6 +38,11 @@
     "value": 218,
     "how": "estimated chars/2.6"
   },
+  "tokens_on_use": {
+    "value": 6964,
+    "how": "estimated chars/2.6"
+  },
+  "cost_note": "About $1.80 and 4-6 minutes per page.",
   "quality": "tried",
   "risk": "Instructions only; loads when used. No code runs on its own.",
   "ask_alone": false,

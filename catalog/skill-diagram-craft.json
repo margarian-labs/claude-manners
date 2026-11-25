@@ -5,6 +5,14 @@
   "level": "recommended",
   "summary": "Helps you draw diagrams by hand: picks the right type and keeps nodes, lines and labels readable and accurate.",
   "benefit": "Diagrams come out readable and match the real code.",
+  "solves": "Diagrams with crossing lines, unreadable labels or boxes that do not match the real code.",
+  "use_cases": [
+    "\"Draw the architecture\", or a sequence, workflow, state, ERD or timeline diagram, in SVG, HTML or Mermaid.",
+    "It picks the type from the question, and says when a table or numbered steps fit better than a diagram.",
+    "From code: every arrow comes from a real call site, never from a config value or a package name.",
+    "More than about 12 nodes: it splits the diagram or uses a list.",
+    "Before delivery it checks a render in light and dark, at desktop and phone width."
+  ],
   "details": "When you ask for a diagram, this skill has Claude pick the right type (architecture, sequence, workflow, ERD, timeline and more), place nodes so lines stay straight, keep labels readable, and check edges and numbers against the code before delivery. It helps anyone drawing diagrams by hand in SVG, HTML/CSS boxes or Mermaid, in docs or artifacts. It adds a skill folder that loads only when used; instructions only, so no code runs on its own.",
   "use": "auto",
   "trigger": "",
@@ -26,6 +34,10 @@
   "verify": [],
   "tokens_always_on": {
     "value": 134,
+    "how": "estimated chars/2.6"
+  },
+  "tokens_on_use": {
+    "value": 2159,
     "how": "estimated chars/2.6"
   },
   "quality": "tried",

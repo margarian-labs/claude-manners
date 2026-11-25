@@ -5,7 +5,7 @@ import os from 'node:os';
 import path from 'node:path';
 import { spawnSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
-import { estimate, parseFrontmatter } from '../../owner/estimate-tokens.mjs';
+import { estimate, estimateOnUse, parseFrontmatter } from '../../owner/estimate-tokens.mjs';
 
 const SCRIPT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../../owner/estimate-tokens.mjs');
 
@@ -89,4 +89,51 @@ test('--all prints every part and --write updates each file', () => {
 test('usage error exits 2', () => {
   const r = spawnSync(process.execPath, [SCRIPT], { encoding: 'utf8' });
   assert.equal(r.status, 2);
+});
+
+test('estimateOnUse: full skill and agent text; 0 for text-only parts; unknown for hook, plugin and MCP parts', () => {
+  const dir = makeRepo();
+  const r = estimateOnUse(dir, 'demo');
+  const len = (rel) => Math.ceil(fs.readFileSync(path.join(dir, rel), 'utf8').length / 2.6);
+  assert.deepEqual(r.breakdown.map((b) => [b.kind, b.tokens]), [
+    ['skill', len('payload/skills/s/SKILL.md')],
+    ['skill', len('payload/skills/q/SKILL.md')],
+    ['agent', len('payload/agents/ag.md')],
+  ]);
+  assert.equal(r.tokens, r.breakdown.reduce((a, b) => a + b.tokens, 0));
+  assert.equal(r.how, 'estimated chars/2.6');
+  assert.deepEqual(estimateOnUse(dir, 'plain'), { tokens: 0, how: 'estimated chars/2.6', breakdown: [] });
+
+  const put = (id, extra) => write(dir, `catalog/${id}.json`, JSON.stringify({ id, files: [], rules: [], settings: [], ...extra }));
+  write(dir, 'payload/settings/h.json', JSON.stringify({ hooks: { Stop: [] } }));
+  write(dir, 'payload/settings/s.json', JSON.stringify({ model: 'x' }));
+  put('hooked', { settings: ['payload/settings/h.json'] });
+  put('plain-setting', { settings: ['payload/settings/s.json'] });
+  put('plug', { plugins: [{ name: 'p', marketplace: 'a/b' }] });
+  put('server', { mcp: [{ name: 'm', config: {} }] });
+  for (const id of ['hooked', 'plug', 'server']) assert.deepEqual(estimateOnUse(dir, id), { tokens: null, how: 'not measured yet', breakdown: [] }, id);
+  assert.equal(estimateOnUse(dir, 'plain-setting').tokens, 0);
+  fs.rmSync(dir, { recursive: true, force: true });
+});
+
+test('--write fills tokens_on_use only where the entry has the key, and keeps a value set to unknown by hand', () => {
+  const dir = makeRepo();
+  const p = path.join(dir, 'catalog/demo.json');
+  const withKey = (value) => {
+    const e = JSON.parse(fs.readFileSync(p, 'utf8'));
+    const out = Object.fromEntries(Object.entries(e).flatMap(([k, v]) => (k === 'tokens_always_on' ? [[k, v], ['tokens_on_use', value]] : [[k, v]])));
+    fs.writeFileSync(p, JSON.stringify(out, null, 2) + '\n');
+  };
+  withKey({ value: 0, how: 'estimated chars/2.6' });
+  assert.equal(spawnSync(process.execPath, [SCRIPT, '--all', '--write', '--repo', dir], { encoding: 'utf8' }).status, 0);
+  const demo = JSON.parse(fs.readFileSync(p, 'utf8'));
+  assert.equal(demo.tokens_on_use.value, estimateOnUse(dir, 'demo').tokens);
+  assert.deepEqual(Object.keys(demo).slice(-3), ['tokens_always_on', 'tokens_on_use', 'quality']);
+  assert.ok(!('tokens_on_use' in JSON.parse(fs.readFileSync(path.join(dir, 'catalog/plain.json'), 'utf8'))));
+
+  const q = path.join(dir, 'catalog/plain.json');
+  fs.writeFileSync(q, JSON.stringify({ ...JSON.parse(fs.readFileSync(q, 'utf8')), tokens_on_use: { value: null, how: 'not measured yet' } }, null, 2) + '\n');
+  assert.equal(spawnSync(process.execPath, [SCRIPT, 'plain', '--write', '--repo', dir], { encoding: 'utf8' }).status, 0);
+  assert.deepEqual(JSON.parse(fs.readFileSync(q, 'utf8')).tokens_on_use, { value: null, how: 'not measured yet' });
+  fs.rmSync(dir, { recursive: true, force: true });
 });

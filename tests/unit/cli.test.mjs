@@ -348,6 +348,9 @@ test('apply (plan only) fetches v2 and lists a card for every proposal; writes n
   assert.match(byId['p-gamma-add'].card, /\+ mcp gamma-mcp/);
   assert.deepEqual(byId['p-gamma-add'].steps.map((s) => [s.kind, s.text]), [['user', 'Make a gamma account.'], ['machine', 'Set up gee on this PC.']]);
   assert.equal(byId['p-alpha-hook'].noop, false);
+  assert.ok(!('part_card' in byId['p-alpha-hook']), 'an installed part needs no part card');
+  assert.ok(byId['p-gamma-add'].part_card.startsWith('gamma (optional)\nWhat it is: The gamma part.\n'));
+  assert.ok(byId['p-gamma-add'].part_card.includes('Adds the MCP server gamma-mcp.'));
   assert.deepEqual(snap(), before);
   assert.deepEqual(calls('mcp'), []);
   assert.equal(git(['rev-parse', 'HEAD'], user), c2);
@@ -579,6 +582,9 @@ test('adopt: takes over a pack install, brings every file of the taken-over part
   assert.equal(dry.mode, 'plan');
   assert.deepEqual(dry.files_written, written);
   assert.deepEqual(dry.own_files_kept, ['skills/zeta/doc01.md']);
+  assert.deepEqual(dry.part_list.map((x) => x.id).sort(), [...dry.parts].sort());
+  assert.deepEqual(dry.part_list.find((x) => x.id === 'beta'), { id: 'beta', title: 'beta', summary: 'The beta part.', files_written: 2 });
+  assert.equal(dry.part_list.reduce((n, x) => n + x.files_written, 0), dry.files_written.length + dry.rules_written.length);
   assert.deepEqual(snap(cfgA), pre);
 
   const j = ok(cli(['adopt', '--repo', user], { ...opts, exe }));
@@ -837,4 +843,24 @@ test('catalog --parts gives the benefit and, for parts with sensitive settings, 
   const q = needsAnswer(cli(['install', '--parts', 'bypass', '--repo', user], { dir: cfgB }));
   assert.equal(q[0].kind, 'risky');
   assert.doesNotMatch(q[0].text, /risk/i);
+});
+
+test('catalog --parts gives a ready card per part with real counts, needs by title and uncounted cost', () => {
+  const cfgC = path.join(root, 'config-card');
+  write('settings.json', '{}\n', cfgC);
+  const j = ok(cli(['catalog', '--parts', 'alpha,beta,gamma,epsilon,zeta', '--repo', user], { dir: cfgC }));
+  const parts = Object.fromEntries(j.groups.flatMap((g) => g.parts).map((x) => [x.id, x]));
+  const line = (id, label) => parts[id].card.split('\n').find((l) => l.startsWith(label + ': '));
+  assert.equal(parts.alpha.card.split('\n')[0], 'alpha (recommended)');
+  assert.equal(line('alpha', 'Affects'), 'Affects: Runs a hook at session start. Writes 2 files, 1 rule file and settings (env).');
+  assert.equal(line('beta', 'Improves'), 'Improves: Plans come out sharper.');
+  assert.equal(line('gamma', 'Affects'), 'Affects: Test part, no code runs. Writes 1 file. Adds the MCP server gamma-mcp. Has 1 step outside the Claude folder. Leaves 1 step for you to do.');
+  assert.equal(line('gamma', 'Cost'), 'Cost: session cost not measured yet. Text added by its MCP server is not counted.');
+  assert.equal(line('epsilon', 'Needs'), 'Needs: alpha.');
+  assert.equal(line('zeta', 'Affects'), 'Affects: Test part, no code runs. Writes 13 files.');
+  assert.deepEqual(parts.alpha.use_cases, []);
+  assert.equal(parts.alpha.solves, null);
+  assert.equal(parts.alpha.tokens_on_use, null);
+  assert.ok(!('card' in ok(cli(['catalog', '--repo', user], { dir: cfgC })).groups[0].parts[0]));
+  for (const id of ['alpha', 'beta', 'gamma', 'epsilon', 'zeta']) assert.doesNotMatch(parts[id].card, /risk/i);
 });

@@ -5,6 +5,14 @@
   "level": "recommended",
   "summary": "Searches a local design database when you pick UI styles, colour palettes, font pairings, chart types or UX rules.",
   "benefit": "Style, colour, font and chart choices come from a tested design database.",
+  "solves": "Colours, fonts and chart types picked by guesswork for each new screen.",
+  "use_cases": [
+    "\"Which palette and fonts fit a spa booking site?\": a search of 194 product palettes and 74 font pairings.",
+    "A new project: one search gives a whole design system (pattern, style, colours, type, what to avoid).",
+    "The design system can be saved in the repo as design-system/<project>/MASTER.md, with page overrides.",
+    "Stack advice for 22 stacks, such as Angular, React, Vue, Flutter and SwiftUI.",
+    "It runs a local Python script: Python 3, no extra packages."
+  ],
   "details": "When you ask about a UI style, colour palette, font pairing, chart type or UX rule, Claude searches a local design database of 80 searchable styles (51 active), 194 product palettes, 74 font pairings, 130 UX guidelines, 25 chart types and 22 technology stacks, with stack guides such as Angular and React. It needs Python 3 and runs its local search script when used, with no external Python packages; no network except downloads it names.",
   "use": "auto",
   "trigger": "",
@@ -28,6 +36,10 @@
   "verify": [],
   "tokens_always_on": {
     "value": 120,
+    "how": "estimated chars/2.6"
+  },
+  "tokens_on_use": {
+    "value": 6977,
     "how": "estimated chars/2.6"
   },
   "quality": "tried",

@@ -5,6 +5,13 @@
   "level": "optional",
   "summary": "Cost and usage reports built from your local Claude transcripts.",
   "benefit": "You see where your tokens and money go, per project and tool.",
+  "solves": "Not knowing which accounts, projects and models your tokens and usage limit went to.",
+  "use_cases": [
+    "\"node ~/.claude/tools/usage-audit.mjs\": API-equivalent cost per account for the last 7 days.",
+    "Add --start and --end for another time window, and --out to save the report.",
+    "\"node ~/.claude/tools/audit-transcripts.mjs --since 2026-11-01 --until 2026-11-07\": a full transcript audit.",
+    "\"node ~/.claude/tools/usage-pct-series.mjs\": how your weekly usage percentage moved over time."
+  ],
   "details": "Three node scripts build cost and usage reports from your local Claude transcripts: per-account API-equivalent cost for a time window (last 7 days by default), a usage percent series, and a transcript audit. You fill tools/usage-config.json with each account's label, the first 8 characters of its organization id and its config folder, then run a script when you want a report. They run only when you start them, read local transcripts and send nothing out; times are shown in UTC+4.",
   "use": "you",
   "trigger": "Run the report scripts in ~/.claude/tools when you want a cost or usage report.",
@@ -49,6 +56,10 @@
   "tokens_always_on": {
     "value": 0,
     "how": "estimated chars/2.6"
+  },
+  "tokens_on_use": {
+    "value": null,
+    "how": "not measured yet"
   },
   "quality": "tried",
   "risk": "Runs only when you start it; it reads your local transcripts and sends nothing out. The detail sections cover the first account, times are shown in UTC+4.",

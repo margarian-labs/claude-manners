@@ -5,6 +5,14 @@
   "level": "recommended",
   "summary": "Writes and rewrites marketing copy for pages such as home, landing and pricing, with supportable claims.",
   "benefit": "Marketing pages get clear headlines and copy with claims you can back up.",
+  "solves": "Marketing pages full of vague claims that any competitor could have written.",
+  "use_cases": [
+    "\"Write the homepage copy\", or a landing, pricing or feature page: headline, subhead, CTA and each section.",
+    "\"Improve this headline\": only the changed lines come back, each with a one-line reason.",
+    "Headlines and CTAs come with 2-3 options and the reason for each.",
+    "A claim you cannot back up is not written: Claude says what proof would allow it.",
+    "Every line passes a test: could a competitor write this exact sentence? If yes, it is rewritten."
+  ],
   "details": "When you ask for marketing copy for a home, landing, pricing or feature page, Claude reads any product marketing notes first and writes or rewrites the copy, keeping every claim supportable; it stays out of docs and app UI labels. It is for you when you write or revise marketing pages or pick a headline. It copies a skill folder that loads only when used, with instructions only and no code running on its own.",
   "use": "auto",
   "trigger": "",
@@ -26,6 +34,10 @@
   "verify": [],
   "tokens_always_on": {
     "value": 88,
+    "how": "estimated chars/2.6"
+  },
+  "tokens_on_use": {
+    "value": 5817,
     "how": "estimated chars/2.6"
   },
   "quality": "tried",

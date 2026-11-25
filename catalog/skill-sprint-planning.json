@@ -5,6 +5,13 @@
   "level": "optional",
   "summary": "Plans a sprint: scopes work, estimates team capacity, sets goals and drafts the plan, including carryover.",
   "benefit": "Sprints get a realistic scope based on the team's real capacity.",
+  "solves": "Sprints planned to full capacity that slip because time off and meetings were ignored.",
+  "use_cases": [
+    "\"/sprint-planning Sprint 12\": Claude asks about team, length, backlog and carryover, then drafts the plan.",
+    "The plan has a capacity table per person, a P0 to P2 backlog, what could go wrong and key dates.",
+    "It plans to 70-80% of capacity, so interrupts do not break the sprint.",
+    "The Skill overrides part switches this skill off; remove its line under skillOverrides to use it."
+  ],
   "details": "Type /sprint-planning with a sprint name or date range, answer a few questions about your team, sprint length, backlog, carryover and dependencies, and Claude drafts a sprint plan with a capacity table, a P0 to P2 backlog, risks, definition of done and key dates. Use it when you kick off a new sprint, size a backlog against PTO and meetings, or decide what is P0 versus stretch. It installs as a skill that loads only when used; instructions only, no code runs and no network is used.",
   "use": "you",
   "trigger": "Type /sprint-planning with a sprint name or date range.",
@@ -26,6 +33,10 @@
   "verify": [],
   "tokens_always_on": {
     "value": 115,
+    "how": "estimated chars/2.6"
+  },
+  "tokens_on_use": {
+    "value": 911,
     "how": "estimated chars/2.6"
   },
   "quality": "tried",

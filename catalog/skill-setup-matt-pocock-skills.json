@@ -5,6 +5,13 @@
   "level": "recommended",
   "summary": "Configures a repo for the engineering skills once: issue tracker, triage labels and where domain docs live.",
   "benefit": "The planning and ticket skills know your tracker and labels from the start.",
+  "solves": "Planning and ticket skills that do not know where your issues live or how your labels are named.",
+  "use_cases": [
+    "\"/setup-matt-pocock-skills\" once per repo, before To spec, To tickets or Wayfinder.",
+    "Pick where issues live: GitHub, GitLab, local markdown files, or another tracker you describe.",
+    "It writes the answers under docs/agents/ and adds an \"Agent skills\" block to CLAUDE.md or AGENTS.md.",
+    "You see a draft and can edit it before anything is written."
+  ],
   "details": "Run this once before first use of the engineering skills: it explores your repo, then asks in order where issues live (GitHub, GitLab, local markdown or other), whether to keep the default triage labels, and where glossary and ADR docs go, and writes the answers under docs/agents/. It is for repos that will use skills like to-tickets, triage and to-spec. It adds a skill folder that only you can start; it writes config files in the repo, and it is instructions only, so no code runs on its own.",
   "use": "you",
   "trigger": "Type /setup-matt-pocock-skills once in each repo before using To spec, To tickets or Wayfinder.",
@@ -26,6 +33,10 @@
   "verify": [],
   "tokens_always_on": {
     "value": 80,
+    "how": "estimated chars/2.6"
+  },
+  "tokens_on_use": {
+    "value": 2895,
     "how": "estimated chars/2.6"
   },
   "quality": "tried",

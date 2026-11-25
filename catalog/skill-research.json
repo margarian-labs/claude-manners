@@ -5,6 +5,11 @@
   "level": "recommended",
   "summary": "Researches a question against primary sources with a background agent and saves the findings as a repo Markdown file.",
   "benefit": "Answers come from primary sources and stay saved in the repo.",
+  "solves": "Answers built on blog posts and memory instead of the real documentation.",
+  "use_cases": [
+    "\"Research how X works\": a background agent reads official docs and source code while you keep working.",
+    "The findings land in one Markdown file in the repo, each claim with its source."
+  ],
   "details": "When you want a topic researched or docs and API facts gathered, this skill sends a background agent to investigate against primary sources like official docs and source code, so you keep working while it reads. The agent writes its findings, with each claim citing its source, to a single Markdown file saved where the repo already keeps such notes. It adds a skill folder that loads only when used; instructions only, so no code runs on its own.",
   "use": "auto",
   "trigger": "",
@@ -26,6 +31,10 @@
   "verify": [],
   "tokens_always_on": {
     "value": 102,
+    "how": "estimated chars/2.6"
+  },
+  "tokens_on_use": {
+    "value": 320,
     "how": "estimated chars/2.6"
   },
   "quality": "tried",

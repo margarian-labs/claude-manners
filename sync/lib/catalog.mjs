@@ -3,7 +3,8 @@ import path from 'node:path';
 
 export const NEEDS_RE = /^(windows|second-profile|memohopper-connected|fable-access|haiku-access|part:[a-z0-9-]+|plugin:[a-z0-9-]+|cmd:[a-z0-9.-]+|claude>=[0-9.]+)$/;
 
-const KEYS = ['id', 'title', 'group', 'level', 'summary', 'details', 'use', 'trigger', 'needs', 'files', 'settings', 'rules', 'mcp', 'plugins', 'values', 'user_steps', 'machine_steps', 'verify', 'tokens_always_on', 'quality', 'risk', 'ask_alone', 'license'];
+const KEYS = ['id', 'title', 'group', 'level', 'summary', 'benefit', 'solves', 'use_cases', 'details', 'use', 'trigger', 'needs', 'files', 'settings', 'rules', 'mcp', 'plugins', 'values', 'user_steps', 'machine_steps', 'verify', 'tokens_always_on', 'tokens_on_use', 'cost_note', 'quality', 'risk', 'ask_alone', 'license'];
+const OPTIONAL = ['benefit', 'solves', 'use_cases', 'tokens_on_use', 'cost_note'];
 const GROUPS = ['rules', 'settings', 'workflow', 'hooks', 'agents', 'skills', 'plugins', 'tools', 'integrations', 'lessons'];
 const LEVELS = ['recommended', 'optional'];
 const MODES = ['managed', 'rendered', 'seed'];
@@ -26,6 +27,19 @@ function strList(e, key, errs) {
   return true;
 }
 
+function shortText(e, key, max, errs) {
+  if (!(key in e)) return;
+  if (!isStr(e[key])) errs.push(`${key}: must be a non-empty string`);
+  else if (e[key].length > max) errs.push(`${key}: ${e[key].length} characters, max ${max}`);
+}
+
+function tokens(e, key, errs) {
+  const t = e[key];
+  if (!isObj(t) || !sameKeys(t, ['value', 'how'])) { errs.push(`${key}: keys must be value, how`); return; }
+  if (!(t.value === null || (typeof t.value === 'number' && Number.isFinite(t.value)))) errs.push(`${key}.value: must be a number or null`);
+  if (!HOWS.includes(t.how)) errs.push(`${key}.how: must be one of ${HOWS.join(', ')}`);
+}
+
 function relDest(d) {
   const x = d.replace(/^\{memory_dir\}[\\/]?/, '');
   return !(/^([A-Za-z]:|[\\/])/.test(x) || x.split(/[\\/]/).includes('..'));
@@ -36,16 +50,24 @@ export function validateEntry(entry, allIds) {
   if (!isObj(entry)) return ['entry must be an object'];
   const ids = allIds instanceof Set ? allIds : new Set(allIds instanceof Map ? allIds.keys() : allIds || []);
   const keys = Object.keys(entry);
-  const want = 'benefit' in entry ? [...KEYS.slice(0, 5), 'benefit', ...KEYS.slice(5)] : KEYS;
+  const want = KEYS.filter((k) => !OPTIONAL.includes(k) || k in entry);
   const missing = want.filter((k) => !keys.includes(k));
   const extra = keys.filter((k) => !want.includes(k));
   if (missing.length) errs.push(`missing keys: ${missing.join(', ')}`);
   if (extra.length) errs.push(`unknown keys: ${extra.join(', ')}`);
   if (!missing.length && !extra.length && !sameKeys(entry, want)) errs.push(`keys out of order, expected: ${want.join(', ')}`);
-  if ('benefit' in entry) {
-    if (!isStr(entry.benefit)) errs.push('benefit: must be a non-empty string');
-    else if (entry.benefit.length > 100) errs.push(`benefit: ${entry.benefit.length} characters, max 100`);
+  shortText(entry, 'benefit', 100, errs);
+  shortText(entry, 'solves', 120, errs);
+  shortText(entry, 'cost_note', 120, errs);
+  if ('use_cases' in entry) {
+    const u = entry.use_cases;
+    if (!Array.isArray(u) || u.length < 1 || u.length > 5) errs.push('use_cases: must be a list of 1 to 5 lines');
+    else u.forEach((v, i) => {
+      if (!isStr(v)) errs.push(`use_cases[${i}]: must be a non-empty string`);
+      else if (v.length > 120) errs.push(`use_cases[${i}]: ${v.length} characters, max 120`);
+    });
   }
+  if ('tokens_on_use' in entry) tokens(entry, 'tokens_on_use', errs);
 
   if (!isStr(entry.id) || !ID_RE.test(entry.id)) errs.push('id: must be kebab-case');
   if (!isStr(entry.title)) errs.push('title: must be a non-empty string');
@@ -111,12 +133,7 @@ export function validateEntry(entry, allIds) {
   strList(entry, 'machine_steps', errs);
   strList(entry, 'verify', errs);
 
-  const t = entry.tokens_always_on;
-  if (!isObj(t) || !sameKeys(t, ['value', 'how'])) errs.push('tokens_always_on: keys must be value, how');
-  else {
-    if (!(t.value === null || (typeof t.value === 'number' && Number.isFinite(t.value)))) errs.push('tokens_always_on.value: must be a number or null');
-    if (!HOWS.includes(t.how)) errs.push(`tokens_always_on.how: must be one of ${HOWS.join(', ')}`);
-  }
+  tokens(entry, 'tokens_always_on', errs);
   if (!QUALITIES.includes(entry.quality)) errs.push(`quality: must be one of ${QUALITIES.join(', ')}`);
   if (!isStr(entry.risk)) errs.push('risk: must be a non-empty string');
   if (typeof entry.ask_alone !== 'boolean') errs.push('ask_alone: must be true or false');

@@ -5,6 +5,14 @@
   "level": "optional",
   "summary": "Connects the memohopper memory service and adds rules to use it as primary memory, with tasks.",
   "benefit": "Decisions and facts carry over between sessions and projects.",
+  "solves": "Decisions and facts that vanish when a session ends or you move to another project.",
+  "use_cases": [
+    "\"remember this\", \"save this\" or \"store this\": the fact goes to memohopper, not to a local file.",
+    "Each folder you work in maps to a workspace, so each project's knowledge stays apart.",
+    "Session start: Claude reads the briefing and the open tasks of that workspace and names the relevant ones.",
+    "Tasks are your to-do list there: what you ask for is added, Claude's own ideas wait as proposals.",
+    "Needs a memohopper account and an API key; stored text and recalls go over the network."
+  ],
   "details": "Connects the memohopper memory service so Claude stores and recalls memories, tasks and a workspace-based knowledge graph there, with file memory kept only as an index. It is for people with a memohopper account who want memory that travels between projects. It adds rules loaded every session, a user-scope HTTP MCP server (mcp.memohopper.com) and a workspace table you fill in; stored text and recalls go over the network with your API key.",
   "use": "auto",
   "trigger": "",
@@ -44,6 +52,10 @@
   "tokens_always_on": {
     "value": 566,
     "how": "estimated chars/2.6"
+  },
+  "tokens_on_use": {
+    "value": null,
+    "how": "not measured yet"
   },
   "quality": "tried",
   "risk": "Claude sends what it stores and recalls to the memohopper service over the network (mcp.memohopper.com); the rules are loaded every session.",

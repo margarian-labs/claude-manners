@@ -5,6 +5,14 @@
   "level": "recommended",
   "summary": "Cleans prose other people will read: removes AI writing tells and checks that no fact was lost.",
   "benefit": "Text you publish reads like a person wrote it, with every fact kept.",
+  "solves": "Text that reads as AI-written: hype words, staged run-ups and empty closing lines.",
+  "use_cases": [
+    "Writing or editing docs, READMEs, reports, PR descriptions, posts, emails or website copy.",
+    "It removes tells such as \"not just X, but Y\", \"let's dive in\" and hype words like seamless or robust.",
+    "After the rewrite it checks that no fact, name, number, date, quote or link was lost or changed.",
+    "Give it a writing sample and it matches your voice.",
+    "Code review comments: one line per finding, each with a tag such as bug or nit."
+  ],
   "details": "When you are writing or editing prose other people will read, such as docs, reports, PR descriptions or posts, this skill marks AI writing tells and rewrites them, then checks that no fact, name, number or link was lost. It also gives a one-line-per-finding format for code review comments. It suits anyone who wants text that reads like a careful person wrote it. It adds a skill folder that loads only when used; instructions only, so no code runs on its own.",
   "use": "auto",
   "trigger": "",
@@ -26,6 +34,10 @@
   "verify": [],
   "tokens_always_on": {
     "value": 116,
+    "how": "estimated chars/2.6"
+  },
+  "tokens_on_use": {
+    "value": 1809,
     "how": "estimated chars/2.6"
   },
   "quality": "tried",

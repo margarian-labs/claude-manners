@@ -5,6 +5,13 @@
   "level": "recommended",
   "summary": "Opus as main model, Sonnet for workers, effort set per model. Check first that your plan includes Fable 5.2.",
   "benefit": "Each kind of work runs on a fitting model and effort, so tokens go where they matter.",
+  "solves": "Switching models and effort by hand, and sub-agents running on a more expensive model than needed.",
+  "use_cases": [
+    "Every session starts on Opus with effort xhigh.",
+    "Sub-agents run on Sonnet 5.5 unless a call names another model.",
+    "Fable 5.2 and Sonnet 5.5 run at effort high when you switch to them.",
+    "You already picked a main model: sync shows the difference and asks which one to keep."
+  ],
   "details": "Claude runs on Opus with effort xhigh, Fable and Sonnet at high, and sends its sub-agents to Sonnet through CLAUDE_CODE_SUBAGENT_MODEL; check first that your plan includes Fable 5.2, which the helper agents name. It is for anyone who wants a fixed model setup instead of switching by hand. It changes only settings.json values (the main model, three effort levels and one env value); no code runs and no network is used.",
   "use": "auto",
   "trigger": "",
@@ -21,6 +28,10 @@
   "machine_steps": [],
   "verify": [],
   "tokens_always_on": {
+    "value": 0,
+    "how": "estimated chars/2.6"
+  },
+  "tokens_on_use": {
     "value": 0,
     "how": "estimated chars/2.6"
   },

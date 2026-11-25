@@ -5,6 +5,13 @@
   "level": "recommended",
   "summary": "Coding conventions and git habits, plus a PR description format. Loaded every session.",
   "benefit": "Code and commits stay small and consistent, and pull requests are easy to review.",
+  "solves": "Code changes that grow beyond the request, and pull requests that are hard to review.",
+  "use_cases": [
+    "Every code change: the minimum that solves the request, in the project's own style, nothing nearby refactored.",
+    "Unrelated dead code is mentioned, not deleted; only what the change left unused is removed.",
+    "Pull requests: \"In plain words\" first for anyone, then \"For the review\" (pr-description skill).",
+    "Commits and pull requests never carry a Claude session link."
+  ],
   "details": "This rule loads in every session and sets how Claude writes code: the smallest change that solves the request, in the existing style of the project. It also sets git habits: never putting a Claude session link in commits or PRs, and PR descriptions with a plain-words part first and a short part for the reviewer, held in a small pr-description skill. It is a text file in your rules folder plus one skill folder; no code runs and no network is used.",
   "use": "auto",
   "trigger": "",
@@ -28,6 +35,10 @@
   "verify": [],
   "tokens_always_on": {
     "value": 372,
+    "how": "estimated chars/2.6"
+  },
+  "tokens_on_use": {
+    "value": 466,
     "how": "estimated chars/2.6"
   },
   "quality": "tried",

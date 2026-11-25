@@ -5,6 +5,12 @@
   "level": "recommended",
   "summary": "Builds a throwaway prototype to sanity-check a state model or explore what a UI should look like.",
   "benefit": "You can try an idea quickly before building it properly.",
+  "solves": "Building the real thing first and finding out late that the idea was wrong.",
+  "use_cases": [
+    "\"Does this state model feel right?\": one HTML file with buttons that walks the logic through hard cases.",
+    "\"What should this look like?\": several very different UI versions on one route, with a switcher.",
+    "It stays throwaway: no tests or polish, kept on a separate branch; only the decision goes into real code."
+  ],
   "details": "Ask for it when you want to sanity-check whether a state model or logic feels right, or to explore what a UI should look like: Claude builds throwaway code that answers that question, a single shareable HTML file for logic or several switchable UI variations on one route. It is for anyone wanting to learn something fast before committing, and the prototype is captured on a throwaway branch when done. It adds a skill folder that loads only when used; instructions only, so no code runs on its own.",
   "use": "auto",
   "trigger": "",
@@ -26,6 +32,10 @@
   "verify": [],
   "tokens_always_on": {
     "value": 79,
+    "how": "estimated chars/2.6"
+  },
+  "tokens_on_use": {
+    "value": 1125,
     "how": "estimated chars/2.6"
   },
   "quality": "tried",

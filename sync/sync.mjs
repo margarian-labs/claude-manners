@@ -11,12 +11,12 @@ import { parseFrontmatter, pending, validateProposal } from './lib/proposals.mjs
 import { check, defaultCtx, defaultRun } from './lib/conditions.mjs';
 import { absOf, applyPlan, defaultMerge as merge, encodeHome, expandFiles, installedSkills, mergedValues, planPart } from './lib/install.mjs';
 import { applyRollback, catalogAt, planRollback, planUndo } from './lib/rollback.mjs';
-import { card, riskyPointers } from './lib/display.mjs';
+import { card, partCard, riskyPointers } from './lib/display.mjs';
 import { findCrashedRun, finishRun, load, newRun, runDirOf, save } from './lib/state.mjs';
 
 const TEST = process.env.CLAUDE_SETUP_TEST === '1';
 const ENGINE = 'sync-engine';
-const ENGINE_VERSION = '1.2.0';
+const ENGINE_VERSION = '1.3.0';
 const GROUPS = ['rules', 'settings', 'workflow', 'hooks', 'agents', 'skills', 'plugins', 'tools', 'integrations', 'lessons'];
 const PACKS = {
   'pack-2026-11-21': {
@@ -301,6 +301,24 @@ function planRemovalItem(b, entry) {
     text: `You changed ${q.dest}. Keep your file (it stays, sync stops managing it) or remove it (yours is backed up)?`,
   }));
   return { entry, rem, plan: { part: id, ops: [], settings: [], mcp: [], plugins: [], conflicts: [], settingsConflicts: [], held: [], warnings: [] }, dplan: { ops }, installed, risky: [], questions, settingsConflicts: [], noop: false, remove: true, problems: rem.problems, files: rem.ops.map((o) => ({ dest: o.dest, action: o.kind, why: o.why })) };
+}
+
+const NEED_LABEL = { node: 'Node', python: 'Python', git: 'Git', pwsh: 'PowerShell 7' };
+const SKILL_DOC = /^skills\/[^/]+\/(?!(?:SKILL|VENDOR|SOURCES|LICENSE|README)\.md$).+\.md$/;
+
+function footprint(b, head, cat, e) {
+  const items = expandFiles(e, b.repo, head, { home: b.home, lenient: true });
+  return {
+    files: items.filter((i) => !i.rule).length,
+    rules: items.filter((i) => i.rule).length,
+    settings: uniq(e.settings.flatMap((f) => Object.keys(JSON.parse(showFileAt(b.repo, head, f).toString('utf8'))))),
+    mcp: e.mcp.map((m) => m.name),
+    plugins: e.plugins.map((x) => x.name),
+    outside: e.machine_steps.length,
+    user: e.user_steps.length,
+    references: items.some((i) => SKILL_DOC.test(i.dest)),
+    needs: e.needs.flatMap((n) => (n.startsWith('cmd:') ? [NEED_LABEL[n.slice(4)] ?? n.slice(4)] : n.startsWith('part:') ? [cat.get(n.slice(5))?.title ?? n.slice(5)] : n.startsWith('plugin:') ? [`the ${n.slice(7)} plugin`] : [])),
+  };
 }
 
 function proposalCard(b, p, item) {
@@ -607,6 +625,7 @@ function cmdApply(b, dryFlag) {
         id: it.p.id, title: it.p.meta.title, kind: it.p.meta.kind, level: it.p.meta.level, part: it.p.meta.part, ask_alone: it.p.meta.ask_alone === true,
         risky: it.risky, noop: it.noop, unknown_needs: unknown[it.p.id] ?? [], questions: it.questions, settings_conflicts: it.settingsConflicts,
         held: it.plan.held, files: it.files, steps: stepsOf(b, it.entry, it.plan, x.values), ...(cards ? { card: texts[i] } : {}),
+        ...(b.state.parts[it.entry.id]?.installed ? {} : { part_card: partCard(it.entry, footprint(b, head, cat, it.entry)) }),
       }));
     const lines = out.flatMap((o, i) => (o.error ? [`${i + 1}. ${o.title}: could not plan (${o.error})`] : [`--- ${i + 1}/${out.length}: ${o.id}${o.noop ? ' (changes nothing on this PC)' : ''}`, o.card ?? `${o.title} (${o.files.length} file changes; run plan --proposals ${o.id} for the full card)`]));
     if (!out.length) lines.push('Nothing new to look at.');
@@ -757,6 +776,7 @@ function cmdCatalog(b) {
       };
       if (detail.has(e.id)) {
         Object.assign(row, {
+          card: partCard(e, footprint(b, head, cat, e)), solves: e.solves ?? null, use_cases: e.use_cases ?? [], tokens_on_use: e.tokens_on_use ?? null,
           details: e.details, changes: sensitive(e) ? e.risk : null, quality: e.quality, tokens: e.tokens_always_on, needs, values: e.values.map((v) => ({ key: v.key, ask: v.ask, default: v.default })),
           user_steps: e.user_steps, machine_steps: e.machine_steps.map((s) => fill(s, mergedValues(e, b.state.values))), plugins: e.plugins, mcp: e.mcp.map((m) => m.name),
         });
@@ -982,7 +1002,8 @@ function cmdAdopt(b) {
   const ownKept = own.map((o) => o.dest).sort();
   const listed = (label, arr) => (arr.length ? [`${label}: ${arr.length}${arr.length <= 8 ? ` (${arr.join(', ')})` : ''}`] : []);
   const settingsLine = settingsNot.length ? [`Settings the new version would add or change were left as they are: ${settingsNot.map((s) => `${s.part} (${s.pointers.join(', ')})`).join('; ')}. Add them with: install --parts ${settingsNot.map((s) => s.part).join(',')}`] : [];
-  const out = { from, head, report: rep, files_written: filesWritten, rules_written: rulesWritten, own_files_kept: ownKept, settings_not_applied: settingsNot, rules_removed: packFiles, parts: [...had] };
+  const partList = entries.map((e, i) => ({ id: e.id, title: e.title, summary: e.summary, files_written: plans[i].ops.filter((o) => o.kind === 'write').length }));
+  const out = { from, head, report: rep, files_written: filesWritten, rules_written: rulesWritten, own_files_kept: ownKept, settings_not_applied: settingsNot, rules_removed: packFiles, parts: [...had], part_list: partList };
   if (has(b.a, 'plan')) {
     return ok({ command: 'adopt', mode: 'plan', ...out }, [
       `Adopt would take over from ${from}: ${rep.managed.length} files managed, ${rep.held.length} held (your edits kept), ${rep.seed.length} seed file(s).`,

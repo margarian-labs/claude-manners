@@ -5,6 +5,14 @@
   "level": "recommended",
   "summary": "How Claude works day to day: plan mode for bigger tasks, picking skills itself, editing over creating, questions through AskUserQuestion.",
   "benefit": "Claude plans bigger changes first and asks its questions in one clear place.",
+  "solves": "Big changes started without a plan, questions lost inside long replies, and stray new files.",
+  "use_cases": [
+    "A task that touches 3 or more files: Claude plans first (plan mode) without being told.",
+    "Claude checks the skill list before the first action and uses every skill that fits, even unasked.",
+    "Questions come only through the question dialog (AskUserQuestion), never buried in a reply.",
+    "Existing files are edited instead of new ones created; no comments or README updates unless asked.",
+    "Claude never starts python or node without a script, which can loop and fill the disk."
+  ],
   "details": "This rule shapes how Claude works day to day: it enters plan mode automatically when a task will touch 3 or more files, picks fitting skills without being asked, prefers editing existing files over creating new ones, asks you its questions through the AskUserQuestion tool and never starts a bare interpreter. \"Notify sessions\" means the sessions on this PC only. It loads as a text rule in every session; no code runs.",
   "use": "auto",
   "trigger": "",
@@ -22,6 +30,10 @@
   "verify": [],
   "tokens_always_on": {
     "value": 256,
+    "how": "estimated chars/2.6"
+  },
+  "tokens_on_use": {
+    "value": 0,
     "how": "estimated chars/2.6"
   },
   "quality": "tried",

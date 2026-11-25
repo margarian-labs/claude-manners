@@ -5,6 +5,13 @@
   "level": "optional",
   "summary": "A background check every 10 minutes that shrinks huge Claude temp logs and cleans old session temp and old backups.",
   "benefit": "Claude's temp files and old backups never fill your disk.",
+  "solves": "Claude temp logs and old backups that grow until the disk is full.",
+  "use_cases": [
+    "Every 10 minutes and at logon: a Claude temp log over 1 GB is shrunk and the program holding it is stopped.",
+    "Session temp older than 3 days and backups older than 90 days are deleted.",
+    "Under 20 GB free disk you get a Telegram alert, if Telegram notifications are set up.",
+    "Try it first: run disk-watchdog.ps1 with -DryRun -SweepNow and nothing is deleted."
+  ],
   "details": "A scheduled check runs every 10 minutes and at logon: it shrinks Claude temp logs over 1 GB and force-stops the programs holding them (never claude.exe or explorer.exe), deletes session temp older than 3 days and backups older than 90 days, and sends a Telegram alert (only if set up) under 20 GB free disk. It suits PCs where Claude temp and logs grow large. It adds a PowerShell script and a hidden VBS launcher, plus a task you register; no network except the optional alert.",
   "use": "auto",
   "trigger": "",
@@ -39,6 +46,10 @@
     "pwsh -NoProfile -ExecutionPolicy Bypass -File \"$CLAUDE_CONFIG_DIR/tools/disk-watchdog.ps1\" -DryRun -SweepNow"
   ],
   "tokens_always_on": {
+    "value": 0,
+    "how": "estimated chars/2.6"
+  },
+  "tokens_on_use": {
     "value": 0,
     "how": "estimated chars/2.6"
   },

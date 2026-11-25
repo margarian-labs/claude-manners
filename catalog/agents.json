@@ -5,6 +5,13 @@
   "level": "recommended",
   "summary": "Three helper agents: a planner for big tasks, a second opinion for hard calls, and a Haiku worker for simple jobs.",
   "benefit": "Big tasks get a written plan, hard calls get a second view, and simple jobs cost less.",
+  "solves": "Big tasks without a written plan, hard calls made on one view, and simple jobs run on a costly model.",
+  "use_cases": [
+    "planner: writes a step-by-step plan for a task of 3+ files or a new feature; read-only, edits nothing.",
+    "second-opinion: an independent verdict on a hard decision, from a brief only, in about 300 words.",
+    "haiku-worker: one simple, fully specified job on the cheap Haiku model, such as find and list or a literal edit.",
+    "No Fable on your plan: sync sets the planner and the second opinion to Opus instead."
+  ],
   "details": "Adds three helper agents Claude can use: planner writes an implementation plan for big tasks, second-opinion gives a short independent view of a hard call, and haiku-worker runs one simple, fully specified job. They help for tasks that touch many files, hard decisions, or small jobs fit for the cheaper Haiku model. They are agent files under ~/.claude/agents/; planner and second-opinion never edit anything, and all three run only when Claude starts them.",
   "use": "auto",
   "trigger": "",
@@ -51,6 +58,10 @@
   "verify": [],
   "tokens_always_on": {
     "value": 295,
+    "how": "estimated chars/2.6"
+  },
+  "tokens_on_use": {
+    "value": 1878,
     "how": "estimated chars/2.6"
   },
   "quality": "tried",

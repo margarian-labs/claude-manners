@@ -5,6 +5,13 @@
   "level": "recommended",
   "summary": "Claude runs every command and edit without asking. Prompt-free agents and away mode depend on it.",
   "benefit": "Work runs without permission prompts, so agents and away mode never stall waiting for you.",
+  "solves": "Permission prompts that stop agents and away mode until you come back and click.",
+  "use_cases": [
+    "Every command and edit runs without a permission prompt, in every session.",
+    "A shell prompt that still appears is approved by a hook, so unattended work does not stall.",
+    "The start-up warning about this mode is skipped.",
+    "Use it only where Claude cannot cause damage: the Claude Code docs name containers and VMs."
+  ],
   "details": "Claude runs every command and edit without asking you; the start-up warning is skipped and a hook approves any shell prompt that still appears. Prompt-free agents and away mode depend on it, but the Claude Code docs warn to use it only in isolated environments such as containers or VMs. It sets the permissions mode in settings.json and adds the hook script; the hook runs locally, no network.",
   "use": "auto",
   "trigger": "",
@@ -40,6 +47,10 @@
   "tokens_always_on": {
     "value": 0,
     "how": "estimated chars/2.6"
+  },
+  "tokens_on_use": {
+    "value": null,
+    "how": "not measured yet"
   },
   "quality": "tried",
   "risk": "The agent runs every command and edit without asking. The Claude Code docs warn: \"Only use this mode in isolated environments like containers or VMs where Claude Code can't cause damage.\" The start-up warning is skipped and a hook approves any shell prompt that still appears.",

@@ -5,6 +5,14 @@
   "level": "recommended",
   "summary": "Opus leads, Fable plans, Sonnet and Haiku do the work from detailed briefs, and Opus checks every result.",
   "benefit": "Big jobs run in parallel on cheaper models, and every result is checked before you see it.",
+  "solves": "Big jobs done slowly in one expensive conversation, and worker results taken on trust.",
+  "use_cases": [
+    "A task that splits: independent parts go to parallel workers in one message; one unsplittable task stays with Claude.",
+    "Each part is rated first: simple, fully specified ones go to Haiku, normal work to Sonnet, critical to Sonnet xhigh.",
+    "Big task (3+ files, plan mode, new feature): the planner drafts the plan and the main model checks it.",
+    "Hard or critical task: one independent second opinion before the approach is final.",
+    "A worker's \"done\" is a claim: Claude checks the real diff, build, tests or render before reporting."
+  ],
   "details": "This rule sets the model roles in every session: Opus runs the main conversation and checks every result, Fable plans and gives second opinions, Sonnet does the work, and Haiku takes the easiest fully specified jobs. The detailed rules (difficulty table, briefs, acceptance) sit in a delegation skill that Claude loads before it spawns a sub-agent. If your account has no Fable, sync names Opus 5.5 as the planner instead. Text only; no code runs.",
   "use": "auto",
   "trigger": "",
@@ -37,6 +45,10 @@
   "verify": [],
   "tokens_always_on": {
     "value": 678,
+    "how": "estimated chars/2.6"
+  },
+  "tokens_on_use": {
+    "value": 4508,
     "how": "estimated chars/2.6"
   },
   "quality": "tried",

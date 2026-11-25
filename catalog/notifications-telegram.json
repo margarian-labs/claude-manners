@@ -5,6 +5,14 @@
   "level": "optional",
   "summary": "Phone messages through your own Telegram bot when Claude finishes, needs input or asks a question.",
   "benefit": "Your phone tells you when Claude is done or waiting for you.",
+  "solves": "Coming back to find Claude finished long ago, or waiting on a question you never saw.",
+  "use_cases": [
+    "Claude finishes answering: your phone gets a message from your own Telegram bot.",
+    "Claude asks you a question: the question arrives on your phone.",
+    "Claude needs your attention, for example for input: you get a message too.",
+    "Each message carries the machine name you set, so you know which PC is calling.",
+    "The usual desktop notifications are turned off."
+  ],
   "details": "Your own Telegram bot sends phone messages when Claude finishes answering, when it needs input and when it asks you a question, and the usual OS notifications are turned off. It is for people who leave Claude running and want to know from their phone. It adds hook scripts that run on Notification, Stop and AskUserQuestion events plus settings entries, and sends messages over the network to api.telegram.org with a bot token you put in ~/.claude/telegram.conf.",
   "use": "auto",
   "trigger": "",
@@ -63,6 +71,10 @@
   "tokens_always_on": {
     "value": 0,
     "how": "estimated chars/2.6"
+  },
+  "tokens_on_use": {
+    "value": null,
+    "how": "not measured yet"
   },
   "quality": "tried",
   "risk": "Hooks run on notifications, stops and questions and send messages over the network to api.telegram.org; the OS notifications are turned off.",

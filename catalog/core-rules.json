@@ -5,6 +5,14 @@
   "level": "recommended",
   "summary": "Short answers, honest pushback, no long dashes and readable pages. Loaded every session.",
   "benefit": "Answers stay short and honest, and Claude tells you when your plan looks wrong.",
+  "solves": "Long, padded answers, guessed facts and reports that are hard to read.",
+  "use_cases": [
+    "A simple question gets only the answer: no preamble, summary or next steps.",
+    "Your plan looks wrong: Claude says what, why and what it recommends before acting, once.",
+    "Claude says plainly what it has not verified and never invents APIs, flags, paths or sources.",
+    "Any page or report: summary first, detail collapsed, checked with a screenshot (readable-pages skill).",
+    "No em dash or en dash anywhere: replies, files, code or commits."
+  ],
   "details": "Claude gives short direct answers, honest pushback when your plan looks wrong, no em or en dashes, and readable pages and reports (a small readable-pages skill holds the page rules and loads on demand). It applies to every project and every session. It adds one plain-text rule file under ~/.claude/rules/ and one skill folder; no code runs and no network is used.",
   "use": "auto",
   "trigger": "",
@@ -28,6 +36,10 @@
   "verify": [],
   "tokens_always_on": {
     "value": 882,
+    "how": "estimated chars/2.6"
+  },
+  "tokens_on_use": {
+    "value": 1188,
     "how": "estimated chars/2.6"
   },
   "quality": "tried",

@@ -5,6 +5,13 @@
   "level": "recommended",
   "summary": "Gives a new project a design system by writing a DESIGN.md based on one of 84 well known product brands.",
   "benefit": "A new project gets a consistent look from day one.",
+  "solves": "A new project with no design system, so every screen ends up looking different.",
+  "use_cases": [
+    "\"/design-md list\": shows 84 brand-inspired design systems, grouped by kind.",
+    "\"/design-md stripe\": writes a DESIGN.md for your project from that brand's look.",
+    "Brand names, logos and paid fonts are replaced, so the result is yours and not a copy.",
+    "A DESIGN.md already exists: Claude asks whether to replace it, merge into it or stop."
+  ],
   "details": "Type /design-md list to see 84 brand-inspired design systems, then /design-md with a brand name like Linear or Stripe to write a DESIGN.md for your new project. It helps when a new site has no design system yet and needs a look. The skill folder installs as skills/design-md and loads only when you use it; it is instructions only, so no code runs on its own.",
   "use": "auto",
   "trigger": "",
@@ -26,6 +33,10 @@
   "verify": [],
   "tokens_always_on": {
     "value": 134,
+    "how": "estimated chars/2.6"
+  },
+  "tokens_on_use": {
+    "value": 790,
     "how": "estimated chars/2.6"
   },
   "quality": "tried",

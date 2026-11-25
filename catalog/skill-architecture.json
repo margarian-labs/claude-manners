@@ -5,6 +5,13 @@
   "level": "optional",
   "summary": "Writes architecture decision records and reviews system designs with trade-offs and consequences.",
   "benefit": "Design decisions are written down with their trade-offs, so they are easy to revisit.",
+  "solves": "Technology choices made in a chat and forgotten, with no record of why.",
+  "use_cases": [
+    "\"/architecture Should we use Kafka or SQS?\": a decision record with options, trade-offs and consequences.",
+    "\"/architecture Review this microservices proposal\": an evaluation of a design you hand it.",
+    "\"/architecture Design the notification system\": a new component designed from requirements.",
+    "The Skill overrides part switches this skill off; remove its line under skillOverrides to use it."
+  ],
   "details": "You type /architecture followed by a decision or system, and Claude writes an architecture decision record with context, options, trade-offs and consequences, or reviews a design you hand it. It is for you when you choose between technologies or want a design reviewed. The pack copies a skill folder that loads only when used; instructions only, no code runs, and the skill-overrides setting keeps this skill off by default.",
   "use": "you",
   "trigger": "Type /architecture with the decision or system.",
@@ -26,6 +33,10 @@
   "verify": [],
   "tokens_always_on": {
     "value": 119,
+    "how": "estimated chars/2.6"
+  },
+  "tokens_on_use": {
+    "value": 740,
     "how": "estimated chars/2.6"
   },
   "quality": "tried",

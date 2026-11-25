@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { card, unifiedDiff, riskyPointers } from '../../sync/lib/display.mjs';
+import { card, partCard, unifiedDiff, riskyPointers } from '../../sync/lib/display.mjs';
 
 const CFG = 'C:/Users/test/.claude';
 const prop = (over = {}) => ({
@@ -138,4 +138,64 @@ test('card ends with one newline and never uses em or en dash', () => {
   const text = run(prop(), { ops: [file('hooks/a.js', 'x')] });
   assert.ok(text.endsWith('x\n') && !text.endsWith('\n\n'));
   assert.ok(!new RegExp('[' + String.fromCharCode(0x2014) + String.fromCharCode(0x2013) + ']').test(text));
+});
+
+const part = (over = {}) => ({
+  title: 'Away mode', level: 'recommended', use: 'you',
+  summary: 'Say -away and the agent asks all its questions first, then finishes the whole task without you, with an optional usage stop point.',
+  benefit: 'You can leave: Claude asks everything up front, then finishes the task on its own.',
+  solves: 'Long tasks stop and wait for an answer while you are away from your desk.',
+  use_cases: ['"-away" on any message: one round of questions now, then it never asks or waits.', '"-away 85": also stops cleanly when your weekly usage reaches 85%.'],
+  tokens_always_on: { value: 188, how: 'estimated chars/2.6' }, tokens_on_use: { value: 1225, how: 'estimated chars/2.6' },
+  risk: 'Hooks run on every prompt, tool call and stop; no network.', ...over,
+});
+const lineOf = (text, label) => text.split('\n').find((l) => l.startsWith(`${label}: `));
+
+test('partCard: the full labeled card for a part you start', () => {
+  const text = partCard(part(), { files: 9, rules: 1, settings: ['env', 'hooks'], needs: ['Node', 'Status line', 'Compaction recovery'] });
+  assert.equal(text, [
+    'Away mode (recommended)',
+    'What it is: Say -away and the agent asks all its questions first, then finishes the whole task without you, with an optional usage stop point.',
+    'Solves: Long tasks stop and wait for an answer while you are away from your desk.',
+    'Improves: You can leave: Claude asks everything up front, then finishes the task on its own.',
+    'Use cases:',
+    '- "-away" on any message: one round of questions now, then it never asks or waits.',
+    '- "-away 85": also stops cleanly when your weekly usage reaches 85%.',
+    'Affects: Hooks run on every prompt, tool call and stop; no network. Writes 9 files, 1 rule file and settings (env, hooks).',
+    'Cost: about 188 tokens in every session, about 1,225 more when you use it. Text added by its hooks is not counted.',
+    'Needs: Node, Status line, Compaction recovery.',
+  ].join('\n'));
+  assert.doesNotMatch(text, /risk/i);
+});
+
+test('partCard: cost wording for rule, settings, hook, plugin and MCP parts', () => {
+  const auto = (always, used, extra = {}) => part({ use: 'auto', tokens_always_on: { value: always, how: 'x' }, tokens_on_use: { value: used, how: 'x' }, ...extra });
+  assert.equal(lineOf(partCard(auto(882, 0), { rules: 1 }), 'Cost'), 'Cost: about 882 tokens in every session, nothing more when it is used.');
+  assert.equal(lineOf(partCard(auto(0, 0), { settings: ['autoCompactEnabled'] }), 'Cost'), 'Cost: no tokens in every session, nothing more when it is used.');
+  assert.equal(lineOf(partCard(auto(0, null), { files: 2, settings: ['hooks'] }), 'Cost'), 'Cost: Text added by its hooks is not counted.');
+  assert.equal(lineOf(partCard(auto(0, null), {}), 'Cost'), 'Cost: no tokens in every session, cost when used not measured yet.');
+  assert.equal(lineOf(partCard(auto(null, 0), {}), 'Cost'), 'Cost: session cost not measured yet, nothing more when it is used.');
+  const plugin = partCard(auto(67, null), { rules: 1, plugins: ['superpowers'] });
+  assert.equal(lineOf(plugin, 'Cost'), 'Cost: about 67 tokens in every session. Text added by the plugin is not counted.');
+  assert.ok(lineOf(plugin, 'Affects').endsWith('Writes 1 rule file. Installs the superpowers plugin.'));
+  const mcp = partCard(auto(566, null), { rules: 1, mcp: ['memohopper'], outside: 2 });
+  assert.ok(lineOf(mcp, 'Affects').endsWith('Writes 1 rule file. Adds the MCP server memohopper. Has 2 steps outside the Claude folder.'));
+  assert.equal(lineOf(mcp, 'Cost'), 'Cost: about 566 tokens in every session. Text added by its MCP server is not counted.');
+  const skill = partCard(auto(218, 6990, { cost_note: 'About $1.80 and 4-6 minutes per page' }), { files: 40, rules: 1, references: true });
+  assert.equal(lineOf(skill, 'Cost'), 'Cost: about 218 tokens in every session, about 6,990 more when it is used, plus any reference files it opens. About $1.80 and 4-6 minutes per page.');
+});
+
+test('partCard: an entry without the newer fields still gives a card', () => {
+  const { solves, use_cases, tokens_on_use, benefit, ...old } = part();
+  const text = partCard(old, {});
+  assert.deepEqual(text.split('\n').map((l) => l.split(':')[0]), ['Away mode (recommended)', 'What it is', 'Affects', 'Cost']);
+  assert.equal(lineOf(text, 'Cost'), 'Cost: about 188 tokens in every session.');
+});
+
+test('update card shows how the change affects the agent and how to undo it', () => {
+  const p = prop();
+  p.body = '## What changes\nThe hook gets smarter.\n\n## Why\nIt misses cases.\n\n## How it affects the agent\nIt checks twice.\n\n## Undo\nRoll back.\n';
+  const text = run(p, { ops: [file('hooks/a.js', 'x')] });
+  assert.ok(text.includes('How it affects the agent\nIt checks twice.\n\nUndo\nRoll back.\n'), text);
+  assert.ok(text.indexOf('What changes\n') < text.indexOf('How it affects the agent\n'));
 });

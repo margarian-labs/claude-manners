@@ -5,6 +5,13 @@
   "level": "optional",
   "summary": "Helps you design systems and services: requirements, architecture, API contracts, data models and service boundaries.",
   "benefit": "New services start from clear requirements, APIs and data models.",
+  "solves": "Services built before the requirements, data model and trade-offs were thought through.",
+  "use_cases": [
+    "\"/system-design\" and what you want to build: requirements, components, API contracts and data model.",
+    "Scale and reliability are covered: load estimate, scaling, failover and monitoring.",
+    "Every decision comes with its trade-offs and what to revisit as the system grows.",
+    "The Skill overrides part switches this skill off; remove its line under skillOverrides to use it."
+  ],
   "details": "Describe what you want to build and Claude works through requirements, a component design, API contracts, data models, storage, scaling, failover and trade-offs, then writes a structured design document with explicit assumptions and what to revisit as the system grows. Use it when you need API design, data modeling or service boundaries worked out. It installs as a skill that loads only when used; instructions only, no code runs and no network is used.",
   "use": "you",
   "trigger": "Type /system-design and describe what you want to build.",
@@ -26,6 +33,10 @@
   "verify": [],
   "tokens_always_on": {
     "value": 106,
+    "how": "estimated chars/2.6"
+  },
+  "tokens_on_use": {
+    "value": 504,
     "how": "estimated chars/2.6"
   },
   "quality": "tried",

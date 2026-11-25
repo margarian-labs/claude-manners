@@ -5,6 +5,14 @@
   "level": "recommended",
   "summary": "Looks at frames from a video or screen recording and transcribes speech so you learn what happens and what is said.",
   "benefit": "Claude can tell you what happens and what is said in a video or recording.",
+  "solves": "Claude cannot play video, so bug recordings and talks had to be described to it by hand.",
+  "use_cases": [
+    "\"What's the bug in this video?\" with a screen recording: timestamped steps, expected versus actual.",
+    "\"Summarize this video\" with a YouTube or other public link; it is downloaded at up to 720p.",
+    "Only what is said matters: it reads the captions and downloads no video.",
+    "Small or fast details: Claude re-reads a moment frame by frame, or zooms into one region.",
+    "Videos over 60 minutes are refused unless captions only; a video that needs a login is not opened."
+  ],
   "details": "When you point Claude at a video or screen recording, a file or a YouTube or other link, and ask what happens or what is said, it picks the frames where things change, transcribes the speech and reports what it saw, frame by frame. Use it for bug-reproduction clips, phone captures and talk summaries. It installs as a skill that loads only when used and runs local scripts (ffmpeg, with yt-dlp and faster-whisper in the skill's own .venv); a linked video is downloaded at up to 720p.",
   "use": "auto",
   "trigger": "",
@@ -31,6 +39,10 @@
   "verify": [],
   "tokens_always_on": {
     "value": 197,
+    "how": "estimated chars/2.6"
+  },
+  "tokens_on_use": {
+    "value": 2087,
     "how": "estimated chars/2.6"
   },
   "quality": "tried",

@@ -5,6 +5,13 @@
   "level": "recommended",
   "summary": "Stress-tests your thinking with a relentless interview about a plan, decision or idea.",
   "benefit": "Weak spots in a plan or decision show up before you commit to it.",
+  "solves": "Decisions made on assumptions nobody checked.",
+  "use_cases": [
+    "\"Grill me on this plan\": Claude interviews you in rounds of up to 4 questions, each with a recommended answer.",
+    "Each answer opens the next questions, until every branch of the design is settled.",
+    "Facts are Claude's job: it looks things up itself instead of asking you.",
+    "Claude does not act on the plan until you confirm you both understand it the same way."
+  ],
   "details": "Use it when you want to stress-test a plan, decision or idea: Claude interviews you relentlessly, in rounds of up to 4 questions with recommended answers, working through a design tree until nothing is left assumed. Finding facts is Claude's job, not yours, so it looks things up itself instead of asking. It adds a skill folder that loads only when used; instructions only, so no code runs on its own.",
   "use": "auto",
   "trigger": "",
@@ -26,6 +33,10 @@
   "verify": [],
   "tokens_always_on": {
     "value": 69,
+    "how": "estimated chars/2.6"
+  },
+  "tokens_on_use": {
+    "value": 770,
     "how": "estimated chars/2.6"
   },
   "quality": "tried",

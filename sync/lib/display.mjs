@@ -135,6 +135,55 @@ function settingsCovered(touches, pointer) {
   });
 }
 
+const count = (n, one, many) => `${n} ${n === 1 ? one : many}`;
+const andList = (a) => (a.length < 2 ? a.join('') : `${a.slice(0, -1).join(', ')} and ${a[a.length - 1]}`);
+const num = (n) => n.toLocaleString('en-US');
+const sentence = (s) => (/[.!?]$/.test(s) ? s : `${s}.`);
+
+export function partCard(e, foot = {}) {
+  const out = [`${e.title} (${e.level})`, `What it is: ${e.summary}`];
+  if (e.solves) out.push(`Solves: ${e.solves}`);
+  if (e.benefit) out.push(`Improves: ${e.benefit}`);
+  if (e.use_cases?.length) out.push('Use cases:', ...e.use_cases.map((u) => `- ${u}`));
+
+  const hooks = (foot.settings ?? []).includes('hooks');
+  const mcp = foot.mcp ?? [];
+  const plugins = foot.plugins ?? [];
+  const writes = [];
+  if (foot.files) writes.push(count(foot.files, 'file', 'files'));
+  if (foot.rules) writes.push(count(foot.rules, 'rule file', 'rule files'));
+  if (foot.settings?.length) writes.push(`settings (${foot.settings.join(', ')})`);
+  const affects = [sentence(e.risk)];
+  if (writes.length) affects.push(`Writes ${andList(writes)}.`);
+  if (mcp.length) affects.push(`Adds the MCP ${mcp.length === 1 ? 'server' : 'servers'} ${andList(mcp)}.`);
+  if (plugins.length) affects.push(`Installs the ${andList(plugins)} ${plugins.length === 1 ? 'plugin' : 'plugins'}.`);
+  if (foot.outside) affects.push(`Has ${count(foot.outside, 'step', 'steps')} outside the Claude folder.`);
+  if (foot.user) affects.push(`Leaves ${count(foot.user, 'step', 'steps')} for you to do.`);
+  out.push(`Affects: ${affects.join(' ')}`);
+
+  const uncounted = [hooks && 'its hooks', plugins.length && 'the plugin', mcp.length && 'its MCP server'].filter(Boolean);
+  const always = e.tokens_always_on?.value;
+  const cost = [];
+  if (always === null) cost.push('session cost not measured yet');
+  else if (always > 0) cost.push(`about ${num(always)} tokens in every session`);
+  else if (!uncounted.length) cost.push('no tokens in every session');
+  if (e.tokens_on_use) {
+    const used = e.tokens_on_use.value;
+    const when = e.use === 'you' ? 'when you use it' : 'when it is used';
+    if (used === null) { if (!uncounted.length) cost.push('cost when used not measured yet'); }
+    else if (used > 0) cost.push(`about ${num(used)} more ${when}${foot.references ? ', plus any reference files it opens' : ''}`);
+    else if (cost.length) cost.push(`nothing more ${when}`);
+  }
+  const costLine = [];
+  if (cost.length) costLine.push(sentence(cost.join(', ')));
+  if (uncounted.length) costLine.push(`Text added by ${andList(uncounted)} is not counted.`);
+  if (e.cost_note) costLine.push(sentence(e.cost_note));
+  out.push(`Cost: ${costLine.join(' ')}`);
+
+  if (foot.needs?.length) out.push(`Needs: ${foot.needs.join(', ')}.`);
+  return out.join('\n');
+}
+
 export function card(proposal, plan, installed, opts = {}) {
   const m = proposal.meta;
   const configDir = path.resolve(opts.configDir || process.env.CLAUDE_CONFIG_DIR || path.join(os.homedir(), '.claude')).replace(/\\/g, '/').toLowerCase();
@@ -143,6 +192,10 @@ export function card(proposal, plan, installed, opts = {}) {
   out.push(`Level: ${m.level} | Kind: ${m.kind} | Part: ${m.part}`, '');
   out.push('Why', section(proposal.body, 'Why') || '(not described)', '');
   out.push('What changes', section(proposal.body, 'What changes') || '(not described)', '');
+  for (const title of ['How it affects the agent', 'Undo']) {
+    const text = section(proposal.body, title);
+    if (text) out.push(title, text, '');
+  }
   out.push(`Tokens always on: ${m.tokens_always_on}${m.tokens_how ? ` (how: ${m.tokens_how})` : ''}`);
   out.push(`Quality: ${m.quality}`);
   out.push(`Changes: ${m.risk}`, '');

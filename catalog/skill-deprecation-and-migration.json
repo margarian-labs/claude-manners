@@ -5,6 +5,14 @@
   "level": "recommended",
   "summary": "Plans the safe removal or replacement of old systems and APIs, including database changes with no downtime.",
   "benefit": "Old systems and database columns can be retired without downtime.",
+  "solves": "Old systems that never get removed, and schema changes that break production during a rollout.",
+  "use_cases": [
+    "Replacing an old system, API or library: build the replacement, announce, migrate step by step, remove.",
+    "\"Should we keep or retire this?\": five questions on value, users, replacement and cost.",
+    "Rename or drop a database column without downtime: expand, migrate, contract.",
+    "Patterns for moving users over: strangler, adapter and feature flag migration.",
+    "Dead code that nobody owns but everybody depends on: a plan to remove it safely."
+  ],
   "details": "When you retire or replace an old system, API or feature, or change a production database schema, Claude plans the stages: what still depends on it, what replaces it, how to move users over, and how to rename or drop a column without downtime. It is for you when you sunset or migrate something live. It copies a skill folder that loads only when used; instructions only, no code runs on its own.",
   "use": "auto",
   "trigger": "",
@@ -26,6 +34,10 @@
   "verify": [],
   "tokens_always_on": {
     "value": 89,
+    "how": "estimated chars/2.6"
+  },
+  "tokens_on_use": {
+    "value": 4903,
     "how": "estimated chars/2.6"
   },
   "quality": "tried",

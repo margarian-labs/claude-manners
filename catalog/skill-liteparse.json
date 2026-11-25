@@ -5,6 +5,14 @@
   "level": "recommended",
   "summary": "Local OCR and text extraction for scanned, image-only or long PDFs, so you need not read pages as images.",
   "benefit": "Scanned and long PDFs become text on your PC, which costs far fewer tokens than images.",
+  "solves": "Scanned and long PDFs read page by page as images, which uses a lot of context.",
+  "use_cases": [
+    "A scanned or image-only PDF: OCR once to a text file on your PC, then search that file.",
+    "A long PDF with a real text layer: text extraction without OCR, much cheaper than page images.",
+    "A folder of scans or photos of documents: all parsed in one batch.",
+    "Armenian, Russian and English are covered; Armenian text is for finding things, not for exact quotes.",
+    "Your documents are never sent to a cloud OCR service without asking."
+  ],
   "details": "For scanned, image-only or long PDFs, and many document photos, this skill extracts text locally with the lit CLI (installed via npm), so Claude searches a text file instead of reading every page as an image; it covers Armenian, Russian and English OCR. It is for anyone with scans, long PDFs or Armenian documents, and it never sends your files to a cloud OCR service without asking. It adds a skill folder plus a rule file, and it needs the lit and uv commands installed.",
   "use": "auto",
   "trigger": "",
@@ -33,6 +41,10 @@
   "verify": [],
   "tokens_always_on": {
     "value": 287,
+    "how": "estimated chars/2.6"
+  },
+  "tokens_on_use": {
+    "value": 2633,
     "how": "estimated chars/2.6"
   },
   "quality": "tried",

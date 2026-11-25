@@ -5,6 +5,14 @@
   "level": "recommended",
   "summary": "Plans work too big for one session as a shared map of decision tickets on your tracker, resolved one at a time.",
   "benefit": "Work too big for one session gets a clear map and moves one decision at a time.",
+  "solves": "Work too big for one session, where the way from here to the goal is not visible yet.",
+  "use_cases": [
+    "\"/wayfinder\" with a loose big idea: Claude names the destination and charts a map issue with decision tickets.",
+    "\"/wayfinder\" with a map URL or number: the next open decision is resolved, one per session.",
+    "Tickets are research (done by a background agent), a prototype, a grilling with you, or a manual task.",
+    "It plans and decides; it does not build. What is still unclear stays in a \"Not yet specified\" list.",
+    "Run \"/setup-matt-pocock-skills\" once in the repo first, so it knows your tracker."
+  ],
   "details": "When the work is too big for one session, invoke /wayfinder and Claude charts a shared map on your issue tracker: a map issue plus child decision tickets, each sized to one session, worked one at a time until the route to the destination is clear. Use it at the start of a large effort when the way forward is still foggy. It loads only when used; instructions only, no code runs, and work is recorded through the tracker /setup-matt-pocock-skills configured.",
   "use": "you",
   "trigger": "Type /wayfinder with the big piece of work to map.",
@@ -28,6 +36,10 @@
   "verify": [],
   "tokens_always_on": {
     "value": 86,
+    "how": "estimated chars/2.6"
+  },
+  "tokens_on_use": {
+    "value": 4773,
     "how": "estimated chars/2.6"
   },
   "quality": "tried",

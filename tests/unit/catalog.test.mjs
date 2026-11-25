@@ -141,3 +141,42 @@ test('benefit: optional, right after summary, short; every part but the sync eng
     else assert.ok(typeof e.benefit === 'string' && e.benefit.length > 0, `${id} has no benefit`);
   }
 });
+
+test('solves, use_cases, tokens_on_use and cost_note: optional, in order, bounded; every part but the sync engine has the first three', () => {
+  const NEW = ['solves', 'use_cases', 'tokens_on_use', 'cost_note'];
+  const b0 = Object.fromEntries(Object.entries(base()).filter(([k]) => !NEW.includes(k)));
+  const put = (e, after, key, value) => Object.fromEntries(Object.entries(e).flatMap(([k, v]) => (k === after ? [[k, v], [key, value]] : [[k, v]])));
+  assert.deepEqual(validateEntry(b0, ids), []);
+
+  assert.deepEqual(validateEntry(put(b0, 'benefit', 'solves', 'Pages break and nobody sees it.'), ids), []);
+  assert.ok(has(validateEntry(put(b0, 'benefit', 'solves', 'x'.repeat(121)), ids), 'solves'));
+  assert.ok(has(validateEntry(put(b0, 'benefit', 'solves', ''), ids), 'solves'));
+  assert.ok(has(validateEntry({ ...b0, solves: 'At the end.' }, ids), 'out of order'));
+
+  const cases = (v) => validateEntry(put(b0, 'benefit', 'use_cases', v), ids);
+  assert.deepEqual(cases(['One.']), []);
+  assert.deepEqual(cases(['1', '2', '3', '4', '5']), []);
+  for (const bad of [[], ['1', '2', '3', '4', '5', '6'], 'text', ['x'.repeat(121)], ['']]) assert.ok(has(cases(bad), 'use_cases'), JSON.stringify(bad));
+  assert.deepEqual(validateEntry(put(put(b0, 'benefit', 'solves', 'S.'), 'solves', 'use_cases', ['U.']), ids), []);
+  assert.ok(has(validateEntry(put(put(b0, 'benefit', 'use_cases', ['U.']), 'use_cases', 'solves', 'S.'), ids), 'out of order'));
+
+  const used = (v) => validateEntry(put(b0, 'tokens_always_on', 'tokens_on_use', v), ids);
+  assert.deepEqual(used({ value: 1200, how: 'estimated chars/2.6' }), []);
+  assert.deepEqual(used({ value: null, how: 'not measured yet' }), []);
+  assert.ok(has(used({ value: 1, how: 'guess' }), 'tokens_on_use.how'));
+  assert.ok(has(used(5), 'tokens_on_use'));
+
+  assert.deepEqual(validateEntry(put(b0, 'tokens_always_on', 'cost_note', 'About $1.80 per page.'), ids), []);
+  assert.deepEqual(validateEntry(put(put(b0, 'tokens_always_on', 'tokens_on_use', { value: 0, how: 'estimated chars/2.6' }), 'tokens_on_use', 'cost_note', 'A note.'), ids), []);
+  assert.ok(has(validateEntry(put(b0, 'tokens_always_on', 'cost_note', 'x'.repeat(121)), ids), 'cost_note'));
+
+  for (const [id, e] of loadCatalog(repo)) {
+    if (id === 'sync-engine') {
+      for (const k of NEW) assert.ok(!(k in e), `sync-engine must not have ${k}: older sync tools reject unknown keys and must still read this entry`);
+      continue;
+    }
+    assert.ok(typeof e.solves === 'string' && e.solves.length > 0, `${id} has no solves`);
+    assert.ok(Array.isArray(e.use_cases) && e.use_cases.length > 0, `${id} has no use_cases`);
+    assert.ok(e.tokens_on_use && 'value' in e.tokens_on_use, `${id} has no tokens_on_use`);
+  }
+});

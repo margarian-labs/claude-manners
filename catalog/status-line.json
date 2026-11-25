@@ -5,6 +5,13 @@
   "level": "recommended",
   "summary": "Shows account, model, effort, context, usage limits and folder, and writes the usage files that away mode reads.",
   "benefit": "You see your account, model, context and usage limits under every prompt.",
+  "solves": "Not knowing which account and model you are on, or how close you are to a usage limit.",
+  "use_cases": [
+    "Under every prompt: account, model and effort, context used, 5-hour and weekly usage limits, folder.",
+    "Each limit shows its percentage and the time until it resets, green, yellow or red as it fills.",
+    "It writes the usage files that away mode reads for its \"-away 85\" stop point.",
+    "A green or red \"rc\" shows whether Remote Control is on."
+  ],
   "details": "A line under your prompt shows the active account, model and effort, context used, transcript size and compaction count, your 5-hour and weekly usage limits and the current folder. It helps you see which account you are on and how much of a limit you have used. It installs as a settings.json statusLine entry that runs bash ~/.claude/statusline.sh after each answer and writes small usage and cache files, including the usage files away mode reads; without jq a weaker fallback parser is used.",
   "use": "auto",
   "trigger": "",
@@ -44,6 +51,10 @@
     "sl=\"$CLAUDE_CONFIG_DIR/statusline.sh\"; d=$(mktemp -d) || exit 1; CLAUDE_CONFIG_DIR=\"$d\" bash \"$sl\" < \"$CLAUDE_SETUP_REPO/payload/settings/sample-statusline-input.json\" > /dev/null; s=$?; rm -rf \"$d\"; exit $s"
   ],
   "tokens_always_on": {
+    "value": 0,
+    "how": "estimated chars/2.6"
+  },
+  "tokens_on_use": {
     "value": 0,
     "how": "estimated chars/2.6"
   },

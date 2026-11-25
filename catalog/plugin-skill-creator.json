@@ -5,6 +5,12 @@
   "level": "optional",
   "summary": "Helps write, test and improve your own skills.",
   "benefit": "You can build and test your own skills with guided steps.",
+  "solves": "Writing your own skills by trial and error, with no way to test them.",
+  "use_cases": [
+    "\"Create a skill for X\": guided steps to write a new skill from scratch.",
+    "Improve an existing skill, and run test cases to see whether it really works.",
+    "Tune a skill's description so it starts when it should."
+  ],
   "details": "Once installed, you can ask Claude to help write, test and improve your own skills, and that help loads only when it is used. It is for you if you write or tune skills yourself. It is a plugin from the official marketplace and nothing ships with this pack; it adds a skill, and no code runs until that skill is used.",
   "use": "auto",
   "trigger": "",
@@ -28,6 +34,10 @@
   "tokens_always_on": {
     "value": 0,
     "how": "estimated chars/2.6"
+  },
+  "tokens_on_use": {
+    "value": null,
+    "how": "not measured yet"
   },
   "quality": "tried",
   "risk": "Installed from the official marketplace; adds a skill that loads when used. Nothing is shipped here.",

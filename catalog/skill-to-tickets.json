@@ -5,6 +5,14 @@
   "level": "recommended",
   "summary": "Breaks a plan, spec or conversation into small tickets, each listing what blocks it, and publishes them to your tracker.",
   "benefit": "Plans turn into small, ordered tickets in your tracker.",
+  "solves": "A plan too big to hand to one session, with no order or dependencies between its parts.",
+  "use_cases": [
+    "\"/to-tickets\" with a plan, a spec path or an issue number: small tickets, each a complete slice you can demo.",
+    "Each ticket lists which tickets block it, and each fits one fresh session.",
+    "You approve the breakdown first; then the tickets go to your tracker or into local files.",
+    "A rename across the whole codebase is split into expand, migrate in batches, then contract.",
+    "Run \"/setup-matt-pocock-skills\" once in the repo first."
+  ],
   "details": "Invoke /to-tickets with a plan, a spec or the current conversation and Claude breaks the work into small tracer-bullet tickets, each a vertical slice through every layer, demoable on its own, and lists what blocks each ticket. You approve the breakdown, then the tickets are published to your tracker. Use it when you want pieces small enough for one session. It installs as a skill loaded only when used; the tracker comes from /setup-matt-pocock-skills.",
   "use": "you",
   "trigger": "Type /to-tickets with a plan, a spec or the current conversation.",
@@ -28,6 +36,10 @@
   "verify": [],
   "tokens_always_on": {
     "value": 105,
+    "how": "estimated chars/2.6"
+  },
+  "tokens_on_use": {
+    "value": 2246,
     "how": "estimated chars/2.6"
   },
   "quality": "tried",
