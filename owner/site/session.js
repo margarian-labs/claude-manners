@@ -68,11 +68,10 @@ for (const does of root ? root.querySelectorAll('.moment__does') : []) {
 }
 
 if (tabs.length) {
-  list.style.setProperty('--sx-rows', tabs.length);
   list.addEventListener('keydown', (e) => {
     const at = tabs.indexOf(e.target);
     if (at < 0) return;
-    const to = { ArrowDown: at + 1, ArrowUp: at - 1, Home: 0, End: tabs.length - 1 }[e.key];
+    const to = { ArrowDown: at + 1, ArrowRight: at + 1, ArrowUp: at - 1, ArrowLeft: at - 1, Home: 0, End: tabs.length - 1 }[e.key];
     if (to === undefined) return;
     e.preventDefault();
     tabs[(to + tabs.length) % tabs.length].focus();

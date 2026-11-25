@@ -188,13 +188,28 @@ export function momentsHtml(moments) {
   ].join('\n')), '</ol>'].join('\n');
 }
 
+export function askHtml(parts) {
+  const p = parts[0];
+  return [
+    '<div class="ask" id="ask" role="group" aria-label="Try the install question">',
+    '<div class="ask__stone" aria-live="polite">',
+    `<div><p class="ask__q">Install ${esc(p.title)}?</p><p class="ask__what">${esc(p.summary)}</p></div>`,
+    `<div class="ask__facts"><p class="ask__solves">Solves: ${esc(p.solves)}</p><p class="ask__cost">Cost: ${esc(p.cost)}</p></div>`,
+    '</div>',
+    '<button class="ask__btn ask__yes" type="button" hidden>Install</button>',
+    '<button class="ask__btn ask__no" type="button" hidden>Skip</button>',
+    '</div>',
+    `<div class="ask__foot"><p class="ask__note">This is the question you get for each part. Try it, nothing is installed from this page.</p><p class="ask__count">1 of ${parts.length}</p></div>`,
+  ].join('\n');
+}
+
 const FALLBACK_PAGE = `<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>claude-setup</title>
-<link href="https://fonts.googleapis.com/css2?family=Host+Grotesk:wght@400;500&family=Atkinson+Hyperlegible+Mono:wght@400;500&display=swap" rel="stylesheet">
+<title>claude-manners</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
 <!-- site:css -->
 </head>
 <body>
@@ -234,6 +249,7 @@ export async function render(repoDir) {
     'site:css': `<style>\n${css}\n</style>`,
     'site:data': `<script type="application/json" id="site-data">${data}</script>`,
     'site:js': js ? `<script>\n${js}\n</script>` : '',
+    'site:ask': askHtml(m.parts),
     'site:parts': partsHtml(m.parts),
     'site:starts': startsHtml(m.parts),
     'site:flags': flagsHtml(m.flags),

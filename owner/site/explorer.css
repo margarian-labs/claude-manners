@@ -1,22 +1,19 @@
-.ex-bar { display: grid; gap: var(--space-md); padding: var(--space-md) var(--space-lg) var(--space-lg); background: var(--color-paper-2); border: var(--rule-hair) solid var(--color-rule); border-radius: var(--radius-card) var(--radius-card) 0 0; }
-.ex-bar:not([hidden]) + .parts { border-top: 0; border-radius: 0 0 var(--radius-card) var(--radius-card); }
+.ex-bar { display: grid; gap: var(--space-lg); margin-bottom: var(--seam); padding: var(--space-xl); background: var(--color-paper-2); }
 .ex-label { font-size: var(--text-sm); font-weight: 500; color: var(--color-muted); }
 .ex-search { display: grid; gap: var(--space-2xs); max-width: 36rem; }
-.ex-search .field { padding-block: var(--space-xs); border-color: var(--color-muted); }
-.ex-search .field:hover { border-color: var(--color-ink-2); }
 .ex-filter { display: grid; gap: var(--space-2xs); min-width: 0; }
-.ex-opts { display: flex; flex-wrap: wrap; gap: var(--space-2xs); }
+.ex-opts { display: flex; flex-wrap: wrap; gap: var(--space-3xs); }
 .ex-row { display: flex; flex-wrap: wrap; align-items: end; gap: var(--space-md) var(--space-xl); }
 .ex-opt { min-height: 2.25rem; padding: var(--space-2xs) var(--space-sm); font-size: var(--text-sm); }
 .ex-opt__n { color: var(--color-muted); font-variant-numeric: tabular-nums; }
+.ex-opt[aria-pressed="true"] .ex-opt__n { color: inherit; }
 .ex-count { margin-left: auto; padding-bottom: var(--space-xs); font-size: var(--text-sm); color: var(--color-muted); font-variant-numeric: tabular-nums; }
 
-.parts { display: grid; gap: var(--rule-hair); margin: 0; padding: 0; list-style: none; background: var(--color-rule); border: var(--rule-hair) solid var(--color-rule); border-radius: var(--radius-card); overflow: clip; }
+.parts { display: grid; gap: var(--space-3xs); margin: 0; padding: 0; list-style: none; }
 .part { min-width: 0; background: var(--color-paper-2); }
-.part:has(> details[open]) { background: var(--color-paper-3); }
 .part summary {
-  display: grid; grid-template-columns: var(--space-sm) minmax(0, 15rem) 15rem minmax(0, 1fr) 7.5rem; grid-template-areas: "chev title chips solves cost";
-  align-items: baseline; gap: var(--space-2xs) var(--space-md); padding: var(--space-sm) var(--space-lg) var(--space-sm) var(--space-md);
+  display: grid; grid-template-columns: var(--space-sm) minmax(0, 15rem) 15.5rem minmax(0, 1fr) 7.5rem; grid-template-areas: "chev title chips solves cost";
+  align-items: baseline; gap: var(--space-2xs) var(--space-md); padding: var(--space-md) var(--space-xl) var(--space-md) var(--space-lg);
   list-style: none; cursor: pointer; transition: background-color var(--dur-short) var(--ease-out);
 }
 .part summary::-webkit-details-marker { display: none; }
@@ -28,37 +25,36 @@
 .part details[open] > summary::before { transform: rotate(45deg); color: var(--color-ink); }
 .part summary:focus-visible { outline-offset: -2px; }
 @media (hover: hover) {
-  .part summary:hover { background: color-mix(in oklab, var(--color-paper-2) 50%, var(--color-paper-3)); }
+  .part summary:hover { background: var(--color-stone); }
   .part summary:hover::before { color: var(--color-ink); }
 }
 .part__title { grid-area: title; font-weight: 500; color: var(--color-ink); }
-.part__chips { grid-area: chips; display: flex; gap: var(--space-2xs); }
-.chip--level { min-width: 6.5rem; justify-content: center; color: var(--color-ink-2); }
+.part__chips { grid-area: chips; display: grid; grid-template-columns: 6.75rem auto; justify-content: start; gap: var(--space-xs); }
+.chip--level { color: var(--color-ink-2); }
 .part[data-level="optional"] .chip--level { color: var(--color-muted); }
 .part__solves { grid-area: solves; font-size: var(--text-sm); line-height: 1.5; color: var(--color-muted); }
 .part__cost { grid-area: cost; justify-self: end; white-space: nowrap; color: var(--color-ink-2); }
 .part[data-tokens="0"] .part__cost, .part[data-tokens=""] .part__cost { color: var(--color-muted); }
 
-.part__body { padding: 0 var(--space-lg) var(--space-lg) calc(var(--space-md) * 2 + var(--space-sm)); }
+.part__body { padding: 0 var(--space-xl) var(--space-xl) calc(var(--space-lg) + var(--space-md) + var(--space-sm)); }
 .part__facts { display: grid; grid-template-columns: 9rem minmax(0, 72ch); align-items: baseline; gap: var(--space-sm) var(--space-lg); margin: 0; padding-top: var(--space-md); border-top: var(--rule-hair) solid var(--color-rule); }
 .part__facts dt { font-size: var(--text-sm); font-weight: 500; color: var(--color-muted); }
 .part__facts dd { margin: 0; color: var(--color-ink); text-wrap: pretty; }
 .part__cases { display: grid; gap: var(--space-2xs); margin: 0; padding-left: 1.1em; }
 .part__cases li::marker { color: var(--color-muted); }
 
-.ex-empty { display: grid; justify-items: start; gap: var(--space-xs); padding: var(--space-xl) var(--space-lg); background: var(--color-paper-2); border: var(--rule-hair) solid var(--color-rule); border-top: 0; border-radius: 0 0 var(--radius-card) var(--radius-card); }
+.ex-empty { display: grid; justify-items: start; gap: var(--space-xs); padding: var(--space-xl); background: var(--color-paper-2); }
 .ex-empty__title { font-weight: 500; color: var(--color-ink); }
 .ex-empty__what { color: var(--color-muted); }
 .ex-empty .btn { margin-top: var(--space-xs); }
 
 @media (max-width: 64rem) {
-  .part summary { grid-template-columns: var(--space-sm) minmax(0, 1fr) 15rem 7.5rem; grid-template-areas: "chev title chips cost" ". solves solves solves"; }
+  .part summary { grid-template-columns: var(--space-sm) minmax(0, 1fr) 15.5rem 7.5rem; grid-template-areas: "chev title chips cost" ". solves solves solves"; }
 }
 @media (max-width: 40rem) {
-  .ex-bar { gap: var(--space-sm); padding: var(--space-md); }
+  .ex-bar { gap: var(--space-md); padding: var(--space-md); }
   .ex-row { gap: var(--space-md); }
   .part summary { grid-template-columns: var(--space-sm) minmax(0, 1fr) auto; grid-template-areas: "chev title cost" ". chips chips" ". solves solves"; padding-inline: var(--space-md); }
-  .part__chips { padding-block: var(--space-2xs); }
   .part__body { padding: 0 var(--space-md) var(--space-lg); }
   .part__facts { grid-template-columns: minmax(0, 1fr); gap: var(--space-2xs); }
   .part__facts dd + dt { margin-top: var(--space-sm); }

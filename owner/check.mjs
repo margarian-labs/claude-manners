@@ -7,10 +7,6 @@ import { destsFor } from './estimate-tokens.mjs';
 import { listFiles, scanFiles } from './dash-scan.mjs';
 import { render, problems } from './build-site.mjs';
 
-const GROUPS = ['rules', 'settings', 'workflow', 'hooks', 'agents', 'skills', 'plugins', 'tools', 'integrations', 'lessons'];
-const START = '<!-- catalog:start -->';
-const END = '<!-- catalog:end -->';
-
 const asList = (x) => (Array.isArray(x) ? x : x instanceof Map ? [...x.values()] : x && typeof x === 'object' ? Object.values(x) : []);
 function errorsOf(r) {
   if (Array.isArray(r)) return r.map(String);
@@ -30,42 +26,6 @@ export function readCatalog(repoDir) {
   const dir = path.join(repoDir, 'catalog');
   return fs.readdirSync(dir).filter((n) => n.endsWith('.json')).sort()
     .map((n) => JSON.parse(fs.readFileSync(path.join(dir, n), 'utf8')));
-}
-
-export function generateTable(entries) {
-  const rank = (g) => { const i = GROUPS.indexOf(g); return i < 0 ? GROUPS.length : i; };
-  const sorted = [...entries].sort((a, b) => rank(a.group) - rank(b.group) || a.title.localeCompare(b.title));
-  const groups = (list, item) => {
-    const out = [];
-    for (const g of [...new Set(list.map((e) => e.group))]) {
-      const parts = list.filter((e) => e.group === g);
-      const label = String(g).charAt(0).toUpperCase() + String(g).slice(1);
-      out.push('<details>', `<summary><b>${label}</b> · ${parts.length} ${parts.length === 1 ? 'part' : 'parts'}</summary>`, '',
-        ...parts.map(item), '', '</details>', '');
-    }
-    return out;
-  };
-  const line = (e) => `- **${e.title}** \`${e.level}\`<br>${e.summary}`;
-  return [
-    '### Works on its own', '', 'Once installed, these work in every session without you doing anything.', '',
-    ...groups(sorted.filter((e) => e.use !== 'you'), line),
-    '### You start these', '', 'These do nothing until you use them; the line in italics says how.', '',
-    ...groups(sorted.filter((e) => e.use === 'you'), (e) => `${line(e)}<br>_${e.trigger}_`),
-  ].join('\n').trim();
-}
-
-export function checkReadme(repoDir, entries, fix) {
-  const p = path.join(repoDir, 'README.md');
-  if (!fs.existsSync(p)) return { ok: false, details: ['README.md not found'] };
-  const text = fs.readFileSync(p, 'utf8');
-  const a = text.indexOf(START), b = text.indexOf(END);
-  if (a < 0 || b < a) return { ok: false, details: [`README.md needs ${START} and ${END} markers`] };
-  const table = generateTable(entries);
-  const current = text.slice(a + START.length, b).trim();
-  if (current === table) return { ok: true, details: [] };
-  if (!fix) return { ok: false, details: ['README catalog table is out of date (run: node owner/check.mjs --fix-readme)'] };
-  fs.writeFileSync(p, `${text.slice(0, a + START.length)}\n${table}\n${text.slice(b)}`);
-  return { ok: true, details: ['README catalog table regenerated'] };
 }
 
 export async function checkSite(repoDir, fix) {
@@ -108,7 +68,7 @@ export function untouchedPayload(repoDir, prev, entries, touches) {
   return [...changed].filter((f) => f.startsWith('payload/') && dests(f).length && !covered(f)).sort();
 }
 
-async function steps(repoDir, fixReadme, fixSite) {
+async function steps(repoDir, fixSite) {
   const results = [];
   const run = async (name, fn) => {
     try {
@@ -143,8 +103,6 @@ async function steps(repoDir, fixReadme, fixSite) {
     const touches = asList(await loadProposals(repoDir)).flatMap((p) => p.meta?.touches ?? []);
     return untouchedPayload(repoDir, prev, entries, touches).map((f) => `${f}: not in any proposal's touches (changed since ${prev})`);
   });
-  const readme = checkReadme(repoDir, entries, fixReadme);
-  results.push({ name: 'README catalog up to date', ok: readme.ok, details: readme.details });
   const site = await checkSite(repoDir, fixSite).catch((e) => ({ ok: false, details: [String(e.message || e)] }));
   results.push({ name: 'demo page up to date', ok: site.ok, details: site.details });
   await run('no em or en dash', () => scanFiles(repoDir, listFiles(repoDir)).map((h) => `${h.file}:${h.line}: ${h.char}`));
@@ -160,15 +118,13 @@ async function steps(repoDir, fixReadme, fixSite) {
 
 async function main(argv) {
   let repoDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-  let fixReadme = false;
   let fixSite = false;
   for (let i = 0; i < argv.length; i++) {
     if (argv[i] === '--repo') repoDir = path.resolve(argv[++i]);
-    else if (argv[i] === '--fix-readme') fixReadme = true;
     else if (argv[i] === '--fix-site') fixSite = true;
-    else { console.error('usage: check.mjs [--fix-readme] [--fix-site] [--repo dir]'); return 2; }
+    else { console.error('usage: check.mjs [--fix-site] [--repo dir]'); return 2; }
   }
-  const results = await steps(repoDir, fixReadme, fixSite);
+  const results = await steps(repoDir, fixSite);
   for (const r of results) {
     console.log(`${r.ok ? 'PASS' : 'FAIL'} ${r.name}`);
     const shown = r.ok ? r.details : r.details.slice(0, 20);
