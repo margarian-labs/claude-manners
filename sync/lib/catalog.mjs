@@ -61,7 +61,7 @@ export function validateEntry(entry, allIds) {
   shortText(entry, 'cost_note', 120, errs);
   if ('use_cases' in entry) {
     const u = entry.use_cases;
-    if (!Array.isArray(u) || u.length < 1 || u.length > 5) errs.push('use_cases: must be a list of 1 to 5 lines');
+    if (!Array.isArray(u) || u.length < 1 || u.length > 10) errs.push('use_cases: must be a list of 1 to 10 lines');
     else u.forEach((v, i) => {
       if (!isStr(v)) errs.push(`use_cases[${i}]: must be a non-empty string`);
       else if (v.length > 120) errs.push(`use_cases[${i}]: ${v.length} characters, max 120`);

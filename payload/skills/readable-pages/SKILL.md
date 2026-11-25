@@ -25,7 +25,6 @@ Pick the ones that fit before building ("pick skills yourself" applies). Skills 
 - **`diagram-craft`:** before drawing a diagram by hand.
 - **`plain-writing`:** the prose on the page.
 - **`design-md`:** a new project with no design system yet.
-- **`copywriting`:** marketing headlines and copy.
 - **`artifact-design` / `artifact-diagramming` (if your session lists them):** Anthropic's artifact guidance, when the quickstart did not already include it.
 
 Screenshot check: Playwright MCP blocks `file://`; serve the page from a small local http server in the scratchpad, then screenshot desktop and phone widths.

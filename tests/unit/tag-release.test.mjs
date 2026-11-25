@@ -6,6 +6,7 @@ import path from 'node:path';
 import { execFileSync, spawnSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import { nextTag, release, versionTags, previousTag } from '../../owner/tag-release.mjs';
+import { untouchedPayload } from '../../owner/check.mjs';
 
 const SCRIPT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../../owner/tag-release.mjs');
 const today = new Date().toISOString().slice(0, 10).replace(/-/g, '.');
@@ -82,6 +83,28 @@ test('HEAD that already has a v* tag gets no new tag', () => {
   assert.equal(r.created, false);
   assert.equal(r.tag, 'v2026.01.01.1');
   assert.equal(git(dir, 'tag', '--list'), 'v2026.01.01.1');
+  fs.rmSync(dir, { recursive: true, force: true });
+});
+
+test('payload check: only files a part ships need a proposal; a file deleted from a part that still exists does', () => {
+  const dir = makeRepo();
+  const alpha = { id: 'alpha', files: [{ src: 'payload/skills/alpha', dest: 'skills/alpha' }], settings: [], rules: [] };
+  commit(dir, {
+    'catalog/alpha.json': JSON.stringify({ ...alpha, rules: ['payload/rules/alpha.md'] }),
+    'catalog/gone.json': JSON.stringify({ id: 'gone', files: [{ src: 'payload/skills/gone', dest: 'skills/gone' }], settings: [], rules: [] }),
+    'payload/skills/alpha/SKILL.md': 'a',
+    'payload/rules/alpha.md': 'r',
+    'payload/skills/gone/SKILL.md': 'g',
+    'payload/NOTICES.md': 'n',
+  });
+  git(dir, 'tag', '-a', 'v2026.01.01.1', '-m', 'one');
+  fs.rmSync(path.join(dir, 'catalog', 'gone.json'));
+  fs.rmSync(path.join(dir, 'payload', 'skills', 'gone'), { recursive: true });
+  fs.rmSync(path.join(dir, 'payload', 'rules', 'alpha.md'));
+  fs.writeFileSync(path.join(dir, 'payload', 'NOTICES.md'), 'n2');
+  fs.writeFileSync(path.join(dir, 'payload', 'skills', 'alpha', 'SKILL.md'), 'a2');
+  assert.deepEqual(untouchedPayload(dir, 'v2026.01.01.1', [alpha], []), ['payload/rules/alpha.md', 'payload/skills/alpha/SKILL.md']);
+  assert.deepEqual(untouchedPayload(dir, 'v2026.01.01.1', [alpha], ['skills/alpha', 'rules/alpha.md']), []);
   fs.rmSync(dir, { recursive: true, force: true });
 });
 

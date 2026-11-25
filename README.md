@@ -64,7 +64,7 @@ Once installed, these work in every session without you doing anything.
 - **Messages between local sessions** `recommended`<br>Other Claude sessions on this PC can message this one, used by handoffs and setup-change notices.
 - **Models and effort** `recommended`<br>Opus as main model, Sonnet for workers, effort set per model. Check first that your plan includes Fable 5.2.
 - **Remote Control at startup** `recommended`<br>Every session can be reached from the Claude app on your phone or another computer.
-- **Skill overrides** `recommended`<br>Turns off 5 noisy skills and sets 5 built-in ones to run only when you ask for them.
+- **Skill overrides** `recommended`<br>Turns off 4 noisy skills and sets 5 built-in ones to run only when you ask for them.
 - **Status line** `recommended`<br>Shows account, model, effort, context, usage limits and folder, and writes the usage files that away mode reads.
 
 </details>
@@ -92,22 +92,19 @@ Once installed, these work in every session without you doing anything.
 </details>
 
 <details>
-<summary><b>Skills</b> · 17 parts</summary>
+<summary><b>Skills</b> · 14 parts</summary>
 
 - **Conversion rate optimization** `recommended`<br>Finds what to change on a landing, pricing or form page to get more conversions, and why it is not converting.
-- **Copywriting** `recommended`<br>Writes and rewrites marketing copy for pages such as home, landing and pricing, with supportable claims.
 - **Deprecation and migration** `recommended`<br>Plans the safe removal or replacement of old systems and APIs, including database changes with no downtime.
 - **Design system file** `recommended`<br>Gives a new project a design system by writing a DESIGN.md based on one of 84 well known product brands.
 - **Diagram craft** `recommended`<br>Helps you draw diagrams by hand: picks the right type and keeps nodes, lines and labels readable and accurate.
 - **Domain modeling** `recommended`<br>Builds and sharpens a project's domain model via glossary terms and architecture decision records.
-- **Grilling** `recommended`<br>Stress-tests your thinking with a relentless interview about a plan, decision or idea.
+- **Grilling** `recommended`<br>Interviews you in rounds of questions until a plan, design or decision has nothing left assumed.
 - **Hallmark** `recommended`<br>Makes websites and landing pages look made, not generated; can also redesign or audit an existing page.
 - **Liteparse** `recommended`<br>Local OCR and text extraction for scanned, image-only or long PDFs, so you need not read pages as images.
 - **Plain writing** `recommended`<br>Cleans prose other people will read: removes AI writing tells and checks that no fact was lost.
 - **Prototype** `recommended`<br>Builds a throwaway prototype to sanity-check a state model or explore what a UI should look like.
 - **Research** `recommended`<br>Researches a question against primary sources with a background agent and saves the findings as a repo Markdown file.
-- **SEO audit** `recommended`<br>Audits a site's SEO when traffic dropped or a page will not rank: indexing, canonicals, redirects, Core Web Vitals and local SEO.
-- **Social content** `recommended`<br>Creates organic social content for LinkedIn, X, Instagram, TikTok or Facebook: posts, threads, carousels and calendars.
 - **UI craft** `recommended`<br>Rules for making app screens, dashboards, forms and sites look designed rather than AI-generated, plus a redesign audit.
 - **UI/UX Pro Max** `recommended`<br>Searches a local design database when you pick UI styles, colour palettes, font pairings, chart types or UX rules.
 - **Video analysis** `recommended`<br>Looks at frames from a video or screen recording and transcribes speech so you learn what happens and what is said.
@@ -115,10 +112,8 @@ Once installed, these work in every session without you doing anything.
 </details>
 
 <details>
-<summary><b>Plugins</b> · 5 parts</summary>
+<summary><b>Plugins</b> · 3 parts</summary>
 
-- **AccessLint plugin** `optional`<br>Checks web pages and code for accessibility problems.
-- **Event storming plugin** `optional`<br>Skills for event storming and domain-driven design workshops.
 - **Playwright plugin** `recommended`<br>Lets Claude drive a real browser: open pages, click, fill forms and take screenshots.
 - **Skill creator plugin** `optional`<br>Helps write, test and improve your own skills.
 - **Superpowers plugin** `recommended`<br>Skills for planning, debugging, code review, worktrees and proving work before calling it done.
@@ -168,13 +163,10 @@ These do nothing until you use them; the line in italics says how.
 </details>
 
 <details>
-<summary><b>Skills</b> · 9 parts</summary>
+<summary><b>Skills</b> · 6 parts</summary>
 
 - **Architecture decisions** `optional`<br>Writes architecture decision records and reviews system designs with trade-offs and consequences.<br>_Type /architecture with the decision or system._
-- **Grill me** `recommended`<br>Interviews you relentlessly to sharpen a plan or design.<br>_Type /grill-me with the plan or idea to stress-test._
-- **Grill with docs** `recommended`<br>Interviews you relentlessly to sharpen a plan or design, writing ADRs and a glossary as you go.<br>_Type /grill-with-docs with the plan or idea to stress-test._
 - **Set up Matt Pocock's skills** `recommended`<br>Configures a repo for the engineering skills once: issue tracker, triage labels and where domain docs live.<br>_Type /setup-matt-pocock-skills once in each repo before using To spec, To tickets or Wayfinder._
-- **Sprint planning** `optional`<br>Plans a sprint: scopes work, estimates team capacity, sets goals and drafts the plan, including carryover.<br>_Type /sprint-planning with a sprint name or date range._
 - **System design** `optional`<br>Helps you design systems and services: requirements, architecture, API contracts, data models and service boundaries.<br>_Type /system-design and describe what you want to build._
 - **To spec** `recommended`<br>Turns the current conversation into a spec and publishes it to the project issue tracker, with no interview.<br>_Type /to-spec after discussing a feature._
 - **To tickets** `recommended`<br>Breaks a plan, spec or conversation into small tickets, each listing what blocks it, and publishes them to your tracker.<br>_Type /to-tickets with a plan, a spec or the current conversation._
@@ -193,7 +185,7 @@ These do nothing until you use them; the line in italics says how.
 <details>
 <summary><b>Integrations</b> · 1 part</summary>
 
-- **Two Claude accounts** `optional`<br>"claude" opens one account and "claude -P" the other, both signed in at once and sharing settings, skills and sessions.<br>_Type claude -P (or your chosen flag) to start the second account._
+- **Multiple Claude accounts** `optional`<br>Keeps multiple Claude accounts signed in on the same PC, with no signing out and in. It sets up two: "claude" and "claude -P".<br>_Type claude -P (or your chosen flag) to start the second account._
 
 </details>
 <!-- catalog:end -->

@@ -3,16 +3,19 @@
   "title": "Grilling",
   "group": "skills",
   "level": "recommended",
-  "summary": "Stress-tests your thinking with a relentless interview about a plan, decision or idea.",
+  "summary": "Interviews you in rounds of questions until a plan, design or decision has nothing left assumed.",
   "benefit": "Weak spots in a plan or decision show up before you commit to it.",
-  "solves": "Decisions made on assumptions nobody checked.",
+  "solves": "Plans that look fine until the first hard question nobody asked.",
   "use_cases": [
-    "\"Grill me on this plan\": Claude interviews you in rounds of up to 4 questions, each with a recommended answer.",
-    "Each answer opens the next questions, until every branch of the design is settled.",
+    "Claude starts it by itself before a big plan is final: a new project or feature, architecture, anything costly to undo.",
+    "It starts only when that plan still rests on things you have not confirmed, never for small tasks or bug fixes.",
+    "\"Grill me on this plan\" or \"/grilling\": the same interview whenever you ask, for any plan, decision or idea.",
+    "Rounds of up to 4 questions, each with a recommended answer; every answer opens the next questions.",
+    "\"Grill me with docs\": terms go into GLOSSARY.md, hard-to-reverse decisions into ADRs (needs Domain modeling).",
     "Facts are Claude's job: it looks things up itself instead of asking you.",
     "Claude does not act on the plan until you confirm you both understand it the same way."
   ],
-  "details": "Use it when you want to stress-test a plan, decision or idea: Claude interviews you relentlessly, in rounds of up to 4 questions with recommended answers, working through a design tree until nothing is left assumed. Finding facts is Claude's job, not yours, so it looks things up itself instead of asking. It adds a skill folder that loads only when used; instructions only, so no code runs on its own.",
+  "details": "Claude interviews you in rounds of up to 4 questions with recommended answers until nothing is left assumed. It starts by itself before a big plan is final (a new project or feature, an architecture or data-model choice, anything costly to undo) when that plan rests on things you have not confirmed, and whenever you ask to be grilled. Finding facts is Claude's job, so it looks things up itself. With docs, it also writes settled terms and decisions down through the domain-modeling skill. It adds a skill folder that loads only when used; instructions only, so no code runs on its own.",
   "use": "auto",
   "trigger": "",
   "needs": [],
@@ -32,11 +35,11 @@
   "machine_steps": [],
   "verify": [],
   "tokens_always_on": {
-    "value": 69,
+    "value": 155,
     "how": "estimated chars/2.6"
   },
   "tokens_on_use": {
-    "value": 770,
+    "value": 1096,
     "how": "estimated chars/2.6"
   },
   "quality": "tried",

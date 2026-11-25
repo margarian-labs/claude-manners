@@ -186,12 +186,6 @@ If the answers are not in the files or context, ask them with the AskUserQuestio
 
 ---
 
-## Related Skills
-
-- **copywriting**: If the page needs a complete copy rewrite
-
----
-
 ## Form Optimization
 
 When enrichment controls the next step after a lead form, preserve valid submissions, bound the lookup wait, and provide a useful fallback when qualification is unknown.

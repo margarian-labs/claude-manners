@@ -10,7 +10,7 @@ const GROUPS = ['rules', 'settings', 'workflow', 'hooks', 'agents', 'skills', 'p
 const START = '<!-- catalog:start -->';
 const END = '<!-- catalog:end -->';
 
-const asList = (x) => (Array.isArray(x) ? x : x && typeof x === 'object' ? Object.values(x) : []);
+const asList = (x) => (Array.isArray(x) ? x : x instanceof Map ? [...x.values()] : x && typeof x === 'object' ? Object.values(x) : []);
 function errorsOf(r) {
   if (Array.isArray(r)) return r.map(String);
   if (r && Array.isArray(r.errors)) return r.errors.map(String);
@@ -81,11 +81,17 @@ export function untouchedPayload(repoDir, prev, entries, touches) {
     ...lines(git(repoDir, ['diff', '--name-only', prev])),
     ...lines(git(repoDir, ['ls-files', '--others', '--exclude-standard'])),
   ]);
+  const ids = new Set(entries.map((e) => e.id));
+  const before = lines(git(repoDir, ['ls-tree', '--name-only', prev, 'catalog/']))
+    .filter((n) => n.endsWith('.json'))
+    .map((n) => JSON.parse(git(repoDir, ['show', `${prev}:${n}`])))
+    .filter((e) => ids.has(e.id));
+  const dests = (f) => [...destsFor(entries, f), ...destsFor(before, f)];
   const covers = (t, x) => t === x || x.startsWith(t.endsWith('/') ? t : `${t}/`);
   const pointers = touches.some((t) => t.startsWith('/'));
-  const covered = (f) => [f, ...destsFor(entries, f)].some((x) =>
+  const covered = (f) => [f, ...dests(f)].some((x) =>
     touches.some((t) => covers(t.replace(/\/\*{1,2}$/, '/'), x)) || (x === 'settings.json' && pointers));
-  return [...changed].filter((f) => f.startsWith('payload/') && !covered(f)).sort();
+  return [...changed].filter((f) => f.startsWith('payload/') && dests(f).length && !covered(f)).sort();
 }
 
 async function steps(repoDir, fixReadme) {

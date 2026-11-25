@@ -1,16 +1,18 @@
 {
   "id": "two-accounts",
-  "title": "Two Claude accounts",
+  "title": "Multiple Claude accounts",
   "group": "integrations",
   "level": "optional",
-  "summary": "\"claude\" opens one account and \"claude -P\" the other, both signed in at once and sharing settings, skills and sessions.",
-  "benefit": "You can use your work and personal accounts side by side with one setup.",
-  "solves": "Signing out and in again every time you switch between a work and a personal Claude account.",
+  "summary": "Keeps multiple Claude accounts signed in on the same PC, with no signing out and in. It sets up two: \"claude\" and \"claude -P\".",
+  "benefit": "You use your Claude accounts side by side on one PC, with one setup.",
+  "solves": "Signing out and in again every time you switch between Claude accounts on the same PC.",
   "use_cases": [
-    "\"claude\" opens the main account and \"claude -P\" the second one, both signed in at the same time.",
+    "\"claude\" opens one account and \"claude -P\" the other, both signed in at the same time.",
+    "Any two accounts, for example work and personal. You choose their labels and the flag.",
     "Settings, skills, hooks, plugins and sessions are shared; login, plan and usage limits stay separate.",
     "Change the setup once in ~/.claude: a sync runs before every start of the second account.",
     "Resuming a session started under the other account works, and uses the current account's limits.",
+    "This part sets up two accounts; three or more are not supported yet.",
     "Other shells such as cmd.exe and IDE extensions open the main account only."
   ],
   "details": "claude opens one account and claude -P the other, both signed in at once: a shell function in your shell profiles points the second start at a second config folder you choose, and a sync script refreshes junctions so settings, skills, hooks and sessions are shared while login, plan and usage limits stay separate. Use it when you have two Claude logins. It edits your shell profiles, creates junctions in the config folder and adds a skill with the sync steps, loaded only when used; no network.",

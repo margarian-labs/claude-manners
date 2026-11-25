@@ -45,7 +45,7 @@ One JSON file per part: `catalog/<id>.json`. The sync engine reads these; the RE
 - `summary`: one plain sentence, at most 140 characters. No em or en dash.
 - `benefit`: right after `summary`, one plain sentence of at most 100 characters on what the person gains; the first-run question shows it. Every part has one except `sync-engine`: sync tools before 1.2 reject unknown keys and must still read that entry to offer the engine update.
 - `solves`: right after `benefit`, one plain sentence of at most 120 characters: the problem that goes away. Shown as "Solves:".
-- `use_cases`: right after `solves`, 1 to 5 lines of at most 120 characters each: the important ways the part is used. For a `use: "you"` part the first line carries the exact words to type, and every argument or variant that matters gets its own line (`"-away 85": ...`). Every line must be true of the files the part ships; check it against them.
+- `use_cases`: right after `solves`, 1 to 10 lines of at most 120 characters each: the important ways the part is used. For a `use: "you"` part the first line carries the exact words to type, and every argument or variant that matters gets its own line (`"-away 85": ...`). Every line must be true of the files the part ships; check it against them.
 - `solves`, `use_cases`, `tokens_on_use` and `cost_note` are optional for the validator, and every part has the first three except `sync-engine`, for the same reason as `benefit`.
 - `use`: `auto` (works in every session without the person doing anything) or `you` (does nothing until the person uses it).
 - `trigger`: for `you` parts, one sentence on what the person types or runs to use it; empty for `auto`.

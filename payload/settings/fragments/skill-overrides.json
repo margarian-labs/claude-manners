@@ -3,7 +3,6 @@
     "fewer-permission-prompts": "off",
     "plugin-authoring": "off",
     "architecture": "off",
-    "sprint-planning": "off",
     "system-design": "off",
     "init": "user-invocable-only",
     "security-review": "user-invocable-only",

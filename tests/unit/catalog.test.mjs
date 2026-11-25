@@ -156,7 +156,8 @@ test('solves, use_cases, tokens_on_use and cost_note: optional, in order, bounde
   const cases = (v) => validateEntry(put(b0, 'benefit', 'use_cases', v), ids);
   assert.deepEqual(cases(['One.']), []);
   assert.deepEqual(cases(['1', '2', '3', '4', '5']), []);
-  for (const bad of [[], ['1', '2', '3', '4', '5', '6'], 'text', ['x'.repeat(121)], ['']]) assert.ok(has(cases(bad), 'use_cases'), JSON.stringify(bad));
+  assert.ok(!has(cases(Array(10).fill('U.')), 'use_cases'));
+  for (const bad of [[], Array(11).fill('U.'), 'text', ['x'.repeat(121)], ['']]) assert.ok(has(cases(bad), 'use_cases'), JSON.stringify(bad));
   assert.deepEqual(validateEntry(put(put(b0, 'benefit', 'solves', 'S.'), 'solves', 'use_cases', ['U.']), ids), []);
   assert.ok(has(validateEntry(put(put(b0, 'benefit', 'use_cases', ['U.']), 'use_cases', 'solves', 'S.'), ids), 'out of order'));
 

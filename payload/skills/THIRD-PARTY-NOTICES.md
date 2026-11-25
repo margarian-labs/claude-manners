@@ -4,7 +4,7 @@ Some skills in this folder are copies or adaptations of open-source work. Change
 
 ## mattpocock/skills (MIT)
 
-Used in: domain-modeling, grilling, grill-me, grill-with-docs, prototype, research, to-spec, to-tickets, wayfinder, setup-matt-pocock-skills
+Used in: domain-modeling, grilling, prototype, research, to-spec, to-tickets, wayfinder, setup-matt-pocock-skills
 
 ```
 MIT License
@@ -32,7 +32,7 @@ SOFTWARE.
 
 ## anthropics/knowledge-work-plugins (Apache-2.0)
 
-Used in: architecture, sprint-planning, system-design
+Used in: architecture, system-design
 
 ```
 
@@ -279,7 +279,7 @@ SOFTWARE.
 
 ## coreyhaines31/marketingskills (MIT)
 
-Used in: copywriting, cro, social, seo-audit
+Used in: cro
 
 ```
 MIT License

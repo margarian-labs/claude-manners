@@ -24,3 +24,4 @@
 - references/experiments.md: no changes (beyond line endings).
 
 - 2026-11-20: made model-invocable at the user's request (removed `disable-model-invocation`); description replaced with a short trigger line.
+- 2026-11-25: SKILL.md (Related Skills): section removed; the copywriting skill is no longer part of this setup.
