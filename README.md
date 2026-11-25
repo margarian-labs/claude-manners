@@ -1,5 +1,7 @@
 <a href="https://margarian-labs.github.io/claude-manners/"><picture><source media="(prefers-color-scheme: dark)" srcset="docs/banner-dark.png"><img src="docs/banner-light.png" alt="claude-manners by Margarian Labs. Claude, on its best behavior. Every part optional. You approve each one." width="100%"></picture></a>
 
+<p align="center"><a href="LICENSE"><img src="https://img.shields.io/github/license/margarian-labs/claude-manners" alt="License: MIT"></a> <a href="#quick-start"><img src="https://img.shields.io/badge/platform-Windows-0078D6" alt="Platform: Windows"></a> <a href="https://github.com/margarian-labs/claude-manners/tags"><img src="https://img.shields.io/github/v/tag/margarian-labs/claude-manners?sort=date&amp;label=version" alt="Version"></a></p>
+
 # claude-manners
 
 A shared Claude Code setup for Windows. Every part optional, you approve each one.
@@ -33,4 +35,4 @@ Later, say **sync my setup** to get updates one by one, or **roll back my last s
 
 MIT for this repo's own content, see [LICENSE](LICENSE). Bundled third-party skills keep their own licenses, listed in [THIRD-PARTY-NOTICES.md](payload/skills/THIRD-PARTY-NOTICES.md). The Margarian Labs name and logo, also inside the images in `docs`, are not covered by the MIT license; all rights reserved.
 
-By [Margarian Labs](https://github.com/margarian-labs). Unofficial, not affiliated with Anthropic.
+By [Margarian Labs](https://github.com/margarian-labs).
