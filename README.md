@@ -1,5 +1,7 @@
 <div align="center">
 
+<a href="https://github.com/margarian-labs"><picture><source media="(prefers-color-scheme: dark)" srcset="docs/logo-on-dark.svg"><img src="docs/logo-on-light.svg" alt="Margarian Labs" width="240"></picture></a>
+
 # claude-setup
 
 A shared Claude Code setup for Windows.<br>You approve every change and can undo any.
@@ -193,4 +195,4 @@ These do nothing until you use them; the line in italics says how.
 
 ## License
 
-MIT for this repo's own content, see [LICENSE](LICENSE). Bundled third-party skills keep their own licenses, listed in [THIRD-PARTY-NOTICES.md](payload/skills/THIRD-PARTY-NOTICES.md).
+MIT for this repo's own content, see [LICENSE](LICENSE). Bundled third-party skills keep their own licenses, listed in [THIRD-PARTY-NOTICES.md](payload/skills/THIRD-PARTY-NOTICES.md). The Margarian Labs name and logo are not covered by the MIT license; all rights reserved.

@@ -13,6 +13,14 @@
     {
       "value": "Copyright (c) 2026 Margarian Labs",
       "why": "The copyright line in LICENSE (MIT), chosen by the owner."
+    },
+    {
+      "value": "Margarian Labs",
+      "why": "The public name of the maker, shown in the README, on the demo page and in the logo files."
+    },
+    {
+      "value": "margarian-labs",
+      "why": "The public GitHub organization, used in README and demo page links."
     }
   ],
   "paths": [
