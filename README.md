@@ -4,7 +4,7 @@
 
 A shared Claude Code setup for Windows.<br>You approve every change and can undo any.
 
-<a href="https://margarian-labs.github.io/claude-setup/"><img src="docs/preview.png" alt="The claude-setup demo page: 51 parts, you approve each one" width="860"></a>
+<a href="https://margarian-labs.github.io/claude-setup/"><img src="docs/preview.png" alt="The claude-setup demo page: 46 parts, you approve each one" width="860"></a>
 
 ### [Open the demo page](https://margarian-labs.github.io/claude-setup/)
 
@@ -70,7 +70,7 @@ Once installed, these work in every session without you doing anything.
 - **Messages between local sessions** `recommended`<br>Other Claude sessions on this PC can message this one, used by handoffs and setup-change notices.
 - **Models and effort** `recommended`<br>Opus as main model, Sonnet for workers, effort set per model. Check first that your plan includes Fable 5.2.
 - **Remote Control at startup** `recommended`<br>Every session can be reached from the Claude app on your phone or another computer.
-- **Skill overrides** `recommended`<br>Turns off 4 noisy skills and sets 5 built-in ones to run only when you ask for them.
+- **Skill overrides** `recommended`<br>Turns off 3 noisy skills and sets 5 built-in ones to run only when you ask for them.
 - **Status line** `recommended`<br>Shows account, model, effort, context, usage limits and folder, and writes the usage files that away mode reads.
 
 </details>
@@ -169,14 +169,9 @@ These do nothing until you use them; the line in italics says how.
 </details>
 
 <details>
-<summary><b>Skills</b> · 6 parts</summary>
+<summary><b>Skills</b> · 1 part</summary>
 
 - **Architecture decisions** `optional`<br>Writes architecture decision records and reviews system designs with trade-offs and consequences.<br>_Type /architecture with the decision or system._
-- **Set up Matt Pocock's skills** `recommended`<br>Configures a repo for the engineering skills once: issue tracker, triage labels and where domain docs live.<br>_Type /setup-matt-pocock-skills once in each repo before using To spec, To tickets or Wayfinder._
-- **System design** `optional`<br>Helps you design systems and services: requirements, architecture, API contracts, data models and service boundaries.<br>_Type /system-design and describe what you want to build._
-- **To spec** `recommended`<br>Turns the current conversation into a spec and publishes it to the project issue tracker, with no interview.<br>_Type /to-spec after discussing a feature._
-- **To tickets** `recommended`<br>Breaks a plan, spec or conversation into small tickets, each listing what blocks it, and publishes them to your tracker.<br>_Type /to-tickets with a plan, a spec or the current conversation._
-- **Wayfinder** `recommended`<br>Plans work too big for one session as a shared map of decision tickets on your tracker, resolved one at a time.<br>_Type /wayfinder with the big piece of work to map._
 
 </details>
 

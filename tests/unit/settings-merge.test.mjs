@@ -394,8 +394,8 @@ test('plan does not mutate its inputs, ops do not alias the fragment', () => {
 test('pruneSkillOverrides keeps only installed skills', () => {
   const frag = fragment('skill-overrides.json');
   const before = Object.keys(frag.skillOverrides).length;
-  const out = pruneSkillOverrides(frag, new Set(['architecture', 'system-design', 'not-in-fragment']));
-  assert.deepEqual(out, { skillOverrides: { architecture: 'off', 'system-design': 'off' } });
+  const out = pruneSkillOverrides(frag, new Set(['architecture', 'plugin-authoring', 'not-in-fragment']));
+  assert.deepEqual(out, { skillOverrides: { architecture: 'off', 'plugin-authoring': 'off' } });
   assert.equal(Object.keys(frag.skillOverrides).length, before);
   assert.deepEqual(pruneSkillOverrides(frag, new Set()), {});
   assert.deepEqual(pruneSkillOverrides({ tui: 'x' }, new Set()), { tui: 'x' });

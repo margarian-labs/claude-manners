@@ -4,7 +4,7 @@ Some skills in this folder are copies or adaptations of open-source work. Change
 
 ## mattpocock/skills (MIT)
 
-Used in: domain-modeling, grilling, prototype, research, to-spec, to-tickets, wayfinder, setup-matt-pocock-skills
+Used in: domain-modeling, grilling, prototype, research
 
 ```
 MIT License
@@ -32,7 +32,7 @@ SOFTWARE.
 
 ## anthropics/knowledge-work-plugins (Apache-2.0)
 
-Used in: architecture, system-design
+Used in: architecture
 
 ```
 
