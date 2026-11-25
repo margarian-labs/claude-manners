@@ -4,6 +4,12 @@
 
 A shared Claude Code setup for Windows.<br>You approve every change and can undo any.
 
+<a href="https://margarian-labs.github.io/claude-setup/"><img src="docs/preview.png" alt="The claude-setup demo page: 51 parts, you approve each one" width="860"></a>
+
+### [Open the demo page](https://margarian-labs.github.io/claude-setup/)
+
+See what each part does during a session, what you can start yourself and what it costs.
+
 [![License: MIT](https://img.shields.io/github/license/margarian-labs/claude-setup)](LICENSE) [![Platform: Windows](https://img.shields.io/badge/platform-Windows-0078D6)](#quick-start) [![Version](https://img.shields.io/github/v/tag/margarian-labs/claude-setup?sort=date&label=version)](https://github.com/margarian-labs/claude-setup/tags)
 
 [Quick start](#quick-start) · [How it works](#how-it-works) · [What you get](#what-you-get) · [Safety](#safety)
@@ -158,7 +164,7 @@ These do nothing until you use them; the line in italics says how.
 <summary><b>Workflow</b> · 2 parts</summary>
 
 - **Away mode** `recommended`<br>Say -away and the agent asks all its questions first, then finishes the whole task without you, with an optional usage stop point.<br>_Add -away (or -away 85 for a weekly usage stop point) to your message._
-- **Handoff** `recommended`<br>Writes a full handoff for a fresh session, and suggests one after 2 compactions or at 80% context.<br>_Say "write a handoff" (add a session id to pass it on). A hook also suggests one when context gets big._
+- **Handoff** `recommended`<br>Writes a full handoff for a fresh session, and suggests one after 2 compactions once the context is 80% full.<br>_Say "write a handoff" (add a session id to pass it on). A hook also suggests one when context gets big._
 
 </details>
 

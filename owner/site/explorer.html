@@ -1,0 +1,46 @@
+<div id="explorer" class="ex-root">
+<div class="ex-bar" hidden>
+<div class="ex-search" role="search">
+<label class="ex-label" for="ex-q">Search</label>
+<input type="search" id="ex-q" class="field" name="q" autocomplete="off" spellcheck="false" enterkeyhint="search" placeholder="For example away or PDF">
+</div>
+<div class="ex-filter ex-filter--group" role="group" aria-labelledby="ex-l-group">
+<span class="ex-label" id="ex-l-group">Group</span>
+<div class="ex-opts" id="ex-groups">
+<button type="button" class="btn ex-opt" data-key="group" data-value="all" aria-pressed="true">All <span class="ex-opt__n" id="ex-all-n"></span></button>
+</div>
+</div>
+<div class="ex-row">
+<div class="ex-filter" role="group" aria-labelledby="ex-l-use">
+<span class="ex-label" id="ex-l-use">How it runs</span>
+<div class="ex-opts">
+<button type="button" class="btn ex-opt" data-key="use" data-value="all" aria-pressed="true">All</button>
+<button type="button" class="btn ex-opt" data-key="use" data-value="auto" aria-pressed="false">Works on its own</button>
+<button type="button" class="btn ex-opt" data-key="use" data-value="you" aria-pressed="false">You start it</button>
+</div>
+</div>
+<div class="ex-filter" role="group" aria-labelledby="ex-l-level">
+<span class="ex-label" id="ex-l-level">Level</span>
+<div class="ex-opts">
+<button type="button" class="btn ex-opt" data-key="level" data-value="all" aria-pressed="true">All</button>
+<button type="button" class="btn ex-opt" data-key="level" data-value="recommended" aria-pressed="false">Recommended</button>
+<button type="button" class="btn ex-opt" data-key="level" data-value="optional" aria-pressed="false">Optional</button>
+</div>
+</div>
+<div class="ex-filter" role="group" aria-labelledby="ex-l-sort">
+<span class="ex-label" id="ex-l-sort">Sort</span>
+<div class="ex-opts">
+<button type="button" class="btn ex-opt" data-key="sort" data-value="catalog" aria-pressed="true">Catalog order</button>
+<button type="button" class="btn ex-opt" data-key="sort" data-value="cost" aria-pressed="false">Cost: high to low</button>
+</div>
+</div>
+<p class="ex-count" id="ex-count" aria-live="polite"></p>
+</div>
+</div>
+<!-- site:parts -->
+<div class="ex-empty" hidden>
+<p class="ex-empty__title">No part matches these filters.</p>
+<p class="ex-empty__what" id="ex-empty-what"></p>
+<button type="button" class="btn" id="ex-clear">Clear filters</button>
+</div>
+</div>

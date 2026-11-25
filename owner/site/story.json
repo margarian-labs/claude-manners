@@ -1,0 +1,181 @@
+{
+  "moments": [
+    {
+      "id": "every-session",
+      "event": null,
+      "title": "In every session",
+      "what": "Rule files and settings are in effect from the first message on, with no hook involved.",
+      "actor": "setup",
+      "parts": [
+        {
+          "id": "core-rules",
+          "does": "Tells Claude to answer briefly, say what it has not verified and push back when a plan looks wrong."
+        },
+        {
+          "id": "flags",
+          "does": "Defines the flags, so -d, -nc or -p at the start or end of a message changes how Claude handles it."
+        },
+        {
+          "id": "workflow",
+          "does": "Tells Claude to use plan mode when a task touches 3 or more files and to pick fitting skills itself."
+        },
+        {
+          "id": "style-and-coding",
+          "does": "Tells Claude to write the minimum code that solves the request, in the project's existing style."
+        },
+        {
+          "id": "subagents",
+          "does": "Sets the roles: Opus decides and checks every result, Sonnet workers do the work."
+        },
+        {
+          "id": "status-line",
+          "does": "Draws a line with account, model, effort, context and usage limits, and saves the limits to files."
+        }
+      ]
+    },
+    {
+      "id": "session-start",
+      "event": "SessionStart",
+      "title": "A session starts",
+      "what": "A session opens, resumes, is cleared or comes back from a compaction.",
+      "actor": "setup",
+      "parts": [
+        {
+          "id": "compact-recovery",
+          "does": "Only after a compaction: tells Claude where the full transcript and your exact words are."
+        },
+        {
+          "id": "session-id",
+          "does": "Shows a line with the session id on start, on resume and after a clear."
+        },
+        {
+          "id": "two-accounts",
+          "does": "On start and resume, links shared folders into the second account's folder and copies settings.json."
+        }
+      ]
+    },
+    {
+      "id": "prompt",
+      "event": "UserPromptSubmit",
+      "title": "You send a message",
+      "what": "You press Enter, and the hooks run before Claude reads the message.",
+      "actor": "you",
+      "parts": [
+        {
+          "id": "away-mode",
+          "does": "If the message starts or ends with -away, records away mode and tells Claude to ask everything now."
+        },
+        {
+          "id": "session-namer",
+          "does": "Sets the session title a background Haiku call came up with, and starts a new call when one is due."
+        }
+      ]
+    },
+    {
+      "id": "skill-fits",
+      "event": null,
+      "title": "A skill fits the task",
+      "what": "A task matches a skill's description, so Claude loads that skill's full text.",
+      "actor": "setup",
+      "parts": [
+        {
+          "id": "skill-plain-writing",
+          "does": "Loads when Claude writes prose other people will read: removes AI-writing tells, checks no fact was lost."
+        },
+        {
+          "id": "skill-diagram-craft",
+          "does": "Loads when Claude draws a diagram by hand in SVG, HTML or Mermaid: type, layout, labels, accuracy."
+        },
+        {
+          "id": "skill-ui-craft",
+          "does": "Loads when Claude builds or reviews the look of an interface: rules against a generated look."
+        },
+        {
+          "id": "skill-video-analysis",
+          "does": "Loads when you point at a video file or link: Claude looks at frames and reads the transcript."
+        },
+        {
+          "id": "skill-grilling",
+          "does": "Loads before Claude finalises a big plan that rests on things you have not confirmed: it interviews you."
+        }
+      ]
+    },
+    {
+      "id": "tool-call",
+      "event": "PreToolUse",
+      "title": "Claude is about to use a tool",
+      "what": "Before each tool call, the hooks get to look at it and can refuse it.",
+      "actor": "setup",
+      "parts": [
+        {
+          "id": "away-mode",
+          "does": "Once weekly usage reaches your away stop point, denies tool calls except reads and handoff notes."
+        },
+        {
+          "id": "notifications-telegram",
+          "does": "Only when the tool is AskUserQuestion: sends the question and its options to your Telegram chat."
+        }
+      ]
+    },
+    {
+      "id": "permission",
+      "event": "PermissionRequest",
+      "title": "A permission prompt comes up",
+      "what": "Claude Code is about to show a permission prompt.",
+      "actor": "setup",
+      "parts": [
+        {
+          "id": "bypass-mode",
+          "does": "Answers \"allow\" when the request is for a Bash, PowerShell or Monitor command."
+        }
+      ]
+    },
+    {
+      "id": "notification",
+      "event": "Notification",
+      "title": "Claude needs your attention",
+      "what": "Claude Code raises a notice, for example when Claude waits for your input.",
+      "actor": "setup",
+      "parts": [
+        {
+          "id": "notifications-telegram",
+          "does": "Sends the notice to your Telegram chat, unless it logged a finished turn here in the last 5 minutes."
+        }
+      ]
+    },
+    {
+      "id": "compaction",
+      "event": "PreCompact",
+      "title": "The conversation is compacted",
+      "what": "A long conversation is about to be shortened into a summary.",
+      "actor": "setup",
+      "parts": [
+        {
+          "id": "compact-recovery",
+          "does": "Prints the summary instructions: keep your instructions, answers and decisions word for word, numbered."
+        }
+      ]
+    },
+    {
+      "id": "stop",
+      "event": "Stop",
+      "title": "Claude finishes a turn",
+      "what": "Claude has finished answering and the turn ends.",
+      "actor": "setup",
+      "parts": [
+        {
+          "id": "away-mode",
+          "does": "If a usage limit was hit and no wake-up timer runs, tells Claude to start one that waits for the reset."
+        },
+        {
+          "id": "handoff",
+          "does": "After 2 or more compactions, at 80% of the compact window, has Claude ask you about a handoff."
+        },
+        {
+          "id": "notifications-telegram",
+          "does": "Sends \"Claude Responded\" and the last answer to your Telegram chat, at most once per 20 seconds."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>claude-setup, a shared Claude Code setup for Windows</title>
+<meta name="description" content="A shared Claude Code setup for Windows in optional parts: you approve every change and can undo any.">
+<link href="https://fonts.googleapis.com/css2?family=Host+Grotesk:wght@400;500&family=Atkinson+Hyperlegible+Mono:wght@400;500&display=swap" rel="stylesheet">
+<!-- site:css -->
+</head>
+<body>
+<a class="site-skip" href="#session">Skip to content</a>
+<header class="site-nav">
+<div class="container">
+<nav class="site-nav__bar" aria-label="Sections">
+<a class="site-nav__mark" href="#top" aria-label="claude-setup, top of page">claude-setup</a>
+<ul class="site-nav__links">
+<li><a href="#session">One session</a></li>
+<li><a href="#start">What you start</a></li>
+<li><a href="#yours">Stays yours</a></li>
+</ul>
+<ul class="site-nav__links site-nav__links--end">
+<li><a href="#parts">Every part</a></li>
+<li><a href="#join">Join</a></li>
+<li><a href="https://github.com/margarian-labs/claude-setup">GitHub</a></li>
+</ul>
+</nav>
+</div>
+</header>
+<main>
+<section id="top" class="site-hero">
+<div class="container site-hero__inner">
+<h1><span class="site-hero__figure"><!-- site:stat:parts --></span> <span>parts. You approve each one.</span></h1>
+<p class="lead">A shared Claude Code setup for Windows, with every part optional.</p>
+<div class="site-hero__actions">
+<code class="site-cmd measured">git clone https://github.com/<wbr>margarian-labs/<wbr>claude-setup.git</code>
+<div class="site-hero__buttons">
+<button class="btn btn--primary site-copy" type="button" data-copy="git clone https://github.com/margarian-labs/claude-setup.git"><span aria-live="polite">Copy command</span></button>
+<a class="btn site-hero__second" href="#session">See one session</a>
+</div>
+</div>
+</div>
+</section>
+<section id="session" class="site-section">
+<div class="container">
+<header class="site-head">
+<div class="site-head__text">
+<h2>One session, moment by moment</h2>
+<p class="lead">Follow one session from start to finish and see which parts act at each moment.</p>
+</div>
+<p class="site-stat site-stat--auto"><span class="site-stat__num"><!-- site:stat:auto --></span> <span>parts work on their own</span></p>
+</header>
+<!-- include:session.html -->
+</div>
+</section>
+<section id="start" class="site-section">
+<div class="container">
+<header class="site-head">
+<div class="site-head__text">
+<h2>What you can start yourself</h2>
+<p class="lead">The other parts stay quiet until you start them yourself.</p>
+</div>
+<p class="site-stat site-stat--you"><span class="site-stat__num"><!-- site:stat:you --></span> <span>parts you start</span></p>
+</header>
+<!-- include:start.html -->
+</div>
+</section>
+<section id="yours" class="site-section">
+<div class="container">
+<header class="site-head site-head--split">
+<h2>How it stays yours</h2>
+<p class="lead">Every change arrives as a proposal with its real diff, and a rollback restores only what sync wrote.</p>
+</header>
+<!-- include:flow.html -->
+</div>
+</section>
+<section id="parts" class="site-section">
+<div class="container">
+<header class="site-head">
+<div class="site-head__text">
+<h2>Every part and what it costs</h2>
+<p class="lead">Open any part to see what it solves, what it changes on your PC and what it costs.</p>
+</div>
+<p class="site-stat site-stat--auto"><span class="site-stat__num"><!-- site:stat:tokens-recommended --></span> <span>tokens in every session for the <span class="measured"><!-- site:stat:recommended --></span> recommended parts, an estimate without hook and plugin text</span></p>
+</header>
+<!-- include:explorer.html -->
+</div>
+</section>
+<section id="join" class="site-join">
+<div class="container site-join__grid">
+<div class="site-join__head">
+<h2>Join in three steps</h2>
+<p class="site-join__needs">You need Windows, Git for Windows (Git Bash), Node 18 or newer and Claude Code. No GitHub account is needed.</p>
+</div>
+<ol class="site-steps">
+<li class="site-step">
+<div class="site-step__body">
+<h3>Clone the repo anywhere</h3>
+<div class="site-clone">
+<code class="site-cmd measured">git clone https://github.com/<wbr>margarian-labs/<wbr>claude-setup.git</code>
+<button class="btn btn--primary site-copy" type="button" data-copy="git clone https://github.com/margarian-labs/claude-setup.git"><span aria-live="polite">Copy command</span></button>
+</div>
+</div>
+</li>
+<li class="site-step">
+<div class="site-step__body">
+<h3>Open Claude Code in the clone</h3>
+<p class="site-step__line">Say <code class="measured site-typed">Follow START.md</code>. Your agent installs the sync skill and walks you through the rest.</p>
+</div>
+</li>
+<li class="site-step">
+<div class="site-step__body">
+<h3>Answer for each part</h3>
+<p class="site-step__line">Your agent checks your PC, backs up your current setup and asks about each part on its own.</p>
+</div>
+</li>
+</ol>
+</div>
+</section>
+</main>
+<footer class="site-foot">
+<div class="container site-foot__grid">
+<p class="site-foot__mark">claude-setup</p>
+<p class="site-foot__text">A shared Claude Code setup for Windows, published under the MIT license. The source is at <a href="https://github.com/margarian-labs/claude-setup">github.com/margarian-labs/claude-setup</a>, and this page is generated from its catalog.</p>
+</div>
+</footer>
+<!-- site:data -->
+<!-- site:js -->
+</body>
+</html>

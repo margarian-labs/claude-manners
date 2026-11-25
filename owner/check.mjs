@@ -5,6 +5,7 @@ import { fileURLToPath, pathToFileURL } from 'node:url';
 import { git, previousTag } from './tag-release.mjs';
 import { destsFor } from './estimate-tokens.mjs';
 import { listFiles, scanFiles } from './dash-scan.mjs';
+import { render, problems } from './build-site.mjs';
 
 const GROUPS = ['rules', 'settings', 'workflow', 'hooks', 'agents', 'skills', 'plugins', 'tools', 'integrations', 'lessons'];
 const START = '<!-- catalog:start -->';
@@ -67,6 +68,19 @@ export function checkReadme(repoDir, entries, fix) {
   return { ok: true, details: ['README catalog table regenerated'] };
 }
 
+export async function checkSite(repoDir, fix) {
+  if (!fs.existsSync(path.join(repoDir, 'owner', 'site', 'page.html'))) return { ok: true, details: ['no demo page sources'] };
+  const errs = await problems(repoDir);
+  if (errs.length) return { ok: false, details: errs };
+  const html = await render(repoDir);
+  const p = path.join(repoDir, 'docs', 'index.html');
+  if (fs.existsSync(p) && fs.readFileSync(p, 'utf8').replace(/\r\n/g, '\n') === html) return { ok: true, details: [] };
+  if (!fix) return { ok: false, details: ['demo page is out of date (run: node owner/check.mjs --fix-site)'] };
+  fs.mkdirSync(path.dirname(p), { recursive: true });
+  fs.writeFileSync(p, html);
+  return { ok: true, details: ['demo page regenerated'] };
+}
+
 export function missingSrc(entries, repoDir) {
   const out = [];
   for (const e of entries) {
@@ -94,7 +108,7 @@ export function untouchedPayload(repoDir, prev, entries, touches) {
   return [...changed].filter((f) => f.startsWith('payload/') && dests(f).length && !covered(f)).sort();
 }
 
-async function steps(repoDir, fixReadme) {
+async function steps(repoDir, fixReadme, fixSite) {
   const results = [];
   const run = async (name, fn) => {
     try {
@@ -131,6 +145,8 @@ async function steps(repoDir, fixReadme) {
   });
   const readme = checkReadme(repoDir, entries, fixReadme);
   results.push({ name: 'README catalog up to date', ok: readme.ok, details: readme.details });
+  const site = await checkSite(repoDir, fixSite).catch((e) => ({ ok: false, details: [String(e.message || e)] }));
+  results.push({ name: 'demo page up to date', ok: site.ok, details: site.details });
   await run('no em or en dash', () => scanFiles(repoDir, listFiles(repoDir)).map((h) => `${h.file}:${h.line}: ${h.char}`));
   await run('privacy scan', () => {
     const script = path.join(repoDir, 'owner', 'privacy-scan.mjs');
@@ -145,12 +161,14 @@ async function steps(repoDir, fixReadme) {
 async function main(argv) {
   let repoDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
   let fixReadme = false;
+  let fixSite = false;
   for (let i = 0; i < argv.length; i++) {
     if (argv[i] === '--repo') repoDir = path.resolve(argv[++i]);
     else if (argv[i] === '--fix-readme') fixReadme = true;
-    else { console.error('usage: check.mjs [--fix-readme] [--repo dir]'); return 2; }
+    else if (argv[i] === '--fix-site') fixSite = true;
+    else { console.error('usage: check.mjs [--fix-readme] [--fix-site] [--repo dir]'); return 2; }
   }
-  const results = await steps(repoDir, fixReadme);
+  const results = await steps(repoDir, fixReadme, fixSite);
   for (const r of results) {
     console.log(`${r.ok ? 'PASS' : 'FAIL'} ${r.name}`);
     const shown = r.ok ? r.details : r.details.slice(0, 20);

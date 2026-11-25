@@ -1,0 +1,88 @@
+<div id="flow-diagram" class="wg-flow">
+<div class="wg-flow__panel" id="wg-flow-join">
+<h3 class="wg-flow__name">Join</h3>
+<ol class="wg-steps" role="list">
+<li class="wg-step"><span class="chip chip--you">You</span><p>Clone the repo, open Claude Code in it and say “<span class="wg-typed">Follow START.md</span>”.</p></li>
+<li class="wg-step"><span class="chip chip--auto">The setup</span><p>Checks the PC for Windows, Git Bash, Node and Claude Code, and stops if one is missing.</p></li>
+<li class="wg-step"><span class="chip chip--auto">The setup</span><p>Installs only the sync tool and its skill, and remembers where the clone is.</p></li>
+<li class="wg-step"><span class="chip chip--auto">The setup</span><p>Asks about each part on its own: what it is, what it solves, its use cases, what it changes on the PC and what it costs.</p></li>
+<li class="wg-step"><span class="chip chip--you">You</span><p>Answer install or skip for each part, then give one last yes.</p></li>
+<li class="wg-step"><span class="chip chip--auto">The setup</span><p>Installs what you chose and gives a short report. A file it replaces keeps a backup.</p></li>
+</ol>
+<p class="wg-flow__note">Nothing is installed until you say so.</p>
+</div>
+<div class="wg-flow__panel" id="wg-flow-update">
+<h3 class="wg-flow__name">Stay up to date</h3>
+<ol class="wg-steps" role="list">
+<li class="wg-step"><span class="chip chip--you">You</span><p>Say “<span class="wg-typed">sync my setup</span>”.</p></li>
+<li class="wg-step"><span class="chip chip--auto">The setup</span><p>Fetches the repo and lists the pending proposals.</p></li>
+<li class="wg-step"><span class="chip chip--auto">The setup</span><p>Shows each proposal on its own: what and why, token cost, how well it was tested, what it runs and the real diff.</p></li>
+<li class="wg-step"><span class="chip chip--you">You</span><p>Answer accept, skip or later. Later comes back next time, skip does not.</p></li>
+<li class="wg-step"><span class="chip chip--auto">The setup</span><p>Where your own file or setting differs, asks whether to keep yours or take the new one.</p></li>
+<li class="wg-step"><span class="chip chip--auto">The setup</span><p>Applies what you accepted and ends with a one-screen report.</p></li>
+</ol>
+<p class="wg-flow__note">Nothing updates in the background.</p>
+</div>
+<div class="wg-flow__panel" id="wg-flow-back">
+<h3 class="wg-flow__name">Go back</h3>
+<ol class="wg-steps" role="list">
+<li class="wg-step"><span class="chip chip--you">You</span><p>Say “<span class="wg-typed">roll back my last sync</span>” or “<span class="wg-typed">go back to version &lt;tag&gt;</span>”.</p></li>
+<li class="wg-step"><span class="chip chip--auto">The setup</span><p>Shows the plan in plain words: files that change back, settings that revert, MCP servers removed, proposals that will be offered again.</p></li>
+<li class="wg-step"><span class="chip chip--you">You</span><p>Answer yes or no. It applies only after a yes.</p></li>
+<li class="wg-step"><span class="chip chip--you">You</span><p>For each file you edited, choose: keep my file, or revert it. A backup is kept.</p></li>
+<li class="wg-step"><span class="chip chip--auto">The setup</span><p>Restores only what sync wrote. Your own files, settings and edits stay.</p></li>
+</ol>
+<p class="wg-flow__note">Rolled-back changes are offered again on the next sync.</p>
+</div>
+</div>
+<div class="wg-block wg-split">
+<div class="wg-head">
+<h3>Where the files land</h3>
+<p>Files go into your Claude config folder. The setup records what it wrote, so going back restores only that.</p>
+<ul class="wg-legend" role="list">
+<li><span class="chip chip--auto">the setup</span><span>Written by the setup.</span></li>
+<li><span class="chip chip--you">yours</span><span>Not written by the setup.</span></li>
+</ul>
+</div>
+<div id="files-diagram" class="wg-files">
+<ul class="wg-tree" role="list">
+<li>
+<div class="wg-tree__row"><code class="wg-tree__path measured">~/.claude/</code><span class="wg-tree__note">Your Claude config folder</span></div>
+<ul role="list">
+<li>
+<div class="wg-tree__row"><code class="wg-tree__path measured">rules/</code></div>
+<ul role="list">
+<li><div class="wg-tree__row"><code class="wg-tree__path measured">claude-setup--&lt;name&gt;.md</code><span class="chip chip--auto">the setup</span><span class="wg-tree__note">The rule files of the parts you chose</span></div></li>
+<li><div class="wg-tree__row"><span class="wg-tree__path">your own rule files</span><span class="chip chip--you">yours</span><span class="wg-tree__note">They stay as they are</span></div></li>
+</ul>
+</li>
+<li>
+<div class="wg-tree__row"><code class="wg-tree__path measured">skills/</code><span class="chip chip--auto">the setup</span><span class="wg-tree__note">A folder per skill of the parts you chose</span></div>
+<ul role="list">
+<li><div class="wg-tree__row"><code class="wg-tree__path measured">claude-setup-sync/</code><span class="chip chip--auto">the setup</span><span class="wg-tree__note">The skill that drives the sync tool</span></div></li>
+</ul>
+</li>
+<li><div class="wg-tree__row"><code class="wg-tree__path measured">hooks/</code><span class="chip chip--auto">the setup</span><span class="wg-tree__note">Hook scripts of the parts you chose</span></div></li>
+<li><div class="wg-tree__row"><code class="wg-tree__path measured">agents/</code><span class="chip chip--auto">the setup</span><span class="wg-tree__note">The planner, second opinion and Haiku worker agents</span></div></li>
+<li>
+<div class="wg-tree__row"><code class="wg-tree__path measured">tools/</code><span class="chip chip--auto">the setup</span><span class="wg-tree__note">Scripts of the parts you chose</span></div>
+<ul role="list">
+<li><div class="wg-tree__row"><code class="wg-tree__path measured">claude-setup/sync/</code><span class="chip chip--auto">the setup</span><span class="wg-tree__note">The sync tool itself</span></div></li>
+</ul>
+</li>
+<li><div class="wg-tree__row"><code class="wg-tree__path measured">statusline.sh</code><span class="chip chip--auto">the setup</span><span class="wg-tree__note">Comes with the Status line part</span></div></li>
+<li><div class="wg-tree__row"><code class="wg-tree__path measured">compact-instructions.md</code><span class="chip chip--auto">the setup</span><span class="wg-tree__note">Comes with the Compaction recovery part</span></div></li>
+<li><div class="wg-tree__row"><code class="wg-tree__path measured">settings.json</code><span class="chip chip--auto">merged</span><span class="wg-tree__note">Key by key. A value you already set stays unless you take the new one.</span></div></li>
+<li>
+<div class="wg-tree__row"><code class="wg-tree__path measured">state/claude-setup/</code></div>
+<ul role="list">
+<li><div class="wg-tree__row"><code class="wg-tree__path measured">state.json</code><span class="chip chip--auto">the setup</span><span class="wg-tree__note">The record of what was installed, and of every run</span></div></li>
+<li><div class="wg-tree__row"><code class="wg-tree__path measured">backups/&lt;date&gt;/&lt;run&gt;/</code><span class="chip chip--auto">the setup</span><span class="wg-tree__note">A copy of each file a run replaced, yours included</span></div></li>
+</ul>
+</li>
+<li><div class="wg-tree__row"><span class="wg-tree__path">your other files</span><span class="chip chip--you">yours</span><span class="wg-tree__note">The setup writes only the files and settings it lists</span></div></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>

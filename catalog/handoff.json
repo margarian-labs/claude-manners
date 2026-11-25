@@ -3,17 +3,17 @@
   "title": "Handoff",
   "group": "workflow",
   "level": "recommended",
-  "summary": "Writes a full handoff for a fresh session, and suggests one after 2 compactions or at 80% context.",
+  "summary": "Writes a full handoff for a fresh session, and suggests one after 2 compactions once the context is 80% full.",
   "benefit": "You can move a long task to a fresh session without losing decisions or context.",
   "solves": "A session that got too big, and a fresh one that would have to ask you everything again.",
   "use_cases": [
     "\"write a handoff\": the job, every decision, your own words, status and next steps go to ~/.claude/handoffs.",
     "\"pass this to session <id>\": Claude checks it can reach that session, sends the handoff and checks it arrived.",
     "No target session: you get one start line to paste into a new session in the same folder.",
-    "A hook suggests a handoff after 2 compactions or at 80% of the context.",
+    "A hook suggests a handoff once a session has 2 compactions and is at 80% of the context.",
     "Background work still running: the handoff is sent right after the last result lands."
   ],
-  "details": "When you say write a handoff, Claude writes the job, every decision, your own words and answers word for word, the status and the next steps to ~/.claude/handoffs, and can pass it to another session if you give its id. A hook also suggests a handoff after 2 compactions or at 80 percent context. It is for jobs too big for one session. It adds a skill loaded only when used, a Stop hook that checks context after each answer and settings entries; local files only, no network.",
+  "details": "When you say write a handoff, Claude writes the job, every decision, your own words and answers word for word, the status and the next steps to ~/.claude/handoffs, and can pass it to another session if you give its id. A hook also suggests a handoff once a session has 2 compactions and is at 80 percent of the context. It is for jobs too big for one session. It adds a skill loaded only when used, a Stop hook that checks context after each answer and settings entries; local files only, no network.",
   "use": "you",
   "trigger": "Say \"write a handoff\" (add a session id to pass it on). A hook also suggests one when context gets big.",
   "needs": [
