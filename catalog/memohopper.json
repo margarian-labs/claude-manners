@@ -50,7 +50,7 @@
   "machine_steps": [],
   "verify": [],
   "tokens_always_on": {
-    "value": 566,
+    "value": 568,
     "how": "estimated chars/2.6"
   },
   "tokens_on_use": {

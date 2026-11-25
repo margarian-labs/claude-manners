@@ -35,7 +35,7 @@
   "machine_steps": [],
   "verify": [],
   "tokens_always_on": {
-    "value": 882,
+    "value": 885,
     "how": "estimated chars/2.6"
   },
   "tokens_on_use": {

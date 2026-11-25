@@ -35,7 +35,7 @@
     "bash -c \"claude plugin list | grep -q superpowers\""
   ],
   "tokens_always_on": {
-    "value": 67,
+    "value": 68,
     "how": "estimated chars/2.6"
   },
   "tokens_on_use": {

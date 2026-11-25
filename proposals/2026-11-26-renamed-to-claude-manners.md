@@ -11,8 +11,8 @@ touches:
   - rules/
   - payload/legacy/
   - payload/rules/
-tokens_always_on: "+14"
-tokens_how: estimated chars/2.6
+tokens_always_on: "+17"
+tokens_how: estimated chars/2.6, with every part installed
 quality: tried
 risk: Code that runs at the start of each sync command moves and renames files in your config folder; no network.
 undo: None. Rolling back past the rename is refused; the files from before it stay in state/claude-manners/backups.

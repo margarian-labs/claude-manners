@@ -102,7 +102,7 @@
     "node \"$CLAUDE_CONFIG_DIR/tools/sync-second-profile.mjs\" 2>&1 | grep -q 'usage: node sync-second-profile.mjs'"
   ],
   "tokens_always_on": {
-    "value": 643,
+    "value": 646,
     "how": "estimated chars/2.6"
   },
   "tokens_on_use": {

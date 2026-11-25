@@ -92,7 +92,7 @@
     "node \"$CLAUDE_CONFIG_DIR/hooks/tests/away-hook-test.js\""
   ],
   "tokens_always_on": {
-    "value": 197,
+    "value": 198,
     "how": "estimated chars/2.6"
   },
   "tokens_on_use": {

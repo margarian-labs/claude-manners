@@ -39,7 +39,7 @@
     "node \"${CLAUDE_CONFIG_DIR:-$HOME/.claude}/tools/claude-manners/sync/sync.mjs\" status --json"
   ],
   "tokens_always_on": {
-    "value": 91,
+    "value": 92,
     "how": "estimated chars/2.6"
   },
   "quality": "tried",

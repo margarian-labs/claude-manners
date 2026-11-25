@@ -7,7 +7,6 @@
 /* Hallmark · answered F1 · the part text is the catalog word for word, where straight quotes mark the words a person types */
 /* Hallmark · answered F2 · the three periods sit in catalog text that the install question prints unchanged */
 /* Hallmark · reworded "46 parts. You approve each one." to "Claude, on its best behavior." · the owner made the slogan the headline and this line the one under it */
-/* Hallmark · dropped https://github.com/margarian-labs/claude-setup, { ArrowDown: at + 1, ArrowUp: at - 1, Home: 0, End: tabs.length - 1 }[e.key] · the repo was renamed to claude-manners; the second is a key map in a script that gained the left and right arrows */
 @import url("./tokens.css");
 @import url("./base.css");
 @import url("./shared.css");

@@ -471,7 +471,7 @@ test('migrate: a fresh install of the new layout is never touched, even when the
   const dir = 'state/claude-manners/backups/2026-11-26/20261126-090000';
   put(cfg, `${dir}/state-before.json`, '{}\n');
   const state = {
-    version: 1, repo: { path: 'C:\\Users\\x\\Desktop\\code\\claude-setup', commit: COMMIT, tag: 'v3' }, engine: { version: '2.0.0', sha256: null }, facts: {}, values: {}, parts: {}, answers: {}, settings: {}, mcp: {},
+    version: 1, repo: { path: 'D:/code/claude-setup', commit: COMMIT, tag: 'v3' }, engine: { version: '2.0.0', sha256: null }, facts: {}, values: {}, parts: {}, answers: {}, settings: {}, mcp: {},
     files: { 'rules/claude-manners--core.md': { hash: hashBuffer(bytes), commit: COMMIT, part: 'core-rules', mode: 'managed', existed_before: false, backup: null, held: false }, [NEW_SYNC]: { hash: 'x', commit: COMMIT, part: 'sync-engine', mode: 'managed', existed_before: false, backup: null, held: false } },
     runs: [{ id: '20261126-090000', kind: 'apply', at: '2026-11-26T09:00:00.000Z', from: null, to: COMMIT, proposals: [], status: 'done', backup: dir }],
   };
@@ -601,10 +601,10 @@ test('helpers: expandFiles skips payload/legacy and gives rules of an old commit
     files: [{ src: 'sync', dest: 'tools/claude-manners/sync', mode: 'managed' }, { src: 'payload/legacy/sync.mjs', dest: FWD, mode: 'managed' }],
     rules: ['payload/rules/claude-setup--core.md', 'payload/rules/claude-manners--flags.md'],
   };
-  const items = expandFiles(e, repo, c, { home: 'C:\\Users\\x' });
+  const items = expandFiles(e, repo, c, { home: 'D:/home-x' });
   assert.deepEqual(items.map((i) => [i.dest, i.rule]), [[NEW_SYNC, false], ['rules/claude-manners--core.md', true], ['rules/claude-manners--flags.md', true]]);
   assert.equal(items[1].src, 'payload/rules/claude-setup--core.md');
-  assert.equal(bytesFor(e, items[1], repo, c, {}, [], 'C:\\Users\\x').toString(), rule('core', 'claude-manners'));
-  assert.equal(bytesFor(e, items[2], repo, c, {}, [], 'C:\\Users\\x').toString(), rule('flags', 'claude-manners'));
+  assert.equal(bytesFor(e, items[1], repo, c, {}, [], 'D:/home-x').toString(), rule('core', 'claude-manners'));
+  assert.equal(bytesFor(e, items[2], repo, c, {}, [], 'D:/home-x').toString(), rule('flags', 'claude-manners'));
   assert.equal(expandFiles({ files: [{ src: 'payload/legacy/sync.mjs', dest: FWD, mode: 'managed' }], rules: [] }, repo, c, {}).length, 0);
 });

@@ -37,7 +37,7 @@
   ],
   "verify": [],
   "tokens_always_on": {
-    "value": 210,
+    "value": 211,
     "how": "estimated chars/2.6"
   },
   "tokens_on_use": {
