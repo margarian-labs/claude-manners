@@ -1,8 +1,8 @@
-<!-- claude-setup part: memohopper -->
+<!-- claude-manners part: memohopper -->
 
-# claude-setup rules: memohopper memory
+# claude-manners rules: memohopper memory
 
-Installed by claude-setup into ~/.claude/rules/ and loaded every session. Sync manages this file: if you edit it, sync keeps your edit and asks before any update.
+Installed by claude-manners into ~/.claude/rules/ and loaded every session. Sync manages this file: if you edit it, sync keeps your edit and asks before any update.
 
 ## Memory: memohopper (primary)
 

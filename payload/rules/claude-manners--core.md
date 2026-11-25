@@ -1,8 +1,8 @@
-<!-- claude-setup part: core-rules -->
+<!-- claude-manners part: core-rules -->
 
-# claude-setup rules: core
+# claude-manners rules: core
 
-Installed by claude-setup into ~/.claude/rules/ and loaded every session. Sync manages this file: if you edit it, sync keeps your edit and asks before any update.
+Installed by claude-manners into ~/.claude/rules/ and loaded every session. Sync manages this file: if you edit it, sync keeps your edit and asks before any update.
 
 ## Core rules (every project)
 

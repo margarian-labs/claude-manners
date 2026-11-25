@@ -7,7 +7,7 @@
   ],
   "strings": [
     {
-      "value": "margarian-labs/claude-setup",
+      "value": "margarian-labs/claude-manners",
       "why": "The repo's own GitHub address (org/repo), needed in README and START.md."
     },
     {

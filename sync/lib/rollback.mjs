@@ -2,6 +2,7 @@ import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import { assertAllowed, backupFile, configDir, hashBuffer, hashFile, journal, readJournal, readJson, relInside, removeFile, writeFileAtomic } from './fsx.mjs';
+import { NO_WAY_BACK } from './legacy.mjs';
 import { isAfter, listTags, lsTree, showFileAt } from './repo.mjs';
 import { absOf, bytesFor, defaultMerge, expandFiles, mergedValues, revertEntry } from './install.mjs';
 import { finishRun, newRun, runDirOf, save } from './state.mjs';
@@ -116,6 +117,7 @@ export function planUndo(state, ctx, { runs = 1 } = {}) {
   const activeIdx = state.runs.map((r, i) => (r.status === 'rolled-back' ? -1 : i)).filter((i) => i >= 0);
   if (activeIdx.length < runs) throw new Error(`only ${activeIdx.length} run(s) can be undone`);
   const suffix = state.runs.slice(activeIdx[activeIdx.length - runs]);
+  if (suffix.some((r) => r.kind === 'rename')) throw new Error(NO_WAY_BACK);
   const snapshot = readJson(path.join(runDirOf(suffix[0], cfg), 'state-before.json'), null);
   if (!snapshot) throw new Error(`no saved state for run ${suffix[0].id}`);
 

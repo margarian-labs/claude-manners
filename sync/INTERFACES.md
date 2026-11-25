@@ -7,8 +7,8 @@ Node 18+ ESM, no npm dependencies. Every write goes through `lib/fsx.mjs`. Windo
 
 ## Paths
 - `CONFIG_DIR`: `process.env.CLAUDE_CONFIG_DIR` or `~/.claude`. Main profile only; the second-profile sync runs after.
-- `STATE`: `CONFIG_DIR/state/claude-setup/state.json` (+ `state.json.bak` written before every save).
-- `BACKUPS`: `CONFIG_DIR/backups/<yyyy-mm-dd>-claude-setup/<runId>/` holding copies of every file before sync touched it, plus `journal.jsonl`.
+- `STATE`: `CONFIG_DIR/state/claude-manners/state.json` (+ `state.json.bak` written before every save).
+- `BACKUPS`: `CONFIG_DIR/state/claude-manners/backups/<yyyy-mm-dd>/<runId>/` holding copies of every file before sync touched it, plus `journal.jsonl`.
 - `REPO`: path given by `--repo` or `state.repo.path`.
 - Test mode (`CLAUDE_SETUP_TEST=1`): refuse to run unless `CONFIG_DIR` is under the path in `CLAUDE_SETUP_TEST_ROOT`; machine steps never run.
 
@@ -39,6 +39,7 @@ Node 18+ ESM, no npm dependencies. Every write goes through `lib/fsx.mjs`. Windo
 - `settings-merge.mjs` (from `payload/settings/merge-fragment.mjs`): `planMerge(settings, fragment)` returns ops `[{op: add|change|keep|conflict, pointer, value, prev}]`; `applyOps(settingsPath, ops, runDir)`; `revert(settingsPath, entries)` (restores `prev` only where the current value still equals what sync wrote; else returns a conflict). Hook arrays merge by command string, never duplicate.
 - `install.mjs`: `planPart(entry, state, values)` -> ops (file write/remove, settings ops, rule write, mcp add, plugin install, machine step) ; `applyOps(ops, runDir)`; `render(text, values)` (`{{key}}`) and `setFrontmatter(text, key, value)`.
 - `rollback.mjs`: `planRollback(state, targetCommit)` -> ops limited to `state.files`, `state.settings`, `state.mcp` entries whose content differs from the target version: managed file -> content at target (or remove if absent at target and `existed_before` false, or restore `backup` if `existed_before` true); local edit (hash != state) -> ask; settings -> `prev`; then marks rolled-back proposals `later`.
+- `legacy.mjs`: the rename from claude-setup to claude-manners (2026-11). `migrate(cfg)` runs at the start of every command: moves `state/claude-setup`, the rule files, and removes the old engine and skill; each step saves the state and can be repeated. `state.renamed` = `{ done, run, report }`; the run has kind `rename` and nothing can be rolled back past it. `expandFiles` and `bytesFor` give rules of older commits their new name and header, and skip `payload/legacy/` (the forwarder that engine 1.x installs at its own old path).
 - `display.mjs`: `card(proposal, ops)` -> plain text for the skill: fields, file diffs (unified, against installed copy), settings dry run, warnings (`touches` mismatch, risky keys `env|permissions|hooks|apiKeyHelper|mcpServers`, network/process/outside-config patterns in code, earlier skipped change carried).
 
 ## CLI (`sync.mjs`), JSON output with `--json`
@@ -75,4 +76,4 @@ Exit codes: 0 ok, 2 needs an answer (conflict, local edit, risky key), 1 error. 
 - `--fable yes|no` answers an unknown Fable check; `--crash finish` closes a crashed run, `rollback --crashed` undoes it.
 - `--confirm-risky <id>` takes proposal ids on sync and part ids on first run; `ask_alone` parts always need it.
 - Built-in skill names (`BUILTIN_SKILLS` in `lib/install.mjs`) always count as installed when pruning skill overrides.
-- Backups: `CONFIG_DIR/state/claude-setup/backups/<date>/<runId>/`, outside `~/.claude/backups`, which a cleanup tool empties after 90 days.
+- Backups: `CONFIG_DIR/state/claude-manners/backups/<date>/<runId>/`, outside `~/.claude/backups`, which a cleanup tool empties after 90 days.

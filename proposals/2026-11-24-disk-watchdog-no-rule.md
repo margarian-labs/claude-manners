@@ -5,13 +5,13 @@ kind: change
 level: optional
 part: disk-watchdog
 touches:
-  - rules/claude-setup--disk-watchdog.md
-  - payload/rules/claude-setup--disk-watchdog.md
+  - rules/claude-manners--disk-watchdog.md
+  - payload/rules/claude-manners--disk-watchdog.md
 tokens_always_on: "-100"
 tokens_how: estimated chars/2.6
 quality: tried
 risk: Removes one text file; no code runs, no network.
-undo: Roll back this version, or restore rules/claude-setup--disk-watchdog.md from the previous version.
+undo: Roll back this version, or restore rules/claude-manners--disk-watchdog.md from the previous version.
 needs: [windows]
 after: []
 settings: []
@@ -33,4 +33,4 @@ About 100 fewer tokens in every session. The agent learns the 90-day and 3-day l
 
 ## Undo
 
-Roll back this version, or restore `rules/claude-setup--disk-watchdog.md` from the previous version.
+Roll back this version, or restore `rules/claude-manners--disk-watchdog.md` from the previous version.

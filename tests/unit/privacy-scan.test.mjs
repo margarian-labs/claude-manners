@@ -77,7 +77,7 @@ test('globToRegExp: star, double star, question mark', () => {
 
 test('defaultWordsPath ends in the documented location', () => {
   const p = defaultWordsPath().split(path.sep).join('/');
-  assert.ok(p.endsWith('/.claude/state/claude-setup/privacy-words.txt'));
+  assert.ok(p.endsWith('/.claude/state/claude-manners/privacy-words.txt'));
 });
 
 test('email rule: positive, safe domains, file names and version pins', () => {

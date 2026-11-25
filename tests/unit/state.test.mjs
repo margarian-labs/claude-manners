@@ -39,7 +39,7 @@ test('save writes state.json and keeps the previous version as state.json.bak', 
   save(s);
   assert.equal(JSON.parse(fs.readFileSync(stateFile() + '.bak', 'utf8')).values.k, 'one');
   assert.equal(load().values.k, 'two');
-  assert.equal(stateFile(), path.join(cfg, 'state', 'claude-setup', 'state.json'));
+  assert.equal(stateFile(), path.join(cfg, 'state', 'claude-manners', 'state.json'));
 });
 
 test('load rejects an unknown version and fills missing keys', () => {
@@ -61,8 +61,8 @@ test('newRun makes a started run with a backup dir, snapshot and a unique id', (
   assert.equal(r2.id, '20261123-090808');
   assert.equal(r1.status, 'started');
   assert.equal(r1.kind, 'apply');
-  assert.equal(r1.backup, 'state/claude-setup/backups/2026-11-23/20261123-090807');
-  assert.equal(runDirOf(r1, cfg), path.join(cfg, 'state', 'claude-setup', 'backups', '2026-11-23', r1.id));
+  assert.equal(r1.backup, 'state/claude-manners/backups/2026-11-23/20261123-090807');
+  assert.equal(runDirOf(r1, cfg), path.join(cfg, 'state', 'claude-manners', 'backups', '2026-11-23', r1.id));
   assert.deepEqual(s.runs.map((r) => r.id), [r1.id, r2.id]);
   const snap = JSON.parse(fs.readFileSync(path.join(runDirOf(r1, cfg), 'state-before.json'), 'utf8'));
   assert.deepEqual(snap.files, { 'a/b.txt': { hash: 'h' } });

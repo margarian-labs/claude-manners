@@ -5,13 +5,13 @@ kind: change
 level: optional
 part: two-accounts
 touches:
-  - rules/claude-setup--two-accounts.md
+  - rules/claude-manners--two-accounts.md
   - skills/two-accounts/SKILL.md
 tokens_always_on: "-632"
 tokens_how: estimated chars/2.6
 quality: tried
 risk: Text only - a shorter rule file and a skill loaded only when used; no code runs, no network.
-undo: Roll back this version, or delete skills/two-accounts and restore rules/claude-setup--two-accounts.md from the previous version.
+undo: Roll back this version, or delete skills/two-accounts and restore rules/claude-manners--two-accounts.md from the previous version.
 needs: [windows]
 after: []
 settings: []
@@ -33,4 +33,4 @@ Every session now carries about 520 tokens for the rule plus about 120 for the s
 
 ## Undo
 
-Roll back this version, or delete `skills/two-accounts/` and restore `rules/claude-setup--two-accounts.md` from the previous version.
+Roll back this version, or delete `skills/two-accounts/` and restore `rules/claude-manners--two-accounts.md` from the previous version.

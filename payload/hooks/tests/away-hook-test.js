@@ -330,7 +330,8 @@ check('wrapper with no state folder: exit 0', sh({}).status === 0);
 check('stop wrapper with no state folder: exit 0', sh({}, 'away-stop.sh').status === 0);
 
 const dash = new RegExp('[' + String.fromCharCode(0x2013, 0x2014) + ']');
-for (const f of ['rules/claude-setup--away-mode.md', 'settings.json', 'statusline.sh', 'tools/away-wait.mjs', 'hooks/away-stop.js', 'hooks/away-stop.sh', 'hooks/away-mode.js', 'hooks/away-mode.sh', 'hooks/away-guard.js', 'hooks/away-guard.sh', 'hooks/compact-recovery.js', 'skills/away-mode/SKILL.md'])
+const awayRule = ['rules/claude-manners--away-mode.md', 'rules/claude-setup--away-mode.md'].find((f) => fs.existsSync(path.join(real, f)));
+for (const f of [awayRule, 'settings.json', 'statusline.sh', 'tools/away-wait.mjs', 'hooks/away-stop.js', 'hooks/away-stop.sh', 'hooks/away-mode.js', 'hooks/away-mode.sh', 'hooks/away-guard.js', 'hooks/away-guard.sh', 'hooks/compact-recovery.js', 'skills/away-mode/SKILL.md'])
   check(`no long dash in ${f}`, !dash.test(fs.readFileSync(path.join(real, f), 'utf8')));
 if (process.argv.includes('--settings')) {
   const s = JSON.parse(fs.readFileSync(path.join(real, 'settings.json'), 'utf8'));

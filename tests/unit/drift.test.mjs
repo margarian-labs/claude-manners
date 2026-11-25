@@ -18,7 +18,7 @@ function makeFixture() {
   write(dir, 'payload/hooks/h.js', 'hook\n');
   write(dir, 'payload/tpl/r.json', '{"v": "{{VALUE}}"}\n');
   write(dir, 'payload/seed/s.md', 'seed\n');
-  write(dir, 'payload/rules/claude-setup--x.md', 'rule\n');
+  write(dir, 'payload/rules/claude-manners--x.md', 'rule\n');
   const entry = {
     id: 'a', title: 'A', group: 'tools', level: 'optional', summary: 's', needs: [],
     files: [
@@ -27,7 +27,7 @@ function makeFixture() {
       { src: 'payload/tpl/r.json', dest: 'tpl/r.json', mode: 'rendered' },
       { src: 'payload/seed/s.md', dest: 'seed/s.md', mode: 'seed' },
     ],
-    settings: [], rules: ['payload/rules/claude-setup--x.md'],
+    settings: [], rules: ['payload/rules/claude-manners--x.md'],
     tokens_always_on: { value: null, how: 'not measured yet' },
   };
   write(dir, 'catalog/a.json', JSON.stringify(entry, null, 2) + '\n');
@@ -56,7 +56,7 @@ test('drift reports every status, skips seed and lists rules', () => {
     });
     assert.equal(r.parts[0].files.find((f) => f.dest === 'hooks/h.js').src, 'payload/hooks/h.js');
     assert.ok(!('seed/s.md' in byDest));
-    assert.deepEqual(r.rules, [{ id: 'a', src: 'payload/rules/claude-setup--x.md', dest: 'rules/claude-setup--x.md' }]);
+    assert.deepEqual(r.rules, [{ id: 'a', src: 'payload/rules/claude-manners--x.md', dest: 'rules/claude-manners--x.md' }]);
     assert.deepEqual(r.summary, { differ: 2, missingLive: 1, liveOnly: 1, same: 1, rules: 1 });
   } finally { clean(dir, cfg); }
 });
@@ -77,7 +77,7 @@ test('main prints json with --json, hides same lines unless --all, and never wri
     logs.length = 0;
     assert.equal(main(['--repo', dir, '--config-dir', cfg]), 0);
     assert.ok(!logs.some((l) => l.includes('SKILL.md')));
-    assert.ok(logs.includes('  generalized, compare by hand: payload/rules/claude-setup--x.md -> rules/claude-setup--x.md'));
+    assert.ok(logs.includes('  generalized, compare by hand: payload/rules/claude-manners--x.md -> rules/claude-manners--x.md'));
     assert.equal(logs.at(-1), 'drift: 2 differ, 1 missing-live, 1 live-only, 1 same; 1 rule files to compare by hand');
 
     logs.length = 0;

@@ -1,8 +1,8 @@
-<!-- claude-setup part: two-accounts -->
+<!-- claude-manners part: two-accounts -->
 
-# claude-setup rules: two accounts (optional)
+# claude-manners rules: two accounts (optional)
 
-Installed by claude-setup into ~/.claude/rules/ and loaded every session. Sync manages this file: if you edit it, sync keeps your edit and asks before any update.
+Installed by claude-manners into ~/.claude/rules/ and loaded every session. Sync manages this file: if you edit it, sync keeps your edit and asks before any update.
 
 ## Claude accounts (two profiles on this PC)
 - `claude` = {{MAIN_LABEL}} (`{{MAIN_EMAIL}}`), config `~/.claude`. `claude {{SECOND_FLAG}}` = {{SECOND_LABEL}} (`{{SECOND_EMAIL}}`), config `~/{{SECOND_DIR}}` (both signed in at once through `CLAUDE_CONFIG_DIR`). `{{SECOND_FLAG}}` is a shell wrapper in the bash and PowerShell profiles, not a Claude Code flag; lowercase `-p` stays print mode. Other shells (cmd.exe) and IDE extensions open the main profile only.

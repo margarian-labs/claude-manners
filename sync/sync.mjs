@@ -3,19 +3,21 @@ import fs from 'node:fs';
 import os from 'node:os';
 import crypto from 'node:crypto';
 import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { backupFile, configDir, hashFile, journal, readJson, relInside, removeFile, walk, writeFileAtomic, writeJsonAtomic } from './lib/fsx.mjs';
 import { fetchAndUpdate, git, headCommit, listTags, lsTree, resolveVersion, showFileAt } from './lib/repo.mjs';
 import { validateEntry } from './lib/catalog.mjs';
 import { parseFrontmatter, pending, validateProposal } from './lib/proposals.mjs';
 import { check, defaultCtx, defaultRun, runVerify } from './lib/conditions.mjs';
 import { absOf, applyPlan, defaultMerge as merge, encodeHome, expandFiles, installedSkills, mergedValues, planPart } from './lib/install.mjs';
+import { beforeRename, migrate, NO_WAY_BACK } from './lib/legacy.mjs';
 import { applyRollback, catalogAt, planRollback, planUndo } from './lib/rollback.mjs';
 import { card, partCard, riskyPointers } from './lib/display.mjs';
 import { findCrashedRun, finishRun, load, newRun, runDirOf, save } from './lib/state.mjs';
 
 const TEST = process.env.CLAUDE_SETUP_TEST === '1';
 const ENGINE = 'sync-engine';
-const ENGINE_VERSION = '1.4.0';
+const ENGINE_VERSION = '2.0.0';
 const GROUPS = ['rules', 'settings', 'workflow', 'hooks', 'agents', 'skills', 'plugins', 'tools', 'integrations', 'lessons'];
 const PACKS = {
   'pack-2026-11-21': {
@@ -100,18 +102,19 @@ function homeDir() {
 
 function boot(a, { repo = true } = {}) {
   const cfg = configDir();
+  const renamed = migrate(cfg, { self: fileURLToPath(import.meta.url) });
   const state = load(cfg);
   let repoPath = null;
   if (repo) {
     repoPath = one(a, 'repo') ? path.resolve(one(a, 'repo')) : state.repo.path;
-    if (!repoPath) throw new Error('no clone known yet: pass --repo <path to the claude-setup clone> (or run bootstrap first)');
+    if (!repoPath) throw new Error('no clone known yet: pass --repo <path to the claude-manners clone> (or run bootstrap first)');
     try {
       git(['rev-parse', '--git-dir'], repoPath);
     } catch {
       throw new Error(`not a git clone: ${repoPath}`);
     }
   }
-  return { a, cfg, state, home: homeDir(), repo: repoPath, run: makeRunner(), facts0: JSON.stringify(state.facts) };
+  return { a, cfg, state, renamed, home: homeDir(), repo: repoPath, run: makeRunner(), facts0: JSON.stringify(state.facts) };
 }
 
 function condCtx(b, extraParts = []) {
@@ -484,7 +487,7 @@ function execute(b, head, items, x, { kind = 'apply', proposals = [], answers = 
     execMcp(b, it.plan, res);
     res.steps.push(...stepsOf(b, it.entry, it.plan, x.values));
     if (it.entry.id === ENGINE) {
-      state.engine = { version: ENGINE_VERSION, sha256: hashFile(path.join(cfg, 'tools', 'claude-setup', 'sync')) };
+      state.engine = { version: ENGINE_VERSION, sha256: hashFile(path.join(cfg, 'tools', 'claude-manners', 'sync')) };
       save(state, cfg);
     }
   }
@@ -739,9 +742,9 @@ function cmdBootstrap(b) {
   if (open.length) return ask(open);
   const { run, res } = execute(b, head, [item], x, {});
   finalize(b, head, run, {}, { setCommit: false });
-  const sync = path.join(b.cfg, 'tools', 'claude-setup', 'sync', 'sync.mjs');
-  return ok({ command: 'bootstrap', repo: b.repo, head, engine: sync, skill: path.join(b.cfg, 'skills', 'claude-setup-sync', 'SKILL.md'), run: run.id, result: res },
-    ['Sync engine and skill installed. Nothing else was changed.', `Engine: ${sync}`, 'Next: start the claude-setup-sync skill for the first-run menu.', ...resLines(res)]);
+  const sync = path.join(b.cfg, 'tools', 'claude-manners', 'sync', 'sync.mjs');
+  return ok({ command: 'bootstrap', repo: b.repo, head, engine: sync, skill: path.join(b.cfg, 'skills', 'claude-manners-sync', 'SKILL.md'), run: run.id, result: res },
+    ['Sync engine and skill installed. Nothing else was changed.', `Engine: ${sync}`, 'Next: start the claude-manners-sync skill for the first-run menu.', ...resLines(res)]);
 }
 
 function cmdCatalog(b) {
@@ -806,6 +809,7 @@ function cmdRollback(b) {
   if (has(a, 'to')) {
     let sha;
     try { sha = resolveVersion(b.repo, one(a, 'to')); } catch { throw new Error(`unknown version: ${one(a, 'to')}`); }
+    if (beforeRename(catalogAt(b.repo, sha).get(ENGINE))) throw new Error(NO_WAY_BACK);
     plan = planRollback(b.state, sha, rctx);
   } else if (has(a, 'crashed')) {
     const c = findCrashedRun(b.state);
@@ -1151,6 +1155,7 @@ function main(argv) {
   let a;
   let json = argv.includes('--json');
   let result;
+  let renamed = null;
   try {
     a = parseArgs(argv);
     json = has(a, 'json');
@@ -1158,6 +1163,7 @@ function main(argv) {
       result = fail(`usage: sync.mjs <${Object.keys(COMMANDS).join('|')}> [--json] [options]`);
     } else {
       const b = boot(a, { repo: a.cmd !== 'status' ? true : false });
+      renamed = b.renamed;
       if (a.cmd === 'status') {
         try { b.repo = one(a, 'repo') ? path.resolve(one(a, 'repo')) : b.state.repo.path; } catch { /* status is read-only */ }
       }
@@ -1169,6 +1175,10 @@ function main(argv) {
     }
   } catch (e) {
     result = e instanceof Stop ? e.result : fail(e.message);
+  }
+  if (renamed) {
+    result.data.renamed = renamed;
+    result.lines.unshift(renamed.note);
   }
   process.stdout.write(json ? `${JSON.stringify(result.data)}\n` : `${result.lines.join('\n')}\n`);
   process.exitCode = result.code;

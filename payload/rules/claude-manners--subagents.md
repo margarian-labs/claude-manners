@@ -1,4 +1,4 @@
-<!-- claude-setup part: subagents -->
+<!-- claude-manners part: subagents -->
 
 ## Sub-agents and model roles (main session only; workers follow their brief)
 Opus (xhigh) is the orchestrator: it decides, writes briefs and accepts or rejects results; workers execute and decide nothing. {{planner_model}} plans (`planner`) and gives second opinions (`second-opinion`); Sonnet workers do the work; `haiku-worker` takes fully specified simple parts.

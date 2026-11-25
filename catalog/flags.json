@@ -25,7 +25,7 @@
   "files": [],
   "settings": [],
   "rules": [
-    "payload/rules/claude-setup--flags.md"
+    "payload/rules/claude-manners--flags.md"
   ],
   "mcp": [],
   "plugins": [],

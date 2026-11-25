@@ -1,4 +1,4 @@
-<!-- claude-setup part: skill-hallmark -->
+<!-- claude-manners part: skill-hallmark -->
 
 ## Workflow Rules
 

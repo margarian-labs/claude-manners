@@ -1,9 +1,9 @@
 ---
-name: claude-setup-sync
-description: Use when the user says sync my setup, update my setup, roll back my setup, go back to version, or follow START.md. Drives the claude-setup sync tool: first-run menu, one-by-one updates, rollback, adding parts.
+name: claude-manners-sync
+description: Use when the user says sync my setup, update my setup, roll back my setup, go back to version, or follow START.md. Drives the claude-manners sync tool: first-run menu, one-by-one updates, rollback, adding parts.
 ---
 
-# claude-setup sync
+# claude-manners sync
 
 You drive a command line tool. The tool changes files, you talk to the person. Never edit settings.json, rules, hooks or any other config file by hand for this job. Never run git yourself in the config folder.
 
@@ -12,11 +12,11 @@ You drive a command line tool. The tool changes files, you talk to the person. N
 Run it with Bash. Resolve the path on every call (shell state does not persist):
 
 ```
-SYNC="${CLAUDE_CONFIG_DIR:-$HOME/.claude}/tools/claude-setup/sync/sync.mjs"
+SYNC="${CLAUDE_CONFIG_DIR:-$HOME/.claude}/tools/claude-manners/sync/sync.mjs"
 node "$SYNC" <command> --json
 ```
 
-Always add `--json` and read the JSON. Exit codes: 0 done, 2 the tool needs an answer (the `questions` list says what to ask and which flag carries the answer), 1 error (show `error` in plain words, stop).
+Always add `--json` and read the JSON. Exit codes: 0 done, 2 the tool needs an answer (the `questions` list says what to ask and which flag carries the answer), 1 error (show `error` in plain words, stop). If a result has `renamed`, do what its `note` says.
 
 Commands: `status`, `catalog`, `plan`, `install --parts a,b`, `apply`, `rollback`, `versions`, `adopt`, `repair`, `verify`, `values`, `bootstrap --repo <clone>`.
 

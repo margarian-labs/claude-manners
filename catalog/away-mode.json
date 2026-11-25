@@ -74,7 +74,7 @@
     "payload/settings/fragments/hooks-away.json"
   ],
   "rules": [
-    "payload/rules/claude-setup--away-mode.md"
+    "payload/rules/claude-manners--away-mode.md"
   ],
   "mcp": [],
   "plugins": [],

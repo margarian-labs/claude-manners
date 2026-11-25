@@ -25,7 +25,7 @@
   ],
   "settings": [],
   "rules": [
-    "payload/rules/claude-setup--style-and-coding.md"
+    "payload/rules/claude-manners--style-and-coding.md"
   ],
   "mcp": [],
   "plugins": [],

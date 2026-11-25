@@ -10,7 +10,7 @@ touches:
   - hooks/away-stop.js
   - hooks/tests/away-hook-test.js
   - skills/away-mode/SKILL.md
-  - rules/claude-setup--away-mode.md
+  - rules/claude-manners--away-mode.md
 tokens_always_on: "+9"
 tokens_how: estimated chars/2.6
 quality: tried

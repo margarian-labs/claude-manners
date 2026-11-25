@@ -2,6 +2,7 @@ import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import { assertAllowed, backupFile, configDir, hashBuffer, hashFile, journal, readJson, relInside, writeFileAtomic } from './fsx.mjs';
+import { aliasRule, isForwarderSrc, renameBytes } from './legacy.mjs';
 import { lsTree, showFileAt } from './repo.mjs';
 import { save } from './state.mjs';
 
@@ -21,7 +22,7 @@ export function destKey(dest, home = os.homedir()) {
   if (d.startsWith('{memory_dir}')) d = `projects/${encodeHome(home)}/memory${d.slice('{memory_dir}'.length)}`;
   d = path.posix.normalize(d).replace(/\/+$/, '');
   const bad = !d || d === '.' || d === '..' || d.startsWith('../') || path.posix.isAbsolute(d) || /^[A-Za-z]:/.test(d);
-  const reserved = d === 'settings.json' || d === '.claude.json' || /^(state\/claude-setup|backups)(\/|$)/.test(d);
+  const reserved = d === 'settings.json' || d === '.claude.json' || /^(state\/claude-(setup|manners)|backups)(\/|$)/.test(d);
   if (bad || reserved) throw new Error(`bad or reserved dest: ${dest}`);
   return d;
 }
@@ -97,13 +98,13 @@ export function expandFiles(entry, repo, commit, { home, lenient = false } = {})
     if (tree.length === 1 && tree[0].path === src) out.push({ src, dest: base, mode, rule, exec: tree[0].mode === '100755' });
     else for (const t of tree) out.push({ src: t.path, dest: `${base}/${t.path.slice(src.length + 1)}`, mode, rule, exec: t.mode === '100755' });
   };
-  for (const f of entry.files || []) add(f.src, destKey(f.dest, home), f.mode, false);
-  for (const r of entry.rules || []) add(r, `rules/${path.posix.basename(r)}`, 'managed', true);
+  for (const f of entry.files || []) if (!isForwarderSrc(f.src)) add(f.src, destKey(f.dest, home), f.mode, false);
+  for (const r of entry.rules || []) add(r, aliasRule(`rules/${path.posix.basename(r)}`), 'managed', true);
   return out;
 }
 
 export function bytesFor(entry, item, repo, commit, values, warnings, home) {
-  const raw = showFileAt(repo, commit, item.src);
+  const raw = item.rule ? renameBytes(showFileAt(repo, commit, item.src)) : showFileAt(repo, commit, item.src);
   return item.mode === 'rendered' || item.rule ? renderBytes(entry, item, raw, values, warnings, home) : raw;
 }
 

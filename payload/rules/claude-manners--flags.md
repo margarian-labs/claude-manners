@@ -1,4 +1,4 @@
-<!-- claude-setup part: flags -->
+<!-- claude-manners part: flags -->
 
 ## Prompt shortcut flags
 A flag is a lowercase `-x` token at the very start or end of my message; several combine, the stricter wins (`-d` blocks edits). Other dash tokens are normal text. Don't echo flags; just comply. No flags: assume sensibly, commit when natural, no web search unless needed.

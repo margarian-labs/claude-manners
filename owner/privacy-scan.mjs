@@ -11,7 +11,7 @@ const DEFAULT_ALLOW = path.join(HERE, 'privacy-allow.json');
 
 const USAGE = `Usage: node owner/privacy-scan.mjs [--all | --files <f...>] [--json] [--allow <file>] [--root <dir>]
 Default: staged files plus untracked, not ignored files. Exit 0 clean, 1 findings, 2 usage error.
-Personal word list: file at CLAUDE_SETUP_PRIVACY_WORDS or ~/.claude/state/claude-setup/privacy-words.txt`;
+Personal word list: file at CLAUDE_SETUP_PRIVACY_WORDS or ~/.claude/state/claude-manners/privacy-words.txt`;
 
 const SAFE_EMAIL_DOMAINS = ['example.com', 'example.org', 'example.net', 'company.com'];
 const FILE_EXTENSIONS = ['png', 'jpg', 'jpeg', 'gif', 'svg', 'webp', 'css', 'js', 'mjs', 'json', 'html'];
@@ -97,7 +97,8 @@ export function loadAllow(file) {
 export const EMPTY_ALLOW = { emails: [], strings: [], paths: [] };
 
 export function defaultWordsPath() {
-  return path.join(os.homedir(), '.claude', 'state', 'claude-setup', 'privacy-words.txt');
+  const at = (name) => path.join(os.homedir(), '.claude', 'state', name, 'privacy-words.txt');
+  return !fs.existsSync(at('claude-manners')) && fs.existsSync(at('claude-setup')) ? at('claude-setup') : at('claude-manners');
 }
 
 export function loadWords(file) {

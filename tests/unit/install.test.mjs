@@ -118,7 +118,7 @@ function applyAll(extra = {}, ids = ['alpha', 'beta']) {
 test('helpers: destKey, render, setFrontmatter, setConstLine', () => {
   assert.equal(destKey('hooks\\a.js'), 'hooks/a.js');
   assert.equal(destKey('{memory_dir}/note.md', HOME), 'projects/C--Users-some-one/memory/note.md');
-  for (const bad of ['../x', '/abs', 'C:/x', 'settings.json', 'backups/x', 'state/claude-setup/state.json', 'a/../../x']) assert.throws(() => destKey(bad), /bad or reserved/, bad);
+  for (const bad of ['../x', '/abs', 'C:/x', 'settings.json', 'backups/x', 'state/claude-manners/state.json', 'state/claude-setup/state.json', 'a/../../x']) assert.throws(() => destKey(bad), /bad or reserved/, bad);
   assert.equal(render('a {{k}} b {{k}}', { k: 1 }), 'a 1 b 1');
   assert.equal(render('{{ not a key }} {{9}}', {}), '{{ not a key }} {{9}}');
   assert.throws(() => render('{{missing}}', {}), /no value for/);
@@ -168,7 +168,7 @@ test('first install: exact files, existed_before backup, tracking, settings, use
 
   const f = state.files;
   assert.equal(f['hooks/plain.sh'].existed_before, true);
-  assert.ok(f['hooks/plain.sh'].backup.startsWith('state/claude-setup/backups/'));
+  assert.ok(f['hooks/plain.sh'].backup.startsWith('state/claude-manners/backups/'));
   assert.deepEqual(fs.readFileSync(path.join(cfg, ...f['hooks/plain.sh'].backup.split('/'))), userPlain);
   for (const k of ['hooks/alpha.js', 'rules/alpha.md', 'skills/s1/SKILL.md', 'skills/s1/ref/a.md', 'agents/ag.md']) {
     assert.equal(f[k].existed_before, false, k);
@@ -194,7 +194,7 @@ test('first install: exact files, existed_before backup, tracking, settings, use
   const events = readJournal(runDirOf(run, cfg));
   assert.ok(events.some((e) => e.ev === 'file' && e.dest === 'hooks/plain.sh' && e.existed === true && e.backup));
   assert.ok(events.some((e) => e.ev === 'settings-begin') && events.some((e) => e.ev === 'settings-end'));
-  assert.equal(JSON.parse(fs.readFileSync(path.join(cfg, 'state', 'claude-setup', 'state.json'), 'utf8')).parts.alpha.installed, true);
+  assert.equal(JSON.parse(fs.readFileSync(path.join(cfg, 'state', 'claude-manners', 'state.json'), 'utf8')).parts.alpha.installed, true);
 });
 
 test('second install is a no-op', () => {

@@ -20,7 +20,7 @@
   "files": [],
   "settings": [],
   "rules": [
-    "payload/rules/claude-setup--memohopper.md"
+    "payload/rules/claude-manners--memohopper.md"
   ],
   "mcp": [
     {
@@ -38,7 +38,7 @@
   "values": [
     {
       "key": "MEMOHOPPER_WORKSPACES",
-      "file": "rules/claude-setup--memohopper.md",
+      "file": "rules/claude-manners--memohopper.md",
       "ask": "Your memohopper workspaces as table rows: | folder | workspace |",
       "default": "| <folder of a project> | <its workspace> |"
     }

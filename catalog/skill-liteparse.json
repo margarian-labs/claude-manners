@@ -29,7 +29,7 @@
   ],
   "settings": [],
   "rules": [
-    "payload/rules/claude-setup--liteparse.md"
+    "payload/rules/claude-manners--liteparse.md"
   ],
   "mcp": [],
   "plugins": [],

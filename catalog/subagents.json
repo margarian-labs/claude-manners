@@ -28,14 +28,14 @@
   ],
   "settings": [],
   "rules": [
-    "payload/rules/claude-setup--subagents.md"
+    "payload/rules/claude-manners--subagents.md"
   ],
   "mcp": [],
   "plugins": [],
   "values": [
     {
       "key": "planner_model",
-      "file": "rules/claude-setup--subagents.md",
+      "file": "rules/claude-manners--subagents.md",
       "ask": "Model name for planner and second opinion (sync sets Opus 5.5 when the account has no Fable)",
       "default": "Fable 5.2"
     }

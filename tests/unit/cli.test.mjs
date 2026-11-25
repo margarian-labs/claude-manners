@@ -97,10 +97,10 @@ const needsAnswer = (r) => {
 const fakeSet = (o) => fs.writeFileSync(fake, JSON.stringify({ ...JSON.parse(fs.readFileSync(fake, 'utf8')), ...o }));
 const fakeGet = () => JSON.parse(fs.readFileSync(fake, 'utf8'));
 const calls = (...prefix) => (fakeGet().calls || []).filter((c) => prefix.every((p, i) => c[i + 1] === p));
-const stateOf = (dir = cfg) => JSON.parse(fs.readFileSync(path.join(dir, 'state', 'claude-setup', 'state.json'), 'utf8'));
+const stateOf = (dir = cfg) => JSON.parse(fs.readFileSync(path.join(dir, 'state', 'claude-manners', 'state.json'), 'utf8'));
 const snap = (dir = cfg) => {
   const out = {};
-  for (const rel of walk(dir)) if (!rel.startsWith('state/claude-setup/')) out[rel] = sha(fs.readFileSync(path.join(dir, rel)));
+  for (const rel of walk(dir)) if (!rel.startsWith('state/claude-manners/')) out[rel] = sha(fs.readFileSync(path.join(dir, rel)));
   return out;
 };
 
@@ -110,11 +110,11 @@ const alpha = (v) => entry('alpha', {
     { src: 'payload/hooks/alpha.js', dest: 'hooks/alpha.js', mode: 'rendered' },
     { src: 'payload/hooks/plain.sh', dest: 'hooks/plain.sh', mode: 'managed' },
   ],
-  rules: ['payload/rules/claude-setup--alpha.md'],
+  rules: ['payload/rules/claude-manners--alpha.md'],
   settings: ['payload/settings/alpha.json'],
   values: [
     { key: 'LABELS', file: 'hooks/alpha.js', ask: 'Labels as JSON', default: '{}' },
-    { key: 'who', file: 'rules/claude-setup--alpha.md', ask: 'Your name', default: 'World' },
+    { key: 'who', file: 'rules/claude-manners--alpha.md', ask: 'Your name', default: 'World' },
   ],
   verify: ['node -e "process.exit(0)"'],
   risk: v >= 2 ? 'Runs a hook at session start.' : 'Test part.',
@@ -122,10 +122,10 @@ const alpha = (v) => entry('alpha', {
 const beta = entry('beta', {
   group: 'agents', level: 'recommended',
   files: [{ src: 'payload/agents/b.md', dest: 'agents/b.md', mode: 'rendered' }],
-  rules: ['payload/rules/claude-setup--beta.md'],
+  rules: ['payload/rules/claude-manners--beta.md'],
   values: [
     { key: 'planner_agent_model', file: 'agents/b.md', frontmatter: 'model', ask: 'Model for the planner', default: 'fable' },
-    { key: 'planner_model', file: 'rules/claude-setup--beta.md', ask: 'Planner name', default: 'Fable 5.2' },
+    { key: 'planner_model', file: 'rules/claude-manners--beta.md', ask: 'Planner name', default: 'Fable 5.2' },
   ],
 });
 const gamma = entry('gamma', {
@@ -140,8 +140,8 @@ const gamma = entry('gamma', {
 const engine = entry('sync-engine', {
   group: 'tools', level: 'recommended', needs: ['cmd:node', 'cmd:git'],
   files: [
-    { src: 'sync', dest: 'tools/claude-setup/sync', mode: 'managed' },
-    { src: 'sync/skill', dest: 'skills/claude-setup-sync', mode: 'managed' },
+    { src: 'sync', dest: 'tools/claude-manners/sync', mode: 'managed' },
+    { src: 'sync/skill', dest: 'skills/claude-manners-sync', mode: 'managed' },
   ],
 });
 
@@ -163,11 +163,11 @@ before(() => {
   fs.cpSync(path.join(PROJECT, 'sync'), path.join(owner, 'sync'), { recursive: true });
   write('payload/hooks/alpha.js', 'const LABELS = {};\nmodule.exports = { LABELS };\n', owner);
   write('payload/hooks/plain.sh', 'echo plain v1\n', owner);
-  write('payload/rules/claude-setup--alpha.md', 'Hello {{who}} v1\n', owner);
-  write('payload/rules/claude-setup--core.md', 'Core rule\n', owner);
+  write('payload/rules/claude-manners--alpha.md', 'Hello {{who}} v1\n', owner);
+  write('payload/rules/claude-manners--core.md', 'Core rule\n', owner);
   write('payload/settings/alpha.json', JSON.stringify({ env: { ALPHA_KEY: '1' } }), owner);
   write('payload/agents/b.md', '---\nname: b\nmodel: fable\n---\nagent body v1\n', owner);
-  write('payload/rules/claude-setup--beta.md', 'Planner is {{planner_model}}.\n', owner);
+  write('payload/rules/claude-manners--beta.md', 'Planner is {{planner_model}}.\n', owner);
   write('payload/settings/bypass.json', JSON.stringify({ permissions: { defaultMode: 'bypassPermissions' } }), owner);
   write('payload/settings/skill-overrides.json', JSON.stringify({ skillOverrides: { 'fewer-permission-prompts': 'off', 'plugin-authoring': 'off', init: 'user-invocable-only', 'security-review': 'user-invocable-only', simplify: 'user-invocable-only', schedule: 'user-invocable-only', 'keybindings-help': 'user-invocable-only', architecture: 'off', 'not-installed-skill': 'off' } }), owner);
   write('payload/skills/architecture/SKILL.md', 'architecture skill\n', owner);
@@ -180,7 +180,7 @@ before(() => {
   for (let i = 1; i <= 12; i++) write(`payload/zeta/doc${String(i).padStart(2, '0')}.md`, `doc ${i}\n${'a long documentation line that fills the card with text\n'.repeat(50)}`, owner);
   write('payload/zeta/run.js', "console.log('zeta');\n", owner);
   putEntry(entry('zeta', { group: 'skills', files: [{ src: 'payload/zeta', dest: 'skills/zeta', mode: 'managed' }] }));
-  putEntry(entry('core-rules', { group: 'rules', level: 'recommended', rules: ['payload/rules/claude-setup--core.md'] }));
+  putEntry(entry('core-rules', { group: 'rules', level: 'recommended', rules: ['payload/rules/claude-manners--core.md'] }));
   putEntry(entry('skill-overrides', { group: 'settings', level: 'recommended', settings: ['payload/settings/skill-overrides.json'] }));
   putEntry(entry('skill-architecture', { group: 'skills', files: [{ src: 'payload/skills/architecture', dest: 'skills/architecture', mode: 'managed' }] }));
   proposal('p-v1-note', { title: 'An old note', kind: 'change', part: 'alpha', touches: ['hooks/plain.sh'] });
@@ -205,7 +205,7 @@ before(() => {
   write('hooks/plain.sh', 'user original\r\n', cfg);
   write('skills/mine/SKILL.md', 'my skill\n', cfg);
   write('settings.json', JSON.stringify({ theme: 'dark', env: { USER_KEY: '1' } }, null, 2) + '\n', cfg);
-  engineCli = path.join(cfg, 'tools', 'claude-setup', 'sync', 'sync.mjs');
+  engineCli = path.join(cfg, 'tools', 'claude-manners', 'sync', 'sync.mjs');
 });
 
 after(() => {
@@ -234,9 +234,9 @@ test('bootstrap: installs only the engine and the skill, records the clone', () 
   const first = cli(['bootstrap', '--repo', user], { exe: path.join(user, 'sync', 'sync.mjs') });
   const j = ok(first);
   assert.equal(j.command, 'bootstrap');
-  assert.ok(exists('tools/claude-setup/sync/sync.mjs'));
-  assert.ok(exists('tools/claude-setup/sync/lib/state.mjs'));
-  assert.ok(exists('skills/claude-setup-sync/SKILL.md'));
+  assert.ok(exists('tools/claude-manners/sync/sync.mjs'));
+  assert.ok(exists('tools/claude-manners/sync/lib/state.mjs'));
+  assert.ok(exists('skills/claude-manners-sync/SKILL.md'));
   assert.equal(read('hooks/plain.sh'), 'user original\r\n');
   const s = stateOf();
   assert.equal(path.resolve(s.repo.path), path.resolve(user));
@@ -246,7 +246,7 @@ test('bootstrap: installs only the engine and the skill, records the clone', () 
   assert.equal(s.runs.at(-1).status, 'done');
   const now = snap();
   const added = Object.keys(now).filter((k) => !(k in snapStart));
-  assert.ok(added.every((k) => k.startsWith('tools/claude-setup/sync/') || k.startsWith('skills/claude-setup-sync/')), added.join(', '));
+  assert.ok(added.every((k) => k.startsWith('tools/claude-manners/sync/') || k.startsWith('skills/claude-manners-sync/')), added.join(', '));
   for (const k of Object.keys(snapStart)) assert.equal(now[k], snapStart[k]);
   const again = ok(cli(['bootstrap', '--repo', user]));
   assert.equal(again.result.written.length, 0);
@@ -290,9 +290,9 @@ test('first run: install of 2 parts needs the risky confirm, then records every 
   assert.deepEqual(j.baseline, ['p-v1-note']);
   assert.equal(read('hooks/plain.sh'), 'echo plain v1\n');
   assert.equal(read('hooks/alpha.js'), 'const LABELS = {"a":"A"};\nmodule.exports = { LABELS };\n');
-  assert.equal(read('rules/claude-setup--alpha.md'), 'Hello Ann v1\n');
+  assert.equal(read('rules/claude-manners--alpha.md'), 'Hello Ann v1\n');
   assert.match(read('agents/b.md'), /^model: opus$/m);
-  assert.equal(read('rules/claude-setup--beta.md'), 'Planner is Opus 5.5.\n');
+  assert.equal(read('rules/claude-manners--beta.md'), 'Planner is Opus 5.5.\n');
   const s = stateOf();
   assert.equal(s.answers['p-v1-note'].answer, 'baseline');
   assert.equal(s.repo.commit, c1);
@@ -625,7 +625,7 @@ test('adopt: takes over a pack install, brings every file of the taken-over part
   assert.equal(s.runs.at(-1).kind, 'adopt');
   assert.equal(s.runs.at(-1).status, 'done');
   assert.equal(exists('rules/setup-pack', cfgA), false);
-  assert.equal(read('rules/claude-setup--core.md', cfgA), 'Core rule\n');
+  assert.equal(read('rules/claude-manners--core.md', cfgA), 'Core rule\n');
   assert.deepEqual(Object.keys(s.parts).sort(), ['alpha', 'beta', 'core-rules', 'zeta']);
   const runFiles = path.join(runDirOf(s.runs.at(-1), cfgA), 'files');
   assert.equal(fs.readFileSync(path.join(runFiles, 'rules', 'setup-pack', 'other.md'), 'utf8'), 'my edited other\n');
@@ -669,14 +669,14 @@ test('engine update: reported alone, blocks apply, installs alone, then sync con
   assert.equal(ok(cli(['status'])).engine_update, false);
   const j = ok(cli(['apply']));
   assert.equal(j.engine.update, true);
-  assert.deepEqual(j.engine.files, ['tools/claude-setup/sync/INTERFACES.md']);
+  assert.deepEqual(j.engine.files, ['tools/claude-manners/sync/INTERFACES.md']);
   assert.deepEqual(j.pending, []);
   const q = needsAnswer(cli(['apply', '--proposals', 'p-alpha-hook']));
   assert.equal(q[0].kind, 'engine-update');
   assert.equal(ok(cli(['status'])).engine_update, true);
   const up = ok(cli(['apply', '--update-engine']));
   assert.equal(up.updated, true);
-  assert.match(read('tools/claude-setup/sync/INTERFACES.md'), /Engine v3 note\./);
+  assert.match(read('tools/claude-manners/sync/INTERFACES.md'), /Engine v3 note\./);
   const after = ok(cli(['apply']));
   assert.equal(after.engine.update, false);
   assert.equal(after.repo.tag, 'v3');
@@ -712,28 +712,28 @@ test('settings conflicts are planned and skipped unless accepted; ask-alone, mis
 });
 
 test('a remove proposal uninstalls its part: local edits ask, kept files stay, rollback brings it back', () => {
-  proposal('p-remove-beta', { title: 'Remove beta', kind: 'remove', part: 'beta', touches: ['agents/b.md', 'rules/claude-setup--beta.md'] });
+  proposal('p-remove-beta', { title: 'Remove beta', kind: 'remove', part: 'beta', touches: ['agents/b.md', 'rules/claude-manners--beta.md'] });
   release('Version four', 'v4');
   const plan = ok(cli(['apply', '--cards']));
   assert.deepEqual(plan.pending.map((p) => p.id), ['p-remove-beta']);
   assert.match(plan.pending[0].card, /agents\/b\.md \(removed\)/);
-  assert.match(plan.pending[0].card, /rules\/claude-setup--beta\.md \(removed\)/);
+  assert.match(plan.pending[0].card, /rules\/claude-manners--beta\.md \(removed\)/);
 
-  write('rules/claude-setup--beta.md', 'my own beta rule\n', cfg);
+  write('rules/claude-manners--beta.md', 'my own beta rule\n', cfg);
   const pre = snap();
   const q = needsAnswer(cli(['apply', '--proposals', 'p-remove-beta']));
-  assert.deepEqual(q.map((x) => [x.kind, x.dest]), [['local-edit-remove', 'rules/claude-setup--beta.md']]);
+  assert.deepEqual(q.map((x) => [x.kind, x.dest]), [['local-edit-remove', 'rules/claude-manners--beta.md']]);
   assert.deepEqual(snap(), pre);
 
-  const j = ok(cli(['apply', '--proposals', 'p-remove-beta', '--answers', 'rules/claude-setup--beta.md=keep']));
+  const j = ok(cli(['apply', '--proposals', 'p-remove-beta', '--answers', 'rules/claude-manners--beta.md=keep']));
   assert.deepEqual(j.result.removed, ['agents/b.md']);
-  assert.deepEqual(j.result.kept, ['rules/claude-setup--beta.md']);
+  assert.deepEqual(j.result.kept, ['rules/claude-manners--beta.md']);
   assert.equal(exists('agents/b.md'), false);
-  assert.equal(read('rules/claude-setup--beta.md'), 'my own beta rule\n');
+  assert.equal(read('rules/claude-manners--beta.md'), 'my own beta rule\n');
   const s = stateOf();
   assert.equal(s.parts.beta, undefined);
   assert.equal(s.files['agents/b.md'], undefined);
-  assert.equal(s.files['rules/claude-setup--beta.md'], undefined);
+  assert.equal(s.files['rules/claude-manners--beta.md'], undefined);
   assert.equal(s.answers['p-remove-beta'].answer, 'accept');
 
   ok(cli(['rollback', '--last']));

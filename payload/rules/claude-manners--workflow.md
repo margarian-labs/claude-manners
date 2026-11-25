@@ -1,4 +1,4 @@
-<!-- claude-setup part: workflow -->
+<!-- claude-manners part: workflow -->
 
 ## Workflow rules
 - Plan mode automatically when a task touches 3+ files (not under `-away`).

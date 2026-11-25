@@ -32,7 +32,7 @@
   ],
   "settings": [],
   "rules": [
-    "payload/rules/claude-setup--tidy.md"
+    "payload/rules/claude-manners--tidy.md"
   ],
   "mcp": [],
   "plugins": [],

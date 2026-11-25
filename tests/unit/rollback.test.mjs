@@ -40,7 +40,7 @@ const commit = (msg, tag) => {
 };
 const snap = (dir = cfg) => {
   const out = {};
-  for (const rel of walk(dir)) if (!rel.startsWith('state/claude-setup/') && !rel.startsWith('backups/')) out[rel] = raw(path.join(dir, rel));
+  for (const rel of walk(dir)) if (!rel.startsWith('state/claude-manners/') && !rel.startsWith('backups/')) out[rel] = raw(path.join(dir, rel));
   return out;
 };
 const trackedCopy = (s) => JSON.parse(JSON.stringify({ repo: s.repo, parts: s.parts, answers: s.answers, files: s.files, settings: s.settings }));

@@ -45,44 +45,44 @@
     "payload/two-accounts/settings-snippet.json"
   ],
   "rules": [
-    "payload/rules/claude-setup--two-accounts.md"
+    "payload/rules/claude-manners--two-accounts.md"
   ],
   "mcp": [],
   "plugins": [],
   "values": [
     {
       "key": "MAIN_LABEL",
-      "file": "rules/claude-setup--two-accounts.md",
+      "file": "rules/claude-manners--two-accounts.md",
       "ask": "Label of the account logged in under ~/.claude (for example Work)",
       "default": "Work"
     },
     {
       "key": "MAIN_EMAIL",
-      "file": "rules/claude-setup--two-accounts.md",
+      "file": "rules/claude-manners--two-accounts.md",
       "ask": "Login email of that account",
       "default": ""
     },
     {
       "key": "SECOND_LABEL",
-      "file": "rules/claude-setup--two-accounts.md",
+      "file": "rules/claude-manners--two-accounts.md",
       "ask": "Label of the second account (for example Personal)",
       "default": "Personal"
     },
     {
       "key": "SECOND_EMAIL",
-      "file": "rules/claude-setup--two-accounts.md",
+      "file": "rules/claude-manners--two-accounts.md",
       "ask": "Login email of the second account",
       "default": ""
     },
     {
       "key": "SECOND_FLAG",
-      "file": "rules/claude-setup--two-accounts.md",
+      "file": "rules/claude-manners--two-accounts.md",
       "ask": "Shell flag that opens the second account (default -P; must not be a real Claude Code flag)",
       "default": "-P"
     },
     {
       "key": "SECOND_DIR",
-      "file": "rules/claude-setup--two-accounts.md",
+      "file": "rules/claude-manners--two-accounts.md",
       "ask": "Config folder name of the second account, with the dot",
       "default": ".claude-personal"
     }

@@ -20,7 +20,7 @@ One JSON file per part: `catalog/<id>.json`. The sync engine reads these; the RE
     { "src": "payload/hooks/away-mode.js", "dest": "hooks/away-mode.js", "mode": "managed" }
   ],
   "settings": ["payload/settings/fragments/hooks-away.json"],
-  "rules": ["payload/rules/claude-setup--away-mode.md"],
+  "rules": ["payload/rules/claude-manners--away-mode.md"],
   "mcp": [],
   "plugins": [],
   "values": [

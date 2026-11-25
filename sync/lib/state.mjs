@@ -2,7 +2,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { configDir, readJson, writeJsonAtomic, copyAtomic, relInside } from './fsx.mjs';
 
-export const stateFile = (cfg = configDir()) => path.join(cfg, 'state', 'claude-setup', 'state.json');
+export const stateFile = (cfg = configDir()) => path.join(cfg, 'state', 'claude-manners', 'state.json');
 
 export const emptyState = () => ({
   version: 1,
@@ -44,7 +44,7 @@ export function newRun(state, kind, from, to, cfg = configDir(), now = new Date(
   let dir;
   for (;;) {
     id = stamp(t);
-    dir = path.join(cfg, 'state', 'claude-setup', 'backups', `${day(t)}`, id);
+    dir = path.join(cfg, 'state', 'claude-manners', 'backups', `${day(t)}`, id);
     if (!state.runs.some((r) => r.id === id) && !fs.existsSync(dir)) break;
     t = new Date(t.getTime() + 1000);
   }
