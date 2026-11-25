@@ -30,6 +30,7 @@
 }
 .part__title { grid-area: title; font-weight: 500; color: var(--color-ink); }
 .part__chips { grid-area: chips; display: grid; grid-template-columns: 6.75rem auto; justify-content: start; gap: var(--space-xs); }
+.part .chip--you { padding-inline: var(--space-xs); background: var(--color-accent); color: var(--color-accent-ink); }
 .chip--level { color: var(--color-ink-2); }
 .part[data-level="optional"] .chip--level { color: var(--color-muted); }
 .part__solves { grid-area: solves; font-size: var(--text-sm); line-height: 1.5; color: var(--color-muted); }

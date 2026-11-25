@@ -21,6 +21,7 @@
  * paper: #14171B · accent: #E8667E · display: IBM Plex Mono · body: IBM Plex Sans · hero: Counter · nav: slab of stones · footer: mast course · signature: the install question as a course of stones, the visitor's yes as the raised pomegranate keystone
  * axes: dark/mono/chromatic-pomegranate · posture: restrained · contrast: pass · fold: pass · copy: verbatim · v2.0.0 */
 /* Hallmark · pre-emit critique: P5 H4 E4 S5 R4 V4 · weakest: R, the raised stone could become decoration; it is kept to what the visitor does, so most screens have one or none */
+/* Hallmark · finish-review: subagent · 8 findings · 7 resolved 1 unresolved (the Join heading is the owner's wording) · gap: none */
 /* Hallmark · dismissed F4 · the copy button, the Install stone and a chosen filter differ on purpose: an action, an answer in the demo and a state */
 /* Hallmark · answered F1 · the part text is the catalog word for word, where straight quotes mark the words a person types */
 /* Hallmark · answered F2 · the three periods sit in catalog text that the install question prints unchanged */
@@ -103,6 +104,9 @@ h3 { letter-spacing: -0.03em; word-spacing: -0.12em; }
 .site-nav__bar a { display: flex; align-items: center; min-height: 3.5rem; padding-inline: var(--space-md); background: var(--color-paper-2); color: var(--color-ink-2); font-size: var(--text-sm); text-decoration: none; white-space: nowrap; transition: background-color var(--dur-short) var(--ease-out), color var(--dur-short) var(--ease-out); }
 .site-nav__bar a:hover, .site-nav__bar a:active { background: var(--color-stone); color: var(--color-ink); }
 .site-nav__bar .site-nav__mark { font-family: var(--font-display); font-size: var(--text-lg); font-weight: 500; letter-spacing: -0.03em; color: var(--color-ink); }
+.site-nav__bar .site-nav__mark { gap: var(--space-2xs) var(--space-lg); }
+.site-nav__what { font-family: var(--font-body); font-size: var(--text-sm); font-weight: 400; letter-spacing: 0; color: var(--color-muted); white-space: nowrap; }
+@media (min-width: 60.01rem) and (max-width: 76rem) { .site-nav__what { display: none; } }
 
 .site-hero { min-height: min(calc(100dvh - 3.75rem), 54rem); display: grid; }
 .site-hero__inner { display: grid; grid-template-rows: minmax(0, 1fr) auto; row-gap: var(--space-2xl); padding-block: var(--space-xl); }
@@ -132,7 +136,7 @@ h3 { letter-spacing: -0.03em; word-spacing: -0.12em; }
 .ask__no:hover { background: var(--color-stone-hover); color: var(--color-ink); }
 .ask__no:active { background: var(--color-rule-2); }
 .ask__yes:has(+ .ask__no[hidden]) { grid-column: 2 / -1; }
-.ask__foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: var(--space-2xs) var(--space-lg); margin-top: var(--space-sm); font-size: var(--text-sm); color: var(--color-muted); }
+.ask__foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: var(--space-2xs) var(--space-lg); margin-top: var(--space-sm); font-size: var(--text-sm); color: var(--color-ink-2); }
 .ask__foot p { max-width: none; }
 .ask__count { font-variant-numeric: tabular-nums; }
 
@@ -150,7 +154,7 @@ h3 { letter-spacing: -0.03em; word-spacing: -0.12em; }
 .site-stat--you { background: var(--color-accent); margin-bottom: var(--raise); }
 #start .site-head { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 #start .site-head__text { order: 2; grid-column: span 2; padding-inline: var(--space-xl) 0; }
-#start .site-stat { min-height: 9rem; }
+#start .site-stat { grid-template-columns: auto minmax(0, 1fr); align-content: center; align-items: center; column-gap: var(--space-md); min-height: 7rem; }
 .site-head--split { grid-template-columns: repeat(12, minmax(0, 1fr)); align-items: baseline; margin-bottom: var(--space-2xl); }
 .site-head--split h2 { grid-column: 1 / span 6; }
 .site-head--split .lead { grid-column: 7 / span 6; }
@@ -160,9 +164,9 @@ h3 { letter-spacing: -0.03em; word-spacing: -0.12em; }
 .site-join__head h2 { grid-column: 1 / span 6; }
 .site-join__needs { grid-column: 7 / span 6; max-width: 52ch; color: var(--color-ink-2); }
 .site-steps { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 4fr) minmax(0, 4fr); gap: var(--seam); margin: 0; padding: 0; list-style: none; counter-reset: site-step; }
-.site-step { display: grid; grid-template-rows: auto minmax(0, 1fr); row-gap: var(--space-xl); min-height: 18rem; padding: var(--space-lg) var(--space-xl) var(--space-xl); background: var(--color-paper-2); counter-increment: site-step; }
+.site-step { display: grid; grid-template-rows: auto minmax(0, 1fr); row-gap: var(--space-xl); min-height: 16rem; padding: var(--space-lg) var(--space-xl) var(--space-xl); background: var(--color-paper-2); counter-increment: site-step; }
 .site-step::before { content: counter(site-step); font-family: var(--font-outlier); font-size: var(--text-3xl); font-weight: 500; line-height: 1; color: var(--color-muted); }
-.site-step__body { display: grid; align-content: end; justify-items: start; row-gap: var(--space-md); }
+.site-step__body { display: grid; align-content: start; justify-items: start; row-gap: var(--space-md); }
 .site-step__line { max-width: 44ch; color: var(--color-ink-2); }
 
 .site-foot { padding-block: var(--section-gap) var(--seam); }
@@ -182,7 +186,7 @@ h3 { letter-spacing: -0.03em; word-spacing: -0.12em; }
 @media (max-width: 60rem) {
   .site-nav__bar { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .site-nav__bar a { justify-content: center; min-height: 3rem; padding-inline: var(--space-2xs); }
-  .site-nav__bar .site-nav__mark { grid-column: 1 / -1; justify-content: flex-start; padding-inline: var(--space-md); }
+  .site-nav__bar .site-nav__mark { grid-column: 1 / -1; flex-wrap: wrap; justify-content: flex-start; padding: var(--space-sm) var(--space-md); }
   .site-hero { min-height: 0; }
   .site-hero__inner { padding-block: var(--space-2xl) var(--space-xl); }
   .site-cmd { flex: 1 1 100%; }
@@ -201,10 +205,11 @@ h3 { letter-spacing: -0.03em; word-spacing: -0.12em; }
   .site-foot__grid { grid-template-columns: minmax(0, 1fr); }
   .site-foot__brand, .site-foot__text { padding: var(--space-lg); }
 }
-.sx-legend { display: flex; flex-wrap: wrap; gap: var(--space-xs) var(--space-lg); margin-top: var(--space-sm); font-size: var(--text-sm); color: var(--color-muted); }
+.sx-legend { display: flex; flex-wrap: wrap; gap: var(--space-xs) var(--space-lg); max-width: none; font-size: var(--text-sm); color: var(--color-muted); }
 .sx-key { display: inline-flex; align-items: center; gap: var(--space-xs); }
 .sx-key::before { content: ""; flex-shrink: 0; width: var(--space-sm); height: var(--space-sm); background: var(--color-stone-hover); }
 .sx-key--you::before { background: var(--color-accent); }
+.sx-key--open::before { background: var(--color-ink); }
 
 .moments { display: grid; gap: var(--seam); list-style: none; margin: 0; padding: 0; }
 .moment { display: grid; padding: var(--space-lg); background: var(--color-paper-2); }
@@ -249,7 +254,7 @@ h3 { letter-spacing: -0.03em; word-spacing: -0.12em; }
   .sx-tab { padding: var(--space-md); }
   .moment[data-actor="you"] .sx-tab { transform: translateY(calc(-1 * var(--raise))); }
   .moment[data-actor="you"] .sx-tab[aria-expanded="true"] { transform: none; }
-  .sx-body { grid-column: 1 / -1; grid-row: 3; display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); column-gap: var(--space-2xl); align-content: start; min-height: 26rem; padding: var(--space-xl); }
+  .sx-body { grid-column: 1 / -1; grid-row: 3; display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); column-gap: var(--space-2xl); align-content: start; min-height: 20rem; padding: var(--space-xl); }
   .sx-body__title { display: block; font-family: var(--font-display); font-size: var(--text-title); font-weight: var(--display-weight); letter-spacing: -0.03em; word-spacing: -0.12em; line-height: 1.2; color: var(--color-ink); text-wrap: balance; }
   .sx-body .moment__what { grid-row: 2; margin-top: var(--space-sm); }
   .sx-body .moment__parts { grid-column: 2; grid-row: 1 / span 3; margin-top: 0; }
@@ -262,7 +267,7 @@ h3 { letter-spacing: -0.03em; word-spacing: -0.12em; }
 .wg-typed { color: var(--color-accent); }
 
 .starts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--seam); margin: 0; padding: 0; list-style: none; }
-.start { display: grid; grid-template-rows: auto minmax(0, 1fr) auto; align-content: start; justify-items: start; row-gap: var(--space-md); min-height: 15rem; padding: var(--space-lg) var(--space-xl) var(--space-xl); background: var(--color-paper-2); }
+.start { display: grid; grid-template-rows: auto minmax(0, 1fr) auto; align-content: start; justify-items: start; row-gap: var(--space-md); min-height: 12rem; padding: var(--space-lg) var(--space-xl) var(--space-xl); background: var(--color-paper-2); }
 .start__title { font-size: var(--text-title); }
 .start__trigger { max-width: 44ch; color: var(--color-ink-2); }
 .start__cases { display: grid; gap: var(--space-xs); max-width: 60ch; margin: 0; padding: 0; list-style: none; color: var(--color-muted); }
@@ -287,7 +292,7 @@ h3 { letter-spacing: -0.03em; word-spacing: -0.12em; }
 .wg-flag[aria-pressed="true"] .flag__name, .wg-flag[aria-pressed="true"] .flag__does { color: var(--color-accent-ink); }
 .wg-flag[aria-pressed="true"]::after { border-color: var(--color-accent-ink); background: var(--color-accent-ink); }
 .wg-flag[aria-pressed="true"]:focus-visible { outline-color: var(--color-accent-ink); }
-.wg-flags__out { display: grid; align-content: start; gap: var(--space-sm); padding: var(--space-xl); background: var(--color-paper-3); }
+.wg-flags__out { display: grid; align-self: start; align-content: start; gap: var(--space-sm); min-height: 18rem; padding: var(--space-xl); background: var(--color-paper-3); }
 .wg-flags__msg { margin-bottom: var(--space-lg); font-size: var(--text-lg); line-height: 1.4; color: var(--color-ink); overflow-wrap: anywhere; }
 .wg-flags__chosen { color: var(--color-accent); }
 .wg-flags__chosen span { white-space: nowrap; }
@@ -335,6 +340,7 @@ h3 { letter-spacing: -0.03em; word-spacing: -0.12em; }
 @keyframes wg-in { from { opacity: 0; } }
 
 @media (min-width: 60.01rem) {
+  .wg-on .wg-flags__out { position: sticky; top: var(--space-xl); }
   .wg-step:has(.chip--you) { transform: translateY(calc(-1 * var(--raise))); }
 }
 @media (max-width: 60rem) {
@@ -352,7 +358,7 @@ h3 { letter-spacing: -0.03em; word-spacing: -0.12em; }
   .starts { grid-template-columns: minmax(0, 1fr); }
   .start { min-height: 0; }
   .wg-flags.wg-on { grid-template-columns: minmax(0, 1fr); overflow: clip; }
-  .wg-on .wg-flags__out { position: sticky; bottom: 0; max-height: 50dvh; overflow-y: auto; border-top: var(--rule-hair) solid var(--color-rule-2); }
+  .wg-on .wg-flags__out { position: sticky; bottom: 0; min-height: 0; max-height: 50dvh; overflow-y: auto; border-top: var(--rule-hair) solid var(--color-rule-2); }
   .flag, .wg-flag { padding-inline: var(--space-md); }
   .wg-flags__out, .wg-files { padding: var(--space-md); }
   .wg-tabs { display: flex; justify-self: stretch; }
@@ -393,6 +399,7 @@ h3 { letter-spacing: -0.03em; word-spacing: -0.12em; }
 }
 .part__title { grid-area: title; font-weight: 500; color: var(--color-ink); }
 .part__chips { grid-area: chips; display: grid; grid-template-columns: 6.75rem auto; justify-content: start; gap: var(--space-xs); }
+.part .chip--you { padding-inline: var(--space-xs); background: var(--color-accent); color: var(--color-accent-ink); }
 .chip--level { color: var(--color-ink-2); }
 .part[data-level="optional"] .chip--level { color: var(--color-muted); }
 .part__solves { grid-area: solves; font-size: var(--text-sm); line-height: 1.5; color: var(--color-muted); }
@@ -432,7 +439,7 @@ h3 { letter-spacing: -0.03em; word-spacing: -0.12em; }
 <header class="site-nav">
 <div class="container">
 <nav class="site-nav__bar" aria-label="Sections">
-<a class="site-nav__mark" href="#top" aria-label="claude-manners, top of page">claude-manners</a>
+<a class="site-nav__mark" href="#top" aria-label="claude-manners, top of page"><span>claude-manners</span> <span class="site-nav__what">A shared Claude Code setup for Windows</span></a>
 <ul class="site-nav__links">
 <li><a href="#session">One session</a></li>
 <li><a href="#start">What you start</a></li>
@@ -475,6 +482,7 @@ h3 { letter-spacing: -0.03em; word-spacing: -0.12em; }
 <div class="site-head__text">
 <h2>One session, moment by moment</h2>
 <p class="lead">Follow one session from start to finish and see which parts act at each moment.</p>
+<p class="sx-legend"><span class="sx-key sx-key--you">Pomegranate: something you do</span><span class="sx-key sx-key--setup">Grey: the setup, on its own</span><span class="sx-key sx-key--open">White: the one you opened</span></p>
 </div>
 <p class="site-stat site-stat--auto"><span class="site-stat__num">40</span> <span>parts work on their own</span></p>
 </header>
@@ -527,7 +535,6 @@ h3 { letter-spacing: -0.03em; word-spacing: -0.12em; }
 </li>
 </ol>
 </div>
-<p class="sx-legend"><span class="sx-key sx-key--you">Pomegranate: something you do</span><span class="sx-key sx-key--setup">Grey: the setup, on its own</span></p>
 
 </div>
 </section>

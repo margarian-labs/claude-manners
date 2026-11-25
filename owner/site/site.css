@@ -2,6 +2,7 @@
  * paper: #14171B · accent: #E8667E · display: IBM Plex Mono · body: IBM Plex Sans · hero: Counter · nav: slab of stones · footer: mast course · signature: the install question as a course of stones, the visitor's yes as the raised pomegranate keystone
  * axes: dark/mono/chromatic-pomegranate · posture: restrained · contrast: pass · fold: pass · copy: verbatim · v2.0.0 */
 /* Hallmark · pre-emit critique: P5 H4 E4 S5 R4 V4 · weakest: R, the raised stone could become decoration; it is kept to what the visitor does, so most screens have one or none */
+/* Hallmark · finish-review: subagent · 8 findings · 7 resolved 1 unresolved (the Join heading is the owner's wording) · gap: none */
 /* Hallmark · dismissed F4 · the copy button, the Install stone and a chosen filter differ on purpose: an action, an answer in the demo and a state */
 /* Hallmark · answered F1 · the part text is the catalog word for word, where straight quotes mark the words a person types */
 /* Hallmark · answered F2 · the three periods sit in catalog text that the install question prints unchanged */
@@ -23,6 +24,9 @@ h3 { letter-spacing: -0.03em; word-spacing: -0.12em; }
 .site-nav__bar a { display: flex; align-items: center; min-height: 3.5rem; padding-inline: var(--space-md); background: var(--color-paper-2); color: var(--color-ink-2); font-size: var(--text-sm); text-decoration: none; white-space: nowrap; transition: background-color var(--dur-short) var(--ease-out), color var(--dur-short) var(--ease-out); }
 .site-nav__bar a:hover, .site-nav__bar a:active { background: var(--color-stone); color: var(--color-ink); }
 .site-nav__bar .site-nav__mark { font-family: var(--font-display); font-size: var(--text-lg); font-weight: 500; letter-spacing: -0.03em; color: var(--color-ink); }
+.site-nav__bar .site-nav__mark { gap: var(--space-2xs) var(--space-lg); }
+.site-nav__what { font-family: var(--font-body); font-size: var(--text-sm); font-weight: 400; letter-spacing: 0; color: var(--color-muted); white-space: nowrap; }
+@media (min-width: 60.01rem) and (max-width: 76rem) { .site-nav__what { display: none; } }
 
 .site-hero { min-height: min(calc(100dvh - 3.75rem), 54rem); display: grid; }
 .site-hero__inner { display: grid; grid-template-rows: minmax(0, 1fr) auto; row-gap: var(--space-2xl); padding-block: var(--space-xl); }
@@ -52,7 +56,7 @@ h3 { letter-spacing: -0.03em; word-spacing: -0.12em; }
 .ask__no:hover { background: var(--color-stone-hover); color: var(--color-ink); }
 .ask__no:active { background: var(--color-rule-2); }
 .ask__yes:has(+ .ask__no[hidden]) { grid-column: 2 / -1; }
-.ask__foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: var(--space-2xs) var(--space-lg); margin-top: var(--space-sm); font-size: var(--text-sm); color: var(--color-muted); }
+.ask__foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: var(--space-2xs) var(--space-lg); margin-top: var(--space-sm); font-size: var(--text-sm); color: var(--color-ink-2); }
 .ask__foot p { max-width: none; }
 .ask__count { font-variant-numeric: tabular-nums; }
 
@@ -70,7 +74,7 @@ h3 { letter-spacing: -0.03em; word-spacing: -0.12em; }
 .site-stat--you { background: var(--color-accent); margin-bottom: var(--raise); }
 #start .site-head { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 #start .site-head__text { order: 2; grid-column: span 2; padding-inline: var(--space-xl) 0; }
-#start .site-stat { min-height: 9rem; }
+#start .site-stat { grid-template-columns: auto minmax(0, 1fr); align-content: center; align-items: center; column-gap: var(--space-md); min-height: 7rem; }
 .site-head--split { grid-template-columns: repeat(12, minmax(0, 1fr)); align-items: baseline; margin-bottom: var(--space-2xl); }
 .site-head--split h2 { grid-column: 1 / span 6; }
 .site-head--split .lead { grid-column: 7 / span 6; }
@@ -80,9 +84,9 @@ h3 { letter-spacing: -0.03em; word-spacing: -0.12em; }
 .site-join__head h2 { grid-column: 1 / span 6; }
 .site-join__needs { grid-column: 7 / span 6; max-width: 52ch; color: var(--color-ink-2); }
 .site-steps { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 4fr) minmax(0, 4fr); gap: var(--seam); margin: 0; padding: 0; list-style: none; counter-reset: site-step; }
-.site-step { display: grid; grid-template-rows: auto minmax(0, 1fr); row-gap: var(--space-xl); min-height: 18rem; padding: var(--space-lg) var(--space-xl) var(--space-xl); background: var(--color-paper-2); counter-increment: site-step; }
+.site-step { display: grid; grid-template-rows: auto minmax(0, 1fr); row-gap: var(--space-xl); min-height: 16rem; padding: var(--space-lg) var(--space-xl) var(--space-xl); background: var(--color-paper-2); counter-increment: site-step; }
 .site-step::before { content: counter(site-step); font-family: var(--font-outlier); font-size: var(--text-3xl); font-weight: 500; line-height: 1; color: var(--color-muted); }
-.site-step__body { display: grid; align-content: end; justify-items: start; row-gap: var(--space-md); }
+.site-step__body { display: grid; align-content: start; justify-items: start; row-gap: var(--space-md); }
 .site-step__line { max-width: 44ch; color: var(--color-ink-2); }
 
 .site-foot { padding-block: var(--section-gap) var(--seam); }
@@ -102,7 +106,7 @@ h3 { letter-spacing: -0.03em; word-spacing: -0.12em; }
 @media (max-width: 60rem) {
   .site-nav__bar { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .site-nav__bar a { justify-content: center; min-height: 3rem; padding-inline: var(--space-2xs); }
-  .site-nav__bar .site-nav__mark { grid-column: 1 / -1; justify-content: flex-start; padding-inline: var(--space-md); }
+  .site-nav__bar .site-nav__mark { grid-column: 1 / -1; flex-wrap: wrap; justify-content: flex-start; padding: var(--space-sm) var(--space-md); }
   .site-hero { min-height: 0; }
   .site-hero__inner { padding-block: var(--space-2xl) var(--space-xl); }
   .site-cmd { flex: 1 1 100%; }
