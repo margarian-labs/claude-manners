@@ -74,7 +74,7 @@ Ask about every part on its own. Never offer a whole group in one question ("ins
 ## Other commands
 
 - `values --json` lists fill-ins; `values set key=value` stores one. Say it takes effect on the next update of that part, or now with `install --parts <part>`.
-- `verify --json` runs each installed part's checks; report passes and failures.
+- `verify --json` runs each installed part's checks and looks for missing files; report passes and failures. `notes` names hooks that are not in settings.json: say it and offer `install --parts <part>`; it is fine when the person removed them.
 - `adopt --plan --json` shows what taking over an older setup-pack install (a rules/setup-pack folder) would do. First name every part it found, from `part_list`: one line each with the title, the `summary` and how many files it brings up to date (`files_written`; say "nothing changes" for 0). Then say which files are kept because the person edited or made them, and which settings it leaves alone. Say it backs up and replaces that folder, ask yes, then run `adopt --json`. If `settings_not_applied` is not empty, offer `install --parts <those parts>` for them.
 - `versions --json` shows tags and the person's runs.
 

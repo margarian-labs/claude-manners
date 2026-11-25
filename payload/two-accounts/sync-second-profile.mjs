@@ -78,7 +78,7 @@ function findClaude() {
   if (fromEnv && fs.existsSync(fromEnv)) return fromEnv;
   const native = `${HOME}/.local/bin/claude.exe`;
   if (fs.existsSync(native)) return native;
-  const r = spawnSync('where.exe', ['claude'], { encoding: 'utf8', windowsHide: true });
+  const r = spawnSync('where.exe', ['$PATH:claude'], { encoding: 'utf8', windowsHide: true });
   for (const hit of (r.stdout || '').split(/\r?\n/).map(s => s.trim()).filter(Boolean)) {
     const lower = hit.toLowerCase();
     if (lower.endsWith('.exe')) return hit;

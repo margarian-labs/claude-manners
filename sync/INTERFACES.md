@@ -53,7 +53,7 @@ Node 18+ ESM, no npm dependencies. Every write goes through `lib/fsx.mjs`. Windo
 | `versions` | tags with their proposals, plus this person's runs |
 | `adopt [--from pack-2026-11-21] [--plan]` | takes over a pack install using `migrations/`: brings every file of the taken-over parts to the clone version, keeps edits and own files (held); `--plan` writes nothing |
 | `repair [--plan]` | for parts installed by an adopt run, writes their missing or outdated files at that version; `status` shows `files_check: pending` until it ran once for this engine version |
-| `verify` | runs each installed part's `verify` in the config folder (`CLAUDE_CONFIG_DIR`; the clone is in `CLAUDE_SETUP_REPO`) |
+| `verify` | runs each installed part's `verify` in the config folder (`CLAUDE_CONFIG_DIR` is a shell variable, exported only if it already was; the clone is in `CLAUDE_SETUP_REPO`); fails for a missing installed file; `notes` lists hooks of installed parts that are not in settings.json |
 | `values set k=v` | stores a fill-in |
 
 ## Rules from the phase 1 import

@@ -1,0 +1,3 @@
+{"type":"system","subtype":"compact_boundary"}
+{"type":"system","subtype":"compact_boundary"}
+{"type":"assistant","entrypoint":"cli","message":{"model":"test-model","usage":{"input_tokens":90000}}}

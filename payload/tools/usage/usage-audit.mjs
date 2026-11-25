@@ -27,6 +27,7 @@ const PRICE = {
   sonnet: [2, 10, 0.1, 2.5, 4],
   haiku: [0.1, 0.5, 0.01, 0.125, 0.2],
 };
+const localIso = (ms) => new Date(ms - new Date(ms).getTimezoneOffset() * 60000).toISOString();
 const fam = (m) => (/fable|mythos/.test(m) ? 'fable' : /opus/.test(m) ? 'opus' : /sonnet/.test(m) ? 'sonnet' : /haiku/.test(m) ? 'haiku' : 'other');
 const costOf = (model, u) => {
   const p = PRICE[fam(model)];
@@ -174,7 +175,7 @@ for (const c of calls) {
   (byAcct[acct] ||= agg()); add(byAcct[acct], c);
   if (!acct.startsWith(FOCUS)) continue;
   (bySess[c.sess] ||= { main: agg(), sub: agg() }); add(bySess[c.sess][c.isSub ? 'sub' : 'main'], c);
-  const hr = new Date(c.ts + 4 * 3600e3).toISOString().slice(5, 13).replace('T', ' ') + ':00';
+  const hr = localIso(c.ts).slice(5, 13).replace('T', ' ') + ':00';
   (byHour[hr] ||= agg()); add(byHour[hr], c);
   const mk = fam(c.model) + (c.effort ? '/' + c.effort : '');
   (byModel[mk] ||= agg()); add(byModel[mk], c);
@@ -185,7 +186,7 @@ for (const c of calls) {
     const b = c.ctx < 100e3 ? '<100k' : c.ctx < 200e3 ? '100-200k' : c.ctx < 300e3 ? '200-300k' : c.ctx < 400e3 ? '300-400k' : c.ctx < 600e3 ? '400-600k' : '600k+';
     (ctxBuckets[b] ||= agg()); add(ctxBuckets[b], c);
   }
-  if (c.write >= 50e3) bigWrites.push({ sess: c.sess.slice(0, 8), isSub: c.isSub, ts: new Date(c.ts + 4 * 3600e3).toISOString().slice(11, 19), model: fam(c.model), write: c.write, w1h: c.w1h, read: c.read, cost: r2(c.cost.write) });
+  if (c.write >= 50e3) bigWrites.push({ sess: c.sess.slice(0, 8), isSub: c.isSub, ts: localIso(c.ts).slice(11, 19), model: fam(c.model), write: c.write, w1h: c.w1h, read: c.read, cost: r2(c.cost.write) });
 }
 
 const fmtA = (a) => ({ calls: a.calls, inM: r2(a.inp / 1e6), readM: r2(a.read / 1e6), writeM: r2(a.write / 1e6), outM: r2(a.out / 1e6), thinkM: r2(a.think / 1e6), cost: r2(a.cost), costIn: r2(a.costInp), costRead: r2(a.costRead), costWrite: r2(a.costWrite), costOut: r2(a.costOut), adv: a.advCalls, advInM: r2(a.advInp / 1e6), advOutM: r2(a.advOut / 1e6), advCost: r2(a.advCost), totalWithAdv: r2(a.cost + a.advCost) });
@@ -196,8 +197,8 @@ const sessRows = Object.entries(bySess).map(([id, v]) => {
   const advMain = v.main.advCalls, advSub = v.sub.advCalls;
   return {
     id, acct: s.account, project: s.project.replace(HOME_PROJECT_RE, '~/'), subFiles: s.subFiles,
-    from: new Date(Math.min(...ts) + 4 * 3600e3).toISOString().slice(5, 16).replace('T', ' '),
-    to: new Date(Math.max(...ts) + 4 * 3600e3).toISOString().slice(5, 16).replace('T', ' '),
+    from: localIso(Math.min(...ts)).slice(5, 16).replace('T', ' '),
+    to: localIso(Math.max(...ts)).slice(5, 16).replace('T', ' '),
     mainCalls: v.main.calls, subCalls: v.sub.calls, mainCost: r2(v.main.cost), subCost: r2(v.sub.cost),
     advCalls: advMain + advSub, advCost: r2(v.main.advCost + v.sub.advCost),
     total: r2(v.main.cost + v.sub.cost + v.main.advCost + v.sub.advCost),
@@ -206,7 +207,7 @@ const sessRows = Object.entries(bySess).map(([id, v]) => {
 }).sort((a, b) => b.total - a.total);
 
 const advList = calls.filter((c) => c.adv.length && c.acct === FOCUS).flatMap((c) => c.adv.map((a) => ({
-  sess: c.sess.slice(0, 8), isSub: c.isSub, ts: new Date(c.ts + 4 * 3600e3).toISOString().slice(5, 16).replace('T', ' '),
+  sess: c.sess.slice(0, 8), isSub: c.isSub, ts: localIso(c.ts).slice(5, 16).replace('T', ' '),
   inK: Math.round(((a.u.input_tokens || 0) + (a.u.cache_read_input_tokens || 0)) / 1e3), cachedK: Math.round((a.u.cache_read_input_tokens || 0) / 1e3), outK: Math.round((a.u.output_tokens || 0) / 1e3), cost: r2(a.cost.total),
 })));
 

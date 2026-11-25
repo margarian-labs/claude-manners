@@ -46,7 +46,8 @@
   "user_steps": [],
   "machine_steps": [],
   "verify": [
-    "node --check \"$CLAUDE_CONFIG_DIR/hooks/compact-recovery.js\""
+    "printf '%s' '{\"session_id\":\"verify-1\"}' | bash \"$CLAUDE_CONFIG_DIR/hooks/compact-recovery.sh\" | grep -q 'Context was just compacted'",
+    "test -s \"$CLAUDE_CONFIG_DIR/compact-instructions.md\""
   ],
   "tokens_always_on": {
     "value": 0,

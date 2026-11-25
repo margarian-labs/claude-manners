@@ -40,7 +40,7 @@
   "user_steps": [],
   "machine_steps": [],
   "verify": [
-    "node --check \"$CLAUDE_CONFIG_DIR/tools/claude-tidy.mjs\""
+    "d=$(mktemp -d) || exit 1; mkdir -p \"$d/s/scratchpad\"; node \"$CLAUDE_CONFIG_DIR/tools/claude-tidy.mjs\" --scratchpad \"$d/s/scratchpad\" --cwd \"$d\" | grep -q '^== 1\\. '; s=$?; rm -rf \"$d\"; exit $s"
   ],
   "tokens_always_on": {
     "value": 176,

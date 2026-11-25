@@ -432,10 +432,22 @@ test('apply accept all: --overwrite replaces the edit (backed up); new part regi
   snapV2 = snap();
 });
 
-test('verify runs the installed parts checks', () => {
+test('verify runs the installed parts checks and looks for missing files', () => {
   const j = ok(cli(['verify']));
-  assert.deepEqual(j.results.map((r) => [r.part, r.pass]), [['alpha', true], ['gamma', true]]);
+  assert.ok(j.results.every((r) => r.pass));
+  assert.deepEqual(j.results.filter((r) => r.cmd !== 'installed files exist').map((r) => r.part), ['alpha', 'gamma']);
+  assert.ok(j.results.some((r) => r.part === 'alpha' && r.cmd === 'installed files exist'));
+  assert.deepEqual(j.notes, []);
+
+  const file = path.join(cfg, 'hooks', 'plain.sh');
+  const text = fs.readFileSync(file);
+  fs.rmSync(file);
+  const bad = cli(['verify']);
+  fs.writeFileSync(file, text);
+  assert.equal(bad.code, 1);
+  assert.deepEqual(bad.json.results.filter((r) => !r.pass).map((r) => [r.part, r.output]), [['alpha', 'missing: hooks/plain.sh']]);
 });
+
 
 test('rollback --to v1: plan, then apply restores the exact v1 tree, removes the MCP server, re-offers the proposals', () => {
   const plan = ok(cli(['rollback', '--to', 'v1', '--plan']));
@@ -863,4 +875,26 @@ test('catalog --parts gives a ready card per part with real counts, needs by tit
   assert.equal(parts.alpha.tokens_on_use, null);
   assert.ok(!('card' in ok(cli(['catalog', '--repo', user], { dir: cfgC })).groups[0].parts[0]));
   for (const id of ['alpha', 'beta', 'gamma', 'epsilon', 'zeta']) assert.doesNotMatch(parts[id].card, /risk/i);
+});
+
+test('verify notes a hook that is not in settings.json, without failing', () => {
+  write('payload/hooks/eta.sh', 'echo eta\n', owner);
+  write('payload/settings/eta.json', JSON.stringify({ hooks: { Stop: [{ matcher: '', hooks: [{ type: 'command', command: '~/.claude/hooks/eta.sh' }] }] } }), owner);
+  putEntry(entry('eta', { group: 'hooks', files: [{ src: 'payload/hooks/eta.sh', dest: 'hooks/eta.sh', mode: 'managed' }], settings: ['payload/settings/eta.json'], verify: ['test -f hooks/eta.sh'] }));
+  release('Version six', 'v6');
+  git(['fetch', '-q', '--tags'], user);
+  git(['merge', '-q', '--ff-only'], user);
+  const cfgE = path.join(root, 'config-eta');
+  write('settings.json', '{}\n', cfgE);
+  const opts = { dir: cfgE };
+  ok(cli(['bootstrap', '--repo', user], opts));
+  ok(cli(['install', '--parts', 'eta', '--confirm-risky', 'eta'], opts));
+  assert.deepEqual(ok(cli(['verify'], opts)).notes, []);
+
+  const s = JSON.parse(read('settings.json', cfgE));
+  delete s.hooks;
+  write('settings.json', JSON.stringify(s), cfgE);
+  const j = ok(cli(['verify'], opts));
+  assert.equal(j.notes.length, 1);
+  assert.match(j.notes[0], /^\[eta\] the Stop hook is not in settings\.json: ~\/\.claude\/hooks\/eta\.sh\. /);
 });

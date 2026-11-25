@@ -42,7 +42,7 @@
   "user_steps": [],
   "machine_steps": [],
   "verify": [
-    "node --check \"$CLAUDE_CONFIG_DIR/hooks/auto-approve-shell.js\""
+    "printf '%s' '{\"tool_input\":{\"command\":\"ls\"}}' | bash \"$CLAUDE_CONFIG_DIR/hooks/auto-approve-shell.sh\" | grep -q '\"behavior\":\"allow\"'"
   ],
   "tokens_always_on": {
     "value": 0,

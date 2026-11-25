@@ -21,6 +21,7 @@ const walk = (d, out = []) => {
   }
   return out;
 };
+const localIso = (ms) => new Date(ms - new Date(ms).getTimezoneOffset() * 60000).toISOString();
 const obs = new Map();
 for (const f of walk(ROOT)) {
   let org = null;
@@ -40,4 +41,4 @@ for (const f of walk(ROOT)) {
   for (const r of rows) obs.set(acct + '|' + r.ts + '|' + r.pct, { acct, ts: r.ts, pct: r.pct, sess: path.basename(f).slice(0, 8) });
 }
 const list = [...obs.values()].sort((a, b) => a.ts.localeCompare(b.ts));
-for (const o of list) console.log(o.acct.padEnd(8), new Date(Date.parse(o.ts) + 4 * 3600e3).toISOString().slice(0, 16).replace('T', ' '), String(o.pct).padStart(3) + '%', o.sess);
+for (const o of list) console.log(o.acct.padEnd(8), localIso(Date.parse(o.ts)).slice(0, 16).replace('T', ' '), String(o.pct).padStart(3) + '%', o.sess);

@@ -50,6 +50,12 @@ export function defaultRun(cmd, args, opts = {}) {
   return { status: r.status, stdout: r.stdout || '', stderr: r.stderr || '', error: r.error || null };
 }
 
+export function runVerify(cmd, { cfg, repo, env = process.env }) {
+  return spawnSync('bash', ['-c', `CLAUDE_CONFIG_DIR=$CS_VERIFY_CFG; unset CS_VERIFY_CFG\n${cmd}`], {
+    cwd: cfg, encoding: 'utf8', timeout: 120000, windowsHide: true, env: { ...env, CS_VERIFY_CFG: cfg, CLAUDE_SETUP_REPO: repo },
+  });
+}
+
 export function makeFableAccess({ state, run = defaultRun, now = () => Date.now() }) {
   return () => {
     const f = state.facts;

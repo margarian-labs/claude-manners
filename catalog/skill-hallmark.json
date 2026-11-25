@@ -32,7 +32,9 @@
   "plugins": [],
   "values": [],
   "user_steps": [],
-  "machine_steps": [],
+  "machine_steps": [
+    "For the checks that look at the built page: npm i -g puppeteer-core. They also need Chrome or Chromium (set CHROME_PATH when it is not in a usual place). Without them Hallmark runs only its checks on the code."
+  ],
   "verify": [],
   "tokens_always_on": {
     "value": 210,

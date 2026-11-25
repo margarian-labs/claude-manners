@@ -1,6 +1,8 @@
 #!/bin/bash
 # Shared helper functions for Telegram notification hooks
 
+[[ -d "$HOME/.claude/session" ]] || mkdir -p "$HOME/.claude/session"
+
 # Load config, sets TELEGRAM_BOT_TOKEN and TELEGRAM_CHAT_ID
 load_config() {
   CONFIG="$HOME/.claude/telegram.conf"

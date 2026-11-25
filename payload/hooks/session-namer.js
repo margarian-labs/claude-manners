@@ -89,8 +89,8 @@ function clean(text, cap = 400) {
 function projectLabel(cwd, root = PROJECTS_ROOT) {
   const norm = (p) => String(p || '').replace(/\\/g, '/').replace(/\/+$/, '');
   const c = norm(cwd);
-  const r = norm(root);
-  if (!c || !r || !c.toLowerCase().startsWith(r.toLowerCase() + '/')) return HOME_KEY;
+  const r = [].concat(root).filter(Boolean).map((p) => norm(path.resolve(os.homedir(), p))).find((p) => c.toLowerCase().startsWith(p.toLowerCase() + '/'));
+  if (!r) return HOME_KEY;
   const first = c.slice(r.length + 1).split('/')[0];
   if (!first) return HOME_KEY;
   return LABELS[first.toLowerCase()] || first.replace(/[^A-Za-z0-9]/g, '').slice(0, 4).toUpperCase() || HOME_KEY;
@@ -162,6 +162,17 @@ function decide(currentClass, current, fixedName, fits) {
   return fits === true ? 'keep' : 'rename';
 }
 
+function claudeOnPath() {
+  for (const d of String(process.env.PATH || '').split(path.delimiter)) {
+    if (!path.isAbsolute(d)) continue;
+    const exe = path.join(d, 'claude.exe');
+    if (fs.existsSync(exe)) return exe;
+    const npmExe = path.join(d, 'node_modules', '@anthropic-ai', 'claude-code', 'bin', 'claude.exe');
+    if (fs.existsSync(path.join(d, 'claude.cmd')) && fs.existsSync(npmExe)) return npmExe;
+  }
+  return null;
+}
+
 function resolveCommand(args) {
   const override = process.env.SESSION_NAMER_CLAUDE_CMD;
   if (override) return /\.js$/i.test(override) ? { cmd: process.execPath, args: [override, ...args] } : { cmd: override, args };
@@ -169,7 +180,7 @@ function resolveCommand(args) {
   if (exec && fs.existsSync(exec)) return { cmd: exec, args };
   const local = path.join(os.homedir(), '.local', 'bin', 'claude.exe');
   if (fs.existsSync(local)) return { cmd: local, args };
-  return { cmd: 'claude', args };
+  return { cmd: claudeOnPath() || 'claude', args };
 }
 
 function callModel(digest) {
@@ -301,7 +312,7 @@ function log(sid, event, f = {}) {
     fs.mkdirSync(dir(), { recursive: true });
     const file = path.join(dir(), 'namer.log');
     trimLog(file);
-    const fields = [new Date().toISOString(), String(sid).slice(0, 8), event, f.point, f.cls, f.current, f.name, f.fits, f.status, f.ms, path.basename(process.env.CLAUDE_CONFIG_DIR || '.claude')];
+    const fields = [new Date().toISOString(), String(sid).slice(0, 8), event, f.point, f.cls, f.current, f.name, f.fits, f.status, f.ms, path.basename(process.env.CLAUDE_CONFIG_DIR || '.claude'), f.error];
     fs.appendFileSync(file, fields.map(one).join('\t') + '\n');
   } catch {}
 }
@@ -558,20 +569,34 @@ function runWorker(sid) {
     res.point = lock.point;
     res.at = Date.now();
     writeAtomic(resultFile, JSON.stringify(res) + '\n');
-    log(sid, 'done', { ...base, name: res.title, fits: r.ok ? r.fits : '', status: res.status, ms: r.ms });
+    log(sid, 'done', { ...base, name: res.title, fits: r.ok ? r.fits : '', status: res.status, ms: r.ms, error: res.error });
   } catch (e) {
+    const error = String((e && e.message) || e).slice(0, 80);
+    log(sid, 'done', { ...base, status: 'fail', error });
     try {
-      writeAtomic(resultFile, JSON.stringify({ status: 'fail', title: '', basedOnTitle: lock.currentTitle, point: lock.point, at: Date.now(), error: String((e && e.message) || e).slice(0, 80) }) + '\n');
+      writeAtomic(resultFile, JSON.stringify({ status: 'fail', title: '', basedOnTitle: lock.currentTitle, point: lock.point, at: Date.now(), error }) + '\n');
     } catch {}
   } finally {
     try { fs.unlinkSync(lockFile); } catch {}
   }
 }
 
+function checkCommand() {
+  // Hooks do not get this variable, Claude's Bash tool does: without the delete the check would pass where hooks fail.
+  delete process.env.CLAUDE_CODE_EXECPATH;
+  const { cmd } = resolveCommand([]);
+  const first = 'Add a CSV export to the orders page';
+  const r = callModel(buildDigest({ label: '', current: '', currentClass: 'none', first, recent: [first] }));
+  console.log(r.ok ? `ok ${cmd}: ${one(r.name)}` : `fail ${cmd}: ${r.error}`);
+  return r.ok;
+}
+
 module.exports = { clean, projectLabel, classify, fixName, buildDigest, callModel, nameFromModel, judge, decide, runHook, runWorker, GAP_MIN, GAP_MAX, PAUSE_MS, SYSTEM_PROMPT, SCHEMA, LOCK_STALE_MS };
 
 if (require.main === module) {
-  if (process.argv[2] === '--worker') {
+  if (process.argv[2] === '--check') {
+    process.exitCode = checkCommand() ? 0 : 1;
+  } else if (process.argv[2] === '--worker') {
     try { runWorker(process.argv[3]); } catch {}
   } else {
     let data = '';

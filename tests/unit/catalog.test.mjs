@@ -181,3 +181,12 @@ test('solves, use_cases, tokens_on_use and cost_note: optional, in order, bounde
     assert.ok(e.tokens_on_use && 'value' in e.tokens_on_use, `${id} has no tokens_on_use`);
   }
 });
+
+test('a part with hooks is checked by running them, not only by node --check', () => {
+  for (const [id, e] of loadCatalog(repo)) {
+    const registers = e.settings.some((s) => JSON.parse(fs.readFileSync(path.join(repo, s), 'utf8')).hooks);
+    const ships = e.files.some((f) => f.dest.startsWith('hooks/'));
+    if (!registers && !ships) continue;
+    assert.ok(e.verify.some((c) => !c.startsWith('node --check ')), `${id} has hooks but no verify command that runs one`);
+  }
+});

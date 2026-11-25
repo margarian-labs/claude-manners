@@ -3,12 +3,11 @@ import fs from 'node:fs';
 import os from 'node:os';
 import crypto from 'node:crypto';
 import path from 'node:path';
-import { spawnSync } from 'node:child_process';
 import { backupFile, configDir, hashFile, journal, readJson, relInside, removeFile, walk, writeFileAtomic, writeJsonAtomic } from './lib/fsx.mjs';
 import { fetchAndUpdate, git, headCommit, listTags, lsTree, resolveVersion, showFileAt } from './lib/repo.mjs';
 import { validateEntry } from './lib/catalog.mjs';
 import { parseFrontmatter, pending, validateProposal } from './lib/proposals.mjs';
-import { check, defaultCtx, defaultRun } from './lib/conditions.mjs';
+import { check, defaultCtx, defaultRun, runVerify } from './lib/conditions.mjs';
 import { absOf, applyPlan, defaultMerge as merge, encodeHome, expandFiles, installedSkills, mergedValues, planPart } from './lib/install.mjs';
 import { applyRollback, catalogAt, planRollback, planUndo } from './lib/rollback.mjs';
 import { card, partCard, riskyPointers } from './lib/display.mjs';
@@ -16,7 +15,7 @@ import { findCrashedRun, finishRun, load, newRun, runDirOf, save } from './lib/s
 
 const TEST = process.env.CLAUDE_SETUP_TEST === '1';
 const ENGINE = 'sync-engine';
-const ENGINE_VERSION = '1.3.0';
+const ENGINE_VERSION = '1.4.0';
 const GROUPS = ['rules', 'settings', 'workflow', 'hooks', 'agents', 'skills', 'plugins', 'tools', 'integrations', 'lessons'];
 const PACKS = {
   'pack-2026-11-21': {
@@ -923,16 +922,34 @@ function cmdVerify(b) {
   const head = headCommit(b.repo);
   const { cat } = loadCat(b, head);
   const results = [];
+  const notes = [];
+  const hooks = readJson(path.join(b.cfg, 'settings.json'), {}).hooks ?? {};
+  const registered = new Set(Object.values(hooks).flat().flatMap((g) => g?.hooks ?? []).map((h) => h?.command));
   for (const id of Object.keys(b.state.parts).filter((p) => b.state.parts[p].installed)) {
-    for (const cmd of cat.get(id)?.verify ?? []) {
+    const e = cat.get(id);
+    const files = Object.keys(b.state.files).filter((d) => b.state.files[d].part === id && b.state.files[d].mode !== 'seed');
+    if (files.length) {
+      const missing = files.filter((d) => !fs.existsSync(absOf(b.cfg, d)));
+      results.push({ part: id, cmd: 'installed files exist', pass: !missing.length, output: missing.length ? `missing: ${missing.join(', ')}` : '' });
+    }
+    for (const src of e?.settings ?? []) {
+      const frag = JSON.parse(showFileAt(b.repo, head, src).toString('utf8'));
+      for (const [event, groups] of Object.entries(frag.hooks ?? {})) {
+        for (const h of groups.flatMap((g) => g.hooks ?? [])) {
+          const command = fill(h.command, mergedValues(e, b.state.values));
+          if (!registered.has(command)) notes.push(`[${id}] the ${event} hook is not in settings.json: ${command}. Add it with: install --parts ${id}. Ignore this if you removed it yourself.`);
+        }
+      }
+    }
+    for (const cmd of e?.verify ?? []) {
       if (TEST && /\bclaude\b/.test(cmd)) { results.push({ part: id, cmd, pass: true, skipped: true }); continue; }
-      const r = spawnSync('bash', ['-c', cmd], { cwd: b.cfg, encoding: 'utf8', timeout: 120000, windowsHide: true, env: { ...process.env, CLAUDE_CONFIG_DIR: b.cfg, CLAUDE_SETUP_REPO: b.repo } });
+      const r = runVerify(cmd, { cfg: b.cfg, repo: b.repo });
       const pass = !r.error && r.status === 0;
       results.push({ part: id, cmd, pass, status: r.status, error: r.error?.message ?? null, output: `${r.stdout || ''}${r.stderr || ''}`.trim().split('\n').slice(-5).join('\n') });
     }
   }
   const failed = results.filter((r) => !r.pass);
-  return { code: failed.length ? 1 : 0, data: { ok: !failed.length, command: 'verify', results }, lines: [`${results.length - failed.length}/${results.length} checks passed.`, ...failed.map((r) => `FAIL [${r.part}] ${r.cmd}${r.error ? `: ${r.error}` : ''}${r.output ? `\n${r.output}` : ''}`)] };
+  return { code: failed.length ? 1 : 0, data: { ok: !failed.length, command: 'verify', results, notes }, lines: [`${results.length - failed.length}/${results.length} checks passed.`, ...notes.map((n) => `Note ${n}`), ...failed.map((r) => `FAIL [${r.part}] ${r.cmd}${r.error ? `: ${r.error}` : ''}${r.output ? `\n${r.output}` : ''}`)] };
 }
 
 function cmdAdopt(b) {

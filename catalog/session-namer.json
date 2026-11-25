@@ -40,7 +40,7 @@
     {
       "key": "PROJECTS_ROOT",
       "file": "hooks/session-namer.js",
-      "ask": "Folder that holds your projects (leave empty for Desktop/Projects in your home folder)",
+      "ask": "Folder that holds your projects, full path or inside your home folder; several as a JSON list, for example [\"Desktop/code\",\"Desktop/Projects\"] (leave empty for Desktop/Projects)",
       "default": ""
     },
     {
@@ -53,7 +53,8 @@
   "user_steps": [],
   "machine_steps": [],
   "verify": [
-    "node --check \"$CLAUDE_CONFIG_DIR/hooks/session-namer.js\""
+    "node \"$CLAUDE_CONFIG_DIR/hooks/session-namer.js\" --check | grep -q '^ok '",
+    "printf '%s' '{}' | bash \"$CLAUDE_CONFIG_DIR/hooks/session-namer.sh\""
   ],
   "tokens_always_on": {
     "value": 0,
@@ -63,7 +64,7 @@
     "value": null,
     "how": "not measured yet"
   },
-  "cost_note": "Each naming makes a small background Haiku call, which uses a little of your usage.",
+  "cost_note": "Each naming makes a small background Haiku call, and verify makes one too; both use a little of your usage.",
   "quality": "tried",
   "risk": "Runs on prompts and starts a small background Haiku call to name each session, which costs a little usage.",
   "ask_alone": false,

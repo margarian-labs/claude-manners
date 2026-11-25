@@ -46,7 +46,7 @@
   "user_steps": [],
   "machine_steps": [],
   "verify": [
-    "node --check \"$CLAUDE_CONFIG_DIR/hooks/handoff-prompt.js\""
+    "d=$(mktemp -d) || exit 1; printf '{\"session_id\":\"verify-1\",\"transcript_path\":\"%s\",\"scratchpad_dir\":\"%s\"}' \"$(cygpath -m \"$CLAUDE_SETUP_REPO/tests/fixtures/handoff-transcript.jsonl\")\" \"$(cygpath -m \"$d\")\" | CLAUDE_CODE_AUTO_COMPACT_WINDOW=100000 HANDOFF_PROMPT_PCT=0.8 bash \"$CLAUDE_CONFIG_DIR/hooks/handoff-prompt.sh\" | grep -q 'Handoff check'; s=$?; rm -rf \"$d\"; exit $s"
   ],
   "tokens_always_on": {
     "value": 243,

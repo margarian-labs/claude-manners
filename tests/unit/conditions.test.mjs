@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
-import { check, defaultRun, makeFableAccess, makeSecondProfile, makeMemohopperConnected, makeWhich, defaultCtx } from '../../sync/lib/conditions.mjs';
+import { check, defaultRun, runVerify, makeFableAccess, makeSecondProfile, makeMemohopperConnected, makeWhich, defaultCtx } from '../../sync/lib/conditions.mjs';
 
 const ctx = (o = {}) => ({
   platform: 'win32', state: {}, configDir: '/x', which: (c) => c === 'node', installedParts: new Set(['status-line']), plugins: new Set(['figma']),
@@ -134,5 +134,25 @@ test('defaultRun starts an npm-style claude shim (no claude.exe) and passes ever
     assert.deepEqual(r.stdout.split('\n').slice(0, -1), args);
   } finally {
     fs.rmSync(dir, { recursive: true, force: true });
+  }
+});
+
+test('runVerify gives the command the config folder, but a child program sees it only when it was exported before', { skip: process.platform !== 'win32' || !gitBashDir() }, () => {
+  const cfg = fs.mkdtempSync(path.join(os.tmpdir(), 'cs-verify-'));
+  try {
+    const env = { ...process.env };
+    delete env.CLAUDE_CONFIG_DIR;
+    const cmd = 'test -n "$CLAUDE_CONFIG_DIR" && test "$CLAUDE_SETUP_REPO" = /the/clone && test -z "${CS_VERIFY_CFG:-}" && printenv CLAUDE_CONFIG_DIR';
+    const run = (e) => runVerify(cmd, { cfg, repo: '/the/clone', env: { ...e, MSYS_NO_PATHCONV: '1', MSYS2_ENV_CONV_EXCL: '*' } });
+    const plain = run(env);
+    assert.equal(plain.error, undefined);
+    assert.equal(plain.status, 1, `stdout: ${plain.stdout} stderr: ${plain.stderr}`);
+    assert.equal(plain.stdout, '');
+    const exported = run({ ...env, CLAUDE_CONFIG_DIR: 'C:\\other' });
+    assert.equal(exported.status, 0, exported.stderr);
+    assert.equal(path.resolve(exported.stdout.trim()), path.resolve(cfg));
+    assert.equal(runVerify('test "$PWD" -ef "$CLAUDE_CONFIG_DIR"', { cfg, repo: '', env }).status, 0);
+  } finally {
+    fs.rmSync(cfg, { recursive: true, force: true });
   }
 });
