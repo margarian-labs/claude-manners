@@ -63,7 +63,7 @@
       "parts": [
         {
           "id": "away-mode",
-          "does": "If the message starts or ends with -away, records away mode and tells Claude to ask everything now."
+          "does": "Starts away mode on -away and ends it on -back; any other message keeps it on."
         },
         {
           "id": "session-namer",
@@ -109,7 +109,7 @@
       "parts": [
         {
           "id": "away-mode",
-          "does": "Once weekly usage reaches your away stop point, denies tool calls except reads and handoff notes."
+          "does": "In away mode, denies a second question dialog and, past your stop point, everything but reads and notes."
         },
         {
           "id": "notifications-telegram",

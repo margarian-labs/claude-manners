@@ -13,7 +13,7 @@ const TTL_MS = 30 * 24 * 3600 * 1000;
 const TAIL = 1024 * 1024;
 const NOT_THE_USER = /^(?:continue$|<|another claude session sent|your claude\.ai usage |you can continue now\.)/i;
 const LOCAL_CMD = /^\/(clear|compact|rename|resume|model|exit|help)\b/i;
-const FLAG_NAMES = ['d', 'w', 'nc', 'q', 'rc', 'a', 'p', 'm', 'nb'];
+const FLAG_NAMES = ['d', 'w', 'nc', 'q', 'rc', 'a', 'p', 'm', 'nb', 'back'];
 const FLAG = '-(?:away(?:[\\s,]+\\d{1,3}%?)?|(?:' + FLAG_NAMES.join('|') + '))(?=[\\s,]|$)';
 const FLAG_LEAD = new RegExp('^[\\s,]*' + FLAG + '[\\s,]*');
 const FLAG_TRAIL = new RegExp('(?:^|[\\s,]+)' + FLAG + '[\\s,]*$');

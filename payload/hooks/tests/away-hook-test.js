@@ -56,8 +56,21 @@ const off = ['talk about -away flag', '-awayx', 'do X --away', '-AWAY do X', 'do
 off.forEach((p, k) => {
   check(`quiet ${JSON.stringify(p)}`, prompt(`off${k}`, p) === '' && !state(`off${k}`));
   prompt(`off${k}`, '-away go');
-  check(`OFF   ${JSON.stringify(p)}`, prompt(`off${k}`, p).startsWith('Away mode OFF') && !state(`off${k}`));
+  const out = prompt(`off${k}`, p);
+  check(`STAY  ${JSON.stringify(p)}`, out.startsWith('Away mode still ON') && out.includes('-back') && !!state(`off${k}`));
 });
+const back = ['-back', 'thanks -back', '-back, -nc', '-nc -back what now', 'ok -back.', '-back what did you do?', '-rc, -back'];
+back.forEach((p, k) => {
+  check(`quiet ${JSON.stringify(p)}`, prompt(`back${k}`, p) === '' && !state(`back${k}`));
+  prompt(`back${k}`, '-away go');
+  check(`BACK  ${JSON.stringify(p)}`, prompt(`back${k}`, p).startsWith('Away mode OFF') && !state(`back${k}`));
+});
+['talk about -back flag', '-backup', '--back', '-BACK', '-back-end is slow', 'roll -back 3 commits', 'go back'].forEach((p, k) => {
+  prompt(`nob${k}`, '-away go');
+  check(`STAY  ${JSON.stringify(p)}`, prompt(`nob${k}`, p).startsWith('Away mode still ON') && !!state(`nob${k}`));
+});
+check('-back -away 85: away wins', prompt('both', '-back -away 85 go').startsWith('Away mode ON') && state('both').cap === 85);
+check('agent -back is ignored', (prompt('ab', '-away go'), prompt('ab', '-back', { agent_id: 'a1' })) === '' && !!state('ab'));
 const keep = ['continue', 'Continue ', 'CONTINUE', '<task-notification> x', '<channel source="telegram">hi',
   'Another Claude session sent a message', 'Your claude.ai usage limit has reset. Continue the task you were working on'];
 keep.forEach((p, k) => {
@@ -93,7 +106,37 @@ usage(10);
 check('still denied after usage drops', denied(tool('g1', 'Bash')));
 check('continue after stop says so', prompt('g1', 'continue').includes('was reached'));
 check('compact line carries the stop', node('compact-recovery.js', { session_id: 'g1' }).includes('was reached'));
-check('user back: OFF and allowed', prompt('g1', 'hello').startsWith('Away mode OFF') && tool('g1', 'Bash') === '');
+check('stopped: a plain message keeps the stop', /still ON[\s\S]*was reached[\s\S]*-back/.test(prompt('g1', 'hello')) && denied(tool('g1', 'Bash')));
+check('stopped: deny reason names -back', tool('g1', 'Bash').includes('-back'));
+check('stopped: question denied with the stop reason', tool('g1', 'AskUserQuestion').includes('stop point'));
+check('stopped: -back ends it', prompt('g1', '-back').startsWith('Away mode OFF') && tool('g1', 'Bash') === '');
+
+const ASK = { questions: [{ header: 'Pick', question: 'Which one?' }] };
+const HANDOFF = { questions: [{ header: 'Handoff', question: 'Which session gets the handoff? Fresh session: open a new terminal' }] };
+usage(10); prompt('q1', '-away go');
+check('ask: first dialog allowed and latched', tool('q1', 'AskUserQuestion', ASK) === '' && !!state('q1').asked);
+check('ask: second denied', denied(tool('q1', 'AskUserQuestion', ASK)) && tool('q1', 'AskUserQuestion', ASK).includes('recommended'));
+check('ask: other tools still allowed', tool('q1', 'Bash') === '' && tool('q1', 'ExitPlanMode') === '');
+check('ask: handoff dialog passes', tool('q1', 'AskUserQuestion', HANDOFF) === '');
+check('ask: sub-agent passes', tool('q1', 'AskUserQuestion', ASK, { agent_id: 'a1' }) === '');
+prompt('q1', 'how is it going?');
+check('ask: still denied after a plain message', denied(tool('q1', 'AskUserQuestion', ASK)));
+prompt('q1', '-away go on');
+check('ask: allowed once again after a new -away', tool('q1', 'AskUserQuestion', ASK) === '' && denied(tool('q1', 'AskUserQuestion', ASK)));
+prompt('q1', '-back');
+check('ask: allowed after -back', tool('q1', 'AskUserQuestion', ASK) === '');
+prompt('q2', '-away go');
+check('ask: handoff dialog does not use the allowance', tool('q2', 'AskUserQuestion', HANDOFF) === '' && !state('q2').asked);
+const aged = (min) => fs.writeFileSync(path.join(dir, 'q3.json'), JSON.stringify({ since: new Date(Date.now() - min * 60e3).toISOString(), cwd: '', cap: null }));
+aged(29); check('ask: first dialog at 29 min allowed', tool('q3', 'AskUserQuestion', ASK) === '');
+aged(31); check('ask: first dialog at 31 min denied', denied(tool('q3', 'AskUserQuestion', ASK)));
+aged(73 * 60); check('ask: expired state allows', tool('q3', 'AskUserQuestion', ASK) === '');
+check('ask: no state allows', tool('nobody', 'AskUserQuestion', ASK) === '' && tool('nobody', 'EnterPlanMode') === '');
+prompt('p1', '-away go');
+check('plan mode denied', denied(tool('p1', 'EnterPlanMode')));
+for (const [k, p] of ['-p -away go', '-away go -p', 'go -nc -p, -away'].entries())
+  check(`plan mode allowed with ${JSON.stringify(p)}`, (prompt(`pp${k}`, p), tool(`pp${k}`, 'EnterPlanMode')) === '');
+check('plan mode: -pa is not -p', (prompt('p2', '-away fix -pa thing'), denied(tool('p2', 'EnterPlanMode'))));
 
 usage(50); prompt('g2', '-away 85 go'); usage(90);
 check('over cap: denied', denied(tool('g2', 'Bash')));
@@ -149,6 +192,13 @@ const five = fs.existsSync(usage5File) ? fs.readFileSync(usage5File, 'utf8').tri
 check('statusline: 5h file written', five[0] === '42.5' && Number(five[1]) === sec + 3600 && Number(five[2]) >= sec);
 check('statusline: weekly file still written', fs.existsSync(usageFile) && fs.readFileSync(usageFile, 'utf8').startsWith('35 '));
 
+const badge = (sid) => sl({ session_id: sid, model: { display_name: 'Opus 5.5' } }).stdout.replace(/\x1b\[[0-9;]*m/g, '');
+usage(11); prompt('b1', '-away go'); prompt('b2', '-away 85 go'); prompt('b3', '-away go'); prompt('b3', '-back');
+fs.writeFileSync(path.join(dir, 'b4.json'), JSON.stringify({ since: new Date(Date.now() - 73 * 3600e3).toISOString(), cwd: '', cap: 85 }));
+check('badge: away without a stop point', /rc  \|  away  \|  Opus/.test(badge('b1')));
+check('badge: away with a stop point', /rc  \|  away 85%  \|  Opus/.test(badge('b2')));
+for (const s of ['b3', 'b4', 'nobody', '', undefined]) check(`badge: hidden for ${s}`, !badge(s).includes('away') && badge(s).includes('Opus'));
+
 const tdir = path.join(home, 't');
 fs.mkdirSync(tdir, { recursive: true });
 const meta = (content, usageLimitNote) => ({ type: 'user', isMeta: true, ...(usageLimitNote ? { usageLimitNote } : {}), message: { role: 'user', content } });
@@ -170,6 +220,7 @@ const blocked = (out) => { try { const o = JSON.parse(out); return o.decision ==
 const PENDING = transcript(NOTE, SAID);
 usage(50); prompt('s1', '-away go');
 check('stop: note pending -> block', blocked(stop('s1', PENDING)));
+check('stop: reason lets an empty task end', stop('s1', PENDING).includes('nothing is left'));
 check('stop: note by text only -> block', blocked(stop('s1', transcript(meta(LIMIT_TEXT), SAID))));
 check('stop: note then timer -> silent', stop('s1', transcript(NOTE, TIMER, SAID)) === '');
 check('stop: timer via PowerShell -> silent', stop('s1', transcript(NOTE, cmd(TIMER_CMD, 'PowerShell'), SAID)) === '');
@@ -199,7 +250,7 @@ const queued = (status, desc, id) => ({ type: 'attachment', attachment: { type: 
 check('stop: finished timer found by tool-use-id, other description -> silent', stop('s1', transcript(NOTE, TIMER, SAID, notif('completed', 'wait for reset'), SAID), { background_tasks: [] }) === '');
 check('stop: finished timer delivered mid-turn (queued) -> silent', stop('s1', transcript(NOTE, TIMER, queued('completed', 'wait for reset'), SAID), { background_tasks: [] }) === '');
 check('stop: another task finished (other id, other text) -> block', blocked(stop('s1', transcript(NOTE, TIMER, SAID, notif('completed', 'sleep 60', 'toolu_other'), SAID), { background_tasks: [] })));
-check('mode: OFF line says to stop the timer', (prompt('m1', '-away go'), prompt('m1', 'hello')).includes('stop it with TaskStop'));
+check('mode: OFF line says to stop the timer', (prompt('m1', '-away go'), prompt('m1', '-back')).includes('stop it with TaskStop'));
 check('mode: stale timer after OFF -> advisory', prompt('m1', notifText('completed')).includes('timer is stale'));
 check('mode: other notification after OFF -> silent', prompt('m1', notifText('completed', 'sleep 60')) === '');
 check('stop: timer finished and woke the session -> silent', stop('s1', transcript(NOTE, TIMER, SAID, notif('completed'), SAID), { background_tasks: [] }) === '');

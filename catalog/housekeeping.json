@@ -2,7 +2,7 @@
   "id": "housekeeping",
   "title": "Housekeeping",
   "group": "settings",
-  "level": "recommended",
+  "level": "optional",
   "summary": "Keeps sessions 365 days, starts worktrees from a fresh branch, turns workflows and autoDream off.",
   "benefit": "Old sessions stay findable for a year, and new worktrees start from fresh code.",
   "solves": "Old sessions deleted too soon, and worktrees that start from stale code.",

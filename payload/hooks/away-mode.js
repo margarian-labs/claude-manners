@@ -6,6 +6,9 @@ const DIR = path.join(os.homedir(), '.claude', 'state', 'away');
 const TTL_MS = 72 * 60 * 60 * 1000;
 const LEAD = /^\s*(?:-[a-z]+[\s,]+)*-away(?:[\s,]+(\d{1,3})%?)?(?=[\s,]|\.(?!\d)|$)/;
 const TRAIL = /(?:^|[\s,])-away(?:[\s,]+(\d{1,3})%?)?(?:[\s,]+-[a-z]+)*[\s,.]*$/;
+const BACK_LEAD = /^\s*(?:-[a-z]+[\s,]+)*-back(?=[\s,]|\.(?!\d)|$)/;
+const BACK_TRAIL = /(?:^|[\s,])-back(?:[\s,]+-[a-z]+)*[\s,.]*$/;
+const PLAN = /(?:^|[\s,])-p(?=[\s,.]|$)/;
 const NOT_THE_USER = /^(?:continue$|<|another claude session sent|your claude\.ai usage |you can continue now\.)/i;
 const RULES = 'Invoke the away-mode skill now if its text is not already in your context, and follow it. Not without the user: push, merge, deploy, production DB changes and messages to people, unless the task asked for them.';
 const WAKE = 'Wake-up timer finished: the usage limit window has reset. Continue the work the limit stopped; what was left is in your last message before the stop. If the user has written in this session since the limit note, or nothing is left, do not resume on your own: say so in one line. If you are already continuing, carry on.';
@@ -63,7 +66,7 @@ function weekly() {
 
 function capText(state) {
   if (!state.cap) return '';
-  if (state.stopped) return ` Weekly stop point ${state.cap}% was reached at ${state.stopped}: start nothing new. When running work has finished, update the progress note, give the final report and end the turn.`;
+  if (state.stopped) return ` Weekly stop point ${state.cap}% was reached at ${state.stopped}: start nothing new. When running work has finished, update the progress note, give the final report and end the turn. Only -back or a new -away from the user restarts work.`;
   const w = weekly();
   return ` Weekly stop point: ${state.cap}% (now ${w ? `${w.pct}%` : 'unknown'}).`;
 }
@@ -80,7 +83,7 @@ function run(input) {
   const trail = TRAIL.exec(prompt);
 
   if (lead || trail) {
-    const state = { since: new Date().toISOString(), cwd: i.cwd || '', cap: null };
+    const state = { since: new Date().toISOString(), cwd: i.cwd || '', cap: null, plan: PLAN.test(prompt) };
     const num = (lead && lead[1]) || (trail && trail[1]);
     let note = '';
     if (num) {
@@ -96,7 +99,7 @@ function run(input) {
       }
     }
     save(sid, state);
-    console.log(`Away mode ON: the user is leaving the desk. ${RULES} Ask every question now in one AskUserQuestion round, then never wait for the user.${note}`);
+    console.log(`Away mode ON: the user is leaving the desk. ${RULES} Ask every question now in one AskUserQuestion round, then never wait for the user. Only -back from the user ends away mode.${note}`);
     return;
   }
   const state = liveState(sid);
@@ -111,8 +114,12 @@ function run(input) {
     console.log(`Away mode still ON (since ${state.since}): the user is still away. Do not ask or wait. ${RULES}${capText(state)}`);
     return;
   }
-  drop(file);
-  console.log('Away mode OFF: the user is back. Normal rules apply again. If an away wake-up timer (away-wait) is running, stop it with TaskStop. Report what you decided for them and what needs them.');
+  if (BACK_LEAD.test(prompt) || BACK_TRAIL.test(prompt)) {
+    drop(file);
+    console.log('Away mode OFF: the user is back (-back). Normal rules apply again. If an away wake-up timer (away-wait) is running, stop it with TaskStop. Report what you decided for them and what needs them.');
+    return;
+  }
+  console.log(`Away mode still ON (since ${state.since}): the user wrote without -back. Answer this message or do what it says${state.stopped ? ' as far as the stop point allows' : ', then carry on with the unfinished work'}. Do not ask or wait. If they seem to be staying, tell them -back ends away mode. ${RULES}${capText(state)}`);
 }
 
 module.exports = { liveState, save, weekly, capText, timerNote, RULES };

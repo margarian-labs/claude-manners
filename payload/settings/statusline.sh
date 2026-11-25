@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Claude Code status line: account | rc | model · effort | context · size | limits | directory
+# Claude Code status line: account | rc | away | model · effort | context · size | limits | directory
 
 # ── 0. Accounts (filled in at setup from the two logins) ──
 # ACCTn_MATCH: email or bash glob such as '*@company.com', case-insensitive.
@@ -16,13 +16,14 @@ SHOW_RC=1
 read -t 1 -r -d '' input || [[ -n "$input" ]] || exit 0
 
 # ── 2. Field extraction ──
-tpath="" ctx_size=0 used_tok=0 used_pct="" model="" effort="" dir=""
+sid="" tpath="" ctx_size=0 used_tok=0 used_pct="" model="" effort="" dir=""
 lim5_pct="" lim5_rst=0 lim7_pct="" lim7_rst=0
 if command -v jq &>/dev/null; then
   ctx_size=$(jq -r '.context_window.context_window_size // 0' <<< "$input")
   used_pct=$(jq -r '.context_window.used_percentage // ""' <<< "$input")
   used_tok=$(jq -r '.context_window.current_usage | if . then (.input_tokens // 0) + (.output_tokens // 0) + (.cache_creation_input_tokens // 0) + (.cache_read_input_tokens // 0) else 0 end' <<< "$input")
   tpath=$(jq -r '.transcript_path // ""' <<< "$input")
+  sid=$(jq -r '.session_id // ""' <<< "$input")
   model=$(jq -r '.model.display_name // ""' <<< "$input")
   effort=$(jq -r '.effort.level // ""' <<< "$input")
   dir=$(jq -r '.workspace.current_dir // .cwd // ""' <<< "$input")
@@ -34,6 +35,7 @@ else
   ctx_size=$(sed -n 's/.*"context_window_size":\([0-9]*\).*/\1/p' <<< "$input")
   used_pct=$(grep -o '"context_window".*' <<< "$input" | grep -o '"used_percentage"[[:space:]]*:[[:space:]]*[0-9.]*' | head -1 | sed 's/.*:[[:space:]]*//')
   tpath=$(sed -n 's/.*"transcript_path":"\([^"]*\)".*/\1/p' <<< "$input")
+  sid=$(sed -n 's/.*"session_id":"\([^"]*\)".*/\1/p' <<< "$input")
   model=$(sed -n 's/.*"display_name":"\([^"]*\)".*/\1/p' <<< "$input")
   effort=$(sed -n 's/.*"effort":{"level":"\([^"]*\)".*/\1/p' <<< "$input")
   dir=$(sed -n 's/.*"current_dir":"\([^"]*\)".*/\1/p' <<< "$input")
@@ -129,6 +131,19 @@ else seg_acct="$email"; fi
 # Remote Control: Claude Code sets this env var only while RC is on (green rc = on, red rc = off)
 if [[ -n "${CLAUDE_CODE_BRIDGE_SESSION_ID:-}" ]]; then seg_rc="${GREEN}rc${RST}"; else seg_rc="${RED}rc${RST}"; fi
 
+# Away mode: the away hooks keep one state file per session; 72 h is their limit
+seg_away=""
+afile="$HOME/.claude/state/away/${sid//[^A-Za-z0-9_-]/_}.json"
+if [[ -n "$sid" && -f "$afile" ]]; then
+  astate=$(<"$afile")
+  [[ "$astate" =~ \"since\":\"([^\"]+)\" ]] && since=$(date -d "${BASH_REMATCH[1]}" +%s 2>/dev/null) || since=0
+  if (( $(date +%s) - ${since:-0} < 259200 )); then
+    seg_away="${ORANGE}away"
+    [[ "$astate" =~ \"cap\":([0-9]+) ]] && seg_away+=" ${BASH_REMATCH[1]}%"
+    seg_away+="$RST"
+  fi
+fi
+
 # ── 7. Assemble segments ──
 SEP="  ${GRAY}|${RST}  "
 CALM=$'\e[38;5;110m'
@@ -193,6 +208,7 @@ esac
 out=""
 [[ -n "$seg_acct" ]] && out="$seg_acct$SEP"
 (( SHOW_RC )) && out+="$seg_rc$SEP"
+[[ -n "$seg_away" ]] && out+="$seg_away$SEP"
 out+="$seg_model$SEP$seg_ctx"
 [[ -n "$seg_lim5" ]] && out+="$SEP$seg_lim5"
 [[ -n "$seg_lim7" ]] && out+="$SEP$seg_lim7"

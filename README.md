@@ -66,7 +66,7 @@ Once installed, these work in every session without you doing anything.
 - **Basics** `recommended`<br>UTF-8 for Python and no session cron jobs.
 - **Bypass mode** `recommended`<br>Claude runs every command and edit without asking. Prompt-free agents and away mode depend on it.
 - **Fullscreen display** `recommended`<br>Uses the fullscreen terminal interface.
-- **Housekeeping** `recommended`<br>Keeps sessions 365 days, starts worktrees from a fresh branch, turns workflows and autoDream off.
+- **Housekeeping** `optional`<br>Keeps sessions 365 days, starts worktrees from a fresh branch, turns workflows and autoDream off.
 - **Messages between local sessions** `recommended`<br>Other Claude sessions on this PC can message this one, used by handoffs and setup-change notices.
 - **Models and effort** `recommended`<br>Opus as main model, Sonnet for workers, effort set per model. Check first that your plan includes Fable 5.2.
 - **Remote Control at startup** `recommended`<br>Every session can be reached from the Claude app on your phone or another computer.
@@ -163,7 +163,7 @@ These do nothing until you use them; the line in italics says how.
 <details>
 <summary><b>Workflow</b> · 2 parts</summary>
 
-- **Away mode** `recommended`<br>Say -away and the agent asks all its questions first, then finishes the whole task without you, with an optional usage stop point.<br>_Add -away (or -away 85 for a weekly usage stop point) to your message._
+- **Away mode** `recommended`<br>Say -away and the agent asks all its questions first, then finishes the whole task without you, with an optional usage stop point.<br>_Add -away (or -away 85 for a weekly usage stop point) to your message; -back ends it._
 - **Handoff** `recommended`<br>Writes a full handoff for a fresh session, and suggests one after 2 compactions once the context is 80% full.<br>_Say "write a handoff" (add a session id to pass it on). A hook also suggests one when context gets big._
 
 </details>

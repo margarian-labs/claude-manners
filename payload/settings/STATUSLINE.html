@@ -244,7 +244,6 @@ section { margin-top: 36px; }
 
 @media (min-width: 900px) {
   .grid { grid-template-columns: 1fr 1fr; gap: 22px; }
-  .grid .wide { grid-column: 1 / -1; }
 }
 
 .card {
@@ -568,7 +567,7 @@ footer p { margin: 0; color: var(--muted); }
       </details>
     </article>
 
-    <article class="card wide">
+    <article class="card">
       <div class="card-h"><span class="num" aria-hidden="true">7</span><h3>Folder and branch</h3></div>
       <div class="demo">
         <div class="v"><span class="pill"><span class="c-teal">demo</span>  ⎇ feature/login</span></div>
@@ -586,6 +585,25 @@ footer p { margin: 0; color: var(--muted); }
             <li><span class="dot d-plain"></span><b>anything else</b><span class="m">plain, no color</span></li>
           </ul>
           <p>Hidden outside a git repository.</p>
+        </div>
+      </details>
+    </article>
+
+    <article class="card">
+      <div class="card-h"><span class="num" aria-hidden="true">8</span><h3>away (away mode)</h3></div>
+      <div class="demo">
+        <div class="v"><span class="pill"><span class="c-orange">away</span></span><span class="cap">on</span></div>
+        <div class="v"><span class="pill"><span class="c-orange">away 85%</span></span><span class="cap">on, with a stop point</span></div>
+      </div>
+      <p class="so">This session is in away mode: it won't ask you anything until you write <code>-back</code>. It sits right after <code>rc</code>.</p>
+      <ul class="tags"><li>hides when off</li></ul>
+      <details>
+        <summary>Details</summary>
+        <div class="more">
+          <p>The number is the weekly usage at which the session stops, set with <code>-away 85</code>. After 72 hours away mode ends by itself and this part disappears.</p>
+          <dl class="kv">
+            <dt>Source</dt><dd>The session's away file in <code>~/.claude/state/away</code>, which the away mode hooks write.</dd>
+          </dl>
         </div>
       </details>
     </article>
